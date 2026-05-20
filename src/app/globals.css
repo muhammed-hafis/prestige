@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
 html {
@@ -5,14 +6,19 @@ html {
 }
 
 :root {
-  --background: #ebf3fb;
+  --background: #FAF6EC;
   --foreground: #1a1a1a;
   --primary-gold: #B8902A;
+  --light-gold: #C5A028;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary-gold: var(--primary-gold);
+  --color-light-gold: var(--light-gold);
+  --font-sans: "Montserrat", sans-serif;
+  --font-serif: "Playfair Display", serif;
 }
 
 
@@ -20,6 +26,15 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif), serif;
+}
+
+p {
+  font-family: var(--font-sans), sans-serif;
 }
 
 @layer utilities {
@@ -97,4 +112,73 @@ body {
 
 em {
   font-style: normal;
+}
+
+/* ── Premium Reusable Prestige Enquiry Buttons ── */
+.btn-prestige-enquire {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.1rem 2.75rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  border-radius: 9999px; /* Pill shape */
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--light-gold);
+  background: var(--light-gold);
+  color: #ffffff !important;
+  box-shadow: 0 4px 15px rgba(197, 160, 40, 0.15);
+  text-decoration: none !important;
+}
+
+.btn-prestige-enquire:hover {
+  background: #111111;
+  border-color: #111111;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.btn-prestige-enquire:active {
+  transform: translateY(0);
+}
+
+/* Secondary outline style (for dark overlays) */
+.btn-prestige-enquire-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.1rem 2.75rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  border-radius: 9999px;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+.btn-prestige-enquire-outline:hover {
+  background: transparent;
+  border-color: var(--light-gold);
+  color: var(--light-gold) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(197, 160, 40, 0.2);
+}
+
+.btn-prestige-enquire-outline:active {
+  transform: translateY(0);
 }

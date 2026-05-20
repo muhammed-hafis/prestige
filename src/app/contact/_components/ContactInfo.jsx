@@ -42,7 +42,7 @@ const ContactInfo = () => {
           PRESTIGE SYSTEM
           <span className="block w-[30px] h-[0.5px] bg-[#4b5563]"></span>
         </span>
-        <h2 className="text-2xl sm:text-3xl font-semibold text-[#111] mb-3 tracking-tight uppercase leading-none">
+        <h2 className="font-serif text-[clamp(1.6rem,3vw,3.2rem)] font-semibold text-[#111] mb-3 tracking-tight uppercase leading-none">
           Let&apos;s Build <br />
           <span className="text-[#374151]">Something Grand</span>
         </h2>
@@ -73,7 +73,7 @@ const ContactInfo = () => {
       </div>
 
       {/* Modern Jeddah Showroom Map Visual (Real View, No Effects) */}
-      <div className="relative overflow-hidden rounded-xl shadow-[0_15px_30px_rgba(0,0,0,0.05)] border border-[#8A939E]/15 max-w-[400px] aspect-[21/9]">
+      <div className="relative overflow-hidden rounded-xl shadow-[0_15px_30px_rgba(0,0,0,0.05)] border border-light-gold/15 max-w-[400px] aspect-[21/9]">
         <img 
           src="/images/about-wide.png" 
           alt="Jeddah Corporate Showroom" 
@@ -81,7 +81,7 @@ const ContactInfo = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
         <div className="absolute bottom-2.5 left-4 text-white">
-          <p className="text-[0.5rem] uppercase tracking-[0.25em] font-bold text-[#8A939E] mb-0.5">Jeddah Corporate Office</p>
+          <p className="text-[0.5rem] uppercase tracking-[0.25em] font-bold text-light-gold mb-0.5">Jeddah Corporate Office</p>
           <p className="text-[0.7rem] font-semibold text-white/95">Emaar Square, Tower 3, Plaza Level</p>
         </div>
       </div>

@@ -24,8 +24,8 @@ const Keyframes = () => (
     .nav-top .nav-lnk   { color:rgba(255,255,255,.55); }
     .nav-scrolled .nav-lnk { color:#555; }
     .nav-lnk:hover { color:#B8902A !important; }
-    .nav-cta-lnk { border:1px solid rgba(184,144,42,.5); color:#B8902A; transition:all .25s; }
-    .nav-cta-lnk:hover { background:#B8902A; color:#fff; }
+    .nav-cta-lnk { border:1px solid var(--light-gold); color:var(--light-gold); transition:all .25s; }
+    .nav-cta-lnk:hover { background:var(--light-gold); color:#fff; }
     .vert-text { writing-mode:vertical-rl; }
   `}</style>
 );
@@ -104,16 +104,16 @@ const Hero = ({ category, series }) => {
 
       {/* Hero Header */}
       <div className="absolute inset-0 flex flex-col items-start justify-end px-8 lg:px-16 pb-16">
-        <p className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em] text-[#B8902A] mb-3">
+        <p className="font-sans flex items-center gap-3 text-xs font-black uppercase tracking-[0.25em] text-[#B8902A] mb-3">
           <span className="block w-8 h-px bg-[#B8902A]" />
           PREMIUM ARCHITECTURAL SPECIFICATION
         </p>
-        <h1 className="font-bold text-white mb-4 leading-none tracking-tight"
+        <h1 className="font-serif font-semibold text-white mb-4 leading-none tracking-tight"
           style={{ fontSize: "clamp(2.5rem,5vw,4.5rem)" }}>
-          {series.name} <span className="font-light text-white/50">{series.seriesLabel || "Series"}</span>
+          {series.name} <span className="font-serif font-normal text-white/50">{series.seriesLabel || "Series"}</span>
         </h1>
         {series.tagline && (
-          <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.3em] text-[#B8902A] max-w-3xl leading-relaxed">
+          <p className="font-sans text-xs sm:text-sm font-black uppercase tracking-[0.3em] text-[#B8902A] max-w-3xl leading-relaxed">
             {series.tagline}
           </p>
         )}
@@ -122,7 +122,7 @@ const Hero = ({ category, series }) => {
       {/* Scroll indicator */}
       <div className="absolute bottom-9 right-8 lg:right-16 flex flex-col items-center gap-2">
         <div className="scroll-ln w-px h-14" style={{ background: "linear-gradient(to bottom,rgba(255,255,255,.3),transparent)" }} />
-        <span className="vert-text text-[.62rem] uppercase tracking-widest" style={{ color: "rgba(255,255,255,.4)" }}>Scroll</span>
+        <span className="font-sans vert-text text-[.62rem] uppercase tracking-widest font-black" style={{ color: "rgba(255,255,255,.4)" }}>Scroll</span>
       </div>
     </div>
   );
@@ -172,7 +172,7 @@ export default function SeriesDetailsPage() {
           
           {/* Header Title */}
           <div className="text-center mb-16 reveal">
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-widest text-[#222] uppercase font-sans">
+            <h2 className="font-serif text-[clamp(1.6rem,3vw,3.2rem)] font-semibold tracking-widest text-[#222] uppercase">
               Product Information
             </h2>
             <div className="w-16 h-[2px] bg-[#B8902A] mx-auto mt-4" />
@@ -183,21 +183,21 @@ export default function SeriesDetailsPage() {
             
             {/* Left Column: Specifications */}
             <div className="flex flex-col">
-              <h3 className="text-xs font-bold tracking-widest text-[#666] uppercase mb-4 pl-1">
+              <h3 className="font-sans text-xs font-black tracking-widest text-[#666] uppercase mb-4 pl-1">
                 Specifications
               </h3>
               <div className="flex-1 bg-[#f1f3f5] rounded-[4px] p-8 lg:p-10 flex flex-col justify-start">
-                <span className="text-sm font-bold uppercase tracking-widest text-[#222] mb-8 block">
+                <span className="font-sans text-sm font-bold uppercase tracking-widest text-[#222] mb-8 block">
                   {series.name} {series.seriesLabel || "Series"}
                 </span>
 
                 <div className="flex flex-col gap-6">
                   {Object.entries(series.specs || {}).map(([key, lines], i) => (
                     <div key={i} className="grid grid-cols-1 sm:grid-cols-[150px_1fr] gap-2 sm:gap-4 pb-6 border-b border-[#e2e8f0]/60 last:border-0 last:pb-0">
-                      <span className="text-[0.72rem] font-bold uppercase tracking-widest text-[#555] leading-relaxed">
+                      <span className="font-sans text-[0.72rem] font-bold uppercase tracking-widest text-[#555] leading-relaxed">
                         {key}
                       </span>
-                      <div className="flex flex-col text-[0.78rem] text-[#222] leading-relaxed">
+                      <div className="font-sans flex flex-col text-[0.78rem] text-[#222] leading-relaxed font-light">
                         {lines.map((ln, idx) => (
                           <span key={idx}>{ln}</span>
                         ))}
@@ -210,7 +210,7 @@ export default function SeriesDetailsPage() {
 
             {/* Right Column: Colors */}
             <div className="flex flex-col">
-              <h3 className="text-xs font-bold tracking-widest text-[#666] uppercase mb-4 pl-1">
+              <h3 className="font-sans text-xs font-black tracking-widest text-[#666] uppercase mb-4 pl-1">
                 Color
               </h3>
               <div className="flex-1 bg-[#f1f3f5] rounded-[4px] p-8 lg:p-10 flex flex-col justify-start">
@@ -226,7 +226,7 @@ export default function SeriesDetailsPage() {
                             style={{ backgroundColor: colorHex }}
                           />
                         </div>
-                        <span className="text-[0.62rem] font-bold tracking-wider text-[#444] text-center uppercase leading-tight max-w-[80px]">
+                        <span className="font-sans text-[0.62rem] font-black tracking-wider text-[#444] text-center uppercase leading-tight max-w-[80px]">
                           {colorName}
                         </span>
                       </div>
@@ -240,7 +240,7 @@ export default function SeriesDetailsPage() {
 
           {/* Performances Panel Row */}
           <div className="reveal mb-24">
-            <h3 className="text-xs font-bold tracking-widest text-[#666] uppercase mb-4 pl-1">
+            <h3 className="font-sans text-xs font-black tracking-widest text-[#666] uppercase mb-4 pl-1">
               Performances
             </h3>
             <div className="bg-white border border-[#e2e8f0] rounded-[4px] shadow-[0_5px_15px_rgba(0,0,0,0.015)] overflow-hidden">
@@ -250,18 +250,18 @@ export default function SeriesDetailsPage() {
                   <div className="text-[#B8902A] mb-4">
                     <FiWind className="w-10 h-10 stroke-[1.25]" />
                   </div>
-                  <span className="text-[0.72rem] font-bold uppercase tracking-widest text-[#222] mb-6">
+                  <span className="font-sans text-[0.72rem] font-bold uppercase tracking-widest text-[#222] mb-6">
                     Wind Pressure
                   </span>
                   <div className="w-full flex flex-col text-[0.68rem] text-left gap-3.5 px-2">
                     {(series.performanceDetails?.['WIND PRESSURE'] || []).map((row, i) => (
                       <div key={i} className="flex justify-between items-start gap-4">
-                        <span className="font-bold text-[#666] uppercase tracking-wider leading-relaxed">
+                        <span className="font-sans font-bold text-[#666] uppercase tracking-wider leading-relaxed">
                           {row.label}
                         </span>
                         <div className="flex flex-col items-end text-right">
-                          <span className="font-bold text-[#111]">{row.value}</span>
-                          {row.sub && <span className="text-[0.58rem] text-[#888]">{row.sub}</span>}
+                          <span className="font-sans font-bold text-[#111]">{row.value}</span>
+                          {row.sub && <span className="font-sans text-[0.58rem] text-[#888] font-light">{row.sub}</span>}
                         </div>
                       </div>
                     ))}
@@ -273,18 +273,18 @@ export default function SeriesDetailsPage() {
                   <div className="text-[#B8902A] mb-4">
                     <FiDroplet className="w-10 h-10 stroke-[1.25]" />
                   </div>
-                  <span className="text-[0.72rem] font-bold uppercase tracking-widest text-[#222] mb-6">
+                  <span className="font-sans text-[0.72rem] font-bold uppercase tracking-widest text-[#222] mb-6">
                     Water Tightness
                   </span>
                   <div className="w-full flex flex-col text-[0.68rem] text-left gap-3.5 px-2">
                     {(series.performanceDetails?.['WATER TIGHTNESS'] || []).map((row, i) => (
                       <div key={i} className="flex justify-between items-start gap-4">
-                        <span className="font-bold text-[#666] uppercase tracking-wider leading-relaxed">
+                        <span className="font-sans font-bold text-[#666] uppercase tracking-wider leading-relaxed">
                           {row.label}
                         </span>
                         <div className="flex flex-col items-end text-right">
-                          <span className="font-bold text-[#111]">{row.value}</span>
-                          {row.sub && <span className="text-[0.58rem] text-[#888]">{row.sub}</span>}
+                          <span className="font-sans font-bold text-[#111]">{row.value}</span>
+                          {row.sub && <span className="font-sans text-[0.58rem] text-[#888] font-light">{row.sub}</span>}
                         </div>
                       </div>
                     ))}
@@ -296,18 +296,18 @@ export default function SeriesDetailsPage() {
                   <div className="text-[#B8902A] mb-4">
                     <FiShield className="w-10 h-10 stroke-[1.25]" />
                   </div>
-                  <span className="text-[0.72rem] font-bold uppercase tracking-widest text-[#222] mb-6">
+                  <span className="font-sans text-[0.72rem] font-bold uppercase tracking-widest text-[#222] mb-6">
                     Air Tightness
                   </span>
                   <div className="w-full flex flex-col text-[0.68rem] text-left gap-3.5 px-2">
                     {(series.performanceDetails?.['AIR TIGHTNESS'] || []).map((row, i) => (
                       <div key={i} className="flex justify-between items-start gap-4">
-                        <span className="font-bold text-[#666] uppercase tracking-wider leading-relaxed">
+                        <span className="font-sans font-bold text-[#666] uppercase tracking-wider leading-relaxed">
                           {row.label}
                         </span>
                         <div className="flex flex-col items-end text-right">
-                          <span className="font-bold text-[#111]">{row.value}</span>
-                          {row.sub && <span className="text-[0.58rem] text-[#888]">{row.sub}</span>}
+                          <span className="font-sans font-bold text-[#111]">{row.value}</span>
+                          {row.sub && <span className="font-sans text-[0.58rem] text-[#888] font-light">{row.sub}</span>}
                         </div>
                       </div>
                     ))}
@@ -319,18 +319,18 @@ export default function SeriesDetailsPage() {
                   <div className="text-[#B8902A] mb-4">
                     <FiVolumeX className="w-10 h-10 stroke-[1.25]" />
                   </div>
-                  <span className="text-[0.72rem] font-bold uppercase tracking-widest text-[#222] mb-6">
+                  <span className="font-sans text-[0.72rem] font-bold uppercase tracking-widest text-[#222] mb-6">
                     Noise Insulation
                   </span>
                   <div className="w-full flex flex-col text-[0.68rem] text-left gap-3.5 px-2">
                     {(series.performanceDetails?.['NOISE INSULATION'] || []).map((row, i) => (
                       <div key={i} className="flex justify-between items-start gap-4">
-                        <span className="font-bold text-[#666] uppercase tracking-wider leading-relaxed">
+                        <span className="font-sans font-bold text-[#666] uppercase tracking-wider leading-relaxed">
                           {row.label}
                         </span>
                         <div className="flex flex-col items-end text-right">
-                          <span className="font-bold text-[#111]">{row.value}</span>
-                          {row.sub && <span className="text-[0.58rem] text-[#888]">{row.sub}</span>}
+                          <span className="font-sans font-bold text-[#111]">{row.value}</span>
+                          {row.sub && <span className="font-sans text-[0.58rem] text-[#888] font-light">{row.sub}</span>}
                         </div>
                       </div>
                     ))}
@@ -347,10 +347,10 @@ export default function SeriesDetailsPage() {
               
               {/* Catalogue Section Header */}
               <div className="text-center mb-12">
-                <h3 className="text-[0.75rem] font-bold tracking-[0.25em] text-[#B8902A] uppercase mb-3">
+                <h3 className="font-sans text-[0.75rem] font-black tracking-[0.25em] text-[#B8902A] uppercase mb-3">
                   Sash Options & Designs
                 </h3>
-                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#222] uppercase">
+                <h2 className="font-serif text-[clamp(1.6rem,3vw,3.2rem)] font-semibold tracking-tight text-[#222] uppercase">
                   Product Configurations Catalogue
                 </h2>
               </div>
@@ -362,7 +362,7 @@ export default function SeriesDetailsPage() {
                     <button
                       key={tab}
                       onClick={() => setActiveTab(tab)}
-                      className={`px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
+                      className={`font-sans px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
                         activeTab === tab
                           ? "bg-white text-[#B8902A] shadow-[0_4px_12px_rgba(0,0,0,0.05)]"
                           : "text-[#666] hover:text-black"
@@ -382,7 +382,7 @@ export default function SeriesDetailsPage() {
                   <div className="relative w-full h-[320px] sm:h-[420px] lg:h-[560px] overflow-hidden bg-white border border-[#e2e8f0] rounded-[6px] p-0 shadow-[0_6px_20px_rgba(0,0,0,0.02)] flex flex-col justify-center items-center group">
                     
                     {/* Top small label */}
-                    <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-[0.58rem] font-bold uppercase tracking-widest px-3.5 py-2 rounded-[2px] z-10">
+                    <div className="font-sans absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-[0.58rem] font-black uppercase tracking-widest px-3.5 py-2 rounded-[2px] z-10">
                       Unified {activeTab} Design Composition
                     </div>
 
@@ -397,7 +397,7 @@ export default function SeriesDetailsPage() {
                 {/* RIGHT COLUMN: ARCHITECTURAL INDEX LEGEND (List explanation of options) */}
                 <div className="lg:col-span-5 flex flex-col">
                   <div className="bg-white border border-[#e2e8f0] rounded-[6px] p-8 lg:p-10 shadow-[0_6px_20px_rgba(0,0,0,0.02)] h-[400px] lg:h-[560px] flex flex-col">
-                    <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#B8902A] mb-6 block">
+                    <span className="font-sans text-xs font-black tracking-[0.25em] text-[#B8902A] mb-6 block">
                       Legend & Sash Guide
                     </span>
 
@@ -411,12 +411,12 @@ export default function SeriesDetailsPage() {
                             <span className="text-[0.62rem] font-mono text-[#B8902A] bg-[#B8902A]/10 px-2 py-0.5 rounded-[2px]">
                               0{idx + 1}
                             </span>
-                            <span className="text-[0.78rem] font-bold uppercase tracking-wider text-[#111] transition-colors duration-300 group-hover/item:text-[#B8902A]">
+                            <span className="font-sans text-[0.78rem] font-bold uppercase tracking-wider text-[#111] transition-colors duration-300 group-hover/item:text-[#B8902A]">
                               {cfg.name}
                             </span>
                           </div>
                           
-                          <p className="text-[0.68rem] leading-relaxed text-[#666] m-0 pl-7">
+                          <p className="font-sans text-[0.68rem] leading-relaxed text-[#666] m-0 pl-7 font-light">
                             {cfg.desc}
                           </p>
                         </div>
@@ -434,7 +434,7 @@ export default function SeriesDetailsPage() {
           <div className="text-center reveal">
             <Link
               href={`/products/${category.id}`}
-              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#B8902A] hover:underline"
+              className="font-sans inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#B8902A] hover:underline"
             >
               ← Back to {category.title} collection
             </Link>
@@ -448,16 +448,15 @@ export default function SeriesDetailsPage() {
         <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
           style={{ backgroundImage: "radial-gradient(#B8902A 0.5px,transparent 0.5px)", backgroundSize: "24px 24px" }} />
         <div className="relative z-10 max-w-2xl mx-auto">
-          <p className="text-[#B8902A] text-xs font-bold uppercase tracking-[4px] mb-3">Begin Specification</p>
-          <h2 className="text-white text-2xl sm:text-4xl font-bold mb-5 tracking-tight">
+          <p className="font-sans text-[#B8902A] text-xs font-black uppercase tracking-[4px] mb-3">Begin Specification</p>
+          <h2 className="font-serif text-white text-[clamp(1.6rem,3vw,3.2rem)] font-semibold mb-5 tracking-tight">
             Build with the {series.name}
           </h2>
-          <p className="text-white/60 text-xs sm:text-sm leading-relaxed mb-8 max-w-md mx-auto">
+          <p className="font-sans text-white/60 text-xs sm:text-sm leading-relaxed mb-8 max-w-md mx-auto font-light">
             Speak directly with our technical advisers to integrate our precision Japanese architectural systems into your blueprints.
           </p>
           <div className="flex items-center justify-center gap-6">
-            <Link href="/contact"
-              className="text-[0.68rem] font-bold uppercase tracking-widest bg-[#B8902A] text-white px-8 py-3.5 rounded-full hover:bg-white hover:text-black transition-all duration-300">
+            <Link href="/contact" className="btn-prestige-enquire">
               Enquire Now
             </Link>
           </div>

@@ -40,7 +40,7 @@ const TestimonialCard = ({ item }) => {
       </div>
 
       {/* Quote Text */}
-      <p className="text-[0.95rem] sm:text-[1.02rem] leading-relaxed text-[#3a3a3a] mb-6 font-normal relative z-10">
+      <p className="font-sans text-[0.95rem] sm:text-[1.02rem] leading-relaxed text-[#3a3a3a] mb-6 font-light relative z-10">
         "{item.quote}"
       </p>
 
@@ -50,10 +50,10 @@ const TestimonialCard = ({ item }) => {
           {getInitials(item.author)}
         </div>
         <div>
-          <h4 className="text-sm sm:text-base font-bold text-[#111] leading-none mb-1">
+          <h4 className="font-sans text-sm sm:text-base font-bold text-[#111] leading-none mb-1">
             {item.author}
           </h4>
-          <p className="text-[0.65rem] sm:text-[0.7rem] uppercase tracking-widest text-[#888] font-medium m-0">
+          <p className="font-sans text-[0.65rem] sm:text-[0.7rem] uppercase tracking-widest text-[#888] font-bold m-0">
             {item.role}
           </p>
         </div>

@@ -1,36 +1,36 @@
 const EXPERTISE_ITEMS = [
     {
-        title: "Architectural Aluminium",
-        desc: "Thermal & non-thermal systems for high-performance developments.",
+        title: "Aluminium Systems",
+        desc: "We supply thermal and non-thermal aluminium systems for doors, windows, and facades.",
         icon: (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-8 h-8">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-6 h-6">
                 <path d="M3 3h18v18H3zM9 3v18M15 3v18M3 9h18M3 15h18" />
             </svg>
         ),
     },
     {
         title: "Interior Solutions",
-        desc: "Premium hardware & interior glass solutions for modern spaces.",
+        desc: "Hardware and interior glass products for modern residential and commercial spaces.",
         icon: (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-8 h-8">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-6 h-6">
                 <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9zM9 22V12h6v10" />
             </svg>
         ),
     },
     {
         title: "Custom Fabrication",
-        desc: "Bespoke system integration and precision manufacturing.",
+        desc: "Aluminium systems fabricated to match specific project designs and sizes.",
         icon: (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-8 h-8">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-6 h-6">
                 <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.77 3.77z" />
             </svg>
         ),
     },
     {
-        title: "Project Execution",
-        desc: "End-to-end coordination, installation, and handover management.",
+        title: "Project Coordination",
+        desc: "We handle supply, scheduling, and installation support from start to finish.",
         icon: (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-8 h-8">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-6 h-6">
                 <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
             </svg>
         ),
@@ -38,29 +38,41 @@ const EXPERTISE_ITEMS = [
 ];
 
 const ExpertiseGrid = () => (
-    <section className="py-16 lg:py-24">
+    <section className="py-20 lg:py-28 bg-[var(--background)]">
         <div className="main-container px-4 sm:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-20 items-stretch">
 
-                {/* Left: expertise items */}
-                <div className="reveal">
-                    <p className="text-[0.7rem] uppercase tracking-[0.35em] text-[#8A939E] mb-5">
-                        Our Expertise
-                    </p>
-                    <h2 className="text-[clamp(1.6rem,3vw,3.2rem)] text-[#111] mb-10 leading-tight">
-                        Specialized <br />
-                        <em className="text-[#999]">Capability</em>
-                    </h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
+                {/* Left Column: Capabilities Grid */}
+                <div className="reveal flex flex-col justify-between">
+                    <div className="mb-12">
+                        <p className="font-sans text-[0.72rem] uppercase tracking-[0.4em] text-light-gold font-black mb-4">
+                            Our Expertise
+                        </p>
+                        <h2 className="font-serif font-semibold text-[clamp(1.6rem,3vw,3.2rem)] text-[#111] leading-[1.2]">
+                            What We Do
+                        </h2>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-auto">
                         {EXPERTISE_ITEMS.map((item, i) => (
-                            <div key={i} className="group reveal" style={{ transitionDelay: `${i * 0.1}s` }}>
-                                <div className="text-[#8A939E] mb-4 group-hover:scale-110 transition-transform origin-left duration-500">
+                            <div 
+                                key={i} 
+                                className="group relative p-6 sm:p-8 rounded-2xl border border-light-gold/10 bg-white hover:border-light-gold/30 transition-all duration-500 shadow-[0_10px_35px_rgba(0,0,0,0.01)] hover:shadow-[0_20px_45px_rgba(197,160,40,0.06)] reveal" 
+                                style={{ transitionDelay: `${i * 0.1}s` }}
+                            >
+                                {/* Bottom hover accent bar */}
+                                <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-light-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-b-2xl origin-left" />
+
+                                {/* Icon frame */}
+                                <div className="w-12 h-12 rounded-xl bg-light-gold/10 text-light-gold flex items-center justify-center mb-5 group-hover:bg-light-gold group-hover:text-white transition-all duration-500 shadow-sm">
                                     {item.icon}
                                 </div>
-                                <h4 className="text-sm sm:text-base uppercase tracking-[0.1em] text-[#111] mb-2">
+                                
+                                <h4 className="font-serif text-base text-[#111] mb-2 font-bold group-hover:text-light-gold transition-colors duration-300">
                                     {item.title}
                                 </h4>
-                                <p className="text-sm text-[#666] leading-relaxed">
+                                
+                                <p className="font-sans text-xs sm:text-sm text-[#555] leading-[1.8] font-light">
                                     {item.desc}
                                 </p>
                             </div>
@@ -68,22 +80,43 @@ const ExpertiseGrid = () => (
                     </div>
                 </div>
 
-                {/* Right: approach box */}
-                <div className="reveal reveal-d1 lg:pt-20">
-                    <div className="p-7 sm:p-10 border border-[#8A939E]/10 relative shadow-xl">
-                        <div className="absolute top-0 right-0 w-20 h-20 bg-[#8A939E]/5 rounded-bl-full" />
-                        <h3 className="text-xl sm:text-2xl text-[#111] mb-6">
-                            Approach & Commitment
-                        </h3>
-                        <p className="text-[1.05rem] text-[#555] leading-relaxed mb-5">
-                            We work closely with consultants, contractors, and end clients to align design intent,
-                            technical performance, and execution quality at every stage of the project.
-                        </p>
-                        <p className="text-[1.05rem] text-[#555] leading-relaxed">
-                            Our commitment is to deliver compliant solutions, clear communication, dependable
-                            timelines, and long-term value, ensuring every project reflects professionalism, precision,
-                            and reliability across Saudi Arabia.
-                        </p>
+                {/* Right Column: Dark Executive Panel */}
+                <div className="reveal reveal-d1 lg:pt-14 flex flex-col">
+                    <div className="p-8 sm:p-12 bg-[#111] border border-light-gold/20 rounded-[2rem] text-white relative overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.2)] flex flex-col justify-between h-full">
+                        {/* Blueprint decorative grid backdrop */}
+                        <div className="absolute inset-0 pointer-events-none opacity-[0.04]"
+                             style={{ 
+                                 backgroundImage: `linear-gradient(to right, var(--light-gold) 1px, transparent 1px), 
+                                                   linear-gradient(to bottom, var(--light-gold) 1px, transparent 1px)`,
+                                 backgroundSize: "28px 28px" 
+                             }} />
+                        
+                        {/* Ambient radial gold glow */}
+                        <div className="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-light-gold/10 blur-[80px] pointer-events-none" />
+
+                        {/* Top Accent */}
+                        <div className="relative z-10">
+                            <span className="font-sans text-[0.65rem] uppercase tracking-[0.35em] text-light-gold font-bold block mb-4">
+                                Our Principle
+                             </span>
+                            <h3 className="font-serif text-2xl font-semibold mb-6 text-white tracking-tight">
+                                Our Approach
+                            </h3>
+                            <p className="font-sans text-sm sm:text-base text-white/70 leading-[1.8] mb-6 font-light">
+                                We work closely with consultants, contractors, and clients to understand
+                                the project needs and deliver the right system at every stage.
+                            </p>
+                            <p className="font-sans text-sm sm:text-base text-white/70 leading-[1.8] font-light">
+                                Our goal is simple — supply quality products on time, with clear communication
+                                and reliable support throughout the project.
+                            </p>
+                        </div>
+
+                        {/* Bottom Metadata */}
+                        <div className="relative z-10 pt-8 mt-8 border-t border-white/10 flex items-center justify-between text-[0.65rem] font-sans text-white/40 tracking-wider">
+                            <span>PRESTIGE CREATIONS</span>
+                            <span>SAUDI ARABIA</span>
+                        </div>
                     </div>
                 </div>
 

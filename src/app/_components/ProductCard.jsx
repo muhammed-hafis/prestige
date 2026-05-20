@@ -9,7 +9,7 @@ const ProductCard = ({ product }) => {
     >
       {/* Top Left Tab for Category */}
       <div 
-        className="absolute top-0 left-0 bg-[#8A939E] text-white text-[0.7rem] px-8 py-4 rounded-br-[1rem] z-30 uppercase"
+        className="absolute top-0 left-0 bg-light-gold text-white text-[0.7rem] px-8 py-4 rounded-br-[1rem] z-30 uppercase"
       >
         {product.title.split(' ')[0]}
       </div>
@@ -30,7 +30,7 @@ const ProductCard = ({ product }) => {
         </p>
         <div className="text-[0.8rem] text-white uppercase flex items-center gap-6 group/link">
           Explore Collection
-          <span className="block w-10 h-[1px] bg-[#8A939E] transition-all duration-500 group-hover/link:w-20 group-hover/link:bg-[var(--background)]"></span>
+          <span className="block w-10 h-[1px] bg-light-gold transition-all duration-500 group-hover/link:w-20 group-hover/link:bg-[var(--background)]"></span>
         </div>
         
         <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">

@@ -25,7 +25,7 @@ const BlogCard = ({ post }) => {
         </p>
 
         {/* Title */}
-        <h3 className="font-bold text-xl sm:text-[1.25rem] text-[#111] leading-snug group-hover:text-[#8A939E] transition-colors duration-300 mb-3">
+        <h3 className="font-bold text-xl sm:text-[1.25rem] text-[#111] leading-snug group-hover:text-light-gold transition-colors duration-300 mb-3">
           {post.title}
         </h3>
 
@@ -37,7 +37,7 @@ const BlogCard = ({ post }) => {
         )}
 
         {/* Read More */}
-        <span className="inline-flex items-center gap-2 text-[#8A939E] text-sm font-semibold uppercase tracking-wider mt-auto group-hover:gap-3 transition-all duration-300">
+        <span className="inline-flex items-center gap-2 text-light-gold text-sm font-semibold uppercase tracking-wider mt-auto group-hover:gap-3 transition-all duration-300">
           Read More
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

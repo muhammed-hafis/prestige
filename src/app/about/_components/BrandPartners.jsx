@@ -3,78 +3,72 @@ const BRANDS = [
         name: "TOSTEM",
         label: "Japanese Engineering",
         desc: "Precision pre-fabricated aluminium systems recognized for factory-controlled quality and consistent performance in windows and doors.",
-        icon: (
-            <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7" stroke="#8A939E" strokeWidth="1.5">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <path d="M3 9h18M9 21V9M15 21V9" />
-            </svg>
-        ),
+        logo: "/partners/tostem.avif",
     },
     {
         name: "OZONE",
         label: "International Leader",
         desc: "A pioneer in architectural hardware and interior solutions, offering functional and design-driven products for modern spaces.",
-        icon: (
-            <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7" stroke="#8A939E" strokeWidth="1.5">
-                <circle cx="12" cy="12" r="9" />
-                <path d="M12 8v8M8 12h8" />
-                <path d="M15 15l1.5 1.5M9 9L7.5 7.5" />
-            </svg>
-        ),
+        logo: "/partners/ozone.avif",
     },
     {
         name: "AL AMIN",
         label: "Regional Expert",
         desc: "Trusted thermal aluminium systems engineered to meet the specific climatic and energy-efficiency requirements of Saudi Arabia.",
-        icon: (
-            <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7" stroke="#8A939E" strokeWidth="1.5">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-            </svg>
-        ),
+        logo: "/partners/al-amin.avif",
     },
 ];
 
 const BrandCard = ({ brand, index }) => (
     <div
-        className="group relative p-6 sm:p-8 border border-black/5 hover:border-[#8A939E]/30 transition-all duration-500 reveal"
+        className="group relative p-8 bg-white border border-[#B8902A]/10 hover:border-[#B8902A]/40 transition-all duration-500 rounded-2xl shadow-sm hover:shadow-[0_20px_40px_rgba(184,144,42,0.08)] hover:-translate-y-1.5 reveal flex flex-col items-center text-center overflow-hidden"
         style={{ transitionDelay: `${index * 0.15}s` }}
     >
-        <div className="mb-5 p-3 w-fit bg-white/60 rounded-xl shadow-sm group-hover:shadow-md group-hover:scale-110 transition-all duration-500">
-            {brand.icon}
+        {/* Luxury top accent line on hover */}
+        <div className="absolute top-0 left-0 right-0 h-[4px] bg-[#B8902A] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center" />
+
+        <div className="mb-6 h-20 flex items-center justify-center w-full">
+            <img 
+                src={brand.logo} 
+                alt={brand.name} 
+                className="h-full max-w-full object-contain filter grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-500"
+            />
         </div>
-        <h3 className="text-2xl sm:text-3xl text-[#111] mb-1">{brand.name}</h3>
-        <p className="text-[0.7rem] uppercase tracking-[0.25em] text-[#8A939E] mb-4">
+        <p className="font-sans text-[0.7rem] uppercase tracking-[0.25em] text-[#B8902A] mb-3 font-black">
             {brand.label}
         </p>
-        <p className="text-sm sm:text-base text-[#555] leading-relaxed">{brand.desc}</p>
+        <p className="font-sans text-sm sm:text-base text-[#555] leading-relaxed font-light max-w-xs">{brand.desc}</p>
     </div>
 );
 
 const BrandPartners = () => (
-    <section className="py-16 lg:py-24 relative overflow-hidden">
-        {/* Ambient glow */}
+    <section className="py-20 lg:py-28 relative overflow-hidden bg-[#E6BE5A]">
+        {/* Decorative Grid texture */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.06] [background-image:radial-gradient(#111_0.5px,transparent_0.5px)] [background-size:28px_28px]" />
+        
+        {/* Soft white orb light */}
         <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#8A939E]/5 blur-[100px] rounded-full" />
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-white/20 blur-[120px] rounded-full" />
         </div>
 
         <div className="main-container px-4 sm:px-8 relative z-10">
             {/* Heading */}
-            <div className="text-center max-w-2xl mx-auto mb-12 reveal">
-                <p className="text-[0.7rem] uppercase tracking-[0.35em] text-[#8A939E] mb-4">
+            <div className="text-center max-w-2xl mx-auto mb-16 reveal">
+                <span className="font-sans text-[0.65rem] uppercase tracking-[0.35em] text-white bg-black/20 px-4 py-1.5 rounded-full inline-block mb-4 font-black">
                     Global Alliances
-                </p>
-                <h2 className="text-[clamp(1.8rem,4vw,3rem)] text-[#111] mb-5 leading-tight">
+                </span>
+                <h2 className="font-serif font-semibold text-[clamp(1.6rem,3vw,3.2rem)] text-[#111] mb-5 leading-tight">
                     Certified & Authorized <br />
-                    <em className="text-[#999]">Brand Partnerships</em>
+                    <span className="text-[#111]/70 font-normal">Brand Partnerships</span>
                 </h2>
-                <p className="text-sm sm:text-base text-[#666] leading-relaxed">
+                <p className="font-sans text-sm sm:text-base text-[#111]/85 leading-relaxed font-light">
                     We are authorized dealers of leading global brands, delivering genuine systems backed by
                     manufacturer standards and localized technical support.
                 </p>
             </div>
 
             {/* Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {BRANDS.map((brand, idx) => (
                     <BrandCard key={brand.name} brand={brand} index={idx} />
                 ))}

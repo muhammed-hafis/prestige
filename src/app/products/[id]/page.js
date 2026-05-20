@@ -25,8 +25,8 @@ const Keyframes = () => (
     .nav-top .nav-lnk   { color:rgba(255,255,255,.55); }
     .nav-scrolled .nav-lnk { color:#555; }
     .nav-lnk:hover { color:#B8902A !important; }
-    .nav-cta-lnk { border:1px solid rgba(184,144,42,.5); color:#B8902A; transition:all .25s; }
-    .nav-cta-lnk:hover { background:#B8902A; color:#fff; }
+    .nav-cta-lnk { border:1px solid var(--light-gold); color:var(--light-gold); transition:all .25s; }
+    .nav-cta-lnk:hover { background:var(--light-gold); color:#fff; }
     .vert-text { writing-mode:vertical-rl; }
     .series-card-hover { transition:all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
     .series-card-hover:hover { transform:translateY(-6px); }
@@ -99,16 +99,16 @@ const Hero = ({ category }) => {
 
       {/* Hero Header */}
       <div className="absolute inset-0 flex flex-col items-start justify-end px-8 lg:px-16 pb-16">
-        <p className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.25em] text-[#B8902A] mb-4">
+        <p className="font-sans flex items-center gap-3 text-xs font-black uppercase tracking-[0.25em] text-[#B8902A] mb-4">
           <span className="block w-8 h-px bg-[#B8902A]" />
           Premium Architectural Series
         </p>
-        <h1 className="font-bold text-white mb-6 leading-tight tracking-tight"
+        <h1 className="font-serif font-semibold text-white mb-6 leading-tight tracking-tight"
           style={{ fontSize: "clamp(2.5rem,5vw,4.5rem)" }}>
-          {head} <span className="font-normal" style={{ color: "#B8902A" }}>{tail}</span>
+          {head} <span className="font-serif font-normal" style={{ color: "#B8902A" }}>{tail}</span>
         </h1>
         {category.description && (
-          <p className="text-[1rem] sm:text-[1.1rem] max-w-2xl leading-relaxed text-white/70">
+          <p className="font-sans text-[1rem] sm:text-[1.1rem] max-w-2xl leading-relaxed text-white/70 font-light">
             {category.description}
           </p>
         )}
@@ -117,7 +117,7 @@ const Hero = ({ category }) => {
       {/* Scroll indicator */}
       <div className="absolute bottom-9 right-8 lg:right-16 flex flex-col items-center gap-2">
         <div className="scroll-ln w-px h-14" style={{ background: "linear-gradient(to bottom,rgba(255,255,255,.3),transparent)" }} />
-        <span className="vert-text text-[.62rem] uppercase tracking-widest" style={{ color: "rgba(255,255,255,.4)" }}>Scroll</span>
+        <span className="font-sans vert-text text-[.62rem] uppercase tracking-widest font-black" style={{ color: "rgba(255,255,255,.4)" }}>Scroll</span>
       </div>
     </div>
   );
@@ -129,19 +129,18 @@ const CTASection = ({ label }) => (
     <div className="absolute inset-0 pointer-events-none opacity-5"
       style={{ backgroundImage: "radial-gradient(#B8902A 0.5px,transparent 0.5px)", backgroundSize: "28px 28px" }} />
     <div className="relative z-10 max-w-4xl mx-auto text-center">
-      <p className="text-[#B8902A] text-xs font-bold uppercase tracking-[6px] mb-4">CONSULTATION</p>
-      <h2 className="text-white text-3xl sm:text-5xl font-bold mb-6 tracking-tight leading-tight">
+      <p className="font-sans text-[#B8902A] text-xs font-black uppercase tracking-[0.3em] mb-4">CONSULTATION</p>
+      <h2 className="font-serif text-white text-[clamp(1.6rem,3vw,3.2rem)] font-semibold mb-6 tracking-tight leading-tight">
         Interested in our premium {label}?
       </h2>
-      <p className="text-white/60 text-[1rem] leading-relaxed max-w-xl mx-auto mb-10">
+      <p className="font-sans text-white/60 text-[1rem] leading-relaxed max-w-xl mx-auto mb-10 font-light">
         Speak with our specialists to review technical parameters, configurations, and pricing options tailored precisely to your vision.
       </p>
       <div className="flex items-center justify-center gap-6 flex-wrap">
-        <Link href="/contact"
-          className="text-xs font-bold uppercase tracking-widest bg-[#B8902A] text-white px-10 py-4.5 rounded-full hover:bg-white hover:text-black transition-all duration-300">
+        <Link href="/contact" className="btn-prestige-enquire">
           Enquire Now
         </Link>
-        <Link href="/" className="text-xs font-bold uppercase tracking-widest text-white/50 hover:text-[#B8902A] transition-colors no-underline">
+        <Link href="/" className="font-sans text-xs font-bold uppercase tracking-widest text-white/50 hover:text-light-gold transition-colors no-underline">
           Return Home
         </Link>
       </div>
@@ -174,12 +173,12 @@ export default function ProductCategoriesPage() {
           
           {/* Header */}
           <div className="text-center mb-20 max-w-2xl mx-auto reveal">
-            <span className="inline-flex items-center gap-3 text-[#B8902A] uppercase text-[0.65rem] tracking-[6px] font-bold mb-4">
+            <span className="font-sans inline-flex items-center gap-3 text-[#B8902A] uppercase text-[0.65rem] tracking-[6px] font-black mb-4">
               <span className="w-8 h-px bg-[#B8902A]"></span>
               SYSTEM SERIES
               <span className="w-8 h-px bg-[#B8902A]"></span>
             </span>
-            <h2 className="font-bold text-4xl sm:text-5xl text-[#111] leading-tight tracking-tight mt-2">
+            <h2 className="font-serif font-semibold text-[clamp(1.6rem,3vw,3.2rem)] text-[#111] leading-tight tracking-tight mt-2">
               Select a Collection
             </h2>
             <div className="w-12 h-[2px] bg-[#B8902A] mx-auto mt-6"></div>
@@ -197,7 +196,7 @@ export default function ProductCategoriesPage() {
                   {/* Subtle Category Title and Divider Line */}
                   {pair[0] && (
                     <div className="flex items-center gap-6 pl-1 reveal">
-                      <span className="text-[0.72rem] font-bold uppercase tracking-[0.3em] text-[#B8902A]">
+                      <span className="font-sans text-[0.72rem] font-black uppercase tracking-[0.3em] text-[#B8902A]">
                         {pair[0].name.split(" ")[0]} Collection
                       </span>
                       <div className="flex-1 h-[1px] bg-black/[0.06]" />
@@ -223,30 +222,30 @@ export default function ProductCategoriesPage() {
                               alt={item.name}
                               className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                             />
-                            <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-[0.58rem] font-bold uppercase tracking-widest px-3 py-1.5 rounded-[2px]">
+                            <div className="font-sans absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-[0.58rem] font-black uppercase tracking-widest px-3 py-1.5 rounded-[2px]">
                               Series 0{overallIdx + 1}
                             </div>
                           </div>
 
                           {/* Typographic details sitting naturally in whitespace */}
-                          <h3 className="font-sans font-bold text-2xl text-[#111] mt-6 mb-1 tracking-tight">
-                            {item.name} <span className="font-light text-[#888]">{item.seriesLabel || "Series"}</span>
+                          <h3 className="font-serif font-semibold text-2xl text-[#111] mt-6 mb-1 tracking-tight">
+                            {item.name} <span className="font-serif font-normal text-[#888]">{item.seriesLabel || "Series"}</span>
                           </h3>
                           
                           {item.tagline && (
-                            <p className="text-[0.68rem] uppercase tracking-[0.2em] text-[#B8902A] font-bold mb-4">
+                            <p className="font-sans text-[0.68rem] uppercase tracking-[0.2em] text-[#B8902A] font-black mb-4">
                               {item.tagline}
                             </p>
                           )}
                           
-                          <p className="text-[#555] text-[0.92rem] leading-relaxed mb-6 max-w-lg">
+                          <p className="font-sans text-[#555] text-[0.92rem] leading-relaxed mb-6 max-w-lg font-light">
                             {item.description}
                           </p>
 
                           {/* Underline-only Explore Link */}
                           <Link
                             href={linkUrl}
-                            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#111] hover:text-[#B8902A] pb-1 border-b border-black/15 hover:border-[#B8902A] transition-all duration-300 w-fit"
+                            className="font-sans inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#111] hover:text-[#B8902A] pb-1 border-b border-black/15 hover:border-[#B8902A] transition-all duration-300 w-fit"
                           >
                             Explore Specifications <span className="text-[0.95rem] font-light">→</span>
                           </Link>

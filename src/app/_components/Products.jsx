@@ -9,36 +9,41 @@ const Products = () => {
       id="products"
     >
 
-      <div className="main-container relative z-10 px-8 flex flex-col flex-1 min-h-0">
+      <div className="w-full relative z-10 flex flex-col flex-1 min-h-0">
         {/* Header */}
-        <div className="flex flex-col lg:flex-row justify-between items-end mb-8 gap-6 shrink-0">
+        <div className="main-container px-8">
+          <div className="flex flex-col lg:flex-row justify-between items-end mb-8 gap-6 shrink-0" data-aos="fade-up">
           <div className="max-w-2xl">
-            <p className="text-[0.7rem] uppercase text-[#8A939E] mb-4 flex items-center gap-4">
-              <span className="w-8 h-px bg-[#8A939E]"></span>
+            <p className="text-[0.7rem] uppercase text-light-gold mb-4 flex items-center gap-4 font-sans font-bold tracking-widest">
+              <span className="w-8 h-px bg-light-gold"></span>
               Selection
             </p>
-            <h2 className="font-semibold text-[clamp(1.6rem,3vw,3.2rem)] text-[#111] ">
-              Explore our <em className="" style={{ color: "#8A939E" }}>Pillars</em>
+            <h2 className="font-serif font-semibold text-[clamp(1.6rem,3vw,3.2rem)] text-[#111] ">
+              Explore our <span className="font-serif text-light-gold">Pillars</span>
             </h2>
           </div>
           <div className="hidden lg:block text-right pb-2">
-            <p className="text-[1.05rem] text-[#666] max-w-xs">
+            <p className="font-sans text-[1.05rem] text-[#666] max-w-xs font-light leading-relaxed">
               Meticulously engineered systems designed to harmonize with contemporary architectural visions.
             </p>
           </div>
 
+          </div>
         </div>
 
         {/* Perspective Panels — fills remaining viewport height */}
         <div
-          className="flex flex-col lg:flex-row gap-4 lg:gap-2"
+          className="flex flex-col lg:flex-row w-full group/board"
           style={{ height: "clamp(320px, calc(100dvh - 280px), 680px)" }}
         >
           {productCategories.map((product, idx) => (
             <Link
               key={product.id}
               href={`/products/${product.id}`}
-              className="relative flex-1 overflow-hidden rounded-2xl lg:rounded-none lg:first:rounded-l-2xl lg:last:rounded-r-2xl transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group hover:flex-[2.5]"
+              className="relative flex-1 overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group group-hover/board:grayscale-[50%] hover:!grayscale-0 group-hover/board:brightness-50 hover:!brightness-110"
+              data-aos="zoom-in"
+              data-aos-delay={idx * 120}
+              data-aos-duration="700"
             >
               {/* Background Image with Zoom */}
               <img
@@ -53,31 +58,38 @@ const Products = () => {
 
               {/* Vertical Index Marker */}
               <div className="absolute top-8 left-8 overflow-hidden">
-                <span className="text-[1rem] text-[#8A939E] block translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                <span className="font-sans font-bold tracking-widest text-[1rem] text-light-gold block translate-y-full group-hover:translate-y-0 transition-transform duration-500">
                   COLLECTION 0{idx + 1}
                 </span>
               </div>
 
               {/* Content */}
               <div className="absolute bottom-8 left-8 right-8">
-                <h3 className="font-semibold text-[clamp(1.8rem,3.5vw,3.2rem)] text-white mb-4">
+                <h3 className="font-serif font-semibold text-[clamp(1.8rem,3.5vw,3.2rem)] text-white mb-4">
                   {product.title}
                 </h3>
 
                 {/* Hidden description revealed on hover */}
                 <div className="max-h-0 overflow-hidden group-hover:max-h-40 transition-all duration-700 delay-100">
-                  <p className="text-[1.15rem] text-white/70 mb-6 max-w-sm">
+                  <p className="font-sans text-[1.15rem] text-white/70 mb-6 max-w-sm font-light leading-relaxed">
                     {product.description}
                   </p>
-                  <div className="flex items-center gap-6 group/btn">
-                    <span className="text-[1.15rem] uppercase text-white ">View Collection</span>
-                    <div className="w-10 h-px bg-[var(--background)]/40 group-hover/btn:w-16 group-hover/btn:bg-[#8A939E] transition-all"></div>
+                  <div className="flex items-center gap-4 group/btn">
+                    <span className="font-sans text-[0.8rem] tracking-widest font-bold uppercase text-white transition-colors duration-500 group-hover:text-light-gold">View Collection</span>
+                    <svg 
+                      className="w-6 h-6 text-white/40 transform transition-all duration-500 group-hover:translate-x-3 group-hover:text-light-gold" 
+                      fill="none" 
+                      viewBox="0 0 24 24" 
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={1.5} d="M4 12h16m0 0l-6-6m6 6l-6 6" />
+                    </svg>
                   </div>
                 </div>
 
                 {/* Mobile/Default hint */}
                 <div className="lg:hidden group-hover:hidden flex items-center gap-4 mt-3">
-                  <span className="text-[.85rem] text-white/50 uppercase">Tap to explore</span>
+                  <span className="font-sans font-bold tracking-widest text-[.75rem] text-white/50 uppercase">Tap to explore</span>
                   <div className="w-4 h-px bg-[var(--background)]/20"></div>
                 </div>
               </div>

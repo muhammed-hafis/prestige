@@ -15,13 +15,13 @@ export default function NewsBlogsPage() {
       {/* Hero Section - Solid white, left aligned */}
       <section className="pt-40 pb-16 px-4 sm:px-8 border-b border-black/5">
         <div className="main-container max-w-6xl mx-auto">
-          <p className="text-[#999] text-sm uppercase tracking-widest font-light mb-4">
+          <p className="font-sans text-[#999] text-sm uppercase tracking-widest font-black mb-4">
             PRESTIGE
           </p>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl text-[#111] font-bold mb-4">
+          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#111] font-semibold mb-4">
             News & Blogs
           </h1>
-          <p className="text-lg text-[#666] max-w-2xl font-normal">
+          <p className="font-sans text-lg text-[#666] max-w-2xl font-light">
             Stay informed and inspired with Prestige's latest insights.
           </p>
         </div>
@@ -40,7 +40,7 @@ export default function NewsBlogsPage() {
           {/* Pagination */}
           <div className="mt-24 flex justify-center items-center gap-2">
             <button className="w-10 h-10 flex items-center justify-center text-sm text-[#666] hover:text-[#111] transition-colors">&lt;</button>
-            <button className="w-10 h-10 flex items-center justify-center text-sm font-semibold text-white bg-[#8A939E] rounded-sm shadow-md">1</button>
+            <button className="w-10 h-10 flex items-center justify-center text-sm font-semibold text-white bg-light-gold rounded-sm shadow-md">1</button>
             <button className="w-10 h-10 flex items-center justify-center text-sm text-[#666] hover:text-[#111] transition-colors rounded-sm shadow-sm border border-transparent hover:border-black/10">2</button>
             <button className="w-10 h-10 flex items-center justify-center text-sm text-[#666] hover:text-[#111] transition-colors">&gt;</button>
           </div>

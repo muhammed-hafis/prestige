@@ -13,13 +13,13 @@ const Hero = () => {
       </div>
       
       <div className="main-container relative z-10 text-center px-4 sm:px-8 reveal">
-        <span className="text-[#8A939E] uppercase text-[0.7rem] mb-4 flex items-center justify-center gap-3 tracking-[0.4em]">
-          <span className="block w-[30px] h-[0.5px] bg-[#8A939E]"></span>
+        <span className="text-light-gold uppercase text-[0.7rem] mb-4 flex items-center justify-center gap-3 tracking-[0.4em]">
+          <span className="block w-[30px] h-[0.5px] bg-light-gold"></span>
           Get In Touch
-          <span className="block w-[30px] h-[0.5px] bg-[#8A939E]"></span>
+          <span className="block w-[30px] h-[0.5px] bg-light-gold"></span>
         </span>
         <h1 className="text-[clamp(2.5rem,6vw,4.5rem)] font-semibold text-white tracking-tight uppercase">
-          Contact <span className="text-[#8A939E]">Us</span>
+          Contact <span className="text-light-gold">Us</span>
         </h1>
       </div>
     </section>

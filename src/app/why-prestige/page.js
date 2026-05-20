@@ -24,10 +24,12 @@ const Keyframes = () => (
 
 import Hero from "./_components/Hero";
 import Introduction from "./_components/Introduction";
+import Pillars from "./_components/Pillars";
 import Partnerships from "./_components/Partnerships";
 import Gallery from "./_components/Gallery";
 import ExpertiseGrid from "./_components/ExpertiseGrid";
 import CorporateProfile from "./_components/CorporateProfile";
+import AluminiumFeatures from "./_components/AluminiumFeatures";
 
 const WhyPrestigePage = () => {
   useEffect(() => {
@@ -40,11 +42,13 @@ const WhyPrestigePage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen selection:bg-[#8A939E] selection:text-white">
+    <div className="min-h-screen selection:bg-light-gold selection:text-white">
       <Keyframes />
 
       <Hero />
       <Introduction />
+      <AluminiumFeatures />
+      <Pillars />
       <Partnerships />
       <Gallery />
       <ExpertiseGrid />

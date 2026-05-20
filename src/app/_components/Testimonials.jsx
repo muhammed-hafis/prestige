@@ -54,18 +54,18 @@ const Testimonials = () => {
     >
       <div className="max-w-7xl mx-auto relative z-10 w-full">
         {/* Modern Premium Header */}
-        <div className="text-center mb-20 max-w-2xl mx-auto">
-          <span className="inline-flex items-center gap-3 text-[#8A939E] uppercase text-[0.65rem] tracking-[6px] font-bold mb-4">
-            <span className="w-8 h-px bg-[#8A939E]"></span>
+        <div className="text-center mb-20 max-w-2xl mx-auto" data-aos="fade-up">
+          <span className="inline-flex items-center gap-3 text-light-gold uppercase text-[0.65rem] tracking-[6px] font-sans font-bold mb-4">
+            <span className="w-8 h-px bg-light-gold"></span>
             CLIENT STORIES
-            <span className="w-8 h-px bg-[#8A939E]"></span>
+            <span className="w-8 h-px bg-light-gold"></span>
           </span>
 
-          <h2 className="font-bold text-4xl sm:text-5xl text-[#111] leading-tight tracking-tight mt-2">
+          <h2 className="font-serif font-semibold text-[clamp(1.6rem,3vw,3.2rem)] text-[#111] leading-tight tracking-tight mt-2">
             Hear from our clients
           </h2>
           
-          <div className="w-12 h-[2px] bg-[#8A939E] mx-auto mt-6"></div>
+          <div className="w-12 h-[2px] bg-light-gold mx-auto mt-6"></div>
         </div>
 
         {/* Dynamic Cards Horizontal Scrollable Carousel (for both Mobile & Desktop) */}
@@ -75,12 +75,14 @@ const Testimonials = () => {
             style={{ WebkitOverflowScrolling: "touch" }}
           >
             {testimonials.map((item, idx) => (
-              <TestimonialCard key={idx} item={item} />
+              <div key={idx} data-aos="fade-left" data-aos-delay={idx * 80} data-aos-duration="700">
+                <TestimonialCard item={item} />
+              </div>
             ))}
           </div>
           
           {/* Subtle scroll indicator tip */}
-          <div className="flex justify-center items-center gap-2 mt-4 text-[0.7rem] sm:text-[0.75rem] text-[#999] uppercase tracking-widest pointer-events-none select-none font-medium">
+          <div className="flex justify-center items-center gap-2 mt-4 text-[0.7rem] sm:text-[0.75rem] text-[#999] uppercase tracking-widest pointer-events-none select-none font-sans font-medium">
             <span>Scroll Horizontally</span>
             <span className="animate-pulse">→</span>
           </div>

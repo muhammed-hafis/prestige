@@ -3,63 +3,60 @@ import Link from 'next/link';
 
 const About = () => {
   return (
-    <section className="relative min-h-screen w-full flex justify-center items-center overflow-hidden py-12 lg:py-16" id="about">
-      <div className="main-container flex flex-col justify-between relative z-10 py-4">
+    <section className="relative min-h-screen w-full overflow-hidden bg-[#FAF6EC]" id="about">
+      {/* Grid: 2 columns on desktop, 1 on mobile */}
+      <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] items-stretch min-h-screen">
         
-        {/* Top Part: Image and Heading/Description */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1.2fr] gap-12 lg:gap-20 items-center flex-1 min-h-0">
-          
-          <div className="relative w-full max-w-[420px] aspect-square mx-auto group">
-            <div className="relative w-full h-full overflow-hidden shadow-2xl z-10">
-              <img 
-                src="/images/about-wide.png" 
-                alt="Modern Interior" 
-                className="w-full h-full object-cover transition-transform duration-[3s] group-hover:scale-105"
-              />
+        {/* Left Column: Image with vertical padding */}
+        <div className="w-full h-[60vh] lg:h-screen py-6 lg:py-12" data-aos="fade-right" data-aos-duration="900">
+          <div className="relative reveal group w-full h-full overflow-hidden transition-all duration-700 ease-out">
+            <img 
+              src="/images/about-wide.png" 
+              alt="Modern Interior" 
+              className="w-full h-full object-cover transition-transform duration-[3s] ease-out group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
+            
+            {/* Technical Watermark */}
+            <div className="absolute top-8 right-8 text-[0.5rem] uppercase tracking-[0.3em] text-white/40 vertical-text" style={{ writingMode: 'vertical-rl' }}>
+              Prestige Creations — 2026
             </div>
             
-            {/* Offset gold border */}
-            <div className="absolute -top-4 -right-4 -bottom-4 -left-4 border border-[#8A939E]/20 pointer-events-none transition-transform duration-500 group-hover:scale-[1.02]"></div>
+            {/* Offset gold border (Inset for screen-bleed design) */}
+            <div className="absolute top-4 left-4 right-4 bottom-4 border border-light-gold/20 pointer-events-none z-20 transition-all duration-700 ease-out group-hover:border-light-gold/50 group-hover:scale-[0.97]"></div>
             
-            {/* Decorative L-shaped corners */}
-            <div className="absolute -top-6 -left-6 w-12 h-12 border-t border-l border-[#8A939E]/40"></div>
-
-            <div className="absolute -bottom-8 -right-8 w-[55%] aspect-square z-20 group/sub">
-              <div className="relative w-full h-full overflow-hidden shadow-xl border-[6px] border-white">
-                <img 
-                  src="/images/about-detail.png" 
-                  alt="Aluminium Detail" 
-                  className="w-full h-full object-cover transition-transform duration-[3s] group-hover/sub:scale-110"
-                />
-              </div>
-              {/* L-shaped corner for sub image */}
-              <div className="absolute -bottom-4 -right-4 w-10 h-10 border-b border-r border-[#8A939E]/40"></div>
+            {/* Decorative L-shaped corners (Inset for screen-bleed design) */}
+            <div className="absolute top-6 left-6 w-12 h-12 border-t border-l border-light-gold/40 z-20 transition-all duration-700 ease-out group-hover:border-light-gold group-hover:-translate-x-1 group-hover:-translate-y-1"></div>
+            <div className="absolute bottom-6 right-6 w-12 h-12 border-b border-r border-light-gold/40 z-20 transition-all duration-700 ease-out group-hover:border-light-gold group-hover:translate-x-1 group-hover:translate-y-1"></div>
+            
+            {/* Minimal Badge */}
+            <div className="absolute bottom-8 left-8 bg-light-gold text-white py-3 px-6 shadow-xl z-20 transition-all duration-700 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_10px_20px_rgba(197,160,40,0.3)]">
+               <p className="font-sans text-[0.6rem] uppercase tracking-[0.2em] font-bold">System Excellence</p>
             </div>
-          </div>
-
-
-          <div className="flex flex-col justify-center">
-            <span className="text-[#8A939E] uppercase text-[0.7rem] mb-2 flex items-center gap-3">
-              PRESTIGE
-              <span className="block w-[30px] h-[0.5px] bg-[#8A939E]"></span>
-            </span>
-            
-            <h2 className="font-semibold text-[clamp(1.6rem,3vw,3.2rem)] text-[#111] mb-6">
-              Enhance your living with <br />
-              <span className="text-[#8A939E] ">Aluminium Doors & Windows</span>
-            </h2>
-            
-            <p className="text-[1.05rem] text-[#555] mb-8 max-w-[600px] ">
-              <strong className="text-[#8A939E]">Prestige Creations</strong> is a specialized solutions provider delivering premium architectural aluminium systems and interior solutions across Saudi Arabia. 
-              We focus on system-based excellence, combining international quality standards with deep local market understanding. 
-              By partnering with global leaders like <strong className="text-[#111]">TOSTEM</strong>, <strong className="text-[#111]">OZONE</strong>, and <strong className="text-[#111]">Al Amin</strong>, we provide certified, high-performance systems that ensure long-term value and precision in every development.
-            </p>
-            
-            <Link href="/about" className="px-10 py-4 bg-[#111] text-white uppercase transition-all duration-400 hover:bg-[#8A939E] w-fit text-[0.7rem] no-underline">
-              Discover More
-            </Link>
           </div>
         </div>
+
+        {/* Right Column: Text Content */}
+        <div className="flex flex-col justify-center px-8 sm:px-12 md:px-16 lg:pl-20 lg:pr-24 py-12 lg:py-0 reveal">
+          <span className="font-sans text-light-gold uppercase text-[0.7rem] mb-3 flex items-center gap-3 tracking-[0.4em] font-black" data-aos="fade-left" data-aos-delay="100">
+            PRESTIGE
+            <span className="block w-[30px] h-[0.5px] bg-light-gold"></span>
+          </span>
+          
+          <h2 className="font-serif font-semibold text-[clamp(1.6rem,3vw,3.2rem)] text-[#111] leading-[1.1] mb-6" data-aos="fade-left" data-aos-delay="200">
+            Enhance your living with <br />
+            <span className="text-light-gold font-bold">Aluminium Doors & Windows</span>
+          </h2>
+          
+          <p className="font-sans text-base md:text-[1.12rem] lg:text-[1.2rem] text-[#333] leading-[1.8] font-light mb-8 max-w-lg" data-aos="fade-left" data-aos-delay="300">
+            <strong className="font-black text-light-gold tracking-wide">Prestige Creations</strong> delivers premium architectural aluminium systems across Saudi Arabia. By combining global standards with local mastery, we engineer high-performance solutions designed for luxurious contemporary living.
+          </p>
+          
+          <Link href="/about" className="px-10 py-4 bg-[#111] text-white uppercase transition-all duration-400 hover:bg-light-gold w-fit text-[0.7rem] tracking-[0.25em] font-bold no-underline shadow-lg hover:shadow-xl hover:translate-y-[-2px] active:translate-y-0" data-aos="fade-up" data-aos-delay="400">
+            Discover More
+          </Link>
+        </div>
+
       </div>
     </section>
   );

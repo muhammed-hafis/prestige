@@ -5,7 +5,6 @@ import Identity from "./_components/Identity";
 import BrandPartners from "./_components/BrandPartners";
 import Expertise from "./_components/Expertise";
 import Commitment from "./_components/Commitment";
-import VisualBreak from "./_components/VisualBreak";
 import Location from "./_components/Location";
 import CTA from "./_components/CTA";
 
@@ -33,11 +32,10 @@ const AboutPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen selection:bg-[#8A939E] selection:text-white">
+    <div className="min-h-screen selection:bg-light-gold selection:text-white">
       <Keyframes />
 
       <AboutHero />
-      <VisualBreak />
       <Identity />
       <BrandPartners />
       <Expertise />

@@ -38,36 +38,36 @@ const BlogPostPage = async ({ params }) => {
 
       {/* ── Hero Section ── */}
       <section className="pt-40 pb-12 border-b border-black/5">
-        <div className="main-container text-center flex flex-col items-center">
+        <div className="main-container text-left flex flex-col items-start">
 
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-xs text-[#999] uppercase tracking-widest mb-8">
-            <Link href="/" className="hover:text-[#8A939E] transition-colors">Home</Link>
+          <nav className="font-sans flex flex-wrap items-center gap-2 text-xs text-[#999] uppercase tracking-widest mb-8 font-bold">
+            <Link href="/" className="hover:text-light-gold transition-colors">Home</Link>
             <span>/</span>
-            <Link href="/news-blogs" className="hover:text-[#8A939E] transition-colors">News &amp; Blogs</Link>
+            <Link href="/news-blogs" className="hover:text-light-gold transition-colors">News &amp; Blogs</Link>
             <span>/</span>
-            <span className="text-[#111] font-semibold line-clamp-1 max-w-[200px]">{post.title}</span>
+            <span className="text-[#111] font-semibold">{post.title}</span>
           </nav>
 
           {/* Category Badge */}
-          <span className="bg-[#111] text-white text-[0.65rem] uppercase tracking-widest font-bold px-4 py-1.5 rounded-full mb-8">
+          <span className="font-sans bg-[#111] text-white text-[0.65rem] uppercase tracking-widest font-black px-4 py-1.5 rounded-full mb-8">
             {post.category}
           </span>
 
           {/* Title */}
-          <h1 className="text-4xl sm:text-5xl md:text-[3.25rem] text-[#111] font-bold mb-7 leading-tight tracking-tight max-w-[820px]">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-[3.25rem] text-[#111] font-semibold mb-7 leading-tight tracking-tight w-full">
             {post.title}
           </h1>
 
           {/* Excerpt */}
           {post.excerpt && (
-            <p className="text-lg text-[#666] max-w-[680px] leading-relaxed mb-8 font-normal">
+            <p className="font-sans text-lg text-[#666] leading-relaxed mb-8 font-light w-full">
               {post.excerpt}
             </p>
           )}
 
           {/* Meta */}
-          <div className="flex items-center gap-3 text-sm text-[#888] mb-10">
+          <div className="font-sans flex items-center gap-3 text-sm text-[#888] mb-10 font-medium">
             <span className="font-semibold text-[#555]">{post.author}</span>
             <span className="text-gray-300">•</span>
             <span>{post.date}</span>
@@ -88,21 +88,21 @@ const BlogPostPage = async ({ params }) => {
             {post.content.map((block, idx) => {
               if (block.type === 'heading') {
                 return (
-                  <h2 key={idx} className="text-2xl sm:text-3xl mt-14 mb-5 text-[#111] font-bold tracking-tight border-l-4 border-[#8A939E] pl-4">
+                  <h2 key={idx} className="font-serif text-2xl sm:text-3xl mt-14 mb-5 text-[#111] font-semibold tracking-tight border-l-4 border-light-gold pl-4">
                     {block.text}
                   </h2>
                 );
               }
               if (block.type === 'subheading') {
                 return (
-                  <h3 key={idx} className="text-xl sm:text-[1.3rem] mt-8 mb-3 text-[#111] font-semibold">
+                  <h3 key={idx} className="font-serif text-xl sm:text-[1.3rem] mt-8 mb-3 text-[#111] font-semibold">
                     {block.text}
                   </h3>
                 );
               }
               if (block.type === 'paragraph') {
                 return (
-                  <p key={idx} className="mb-7 text-[1.1rem] sm:text-[1.15rem] text-[#3a3a3a] leading-[1.9] font-normal">
+                  <p key={idx} className="font-sans mb-7 text-[1.1rem] sm:text-[1.15rem] text-[#3a3a3a] leading-[1.9] font-light">
                     {block.text}
                   </p>
                 );
@@ -121,8 +121,8 @@ const BlogPostPage = async ({ params }) => {
       {related.length > 0 && (
         <section className="py-20 border-t border-black/5">
           <div className="main-container">
-            <p className="text-[#999] text-xs uppercase tracking-widest font-semibold mb-2">Continue Reading</p>
-            <h2 className="text-3xl font-bold text-[#111] mb-12">Related Articles</h2>
+            <p className="font-sans text-[#999] text-xs uppercase tracking-widest font-black mb-2">Continue Reading</p>
+            <h2 className="font-serif text-[clamp(1.6rem,3vw,3.2rem)] font-semibold text-[#111] mb-12">Related Articles</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12">
               {related.map((rel, idx) => (
                 <Link key={idx} href={`/news-blogs/${rel.slug}`} className="group flex flex-col no-underline cursor-pointer">
@@ -132,18 +132,18 @@ const BlogPostPage = async ({ params }) => {
                       alt={rel.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
-                    <span className="absolute top-4 left-4 bg-[#111] text-white text-[0.6rem] uppercase tracking-widest font-bold px-3 py-1 rounded-full">
+                    <span className="font-sans absolute top-4 left-4 bg-[#111] text-white text-[0.6rem] uppercase tracking-widest font-black px-3 py-1 rounded-full">
                       {rel.category}
                     </span>
                   </div>
-                  <p className="text-[#999] text-xs uppercase tracking-widest mb-2">{rel.date}</p>
-                  <h3 className="font-bold text-lg text-[#111] leading-snug group-hover:text-[#8A939E] transition-colors duration-300 mb-3">
+                  <p className="font-sans text-[#999] text-xs uppercase tracking-widest mb-2 font-medium">{rel.date}</p>
+                  <h3 className="font-serif text-lg text-[#111] leading-snug group-hover:text-light-gold transition-colors duration-300 mb-3 font-semibold">
                     {rel.title}
                   </h3>
                   {rel.excerpt && (
-                    <p className="text-[#666] text-sm leading-relaxed line-clamp-2 mb-4">{rel.excerpt}</p>
+                    <p className="font-sans text-[#666] text-sm leading-relaxed line-clamp-2 mb-4 font-light">{rel.excerpt}</p>
                   )}
-                  <span className="inline-flex items-center gap-2 text-[#8A939E] text-xs font-semibold uppercase tracking-wider mt-auto group-hover:gap-3 transition-all duration-300">
+                  <span className="font-sans inline-flex items-center gap-2 text-light-gold text-xs font-bold uppercase tracking-wider mt-auto group-hover:gap-3 transition-all duration-300">
                     Read More
                     <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -156,7 +156,7 @@ const BlogPostPage = async ({ params }) => {
             <div className="mt-14 text-center">
               <Link
                 href="/news-blogs"
-                className="inline-flex items-center gap-3 bg-[#111] text-white text-sm font-semibold uppercase tracking-wider py-4 px-10 rounded-full hover:bg-[#8A939E] transition-colors duration-300"
+                className="font-sans inline-flex items-center gap-3 bg-[#111] text-white text-sm font-bold uppercase tracking-wider py-4 px-10 rounded-full hover:bg-light-gold transition-colors duration-300"
               >
                 View All Articles
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

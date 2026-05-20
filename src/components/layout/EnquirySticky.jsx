@@ -7,9 +7,9 @@ const EnquirySticky = () => {
   return (
     <button
       onClick={openModal}
-      className="fixed right-0 top-1/2 -translate-y-1/2 z-[200] bg-[#8A939E] text-white py-6 px-3 flex flex-col items-center gap-4 group hover:bg-[#111] transition-all duration-500 rounded-l-md shadow-2xl no-underline"
+      className="fixed right-0 top-1/2 -translate-y-1/2 z-[200] bg-[#0c0d0e]/95 backdrop-blur-md text-white py-6 px-3.5 flex flex-col items-center gap-4 group hover:bg-light-gold border-l-2 border-light-gold transition-all duration-500 rounded-l-xl shadow-[0_10px_35px_rgba(0,0,0,0.3)] hover:shadow-[0_10px_35px_rgba(197,160,40,0.3)] no-underline cursor-pointer"
     >
-      <span className="text-[0.65rem] font-bold uppercase tracking-[0.3em] [writing-mode:vertical-lr] rotate-180">
+      <span className="text-[0.6rem] font-bold uppercase tracking-[0.4em] [writing-mode:vertical-lr] rotate-180">
         Enquire Now
       </span>
       <svg

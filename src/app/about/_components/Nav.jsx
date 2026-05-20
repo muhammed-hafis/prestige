@@ -11,25 +11,25 @@ const AboutNav = () => (
     <div className="flex items-center gap-10">
       <Link
         href="/"
-        className="text-[1rem] uppercase text-[#111] no-underline hover:text-[#8A939E] transition-colors"
+        className="text-[1rem] uppercase text-[#111] no-underline hover:text-light-gold transition-colors"
       >
         Home
       </Link>
       <Link
         href="/why-prestige"
-        className="text-[1rem] uppercase text-[#111] no-underline hover:text-[#8A939E] transition-colors"
+        className="text-[1rem] uppercase text-[#111] no-underline hover:text-light-gold transition-colors"
       >
         Why Prestige
       </Link>
       <Link
         href="/#products"
-        className="text-[1rem] uppercase text-[#111] no-underline hover:text-[#8A939E] transition-colors"
+        className="text-[1rem] uppercase text-[#111] no-underline hover:text-light-gold transition-colors"
       >
         Products
       </Link>
       <Link
         href="/contact"
-        className="text-[1rem] uppercase text-[#111] no-underline px-6 py-3 border border-[#111]/10 hover:bg-[#111] hover:text-white transition-all"
+        className="text-xs font-bold uppercase tracking-widest no-underline px-6 py-3.5 border border-light-gold text-light-gold hover:bg-light-gold hover:text-white transition-all duration-300 rounded-full"
       >
         Enquire Now
       </Link>
