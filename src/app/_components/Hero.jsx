@@ -49,7 +49,8 @@ const Hero = () => {
       oX = (cW - dW) / 2;
     }
 
-    ctx.clearRect(0, 0, cW, cH);
+    // Since the image always covers the entire canvas (object-cover), 
+    // clearRect is omitted to prevent redundant GPU clears and micro-flicker.
     ctx.drawImage(img, oX, oY, dW, dH);
   };
 
@@ -138,7 +139,7 @@ const Hero = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // ─── Butter-Smooth rAF Loop (zero React state inside) ────────────────────────
+  // ─── Butter-Smooth rAF Loop & Scroll Handler ──────────────────────────────────
   useEffect(() => {
     if (!loadedInitial) return;
 
@@ -146,84 +147,77 @@ const Hero = () => {
     const ctx = canvas?.getContext('2d', { alpha: false });
     if (!ctx) return;
 
-    let rafId;
+    let rafId = null;
+    let isTicking = false;
     let lastFrame = -1;
+
+    const updatePosition = (progress) => {
+      // Update scroll indicator opacity directly via DOM — no React involved
+      if (scrollIndicatorRef.current) {
+        const opacity = Math.max(0, 1 - progress * 6);
+        scrollIndicatorRef.current.style.opacity = opacity;
+      }
+
+      // ── Scroll-driven text reveal: starts at 55%, full at 85% ──
+      const TEXT_START = 0.55;
+      const TEXT_END   = 0.85;
+      const rawT = Math.max(0, Math.min(1, (progress - TEXT_START) / (TEXT_END - TEXT_START)));
+      const easedT = 1 - (1 - rawT) * (1 - rawT);
+      if (contentRef.current) {
+        contentRef.current.style.opacity   = easedT;
+        contentRef.current.style.transform = `scale(${easedT})`;
+      }
+
+      // Frame animation: progress 0 → 1 maps to frames 1 → 240
+      const frameProgress = Math.min(1, progress / 0.85);
+      const frameIndex = Math.max(1, Math.min(TOTAL_FRAMES,
+        Math.round(frameProgress * (TOTAL_FRAMES - 1)) + 1
+      ));
+      currentFrameRef.current = frameIndex;
+
+      if (frameIndex !== lastFrame) {
+        const img = getClosestLoadedFrame(frameIndex);
+        if (img) drawFrame(ctx, canvas, img);
+        lastFrame = frameIndex;
+      }
+
+      // Trigger React state only on edge transitions
+      const finished = frameIndex === TOTAL_FRAMES;
+      if (finished !== animationFinishedRef.current) {
+        animationFinishedRef.current = finished;
+        setAnimationFinished(finished);
+
+        // On first completion, lock scroll for 2 seconds
+        if (finished && !scrollLockRef.current) {
+          scrollLockRef.current = true;
+          scrollLockPosRef.current = window.scrollY;
+
+          if (isMobile()) {
+            document.body.style.overflow = 'hidden';
+          }
+          setTimeout(() => {
+            scrollLockRef.current = false;
+            document.body.style.overflow = '';
+          }, 2000);
+        }
+      }
+    };
 
     const tick = () => {
       const diff = targetProgressRef.current - currentProgressRef.current;
 
       if (Math.abs(diff) > 0.00005) {
         currentProgressRef.current += diff * 0.12;
-        const progress = currentProgressRef.current;
-
-        // Update scroll indicator opacity directly via DOM — no React involved
-        if (scrollIndicatorRef.current) {
-          const opacity = Math.max(0, 1 - progress * 6);
-          scrollIndicatorRef.current.style.opacity = opacity;
-        }
-
-        // ── Scroll-driven text reveal: starts at 65%, full at 85% ──
-        // raw [0→1] progress over that 20% window
-        const TEXT_START = 0.55;
-        const TEXT_END   = 0.85;
-        const rawT = Math.max(0, Math.min(1, (progress - TEXT_START) / (TEXT_END - TEXT_START)));
-        // ease-out quad so it decelerates into the final size
-        const easedT = 1 - (1 - rawT) * (1 - rawT);
-        if (contentRef.current) {
-          contentRef.current.style.opacity   = easedT;
-          contentRef.current.style.transform = `scale(${easedT})`;
-        }
-
-        // Frame animation: progress 0 → 1 maps to frames 1 → 240
-        const frameProgress = Math.min(1, progress / 0.85);
-        const frameIndex = Math.max(1, Math.min(TOTAL_FRAMES,
-          Math.round(frameProgress * (TOTAL_FRAMES - 1)) + 1
-        ));
-        currentFrameRef.current = frameIndex;
-
-        if (frameIndex !== lastFrame) {
-          const img = getClosestLoadedFrame(frameIndex);
-          if (img) drawFrame(ctx, canvas, img);
-          lastFrame = frameIndex;
-        }
-
-        // Trigger React state only on edge transitions (not every frame)
-        const finished = frameIndex === TOTAL_FRAMES;
-        if (finished !== animationFinishedRef.current) {
-          animationFinishedRef.current = finished;
-          setAnimationFinished(finished);
-
-          // On first completion, lock scroll for 2 seconds
-          if (finished && !scrollLockRef.current) {
-            scrollLockRef.current = true;
-            scrollLockPosRef.current = window.scrollY;
-
-            // Mobile: use body overflow lock (touch-safe)
-            // Desktop: use scrollTo snap-back (handled in scroll listener)
-            if (isMobile()) {
-              document.body.style.overflow = 'hidden';
-            }
-            setTimeout(() => {
-              scrollLockRef.current = false;
-              document.body.style.overflow = '';
-            }, 2000);
-          }
-        }
+        updatePosition(currentProgressRef.current);
+        rafId = requestAnimationFrame(tick);
       } else {
+        // Snap to target
         currentProgressRef.current = targetProgressRef.current;
+        updatePosition(currentProgressRef.current);
+        isTicking = false;
+        rafId = null;
       }
-
-      rafId = requestAnimationFrame(tick);
     };
-
-    rafId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafId);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loadedInitial]);
-
-  // ─── Scroll Listener ─────────────────────────────────────────────────────────
-  useEffect(() => {
-    if (!loadedInitial) return;
 
     const handleScroll = () => {
       // Desktop scroll lock: snap back to locked position
@@ -237,11 +231,22 @@ const Hero = () => {
       if (totalScrollable <= 0) return;
       const progress = Math.max(0, Math.min(1, -rect.top / totalScrollable));
       targetProgressRef.current = progress;
+
+      // Start tick loop if not running
+      if (!isTicking) {
+        isTicking = true;
+        rafId = requestAnimationFrame(tick);
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadedInitial]);
 
   return (
