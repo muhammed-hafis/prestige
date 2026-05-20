@@ -22,7 +22,7 @@ const ProductCard = ({ product }) => {
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent z-10 opacity-90"></div>
       
       <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12 z-20 translate-y-8 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0">
-        <h3 className="font-semibold" className="font-semibold text-[2.5rem] text-white mb-6">
+        <h3 className="font-semibold text-[2.5rem] text-white mb-6">
           {product.title}
         </h3>
         <p className="text-white/60 text-[0.9rem] mb-8 line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">

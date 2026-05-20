@@ -1,8 +1,10 @@
 import React from "react";
 import TestimonialCard from "./TestimonialCard";
 
+// Testimonials.jsx
 const Testimonials = () => {
   const testimonials = [
+
     {
       quote:
         "The precision of Prestige's aluminium systems is unmatched. As an architect, I value both aesthetics and engineering, and they deliver both perfectly.",
@@ -49,44 +51,78 @@ const Testimonials = () => {
 
   return (
     <section
-      className="relative min-h-screen w-full flex justify-center items-center overflow-hidden py-12 sm:py-16 px-4 sm:px-6 lg:px-10"
+      className="relative w-full flex justify-center items-center
+                 overflow-hidden py-10 sm:py-14 lg:py-12 px-0"
       id="testimonials"
     >
       <div className="max-w-7xl mx-auto relative z-10 w-full">
-        {/* Modern Premium Header */}
-        <div className="text-center mb-20 max-w-2xl mx-auto" data-aos="fade-up">
-          <span className="inline-flex items-center gap-3 text-light-gold uppercase text-[0.65rem] tracking-[6px] font-sans font-bold mb-4">
-            <span className="w-8 h-px bg-light-gold"></span>
-            CLIENT STORIES
-            <span className="w-8 h-px bg-light-gold"></span>
+
+        {/* Header */}
+        <div
+          className="text-center mb-10 sm:mb-16 max-w-2xl mx-auto px-4"
+          data-aos="fade-up"
+        >
+          <span className="inline-flex items-center gap-2 sm:gap-3
+                           text-light-gold uppercase
+                           text-[0.58rem] sm:text-[0.65rem]
+                           tracking-[4px] sm:tracking-[6px]
+                           font-sans font-bold mb-3 sm:mb-4">
+            <span className="w-5 sm:w-8 h-px bg-light-gold" />
+            Client Stories
+            <span className="w-5 sm:w-8 h-px bg-light-gold" />
           </span>
 
-          <h2 className="font-serif font-semibold text-[clamp(1.6rem,3vw,3.2rem)] text-[#111] leading-tight tracking-tight mt-2">
+          <h2 className="font-serif font-semibold
+                         text-[clamp(1.4rem,4vw,3.2rem)]
+                         text-[#111] leading-tight tracking-tight mt-1 sm:mt-2">
             Hear from our clients
           </h2>
-          
-          <div className="w-12 h-[2px] bg-light-gold mx-auto mt-6"></div>
+
+          <div className="w-10 sm:w-12 h-[2px] bg-light-gold mx-auto mt-4 sm:mt-6" />
         </div>
 
-        {/* Dynamic Cards Horizontal Scrollable Carousel (for both Mobile & Desktop) */}
-        <div className="relative w-full">
-          <div
-            className="flex gap-8 overflow-x-auto pb-10 snap-x snap-mandatory scroll-smooth no-scrollbar w-full"
-            style={{ WebkitOverflowScrolling: "touch" }}
-          >
-            {testimonials.map((item, idx) => (
-              <div key={idx} data-aos="fade-left" data-aos-delay={idx * 80} data-aos-duration="700">
-                <TestimonialCard item={item} />
-              </div>
-            ))}
-          </div>
-          
-          {/* Subtle scroll indicator tip */}
-          <div className="flex justify-center items-center gap-2 mt-4 text-[0.7rem] sm:text-[0.75rem] text-[#999] uppercase tracking-widest pointer-events-none select-none font-sans font-medium">
-            <span>Scroll Horizontally</span>
-            <span className="animate-pulse">→</span>
-          </div>
+        {/* Scroll track — edge-to-edge on mobile */}
+        <div
+          className="flex gap-3 sm:gap-6 md:gap-8
+                     overflow-x-auto
+                     pb-6 sm:pb-10
+                     snap-x snap-mandatory scroll-smooth
+                     no-scrollbar
+                     px-4 sm:px-6 lg:px-10"
+          style={{ WebkitOverflowScrolling: 'touch' }}
+        >
+          {testimonials.map((item, idx) => (
+            <div
+              key={idx}
+              data-aos="fade-left"
+              data-aos-delay={idx * 80}
+              data-aos-duration="700"
+              className="snap-center"
+            >
+              <TestimonialCard item={item} />
+            </div>
+          ))}
         </div>
+
+        {/* Progress dots — mobile only */}
+        <div className="flex justify-center gap-1.5 mt-1 sm:hidden">
+          {testimonials.map((_, i) => (
+            <span key={i}
+              className={`w-1.5 h-1.5 rounded-full transition-colors duration-300
+                ${i === 0 ? 'bg-light-gold' : 'bg-light-gold/20'}`}
+            />
+          ))}
+        </div>
+
+        {/* Scroll hint */}
+        <div className="flex justify-center items-center gap-2 mt-4
+                        text-[0.62rem] sm:text-[0.75rem]
+                        text-[#999] uppercase tracking-widest
+                        pointer-events-none select-none font-sans font-medium">
+          <span>Scroll to explore</span>
+          <span className="animate-pulse">→</span>
+        </div>
+
       </div>
     </section>
   );
