@@ -209,7 +209,7 @@ const Hero = () => {
         {/* Canvas */}
         <canvas
           ref={canvasRef}
-          className="absolute inset-0 w-full h-screen md:h-screen z-0 bg-[#09090a]"
+          className="absolute inset-0 w-full h-screen z-0 bg-[#09090a]"
           style={{
             opacity: loadedInitial ? 1 : 0,
             transition: 'opacity 0.7s ease',
@@ -246,9 +246,9 @@ const Hero = () => {
         >
           <h1 className="mb-0 flex flex-col items-center gap-1 sm:gap-2">
             <span
-              className="block font-sans font-light tracking-widest text-white/95 whitespace-nowrap"
+              className="block font-sans font-light tracking-widest text-white/95 whitespace-normal sm:whitespace-nowrap"
               style={{
-                fontSize: 'clamp(1rem, 2.5vw, 1.75rem)',
+                fontSize: 'clamp(0.9rem, 3vw, 1.75rem)',
                 lineHeight: 1.25,
                 letterSpacing: '0.15em',
                 textShadow: '0 2px 8px rgba(0,0,0,0.9), 0 4px 24px rgba(0,0,0,0.7), 0 0 60px rgba(0,0,0,0.5)',
@@ -257,7 +257,7 @@ const Hero = () => {
               Experience our premium system
             </span>
             <span
-              className="block font-serif font-bold uppercase text-light-gold whitespace-nowrap"
+              className="block font-serif font-bold uppercase text-light-gold whitespace-normal sm:whitespace-nowrap"
               style={{
                 fontSize: 'clamp(1.75rem, 6vw, 5rem)',
                 lineHeight: 1.1,
