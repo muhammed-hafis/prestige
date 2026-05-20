@@ -52,8 +52,34 @@ const EnquiryModal = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Here you would normally integrate with an API
         console.log("Enquiry Submitted:", { ...formData, services: selectedServices });
+        
+        // Construct WhatsApp message
+        const servicesList = selectedServices.length > 0 ? selectedServices.join(', ') : 'None';
+        const messageText = `*New Enquiry from Prestige Website (Modal)*
+---------------------------------------
+*Name:* ${formData.name}
+*Country:* ${formData.country || 'N/A'}
+*Phone:* ${formData.phone}
+*Email:* ${formData.email || 'N/A'}
+*Services:* ${servicesList}
+*Project Details:* ${formData.message || 'N/A'}`;
+
+        const encodedText = encodeURIComponent(messageText);
+        const whatsappUrl = `https://wa.me/966573828134?text=${encodedText}`;
+        
+        // Redirect to WhatsApp in a new tab
+        window.open(whatsappUrl, '_blank');
+
+        // Reset Form and close modal
+        setFormData({
+            name: '',
+            country: '',
+            phone: '',
+            email: '',
+            message: ''
+        });
+        setSelectedServices([]);
         closeModal();
     };
 
@@ -81,10 +107,10 @@ const EnquiryModal = () => {
                 <div className="absolute -bottom-6 -right-6 w-16 h-16 border-b border-r border-light-gold/30 rounded-br-3xl pointer-events-none hidden md:block"></div>
 
                 {/* Main Modal Box: Split Layout */}
-                <div className="relative bg-[var(--background)] rounded-2xl md:rounded-3xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] overflow-hidden border border-light-gold/10 grid grid-cols-1 lg:grid-cols-[1fr_1.35fr] w-full">
+                <div className="relative bg-[var(--background)] rounded-2xl md:rounded-3xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] overflow-y-auto max-h-[90vh] md:max-h-[85vh] lg:max-h-none border border-light-gold/10 grid grid-cols-1 lg:grid-cols-[1fr_1.35fr] w-full no-scrollbar">
                     
                     {/* LEFT COLUMN: Luxury Brand Concierge Panel */}
-                    <div className="relative bg-[#0c0d0e] p-8 sm:p-10 flex flex-col justify-between overflow-hidden border-b lg:border-b-0 lg:border-r border-white/5">
+                    <div className="hidden lg:flex relative bg-[#0c0d0e] p-8 sm:p-10 flex-col justify-between overflow-hidden border-b lg:border-b-0 lg:border-r border-white/5">
                         {/* Background subtle design details */}
                         <div className="absolute -top-20 -left-20 w-60 h-60 bg-light-gold/5 rounded-full blur-[80px] pointer-events-none"></div>
                         <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-light-gold/5 rounded-full blur-[80px] pointer-events-none"></div>
@@ -143,7 +169,7 @@ const EnquiryModal = () => {
                     </div>
 
                     {/* RIGHT COLUMN: Elegant Cream-Gold Input Form */}
-                    <div className="p-8 sm:p-10 flex flex-col justify-between relative">
+                    <div className="p-6 sm:p-10 flex flex-col justify-between relative">
                         {/* Close Button */}
                         <button 
                             onClick={closeModal}
@@ -156,9 +182,9 @@ const EnquiryModal = () => {
 
                         <div className="w-full">
                             {/* Header */}
-                            <div className="mb-8">
+                            <div className="mb-6 sm:mb-8 pr-10 sm:pr-0">
                                 <span className="text-light-gold uppercase text-[0.6rem] font-bold tracking-[0.25em] block mb-1">Architectural Consultation</span>
-                                <h2 className="text-2xl font-semibold text-[#111] tracking-tight uppercase leading-none">
+                                <h2 className="text-xl sm:text-2xl font-semibold text-[#111] tracking-tight uppercase leading-none">
                                     Send <span className="text-light-gold">Enquiry</span>
                                 </h2>
                                 <div className="w-10 h-0.5 bg-light-gold mt-3"></div>
@@ -241,7 +267,7 @@ const EnquiryModal = () => {
                                                     key={service}
                                                     type="button"
                                                     onClick={() => toggleService(service)}
-                                                    className={`py-2 px-3.5 rounded-lg text-[0.7rem] uppercase tracking-wider font-bold transition-all duration-300 border ${
+                                                    className={`py-1.5 px-3 sm:py-2 sm:px-3.5 rounded-lg text-[0.62rem] sm:text-[0.7rem] uppercase tracking-wider font-bold transition-all duration-300 border ${
                                                         isSelected 
                                                             ? 'bg-light-gold text-white border-light-gold shadow-md' 
                                                             : 'bg-white text-[#111]/60 border-[#111]/10 hover:border-light-gold/50 hover:text-light-gold'
@@ -255,10 +281,10 @@ const EnquiryModal = () => {
                                 </div>
 
                                 {/* Submit Button */}
-                                <div className="pt-4">
+                                <div className="pt-2 sm:pt-4">
                                     <button 
                                         type="submit"
-                                        className="w-full bg-[#111] text-white py-4 rounded-xl font-bold uppercase tracking-[0.25em] text-[0.7rem] hover:bg-light-gold hover:text-white transition-all duration-500 shadow-xl active:scale-[0.98] relative overflow-hidden group border border-[#111]"
+                                        className="w-full bg-[#111] text-white py-3.5 sm:py-4 rounded-xl font-bold uppercase tracking-[0.25em] text-[0.7rem] hover:bg-light-gold hover:text-white transition-all duration-500 shadow-xl active:scale-[0.98] relative overflow-hidden group border border-[#111]"
                                     >
                                         <span className="relative z-10 flex items-center justify-center gap-2">
                                             Send Enquiry
@@ -268,7 +294,7 @@ const EnquiryModal = () => {
                                         </span>
                                         <div className="absolute inset-0 bg-light-gold -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out"></div>
                                     </button>
-                                    <p className="text-center text-[0.55rem] text-[#111]/40 mt-3.5 uppercase tracking-widest">
+                                    <p className="text-center text-[0.52rem] sm:text-[0.55rem] text-[#111]/40 mt-3.5 uppercase tracking-widest">
                                         Our engineering team will respond within 24 hours
                                     </p>
                                 </div>

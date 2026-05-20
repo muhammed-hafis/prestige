@@ -1,26 +1,33 @@
 const AboutHero = () => (
-    <section
-        className="relative pt-36 pb-20 px-4 sm:px-8 overflow-hidden"
-    >
+    <section className="relative pt-28 sm:pt-36 pb-14 sm:pb-20 px-4 sm:px-8 overflow-hidden">
+
         {/* Dot pattern */}
-        <div className="absolute inset-0 pointer-events-none opacity-[0.03] [background-image:radial-gradient(var(--light-gold)_0.8px,transparent_0.8px)] [background-size:24px_24px]" />
+        <div className="absolute inset-0 pointer-events-none opacity-[0.03]
+                    [background-image:radial-gradient(var(--light-gold)_0.8px,transparent_0.8px)]
+                    [background-size:24px_24px]" />
 
         <div className="main-container text-center relative z-10">
-            <p className="font-sans text-[0.72rem] uppercase tracking-[0.4em] text-light-gold font-black mb-5">
+
+            <p className="mb-4 sm:mb-5 section-label text-light-gold">
                 The Company
             </p>
-            <h1 className="font-serif font-medium text-4xl sm:text-5xl md:text-6.5xl text-[#111] mb-6 tracking-tight">
-                About <span className="text-light-gold font-medium">Prestige</span>
+
+            <h1 className="mb-5 sm:mb-6 section-heading text-[#111]">
+                About{' '}
+                <span className="text-light-gold font-semibold">Prestige</span>
             </h1>
-            <div className="w-10 h-0.5 bg-light-gold mx-auto mb-7" />
-            <p className="font-sans text-base sm:text-lg text-[#555] font-light max-w-2xl mx-auto leading-relaxed">
+
+            <div className="w-8 sm:w-10 h-0.5 bg-light-gold mx-auto mb-5 sm:mb-7" />
+
+            <p className="section-desc text-[#555] mx-auto max-w-xs sm:max-w-xl lg:max-w-2xl">
                 Specialized solutions delivering architectural excellence and
                 compliance-driven delivery across Saudi Arabia.
             </p>
+
         </div>
 
-        {/* Bottom decorative line */}
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-light-gold/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px
+                    bg-gradient-to-r from-transparent via-light-gold/20 to-transparent" />
     </section>
 );
 

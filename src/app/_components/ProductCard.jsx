@@ -39,7 +39,7 @@ const ProductCard = ({ product }) => {
             alt="Tostem" 
             className="h-[14px] brightness-0 invert opacity-60"
           />
-          <span className="text-white/30 text-[0.7rem] ">PREMIUM RANGE</span>
+          <span className="text-white/30 text-[0.7rem]">PREMIUM RANGE</span>
         </div>
       </div>
     </Link>

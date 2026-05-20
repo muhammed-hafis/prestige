@@ -1,27 +1,39 @@
 const Introduction = () => (
-    <section className="py-20 lg:py-28 px-4 sm:px-8 bg-[var(--background)]">
-        {/* Framed container */}
-        <div className="relative max-w-5xl mx-auto py-14 px-8 sm:px-16 rounded-[2rem] bg-white border border-[#B8902A]/10 shadow-[0_20px_50px_rgba(0,0,0,0.02)] overflow-hidden reveal">
-            {/* Elegant corner highlights */}
-            <div className="absolute top-0 left-0 w-8 h-8 border-l border-t border-[#B8902A]/30 rounded-tl-[2rem]" />
-            <div className="absolute bottom-0 right-0 w-8 h-8 border-r border-b border-[#B8902A]/30 rounded-br-[2rem]" />
-            
-            {/* Warm background glow */}
-            <div className="absolute inset-0 bg-[#FAF5E8]/10 pointer-events-none" />
+    <section className="bg-[var(--background)] px-5 sm:px-8 py-16 lg:py-24 overflow-hidden">
 
-            <h2 className="relative z-10 font-serif font-semibold text-[clamp(1.6rem,3vw,3.2rem)] text-[#111] mb-12 leading-[1.2] text-center max-w-4xl mx-auto">
+        {/* Main Card */}
+        <div className="relative mx-auto max-w-5xl overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] border border-[#B8902A]/10 bg-white px-5 sm:px-10 lg:px-16 py-10 sm:py-14 shadow-[0_20px_50px_rgba(0,0,0,0.03)]">
+
+            {/* Corner Accents */}
+            <div className="absolute left-0 top-0 h-6 w-6 sm:h-8 sm:w-8 rounded-tl-[1.5rem] sm:rounded-tl-[2rem] border-l border-t border-[#B8902A]/30" />
+
+            <div className="absolute bottom-0 right-0 h-6 w-6 sm:h-8 sm:w-8 rounded-br-[1.5rem] sm:rounded-br-[2rem] border-b border-r border-[#B8902A]/30" />
+
+            {/* Soft Glow */}
+            <div className="pointer-events-none absolute inset-0 bg-[#FAF5E8]/20" />
+
+            {/* Heading */}
+            <h2 className="section-heading relative z-10 mx-auto mb-8 sm:mb-10 lg:mb-12 max-w-4xl text-center text-[#111]">
                 A trusted supplier of{" "}
-                <span className="text-light-gold font-normal">aluminium doors and windows</span> in Saudi Arabia.
+                <span className="font-normal text-light-gold">
+                    aluminium doors and windows
+                </span>{" "}
+                in Saudi Arabia.
             </h2>
-            
-            <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 text-left">
-                <p className="font-sans text-sm sm:text-base text-[#4a4a4a] leading-[1.8] font-light">
-                    Prestige Creations supplies certified aluminium systems from trusted global brands.
-                    We focus on delivering the right product for each project, with clear advice and dependable service.
+
+            {/* Content */}
+            <div className="relative z-10 flex flex-col md:flex-row gap-6 sm:gap-8 lg:gap-12 text-left">
+
+                <p className="section-desc flex-1 text-[#4a4a4a]">
+                    Prestige Creations supplies certified aluminium systems from trusted
+                    global brands. We focus on delivering the right product for each
+                    project, with clear advice and dependable service.
                 </p>
-                <p className="font-sans text-sm sm:text-base text-[#4a4a4a] leading-[1.8] font-light">
-                    We serve developers, contractors, and consultants across Saudi Arabia, helping them get quality
-                    systems on time and within the requirements of local building standards.
+
+                <p className="section-desc flex-1 text-[#4a4a4a]">
+                    We serve developers, contractors, and consultants across Saudi Arabia,
+                    helping them get quality systems on time and within the requirements
+                    of local building standards.
                 </p>
             </div>
         </div>

@@ -10,13 +10,12 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   const navItems = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/#about" },
-    { name: "Why Prestige", href: "/#why-choose" },
-    { name: "Products", href: "/#products" },
-    { name: "Gallery", href: "/#gallery" },
-    { name: "News & Blogs", href: "/news-blogs" },
-    { name: "Contact", href: "/contact" },
+    { name: "Home",          href: "/" },
+    { name: "About",         href: "/#about" },       // scrolls to #about section on homepage
+    { name: "Why Prestige",  href: "/why-prestige" }, // dedicated page
+    { name: "Products",      href: "/#products" },    // scrolls to products section on homepage
+    { name: "News & Blogs",  href: "/news-blogs" },   // dedicated page
+    { name: "Contact",       href: "/contact" },      // dedicated page
   ];
 
   useEffect(() => {

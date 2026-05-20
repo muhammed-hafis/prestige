@@ -60,14 +60,14 @@ function useReveal() {
 const Nav = () => {
   const scrolled = useScrolled();
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-[100] flex items-center justify-between h-16 px-8 lg:px-16 transition-all duration-300 ${scrolled ? "nav-scrolled" : "nav-top"}`}>
-      <Link href="/" className="logo-lnk text-[1.2rem] font-serif tracking-widest uppercase no-underline transition-colors duration-300">
+    <nav className={`fixed top-0 left-0 right-0 z-[100] flex items-center justify-between h-14 sm:h-16 px-5 sm:px-8 lg:px-16 transition-all duration-300 ${scrolled ? "nav-scrolled" : "nav-top"}`}>
+      <Link href="/" className="logo-lnk text-[1.1rem] sm:text-[1.2rem] font-serif tracking-widest uppercase no-underline transition-colors duration-300">
         Prestige
       </Link>
-      <div className="flex items-center gap-8">
+      <div className="flex items-center gap-4 sm:gap-8">
         <Link href="/#products" className="nav-lnk hidden md:block text-xs font-bold uppercase tracking-widest no-underline">Products</Link>
         <Link href="/#about"    className="nav-lnk hidden md:block text-xs font-bold uppercase tracking-widest no-underline">About</Link>
-        <Link href="/contact"  className="nav-cta-lnk text-xs font-bold uppercase tracking-widest no-underline px-6 py-2.5 rounded-full">Enquire</Link>
+        <Link href="/contact"  className="nav-cta-lnk text-[0.6rem] sm:text-xs font-bold uppercase tracking-widest no-underline px-4 sm:px-6 py-2 sm:py-2.5 rounded-full">Enquire</Link>
       </div>
     </nav>
   );
@@ -80,7 +80,7 @@ const Hero = ({ category }) => {
   const tail  = words.slice(-1)[0];
   
   return (
-    <div className="relative w-full overflow-hidden" style={{ height: "70vh", minHeight: 480 }}>
+    <div className="relative w-full overflow-hidden" style={{ height: "clamp(320px, 60vh, 600px)" }}>
       <img
         src={category.heroImg || category.img}
         alt={category.title}
@@ -89,33 +89,33 @@ const Hero = ({ category }) => {
       <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.75))" }} />
 
       {/* Breadcrumb */}
-      <nav className="absolute top-24 left-8 lg:left-16 flex items-center gap-2">
-        <Link href="/" className="text-[.72rem] uppercase tracking-widest no-underline hover:text-[#B8902A] transition-colors" style={{ color: "rgba(255,255,255,.5)" }}>Home</Link>
-        <span className="text-[.72rem]" style={{ color: "rgba(255,255,255,.2)" }}>/</span>
-        <span className="text-[.72rem] uppercase tracking-widest" style={{ color: "rgba(255,255,255,.5)" }}>Products</span>
-        <span className="text-[.72rem]" style={{ color: "rgba(255,255,255,.2)" }}>/</span>
-        <span className="text-[.72rem] uppercase tracking-widest" style={{ color: "#B8902A" }}>{category.title}</span>
+      <nav className="absolute top-16 sm:top-20 lg:top-24 left-5 sm:left-8 lg:left-16 flex flex-wrap items-center gap-1.5 sm:gap-2">
+        <Link href="/" className="font-sans text-[0.6rem] sm:text-[.72rem] uppercase tracking-widest no-underline hover:text-[#B8902A] transition-colors" style={{ color: "rgba(255,255,255,.5)" }}>Home</Link>
+        <span className="text-[0.6rem] sm:text-[.72rem]" style={{ color: "rgba(255,255,255,.2)" }}>/</span>
+        <span className="font-sans text-[0.6rem] sm:text-[.72rem] uppercase tracking-widest" style={{ color: "rgba(255,255,255,.5)" }}>Products</span>
+        <span className="text-[0.6rem] sm:text-[.72rem]" style={{ color: "rgba(255,255,255,.2)" }}>/</span>
+        <span className="font-sans text-[0.6rem] sm:text-[.72rem] uppercase tracking-widest" style={{ color: "#B8902A" }}>{category.title}</span>
       </nav>
 
       {/* Hero Header */}
-      <div className="absolute inset-0 flex flex-col items-start justify-end px-8 lg:px-16 pb-16">
-        <p className="font-sans flex items-center gap-3 text-xs font-black uppercase tracking-[0.25em] text-[#B8902A] mb-4">
-          <span className="block w-8 h-px bg-[#B8902A]" />
+      <div className="absolute inset-0 flex flex-col items-start justify-end px-5 sm:px-8 lg:px-16 pb-8 sm:pb-12 lg:pb-16">
+        <p className="font-sans flex items-center gap-2 sm:gap-3 text-[0.6rem] sm:text-xs font-black uppercase tracking-[0.25em] text-[#B8902A] mb-2 sm:mb-4">
+          <span className="block w-5 sm:w-8 h-px bg-[#B8902A]" />
           Premium Architectural Series
         </p>
-        <h1 className="font-serif font-semibold text-white mb-6 leading-tight tracking-tight"
-          style={{ fontSize: "clamp(2.5rem,5vw,4.5rem)" }}>
+        <h1 className="font-serif font-semibold text-white mb-3 sm:mb-6 leading-tight tracking-tight"
+          style={{ fontSize: "clamp(1.8rem,5vw,4.5rem)" }}>
           {head} <span className="font-serif font-normal" style={{ color: "#B8902A" }}>{tail}</span>
         </h1>
         {category.description && (
-          <p className="font-sans text-[1rem] sm:text-[1.1rem] max-w-2xl leading-relaxed text-white/70 font-light">
+          <p className="font-sans text-[0.85rem] sm:text-[1rem] max-w-2xl leading-relaxed text-white/70 font-light">
             {category.description}
           </p>
         )}
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-9 right-8 lg:right-16 flex flex-col items-center gap-2">
+      {/* Scroll indicator — desktop only */}
+      <div className="hidden sm:flex absolute bottom-9 right-8 lg:right-16 flex-col items-center gap-2">
         <div className="scroll-ln w-px h-14" style={{ background: "linear-gradient(to bottom,rgba(255,255,255,.3),transparent)" }} />
         <span className="font-sans vert-text text-[.62rem] uppercase tracking-widest font-black" style={{ color: "rgba(255,255,255,.4)" }}>Scroll</span>
       </div>
@@ -125,18 +125,18 @@ const Hero = ({ category }) => {
 
 /* ── CTA ───────────────────────────────────────────────────── */
 const CTASection = ({ label }) => (
-  <section className="relative overflow-hidden py-24 sm:py-32 px-8 lg:px-16 bg-[#111]">
+  <section className="relative overflow-hidden py-12 sm:py-20 lg:py-28 px-5 sm:px-8 lg:px-16 bg-[#111]">
     <div className="absolute inset-0 pointer-events-none opacity-5"
       style={{ backgroundImage: "radial-gradient(#B8902A 0.5px,transparent 0.5px)", backgroundSize: "28px 28px" }} />
     <div className="relative z-10 max-w-4xl mx-auto text-center">
-      <p className="font-sans text-[#B8902A] text-xs font-black uppercase tracking-[0.3em] mb-4">CONSULTATION</p>
-      <h2 className="font-serif text-white text-[clamp(1.6rem,3vw,3.2rem)] font-semibold mb-6 tracking-tight leading-tight">
+      <p className="font-sans text-[#B8902A] text-[0.6rem] sm:text-xs font-black uppercase tracking-[0.3em] mb-3 sm:mb-4">CONSULTATION</p>
+      <h2 className="font-serif text-white text-[clamp(1.4rem,3vw,3.2rem)] font-semibold mb-4 sm:mb-6 tracking-tight leading-tight">
         Interested in our premium {label}?
       </h2>
-      <p className="font-sans text-white/60 text-[1rem] leading-relaxed max-w-xl mx-auto mb-10 font-light">
+      <p className="font-sans text-white/60 text-[0.88rem] sm:text-[1rem] leading-relaxed max-w-xl mx-auto mb-8 sm:mb-10 font-light">
         Speak with our specialists to review technical parameters, configurations, and pricing options tailored precisely to your vision.
       </p>
-      <div className="flex items-center justify-center gap-6 flex-wrap">
+      <div className="flex items-center justify-center gap-4 sm:gap-6 flex-wrap">
         <Link href="/contact" className="btn-prestige-enquire">
           Enquire Now
         </Link>
@@ -168,42 +168,42 @@ export default function ProductCategoriesPage() {
       <Hero category={category} />
 
       {/* Series Grid Section */}
-      <section className="py-24 sm:py-32">
-        <div className="main-container">
+      <section className="py-10 sm:py-16 lg:py-24">
+        <div className="main-container px-4 sm:px-8">
           
           {/* Header */}
-          <div className="text-center mb-20 max-w-2xl mx-auto reveal">
-            <span className="font-sans inline-flex items-center gap-3 text-[#B8902A] uppercase text-[0.65rem] tracking-[6px] font-black mb-4">
-              <span className="w-8 h-px bg-[#B8902A]"></span>
+          <div className="text-center mb-10 sm:mb-16 lg:mb-20 max-w-2xl mx-auto reveal">
+            <span className="font-sans inline-flex items-center gap-2 sm:gap-3 text-[#B8902A] uppercase text-[0.6rem] sm:text-[0.65rem] tracking-[4px] sm:tracking-[6px] font-black mb-3 sm:mb-4">
+              <span className="w-6 sm:w-8 h-px bg-[#B8902A]"></span>
               SYSTEM SERIES
-              <span className="w-8 h-px bg-[#B8902A]"></span>
+              <span className="w-6 sm:w-8 h-px bg-[#B8902A]"></span>
             </span>
-            <h2 className="font-serif font-semibold text-[clamp(1.6rem,3vw,3.2rem)] text-[#111] leading-tight tracking-tight mt-2">
+            <h2 className="font-serif font-semibold text-[clamp(1.4rem,3vw,3.2rem)] text-[#111] leading-tight tracking-tight mt-2">
               Select a Collection
             </h2>
-            <div className="w-12 h-[2px] bg-[#B8902A] mx-auto mt-6"></div>
+            <div className="w-10 sm:w-12 h-[2px] bg-[#B8902A] mx-auto mt-4 sm:mt-6"></div>
           </div>
 
           {/* Series Cards - Beautiful Cardless Editorial Layout (Same category in one row) */}
-          <div className="flex flex-col gap-24">
+          <div className="flex flex-col gap-12 sm:gap-16 lg:gap-24">
             {(() => {
               const chunked = [];
               for (let i = 0; i < category.series.length; i += 2) {
                 chunked.push(category.series.slice(i, i + 2));
               }
               return chunked.map((pair, rowIdx) => (
-                <div key={rowIdx} className="flex flex-col gap-8">
+                <div key={rowIdx} className="flex flex-col gap-6 sm:gap-8">
                   {/* Subtle Category Title and Divider Line */}
                   {pair[0] && (
-                    <div className="flex items-center gap-6 pl-1 reveal">
-                      <span className="font-sans text-[0.72rem] font-black uppercase tracking-[0.3em] text-[#B8902A]">
+                    <div className="flex items-center gap-4 sm:gap-6 pl-1 reveal">
+                      <span className="font-sans text-[0.62rem] sm:text-[0.72rem] font-black uppercase tracking-[0.3em] text-[#B8902A]">
                         {pair[0].name.split(" ")[0]} Collection
                       </span>
                       <div className="flex-1 h-[1px] bg-black/[0.06]" />
                     </div>
                   )}
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-20">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-10 lg:gap-20">
                     {pair.map((item, idx) => {
                       const overallIdx = rowIdx * 2 + idx;
                       const mainImg = item.img || category.img;
@@ -228,26 +228,26 @@ export default function ProductCategoriesPage() {
                           </div>
 
                           {/* Typographic details sitting naturally in whitespace */}
-                          <h3 className="font-serif font-semibold text-2xl text-[#111] mt-6 mb-1 tracking-tight">
+                          <h3 className="font-serif font-semibold text-lg sm:text-2xl text-[#111] mt-4 sm:mt-6 mb-1 tracking-tight">
                             {item.name} <span className="font-serif font-normal text-[#888]">{item.seriesLabel || "Series"}</span>
                           </h3>
                           
                           {item.tagline && (
-                            <p className="font-sans text-[0.68rem] uppercase tracking-[0.2em] text-[#B8902A] font-black mb-4">
+                            <p className="font-sans text-[0.6rem] sm:text-[0.68rem] uppercase tracking-[0.2em] text-[#B8902A] font-black mb-2 sm:mb-4">
                               {item.tagline}
                             </p>
                           )}
                           
-                          <p className="font-sans text-[#555] text-[0.92rem] leading-relaxed mb-6 max-w-lg font-light">
+                          <p className="font-sans text-[#555] text-[0.85rem] sm:text-[0.92rem] leading-relaxed mb-4 sm:mb-6 max-w-lg font-light">
                             {item.description}
                           </p>
 
                           {/* Underline-only Explore Link */}
                           <Link
                             href={linkUrl}
-                            className="font-sans inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#111] hover:text-[#B8902A] pb-1 border-b border-black/15 hover:border-[#B8902A] transition-all duration-300 w-fit"
+                            className="font-sans inline-flex items-center gap-1.5 sm:gap-2 text-[0.65rem] sm:text-xs font-bold uppercase tracking-widest text-[#111] hover:text-[#B8902A] pb-1 border-b border-black/15 hover:border-[#B8902A] transition-all duration-300 w-fit"
                           >
-                            Explore Specifications <span className="text-[0.95rem] font-light">→</span>
+                            Explore Specifications <span className="text-[0.9rem] sm:text-[0.95rem] font-light">→</span>
                           </Link>
                         </div>
                       );

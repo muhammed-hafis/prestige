@@ -55,7 +55,7 @@ const INFO_ITEMS = [
 ];
 
 const CorporateProfile = () => (
-    <section className="py-20 lg:py-28 text-[#111] overflow-hidden relative bg-[var(--background)]">
+    <section className="py-16 lg:py-24 text-[#111] overflow-hidden relative bg-[var(--background)]">
         {/* Subtle grid pattern */}
         <div className="absolute inset-0 opacity-[0.02] [background-image:radial-gradient(var(--light-gold)_0.5px,transparent_0.5px)] [background-size:28px_28px] pointer-events-none" />
 

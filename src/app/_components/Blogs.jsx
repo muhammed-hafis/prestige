@@ -18,8 +18,7 @@ const Blogs = () => {
 
         {/* ── Header ── */}
         <div
-          className="flex flex-col lg:flex-row justify-between items-start lg:items-end
-                     gap-4 lg:gap-10 mb-6 lg:mb-14"
+          className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-4 lg:gap-10 mb-6 lg:mb-14"
           data-aos="fade-up"
         >
           <div className="max-w-2xl">
@@ -30,13 +29,11 @@ const Blogs = () => {
               </span>
             </div>
 
-            <h2 className="font-serif font-semibold text-[#111] leading-tight
-                           text-[clamp(1.4rem,5vw,3.5rem)] mb-2 sm:mb-4">
+            <h2 className="font-serif font-semibold text-[#111] leading-tight text-[clamp(1.4rem,5vw,3.5rem)] mb-2 sm:mb-4">
               News &amp; Blogs
             </h2>
 
-            <p className="text-[0.78rem] sm:text-base lg:text-[1.05rem] text-[#666]
-                          leading-relaxed max-w-xl">
+            <p className="text-[0.78rem] sm:text-base lg:text-[1.05rem] text-[#666] leading-relaxed max-w-xl">
               Stay informed and inspired with Prestige&apos;s latest
               architectural insights and luxury industry trends.
             </p>
@@ -44,19 +41,12 @@ const Blogs = () => {
 
           <Link
             href="/news-blogs"
-            className="group relative overflow-hidden shrink-0
-              px-5 sm:px-8 py-2.5 sm:py-3.5
-              bg-[#111] text-white
-              uppercase tracking-[0.18em]
-              text-[0.58rem] sm:text-[0.75rem]
-              transition-all duration-500
-              hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)]"
+            className="group relative overflow-hidden shrink-0 px-5 sm:px-8 py-2.5 sm:py-3.5 bg-[#111] text-white uppercase tracking-[0.18em] text-[0.58rem] sm:text-[0.75rem] transition-all duration-500 hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)]"
           >
             <span className="relative z-10 transition-colors duration-500 group-hover:text-[#111]">
               View All Posts
             </span>
-            <div className="absolute inset-0 bg-light-gold translate-y-full
-                            transition-transform duration-500 group-hover:translate-y-0" />
+            <div className="absolute inset-0 bg-light-gold translate-y-full transition-transform duration-500 group-hover:translate-y-0" />
           </Link>
         </div>
 
@@ -71,14 +61,7 @@ const Blogs = () => {
 
         {/* ── Scroll track ── */}
         <div
-          className="
-            flex sm:grid sm:grid-cols-2 xl:grid-cols-3
-            gap-3 sm:gap-8 lg:gap-10
-            overflow-x-auto sm:overflow-visible
-            scroll-smooth snap-x snap-mandatory
-            pb-4 sm:pb-0
-            [scrollbar-width:none] [&::-webkit-scrollbar]:hidden
-          "
+          className="flex sm:grid sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-8 lg:gap-10 overflow-x-auto sm:overflow-visible scroll-smooth snap-x snap-mandatory pb-4 sm:pb-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {posts.map((post, idx) => (
             <div
@@ -86,11 +69,7 @@ const Blogs = () => {
               data-aos="fade-up"
               data-aos-delay={idx * 120}
               data-aos-duration="700"
-              className="
-                snap-start flex-none
-                w-[200px] sm:w-auto
-                h-full
-              "
+              className="snap-start flex-none w-[200px] sm:w-auto h-full"
             >
               <BlogCard post={post} />
             </div>

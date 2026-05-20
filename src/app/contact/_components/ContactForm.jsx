@@ -36,8 +36,22 @@ const ContactForm = () => {
     e.preventDefault();
     console.log("Contact Enquiry Submitted:", { ...formData, services: selectedServices });
     
-    // Smooth custom dialog feedback
-    alert("Thank you! Your enquiry has been received successfully. A Prestige consultant will contact you shortly.");
+    // Construct WhatsApp message
+    const servicesList = selectedServices.length > 0 ? selectedServices.join(', ') : 'None';
+    const messageText = `*New Enquiry from Prestige Website*
+---------------------------------------
+*Name:* ${formData.name}
+*Country:* ${formData.country}
+*Phone:* ${formData.phone}
+*Email:* ${formData.email || 'N/A'}
+*Services:* ${servicesList}
+*Project Details:* ${formData.message || 'N/A'}`;
+
+    const encodedText = encodeURIComponent(messageText);
+    const whatsappUrl = `https://wa.me/966573828134?text=${encodedText}`;
+    
+    // Redirect to WhatsApp in a new tab
+    window.open(whatsappUrl, '_blank');
     
     // Reset Form
     setFormData({
@@ -51,16 +65,16 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="bg-white/95 backdrop-blur-md p-8 sm:p-10 relative overflow-hidden h-full flex flex-col justify-center border-t lg:border-t-0 lg:border-l border-light-gold/10">
+    <div className="bg-white/95 backdrop-blur-md p-6 sm:p-10 relative overflow-hidden h-full flex flex-col justify-center">
 
-      <div className="mb-8">
+      <div className="mb-6 sm:mb-8">
         <span className="text-light-gold uppercase text-[0.62rem] tracking-[0.25em] font-bold mb-2 block">
           SECURE CHANNEL
         </span>
-        <h2 className="font-serif text-[clamp(1.6rem,3vw,3.2rem)] text-[#111] tracking-wider uppercase leading-none m-0">
+        <h2 className="font-serif text-2xl sm:text-3xl text-[#111] tracking-wider uppercase leading-none m-0">
           Send a <span className="font-sans font-normal text-light-gold">Message</span>
         </h2>
-        <div className="w-10 h-[1.5px] bg-light-gold/30 mt-4"></div>
+        <div className="w-10 h-[1.5px] bg-light-gold/30 mt-3 sm:mt-4"></div>
       </div>
 
       <form className="space-y-5" onSubmit={handleSubmit}>
@@ -174,7 +188,7 @@ const ContactForm = () => {
         {/* Submit button with sweep animation */}
         <button 
           type="submit"
-          className="w-full bg-[#111] text-white py-4.5 rounded-xl font-bold uppercase tracking-[0.25em] text-[0.68rem] hover:bg-light-gold transition-all duration-500 shadow-xl active:scale-[0.98] group relative overflow-hidden mt-4 cursor-pointer border border-[#111] hover:border-light-gold"
+          className="w-full bg-[#111] text-white py-3.5 sm:py-4.5 rounded-xl font-bold uppercase tracking-[0.25em] text-[0.68rem] hover:bg-light-gold transition-all duration-500 shadow-xl active:scale-[0.98] group relative overflow-hidden mt-4 cursor-pointer border border-[#111] hover:border-light-gold"
         >
           <span className="relative z-10">Submit Inquiry</span>
           <div className="absolute inset-0 bg-light-gold -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>

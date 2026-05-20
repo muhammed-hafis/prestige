@@ -51,8 +51,9 @@ const Hero = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    // Exact viewport size — no scrollbars, no mobile browser chrome
+    canvas.width = document.documentElement.clientWidth;
+    canvas.height = document.documentElement.clientHeight;
     const ctx = canvas.getContext('2d', { alpha: false });
 
     const loadFrame = (index) =>
@@ -97,8 +98,8 @@ const Hero = () => {
     const handleResize = () => {
       clearTimeout(resizeTimerRef.current);
       resizeTimerRef.current = setTimeout(() => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        canvas.width = document.documentElement.clientWidth;
+        canvas.height = document.documentElement.clientHeight;
         const img = getClosestLoadedFrame(currentFrameRef.current);
         const ctx = canvas.getContext('2d', { alpha: false });
         if (img && ctx) drawFrame(ctx, canvas, img);

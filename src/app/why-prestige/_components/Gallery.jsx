@@ -1,5 +1,5 @@
 const Gallery = () => (
-    <section className="py-20 lg:py-28 overflow-hidden bg-[var(--background)]">
+    <section className="py-16 lg:py-24 overflow-hidden bg-[var(--background)]">
         <div className="main-container px-4 sm:px-8 mb-12">
             <p className="font-sans text-[0.72rem] uppercase tracking-[0.4em] text-light-gold font-black mb-3">
                 Our Work

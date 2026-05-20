@@ -15,13 +15,11 @@ const WHY_CHOOSE_ITEMS = [
 const WhyChoose = () => {
   return (
     <section className="relative w-full overflow-hidden bg-[#FAF6EC]" id="why-choose">
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] items-stretch lg:min-h-screen">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] items-stretch lg:min-h-screen flex flex-col lg:flex-none">
 
         {/* ── Left Column: Text — appears below image on mobile, left on desktop ── */}
         <div
-          className="flex flex-col justify-center reveal order-2 lg:order-1
-                     px-6 sm:px-10 md:px-14 lg:pl-24 lg:pr-20
-                     py-10 sm:py-14 lg:py-0"
+          className="flex flex-col justify-center reveal order-1 px-6 sm:px-10 md:px-14 lg:pl-24 lg:pr-20 py-10 sm:py-14 lg:py-0"
         >
           <span
             className="font-sans text-light-gold uppercase text-[0.7rem] mb-3 flex items-center gap-3 tracking-[0.4em] font-black"
@@ -83,8 +81,7 @@ const WhyChoose = () => {
 
         {/* ── Right Column: Image — appears first on mobile, right on desktop ── */}
         <div
-          className="w-full h-[56vw] min-h-[260px] max-h-[480px] lg:h-screen lg:max-h-none lg:min-h-0
-                     py-4 sm:py-5 lg:py-12 order-1 lg:order-2"
+          className="w-full h-[56vw] min-h-[260px] max-h-[480px] lg:h-screen lg:max-h-none lg:min-h-0 py-4 sm:py-5 lg:py-12 order-2 lg:order-2"
           data-aos="fade-left"
           data-aos-duration="900"
         >

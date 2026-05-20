@@ -26,9 +26,7 @@ import Hero from "./_components/Hero";
 import Introduction from "./_components/Introduction";
 import Pillars from "./_components/Pillars";
 import Partnerships from "./_components/Partnerships";
-import Gallery from "./_components/Gallery";
 import ExpertiseGrid from "./_components/ExpertiseGrid";
-import CorporateProfile from "./_components/CorporateProfile";
 import AluminiumFeatures from "./_components/AluminiumFeatures";
 
 const WhyPrestigePage = () => {
@@ -50,9 +48,7 @@ const WhyPrestigePage = () => {
       <AluminiumFeatures />
       <Pillars />
       <Partnerships />
-      <Gallery />
       <ExpertiseGrid />
-      <CorporateProfile />
 
     </div>
   );

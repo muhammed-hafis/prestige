@@ -56,7 +56,7 @@ const TimelineItem = ({ item, index }) => {
             </div>
 
             {/* Content card wrapper */}
-            <div className={`w-[calc(100%-3rem)] md:w-[44%] ml-12 md:ml-0 group relative bg-white border border-[#B8902A]/10 hover:border-[#B8902A]/40 shadow-[0_15px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_25px_50px_rgba(184,144,42,0.14)] p-5 sm:p-6 rounded-2xl transition-all duration-500 hover:-translate-y-1`}>
+            <div className="w-[calc(100%-3rem)] md:w-[44%] ml-12 md:ml-0 group relative bg-white border border-[#B8902A]/10 hover:border-[#B8902A]/40 shadow-[0_15px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_25px_50px_rgba(184,144,42,0.14)] p-5 sm:p-6 rounded-2xl transition-all duration-500 hover:-translate-y-1">
                 
                 {/* Gold top hover highlight */}
                 <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#B8902A] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 rounded-t-2xl origin-left" />
@@ -94,13 +94,13 @@ const Expertise = () => (
         <div className="main-container px-4 sm:px-8 relative z-10">
             {/* Heading */}
             <div className="text-center max-w-2xl mx-auto mb-12 reveal">
-                <p className="font-sans text-[0.7rem] uppercase tracking-[0.35em] text-[#B8902A] mb-4 font-black">
+                <p className="mb-4 sm:mb-5 section-label text-[#B8902A]">
                     Execution Timeline
                 </p>
-                <h2 className="font-serif font-semibold text-[clamp(1.6rem,3vw,3.2rem)] text-[#111] mb-5 leading-tight">
+                <h2 className="mb-5 sm:mb-6 section-heading text-[#111]">
                     Comprehensive Capabilities
                 </h2>
-                <p className="font-sans text-sm sm:text-base text-[#666] leading-relaxed font-light">
+                <p className="section-desc text-[#555]">
                     Our capabilities run as an integrated progressive system chart, delivering unified performance from engineering drafts to final build completion.
                 </p>
             </div>

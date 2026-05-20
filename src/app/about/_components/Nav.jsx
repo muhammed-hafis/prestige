@@ -4,7 +4,7 @@ const AboutNav = () => (
   <nav className="fixed top-0 left-0 right-0 z-[100] h-20 flex items-center justify-between px-8 lg:px-14 bg-transparent">
     <Link
       href="/"
-      className="text-[1.4rem] text-[#111] no-underline "
+      className="text-[1.4rem] text-[#111] no-underline"
     >
       PRESTIGE
     </Link>

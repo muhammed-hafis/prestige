@@ -1,46 +1,67 @@
 const Location = () => (
-    <section className="py-16 lg:py-24">
-        <div className="main-container px-4 sm:px-8">
-            <div className="flex flex-col items-center text-center max-w-3xl mx-auto reveal">
-                <p className="font-sans text-[0.7rem] uppercase tracking-[0.35em] text-light-gold mb-4 font-black">
+    <section className="overflow-hidden bg-[var(--background)] py-14 sm:py-16 lg:py-24">
+
+        <div className="main-container px-5 sm:px-8 lg:px-10">
+
+            <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
+
+                {/* Label */}
+                <p className="mb-4 sm:mb-5 section-label text-light-gold">
                     Where We Are
                 </p>
-                <h2 className="font-serif font-semibold text-[clamp(1.6rem,3vw,3.2rem)] text-[#111] mb-5 leading-tight">
-                    Headquartered in <span className="text-[#999] font-normal">Jeddah</span>, <br />
+
+                {/* Heading */}
+                <h2 className="mb-5 sm:mb-6 section-heading text-[#111]">
+                    Headquartered in{" "}
+                    <span className="font-normal text-[#999]">Jeddah</span>,
+                    <br className="hidden sm:block" />
                     Serving the Kingdom.
                 </h2>
-                <p className="font-sans text-[1.05rem] text-[#666] mb-10 leading-relaxed max-w-xl font-light">
-                    Located in the heart of Jeddah's business district at Emmar Square, we are strategically
-                    positioned to support developers and consultants across Saudi Arabia.
+
+                {/* Description */}
+                <p className="mb-8 sm:mb-10 max-w-2xl px-1 section-desc text-[#555]">
+                    Located in the heart of Jeddah's business district at Emmar Square,
+                    we are strategically positioned to support developers and consultants
+                    across Saudi Arabia.
                 </p>
 
+                {/* Image Card */}
+                <div className="group relative mt-2 sm:mt-4 w-full px-1 sm:px-0">
 
-                <div className="w-full relative group mt-4">
-                    <div className="relative aspect-[21/9] sm:aspect-[21/7] overflow-hidden shadow-2xl z-10">
+                    {/* Main Image */}
+                    <div className="relative z-10 overflow-hidden rounded-[1.2rem] sm:rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.12)] aspect-[16/11] sm:aspect-[21/9] lg:aspect-[21/8]">
+
                         <img
                             src="/images/about-wide.png"
                             alt="Saudi Arabia Reach"
-                            className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 group-hover:scale-105"
+                            className="h-full w-full object-cover sm:grayscale transition-all duration-[1200ms] group-hover:scale-[1.03] sm:group-hover:scale-105 group-hover:grayscale-0"
                         />
-                        <div className="absolute inset-0 bg-black/15" />
-                        <div className="absolute inset-0 flex items-center justify-center p-4">
-                            <div className="py-4 px-6 sm:py-5 sm:px-8 bg-white/70 backdrop-blur-sm border border-light-gold/20 text-center">
-                                <p className="font-sans text-[0.65rem] uppercase tracking-[0.3em] text-light-gold mb-1.5 font-black">
+
+                        {/* Center Content */}
+                        <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-6">
+
+                            <div className="rounded-xl border border-light-gold/20 bg-white/80 px-5 py-4 sm:px-8 sm:py-5 backdrop-blur-md shadow-lg">
+
+                                <p className="mb-1.5 font-sans text-[0.55rem] sm:text-[0.65rem] font-black uppercase tracking-[0.22em] sm:tracking-[0.3em] text-light-gold">
                                     Corporate Office
                                 </p>
-                                <p className="font-serif text-base sm:text-xl text-[#111] font-medium">Emmar Square, Jeddah</p>
+
+                                <p className="font-serif text-sm sm:text-lg lg:text-xl font-medium text-[#111]">
+                                    Emmar Square, Jeddah
+                                </p>
                             </div>
                         </div>
                     </div>
 
-                    {/* Offset gold border */}
-                    <div className="absolute -top-4 -right-4 -bottom-4 -left-4 border border-light-gold/20 pointer-events-none transition-transform duration-500 group-hover:scale-[1.01]"></div>
-                    
-                    {/* Decorative L-shaped corners */}
-                    <div className="absolute -top-6 -left-6 w-12 h-12 border-t border-l border-light-gold/40"></div>
-                    <div className="absolute -bottom-6 -right-6 w-12 h-12 border-b border-r border-light-gold/40"></div>
-                </div>
+                    {/* Outer Border */}
+                    <div className="pointer-events-none absolute -inset-2 sm:-inset-4 rounded-[1.3rem] sm:rounded-2xl border border-light-gold/20 transition-transform duration-500 group-hover:scale-[1.01]" />
 
+                    {/* Decorative Corners */}
+                    <div className="absolute -left-2 -top-2 sm:-left-6 sm:-top-6 h-6 w-6 sm:h-12 sm:w-12 border-l border-t border-light-gold/40" />
+
+                    <div className="absolute -bottom-2 -right-2 sm:-bottom-6 sm:-right-6 h-6 w-6 sm:h-12 sm:w-12 border-b border-r border-light-gold/40" />
+
+                </div>
             </div>
         </div>
     </section>

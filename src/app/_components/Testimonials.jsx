@@ -51,8 +51,7 @@ const Testimonials = () => {
 
   return (
     <section
-      className="relative w-full flex justify-center items-center
-                 overflow-hidden py-10 sm:py-14 lg:py-12 px-0"
+      className="relative w-full flex justify-center items-center overflow-hidden py-10 sm:py-14 lg:py-12 px-0"
       id="testimonials"
     >
       <div className="max-w-7xl mx-auto relative z-10 w-full">
@@ -62,19 +61,13 @@ const Testimonials = () => {
           className="text-center mb-10 sm:mb-16 max-w-2xl mx-auto px-4"
           data-aos="fade-up"
         >
-          <span className="inline-flex items-center gap-2 sm:gap-3
-                           text-light-gold uppercase
-                           text-[0.58rem] sm:text-[0.65rem]
-                           tracking-[4px] sm:tracking-[6px]
-                           font-sans font-bold mb-3 sm:mb-4">
+          <span className="inline-flex items-center gap-2 sm:gap-3 text-light-gold uppercase text-[0.58rem] sm:text-[0.65rem] tracking-[4px] sm:tracking-[6px] font-sans font-bold mb-3 sm:mb-4">
             <span className="w-5 sm:w-8 h-px bg-light-gold" />
             Client Stories
             <span className="w-5 sm:w-8 h-px bg-light-gold" />
           </span>
 
-          <h2 className="font-serif font-semibold
-                         text-[clamp(1.4rem,4vw,3.2rem)]
-                         text-[#111] leading-tight tracking-tight mt-1 sm:mt-2">
+          <h2 className="font-serif font-semibold text-[clamp(1.4rem,4vw,3.2rem)] text-[#111] leading-tight tracking-tight mt-1 sm:mt-2">
             Hear from our clients
           </h2>
 
@@ -83,12 +76,7 @@ const Testimonials = () => {
 
         {/* Scroll track — edge-to-edge on mobile */}
         <div
-          className="flex gap-3 sm:gap-6 md:gap-8
-                     overflow-x-auto
-                     pb-6 sm:pb-10
-                     snap-x snap-mandatory scroll-smooth
-                     no-scrollbar
-                     px-4 sm:px-6 lg:px-10"
+          className="flex gap-3 sm:gap-6 md:gap-8 overflow-x-auto pb-6 sm:pb-10 snap-x snap-mandatory scroll-smooth no-scrollbar px-4 sm:px-6 lg:px-10"
           style={{ WebkitOverflowScrolling: 'touch' }}
         >
           {testimonials.map((item, idx) => (
@@ -115,10 +103,7 @@ const Testimonials = () => {
         </div>
 
         {/* Scroll hint */}
-        <div className="flex justify-center items-center gap-2 mt-4
-                        text-[0.62rem] sm:text-[0.75rem]
-                        text-[#999] uppercase tracking-widest
-                        pointer-events-none select-none font-sans font-medium">
+        <div className="flex justify-center items-center gap-2 mt-4 text-[0.62rem] sm:text-[0.75rem] text-[#999] uppercase tracking-widest pointer-events-none select-none font-sans font-medium">
           <span>Scroll to explore</span>
           <span className="animate-pulse">→</span>
         </div>
