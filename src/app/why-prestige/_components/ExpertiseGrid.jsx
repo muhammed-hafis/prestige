@@ -91,7 +91,7 @@ const ExpertiseGrid = () => (
                 </div>
 
                 {/* Right Panel */}
-                <div className="mt-2 lg:mt-0 lg:pt-[4.5rem] flex flex-col" data-aos="fade-left" data-aos-delay="200">
+                <div className="mt-2 lg:mt-0 lg:pt-[4.5rem] flex flex-col" data-aos="fade-up" data-aos-delay="200">
                     <div
                         className="relative flex flex-col justify-between flex-1 p-7 sm:p-10 lg:p-11 bg-[#111] border border-[var(--light-gold,#C8A94A)]/20 rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.22)] min-h-[320px] sm:min-h-[380px]"
                     >
