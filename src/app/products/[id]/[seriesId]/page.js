@@ -14,10 +14,8 @@ const Keyframes = () => (
       50% {opacity:1;transform:scaleY(1)}
       100%{opacity:0;transform:scaleY(0);transform-origin:bottom}
     }
-    .hero-img  { animation:heroZoom 9s cubic-bezier(.16,1,.3,1) forwards; filter:brightness(.9); }
+    .hero-img  { animation:heroZoom 9s cubic-bezier(.16,1,.3,1) forwards; filter:brightness(.95); }
     .scroll-ln { animation:scrollLine 2.2s ease-in-out infinite; }
-    .reveal { opacity:0; transform:translateY(20px); transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1); }
-    .reveal.in { opacity:1; transform:none; }
     .nav-scrolled { background:rgba(240,244,248,.95); backdrop-filter:blur(16px); border-bottom:1px solid rgba(184,144,42,.15); }
     .nav-top .logo-lnk  { color:#fff; }
     .nav-scrolled .logo-lnk { color:#111; }
@@ -40,17 +38,6 @@ function useScrolled(px = 60) {
   return s;
 }
 
-function useReveal() {
-  useEffect(() => {
-    const els = document.querySelectorAll(".reveal");
-    const obs = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("in"); }),
-      { threshold: 0.1 }
-    );
-    els.forEach((el) => obs.observe(el));
-    return () => obs.disconnect();
-  }, []);
-}
 
 const COLOR_HEX = {
   "NATURAL WHITE": "#FFFFFF",
@@ -63,27 +50,11 @@ const COLOR_HEX = {
   "BLACK": "#000000",
 };
 
-/* ── Nav ───────────────────────────────────────────────────── */
-const Nav = () => {
-  const scrolled = useScrolled();
-  return (
-    <nav className={`fixed top-0 left-0 right-0 z-[100] flex items-center justify-between h-16 px-8 lg:px-16 transition-all duration-300 ${scrolled ? "nav-scrolled" : "nav-top"}`}>
-      <Link href="/" className="logo-lnk text-[1.2rem] font-serif tracking-widest uppercase no-underline transition-colors duration-300">
-        Prestige
-      </Link>
-      <div className="flex items-center gap-8">
-        <Link href="/#products" className="nav-lnk hidden md:block text-xs font-bold uppercase tracking-widest no-underline">Products</Link>
-        <Link href="/#about"    className="nav-lnk hidden md:block text-xs font-bold uppercase tracking-widest no-underline">About</Link>
-        <Link href="/contact"  className="nav-cta-lnk text-xs font-bold uppercase tracking-widest no-underline px-6 py-2.5 rounded-full">Enquire</Link>
-      </div>
-    </nav>
-  );
-};
 
 /* ── Hero ──────────────────────────────────────────────────── */
 const Hero = ({ category, series }) => {
   return (
-    <div className="relative w-full overflow-hidden" style={{ height: "65vh", minHeight: 460 }}>
+    <div className="relative w-full overflow-hidden" style={{ height: "clamp(320px, 60vh, 600px)" }}>
       <img
         src={series.img}
         alt={series.name}
@@ -92,24 +63,23 @@ const Hero = ({ category, series }) => {
       <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.75))" }} />
 
       {/* Breadcrumbs */}
-      <nav className="absolute top-24 left-8 lg:left-16 flex items-center gap-2">
-        <Link href="/" className="text-[.72rem] uppercase tracking-widest no-underline hover:text-[#B8902A] transition-colors" style={{ color: "rgba(255,255,255,.5)" }}>Home</Link>
-        <span className="text-[.72rem]" style={{ color: "rgba(255,255,255,.2)" }}>/</span>
-        <span className="text-[.72rem] uppercase tracking-widest" style={{ color: "rgba(255,255,255,.5)" }}>Products</span>
-        <span className="text-[.72rem]" style={{ color: "rgba(255,255,255,.2)" }}>/</span>
-        <Link href={`/products/${category.id}`} className="text-[.72rem] uppercase tracking-widest no-underline hover:text-[#B8902A] transition-colors" style={{ color: "rgba(255,255,255,.5)" }}>{category.title}</Link>
-        <span className="text-[.72rem]" style={{ color: "rgba(255,255,255,.2)" }}>/</span>
-        <span className="text-[.72rem] uppercase tracking-widest" style={{ color: "#B8902A" }}>{series.name}</span>
+      <nav className="absolute top-28 sm:top-32 lg:top-36 left-5 sm:left-8 lg:left-16 flex flex-wrap items-center gap-1.5 sm:gap-2">
+        <Link href="/" className="font-sans text-[0.6rem] sm:text-[.72rem] uppercase tracking-widest no-underline hover:text-[#B8902A] transition-colors" style={{ color: "rgba(255,255,255,.5)" }}>Home</Link>
+        <span className="text-[0.6rem] sm:text-[.72rem]" style={{ color: "rgba(255,255,255,.2)" }}>/</span>
+        <span className="font-sans text-[0.6rem] sm:text-[.72rem] uppercase tracking-widest" style={{ color: "rgba(255,255,255,.5)" }}>Products</span>
+        <span className="text-[0.6rem] sm:text-[.72rem]" style={{ color: "rgba(255,255,255,.2)" }}>/</span>
+        <Link href={`/products/${category.id}`} className="font-sans text-[0.6rem] sm:text-[.72rem] uppercase tracking-widest no-underline hover:text-[#B8902A] transition-colors" style={{ color: "rgba(255,255,255,.5)" }}>{category.title}</Link>
+        <span className="text-[0.6rem] sm:text-[.72rem]" style={{ color: "rgba(255,255,255,.2)" }}>/</span>
+        <span className="font-sans text-[0.6rem] sm:text-[.72rem] uppercase tracking-widest" style={{ color: "#B8902A" }}>{series.name}</span>
       </nav>
 
       {/* Hero Header */}
-      <div className="absolute inset-0 flex flex-col items-start justify-end px-8 lg:px-16 pb-16">
-        <p className="font-sans flex items-center gap-3 text-xs font-black uppercase tracking-[0.25em] text-[#B8902A] mb-3">
-          <span className="block w-8 h-px bg-[#B8902A]" />
+      <div className="absolute inset-0 flex flex-col items-start justify-end px-5 sm:px-8 lg:px-16 pb-8 sm:pb-12 lg:pb-16" data-aos="fade-up">
+        <p className="font-sans flex items-center gap-2 sm:gap-3 text-[0.6rem] sm:text-xs font-black uppercase tracking-[0.25em] text-[#B8902A] mb-2 sm:mb-4">
+          <span className="block w-5 sm:w-8 h-px bg-[#B8902A]" />
           PREMIUM ARCHITECTURAL SPECIFICATION
         </p>
-        <h1 className="font-serif font-semibold text-white mb-4 leading-none tracking-tight"
-          style={{ fontSize: "clamp(2.5rem,5vw,4.5rem)" }}>
+        <h1 className="page-heading text-white mb-3 sm:mb-6">
           {series.name} <span className="font-serif font-normal text-white/50">{series.seriesLabel || "Series"}</span>
         </h1>
         {series.tagline && (
@@ -120,7 +90,7 @@ const Hero = ({ category, series }) => {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-9 right-8 lg:right-16 flex flex-col items-center gap-2">
+      <div className="hidden sm:flex absolute bottom-9 right-8 lg:right-16 flex-col items-center gap-2">
         <div className="scroll-ln w-px h-14" style={{ background: "linear-gradient(to bottom,rgba(255,255,255,.3),transparent)" }} />
         <span className="font-sans vert-text text-[.62rem] uppercase tracking-widest font-black" style={{ color: "rgba(255,255,255,.4)" }}>Scroll</span>
       </div>
@@ -128,10 +98,9 @@ const Hero = ({ category, series }) => {
   );
 };
 
-export default function SeriesDetailsPage() {
-  const { id, seriesId } = useParams();
+export default function SeriesDetailsPage({ params }) {
+  const { id, seriesId } = React.use(params);
   const [activeTab, setActiveTab] = useState("WINDOW");
-  useReveal();
 
   const category = productCategories.find((c) => c.id === id);
   if (!category) {
@@ -157,13 +126,9 @@ export default function SeriesDetailsPage() {
   // Determine available tabs
   const tabKeys = series.configurations ? Object.keys(series.configurations) : [];
 
-  // Determine composite catalog image based on active tab
-  const compositeImage = activeTab === "WINDOW" ? "/images/grants-plus-window-matrix.png" : "/images/grants-plus-door-matrix.png";
-
   return (
     <div className="min-h-screen bg-[#f8fafc] text-[#1a1a1a] overflow-x-hidden">
       <Keyframes />
-      <Nav />
       <Hero category={category} series={series} />
 
       {/* Technical catalog section */}
@@ -171,22 +136,22 @@ export default function SeriesDetailsPage() {
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
           
           {/* Header Title */}
-          <div className="text-center mb-16 reveal">
-            <h2 className="font-serif text-[clamp(1.6rem,3vw,3.2rem)] font-semibold tracking-widest text-[#222] uppercase">
+          <div className="text-center mb-16" data-aos="fade-up">
+            <h2 className="section-heading text-[#222] uppercase">
               Product Information
             </h2>
             <div className="w-16 h-[2px] bg-[#B8902A] mx-auto mt-4" />
           </div>
 
           {/* TWO COLUMN GRID: SPECIFICATIONS & COLOR */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12 reveal">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12" data-aos="fade-up">
             
             {/* Left Column: Specifications */}
             <div className="flex flex-col">
               <h3 className="font-sans text-xs font-black tracking-widest text-[#666] uppercase mb-4 pl-1">
                 Specifications
               </h3>
-              <div className="flex-1 bg-[#f1f3f5] rounded-[4px] p-8 lg:p-10 flex flex-col justify-start">
+              <div className="flex-1 bg-[#f1f3f5] rounded-[4px] p-5 sm:p-8 lg:p-10 flex flex-col justify-start">
                 <span className="font-sans text-sm font-bold uppercase tracking-widest text-[#222] mb-8 block">
                   {series.name} {series.seriesLabel || "Series"}
                 </span>
@@ -213,14 +178,14 @@ export default function SeriesDetailsPage() {
               <h3 className="font-sans text-xs font-black tracking-widest text-[#666] uppercase mb-4 pl-1">
                 Color
               </h3>
-              <div className="flex-1 bg-[#f1f3f5] rounded-[4px] p-8 lg:p-10 flex flex-col justify-start">
-                <div className="grid grid-cols-3 sm:grid-cols-3 gap-y-8 gap-x-4">
+              <div className="flex-1 bg-[#f1f3f5] rounded-[4px] p-5 sm:p-8 lg:p-10 flex flex-col justify-start">
+                <div className="grid grid-cols-3 sm:grid-cols-3 gap-y-6 sm:gap-y-8 gap-x-3 sm:gap-x-4">
                   {series.colors.map((colorName, idx) => {
                     const upperName = colorName.toUpperCase();
                     const colorHex = COLOR_HEX[upperName] || "#E2E8F0";
                     return (
                       <div key={idx} className="flex flex-col items-center">
-                        <div className="w-[4.5rem] h-[4.5rem] bg-white border border-black/10 rounded-[2px] p-1 flex items-center justify-center shadow-[0_3px_8px_rgba(0,0,0,0.04)] mb-3">
+                        <div className="w-14 h-14 sm:w-[4.5rem] sm:h-[4.5rem] bg-white border border-black/10 rounded-[2px] p-1 flex items-center justify-center shadow-[0_3px_8px_rgba(0,0,0,0.04)] mb-3">
                           <div
                             className="w-full h-full rounded-[1px] border border-black/5"
                             style={{ backgroundColor: colorHex }}
@@ -239,29 +204,29 @@ export default function SeriesDetailsPage() {
           </div>
 
           {/* Performances Panel Row */}
-          <div className="reveal mb-24">
+          <div className="mb-24" data-aos="fade-up">
             <h3 className="font-sans text-xs font-black tracking-widest text-[#666] uppercase mb-4 pl-1">
               Performances
             </h3>
             <div className="bg-white border border-[#e2e8f0] rounded-[4px] shadow-[0_5px_15px_rgba(0,0,0,0.015)] overflow-hidden">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 lg:divide-x divide-[#e2e8f0]">
+              <div className="grid grid-cols-2 lg:grid-cols-4">
                 {/* Wind Pressure */}
-                <div className="p-8 flex flex-col items-center text-center">
-                  <div className="text-[#B8902A] mb-4">
-                    <FiWind className="w-10 h-10 stroke-[1.25]" />
+                <div className="p-4 sm:p-6 lg:p-8 flex flex-col items-center text-center border-b border-r lg:border-b-0 lg:border-r border-[#e2e8f0]/80">
+                  <div className="text-[#B8902A] mb-3 sm:mb-4">
+                    <FiWind className="w-8 h-8 sm:w-10 sm:h-10 stroke-[1.25]" />
                   </div>
-                  <span className="font-sans text-[0.72rem] font-bold uppercase tracking-widest text-[#222] mb-6">
+                  <span className="font-sans text-[0.65rem] sm:text-[0.72rem] font-bold uppercase tracking-widest text-[#222] mb-4 sm:mb-6">
                     Wind Pressure
                   </span>
-                  <div className="w-full flex flex-col text-[0.68rem] text-left gap-3.5 px-2">
+                  <div className="w-full flex flex-col text-[0.58rem] sm:text-[0.68rem] text-left gap-2.5 sm:gap-3.5 px-1 sm:px-2">
                     {(series.performanceDetails?.['WIND PRESSURE'] || []).map((row, i) => (
-                      <div key={i} className="flex justify-between items-start gap-4">
+                      <div key={i} className="flex justify-between items-start gap-2 sm:gap-4">
                         <span className="font-sans font-bold text-[#666] uppercase tracking-wider leading-relaxed">
                           {row.label}
                         </span>
                         <div className="flex flex-col items-end text-right">
                           <span className="font-sans font-bold text-[#111]">{row.value}</span>
-                          {row.sub && <span className="font-sans text-[0.58rem] text-[#888] font-light">{row.sub}</span>}
+                          {row.sub && <span className="font-sans text-[0.52rem] sm:text-[0.58rem] text-[#888] font-light">{row.sub}</span>}
                         </div>
                       </div>
                     ))}
@@ -269,22 +234,22 @@ export default function SeriesDetailsPage() {
                 </div>
 
                 {/* Water Tightness */}
-                <div className="p-8 flex flex-col items-center text-center">
-                  <div className="text-[#B8902A] mb-4">
-                    <FiDroplet className="w-10 h-10 stroke-[1.25]" />
+                <div className="p-4 sm:p-6 lg:p-8 flex flex-col items-center text-center border-b lg:border-b-0 lg:border-r border-[#e2e8f0]/80">
+                  <div className="text-[#B8902A] mb-3 sm:mb-4">
+                    <FiDroplet className="w-8 h-8 sm:w-10 sm:h-10 stroke-[1.25]" />
                   </div>
-                  <span className="font-sans text-[0.72rem] font-bold uppercase tracking-widest text-[#222] mb-6">
+                  <span className="font-sans text-[0.65rem] sm:text-[0.72rem] font-bold uppercase tracking-widest text-[#222] mb-4 sm:mb-6">
                     Water Tightness
                   </span>
-                  <div className="w-full flex flex-col text-[0.68rem] text-left gap-3.5 px-2">
+                  <div className="w-full flex flex-col text-[0.58rem] sm:text-[0.68rem] text-left gap-2.5 sm:gap-3.5 px-1 sm:px-2">
                     {(series.performanceDetails?.['WATER TIGHTNESS'] || []).map((row, i) => (
-                      <div key={i} className="flex justify-between items-start gap-4">
+                      <div key={i} className="flex justify-between items-start gap-2 sm:gap-4">
                         <span className="font-sans font-bold text-[#666] uppercase tracking-wider leading-relaxed">
                           {row.label}
                         </span>
                         <div className="flex flex-col items-end text-right">
                           <span className="font-sans font-bold text-[#111]">{row.value}</span>
-                          {row.sub && <span className="font-sans text-[0.58rem] text-[#888] font-light">{row.sub}</span>}
+                          {row.sub && <span className="font-sans text-[0.52rem] sm:text-[0.58rem] text-[#888] font-light">{row.sub}</span>}
                         </div>
                       </div>
                     ))}
@@ -292,22 +257,22 @@ export default function SeriesDetailsPage() {
                 </div>
 
                 {/* Air Tightness */}
-                <div className="p-8 flex flex-col items-center text-center">
-                  <div className="text-[#B8902A] mb-4">
-                    <FiShield className="w-10 h-10 stroke-[1.25]" />
+                <div className="p-4 sm:p-6 lg:p-8 flex flex-col items-center text-center border-r lg:border-r border-[#e2e8f0]/80">
+                  <div className="text-[#B8902A] mb-3 sm:mb-4">
+                    <FiShield className="w-8 h-8 sm:w-10 sm:h-10 stroke-[1.25]" />
                   </div>
-                  <span className="font-sans text-[0.72rem] font-bold uppercase tracking-widest text-[#222] mb-6">
+                  <span className="font-sans text-[0.65rem] sm:text-[0.72rem] font-bold uppercase tracking-widest text-[#222] mb-4 sm:mb-6">
                     Air Tightness
                   </span>
-                  <div className="w-full flex flex-col text-[0.68rem] text-left gap-3.5 px-2">
+                  <div className="w-full flex flex-col text-[0.58rem] sm:text-[0.68rem] text-left gap-2.5 sm:gap-3.5 px-1 sm:px-2">
                     {(series.performanceDetails?.['AIR TIGHTNESS'] || []).map((row, i) => (
-                      <div key={i} className="flex justify-between items-start gap-4">
+                      <div key={i} className="flex justify-between items-start gap-2 sm:gap-4">
                         <span className="font-sans font-bold text-[#666] uppercase tracking-wider leading-relaxed">
                           {row.label}
                         </span>
                         <div className="flex flex-col items-end text-right">
                           <span className="font-sans font-bold text-[#111]">{row.value}</span>
-                          {row.sub && <span className="font-sans text-[0.58rem] text-[#888] font-light">{row.sub}</span>}
+                          {row.sub && <span className="font-sans text-[0.52rem] sm:text-[0.58rem] text-[#888] font-light">{row.sub}</span>}
                         </div>
                       </div>
                     ))}
@@ -315,22 +280,22 @@ export default function SeriesDetailsPage() {
                 </div>
 
                 {/* Noise Insulation */}
-                <div className="p-8 flex flex-col items-center text-center">
-                  <div className="text-[#B8902A] mb-4">
-                    <FiVolumeX className="w-10 h-10 stroke-[1.25]" />
+                <div className="p-4 sm:p-6 lg:p-8 flex flex-col items-center text-center border-[#e2e8f0]/80">
+                  <div className="text-[#B8902A] mb-3 sm:mb-4">
+                    <FiVolumeX className="w-8 h-8 sm:w-10 sm:h-10 stroke-[1.25]" />
                   </div>
-                  <span className="font-sans text-[0.72rem] font-bold uppercase tracking-widest text-[#222] mb-6">
+                  <span className="font-sans text-[0.65rem] sm:text-[0.72rem] font-bold uppercase tracking-widest text-[#222] mb-4 sm:mb-6">
                     Noise Insulation
                   </span>
-                  <div className="w-full flex flex-col text-[0.68rem] text-left gap-3.5 px-2">
+                  <div className="w-full flex flex-col text-[0.68rem] sm:text-left gap-2.5 sm:gap-3.5 px-1 sm:px-2">
                     {(series.performanceDetails?.['NOISE INSULATION'] || []).map((row, i) => (
-                      <div key={i} className="flex justify-between items-start gap-4">
+                      <div key={i} className="flex justify-between items-start gap-2 sm:gap-4">
                         <span className="font-sans font-bold text-[#666] uppercase tracking-wider leading-relaxed">
                           {row.label}
                         </span>
                         <div className="flex flex-col items-end text-right">
                           <span className="font-sans font-bold text-[#111]">{row.value}</span>
-                          {row.sub && <span className="font-sans text-[0.58rem] text-[#888] font-light">{row.sub}</span>}
+                          {row.sub && <span className="font-sans text-[0.52rem] sm:text-[0.58rem] text-[#888] font-light">{row.sub}</span>}
                         </div>
                       </div>
                     ))}
@@ -343,95 +308,81 @@ export default function SeriesDetailsPage() {
 
           {/* UNIFIED ARCHITECTURAL COLLAGE CATALOGUE (Instead of separate product showcase cards) */}
           {tabKeys.length > 0 && (
-            <div className="reveal mb-20 border-t border-[#e2e8f0] pt-16">
+            <div className="mb-20 border-t border-[#e2e8f0] pt-16" data-aos="fade-up">
               
               {/* Catalogue Section Header */}
               <div className="text-center mb-12">
                 <h3 className="font-sans text-[0.75rem] font-black tracking-[0.25em] text-[#B8902A] uppercase mb-3">
                   Sash Options & Designs
                 </h3>
-                <h2 className="font-serif text-[clamp(1.6rem,3vw,3.2rem)] font-semibold tracking-tight text-[#222] uppercase">
+                <h2 className="section-heading text-[#222] uppercase">
                   Product Configurations Catalogue
                 </h2>
               </div>
 
               {/* Segment Toggle */}
-              <div className="flex justify-center mb-12">
-                <div className="inline-flex bg-[#f1f3f5] p-1 rounded-full border border-black/5">
-                  {tabKeys.map((tab) => (
-                    <button
-                      key={tab}
-                      onClick={() => setActiveTab(tab)}
-                      className={`font-sans px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
-                        activeTab === tab
-                          ? "bg-white text-[#B8902A] shadow-[0_4px_12px_rgba(0,0,0,0.05)]"
-                          : "text-[#666] hover:text-black"
-                      }`}
-                    >
-                      {tab}S
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Unified Splitted View: Composite Canvas on Left, Beautiful Index Legend on Right */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
-                
-                {/* LEFT COLUMN: THE COMPOSITE ARCHITECTURAL CANVAS (Unified Montage showing multiple designs in one image) */}
-                <div className="lg:col-span-7 flex flex-col">
-                  <div className="relative w-full h-[320px] sm:h-[420px] lg:h-[560px] overflow-hidden bg-white border border-[#e2e8f0] rounded-[6px] p-0 shadow-[0_6px_20px_rgba(0,0,0,0.02)] flex flex-col justify-center items-center group">
-                    
-                    {/* Top small label */}
-                    <div className="font-sans absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-[0.58rem] font-black uppercase tracking-widest px-3.5 py-2 rounded-[2px] z-10">
-                      Unified {activeTab} Design Composition
-                    </div>
-
-                    <img
-                      src={compositeImage}
-                      alt={`TOSTEM ${activeTab} configurations collage`}
-                      className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.015]"
-                    />
+              {seriesId !== "in16" && (
+                <div className="flex justify-center mb-12">
+                  <div className="inline-flex bg-[#f1f3f5] p-1 rounded-full border border-black/5">
+                    {tabKeys.map((tab) => (
+                      <button
+                        key={tab}
+                        onClick={() => setActiveTab(tab)}
+                        className={`font-sans px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
+                          activeTab === tab
+                            ? "bg-white text-[#B8902A] shadow-[0_4px_12px_rgba(0,0,0,0.05)]"
+                            : "text-[#666] hover:text-black"
+                        }`}
+                      >
+                        {tab}S
+                      </button>
+                    ))}
                   </div>
                 </div>
+              )}
 
-                {/* RIGHT COLUMN: ARCHITECTURAL INDEX LEGEND (List explanation of options) */}
-                <div className="lg:col-span-5 flex flex-col">
-                  <div className="bg-white border border-[#e2e8f0] rounded-[6px] p-8 lg:p-10 shadow-[0_6px_20px_rgba(0,0,0,0.02)] h-[400px] lg:h-[560px] flex flex-col">
-                    <span className="font-sans text-xs font-black tracking-[0.25em] text-[#B8902A] mb-6 block">
-                      Legend & Sash Guide
-                    </span>
+              {/* Premium Cards Grid */}
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
+                {(seriesId === "in16"
+                  ? Object.values(series.configurations || {}).flat()
+                  : (series.configurations[activeTab] || [])
+                ).map((cfg, idx) => (
+                  <div
+                    key={idx}
+                    className="group flex flex-col bg-white border border-[#e2e8f0]/80 rounded-[6px] p-3.5 sm:p-5 shadow-[0_4px_12px_rgba(0,0,0,0.01)] transition-all duration-300 hover:shadow-[0_12px_24px_rgba(184,144,42,0.06)] hover:-translate-y-1 hover:border-[#B8902A]/40"
+                  >
+                    {/* Image container */}
+                    <div className="relative aspect-[4/3] w-full bg-[#f8fafc] rounded-[4px] overflow-hidden border border-[#e2e8f0]/60 flex items-center justify-center p-3 sm:p-6 group-hover:bg-white transition-colors duration-500">
+                      <img
+                        src={cfg.image}
+                        alt={cfg.name}
+                        className="w-full h-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"
+                        loading="lazy"
+                      />
+                      {/* Number badge */}
+                      <span className="absolute top-2 left-2 sm:top-3 sm:left-3 text-[0.55rem] sm:text-[0.6rem] font-mono text-[#B8902A] bg-[#B8902A]/10 px-1.5 sm:px-2 py-0.5 rounded-[2px]">
+                        0{idx + 1}
+                      </span>
+                    </div>
 
-                    <div className="flex flex-col gap-5 flex-1 overflow-y-auto pr-2 scrollbar-thin">
-                      {(series.configurations[activeTab] || []).map((cfg, idx) => (
-                        <div
-                          key={idx}
-                          className="group/item flex flex-col pb-3 border-b border-black/[0.04] last:border-0 last:pb-0"
-                        >
-                          <div className="flex items-center gap-3 mb-1">
-                            <span className="text-[0.62rem] font-mono text-[#B8902A] bg-[#B8902A]/10 px-2 py-0.5 rounded-[2px]">
-                              0{idx + 1}
-                            </span>
-                            <span className="font-sans text-[0.78rem] font-bold uppercase tracking-wider text-[#111] transition-colors duration-300 group-hover/item:text-[#B8902A]">
-                              {cfg.name}
-                            </span>
-                          </div>
-                          
-                          <p className="font-sans text-[0.68rem] leading-relaxed text-[#666] m-0 pl-7 font-light">
-                            {cfg.desc}
-                          </p>
-                        </div>
-                      ))}
+                    {/* Content block */}
+                    <div className="flex flex-col mt-3 sm:mt-4">
+                      <h4 className="font-sans text-[0.72rem] sm:text-[0.8rem] font-black uppercase tracking-wider text-[#111] group-hover:text-[#B8902A] transition-colors duration-300">
+                        {cfg.name}
+                      </h4>
+                      <p className="font-sans text-[0.65rem] sm:text-[0.7rem] leading-relaxed text-[#666] mt-1.5 sm:mt-2 font-light">
+                        {cfg.desc}
+                      </p>
                     </div>
                   </div>
-                </div>
-
+                ))}
               </div>
 
             </div>
           )}
 
           {/* Quick back link showroom */}
-          <div className="text-center reveal">
+          <div className="text-center" data-aos="fade-up">
             <Link
               href={`/products/${category.id}`}
               className="font-sans inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#B8902A] hover:underline"
@@ -444,12 +395,12 @@ export default function SeriesDetailsPage() {
       </section>
 
       {/* Luxury Footer Consultation */}
-      <section className="relative overflow-hidden py-20 px-8 lg:px-16 bg-[#0c0d0f] text-center">
+      <section className="relative overflow-hidden py-20 px-8 lg:px-16 bg-[#0c0d0f] text-center" data-aos="fade-up">
         <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
           style={{ backgroundImage: "radial-gradient(#B8902A 0.5px,transparent 0.5px)", backgroundSize: "24px 24px" }} />
         <div className="relative z-10 max-w-2xl mx-auto">
           <p className="font-sans text-[#B8902A] text-xs font-black uppercase tracking-[4px] mb-3">Begin Specification</p>
-          <h2 className="font-serif text-white text-[clamp(1.6rem,3vw,3.2rem)] font-semibold mb-5 tracking-tight">
+          <h2 className="section-heading text-white mb-5">
             Build with the {series.name}
           </h2>
           <p className="font-sans text-white/60 text-xs sm:text-sm leading-relaxed mb-8 max-w-md mx-auto font-light">

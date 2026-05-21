@@ -40,7 +40,7 @@ const WhyChoosePrestige = () => (
         <div className="main-container relative z-10 px-5 sm:px-8 lg:px-10">
 
             {/* Header */}
-            <div className="mx-auto mb-12 sm:mb-14 lg:mb-16 max-w-3xl text-center">
+            <div className="mx-auto mb-12 sm:mb-14 lg:mb-16 max-w-3xl text-center" data-aos="fade-up">
 
                 <span className="section-label text-light-gold mb-4 sm:mb-5 block">
                     Why Choose Us
@@ -68,7 +68,8 @@ const WhyChoosePrestige = () => (
                     <div
                         key={i}
                         className="group relative flex flex-col overflow-hidden rounded-2xl border border-light-gold/10 bg-white/30 backdrop-blur-lg p-6 sm:p-7 lg:p-8 transition-all duration-500 hover:-translate-y-1 hover:border-light-gold/30 hover:shadow-[0_20px_45px_rgba(197,160,40,0.07)]"
-                        style={{ transitionDelay: `${i * 0.08}s` }}
+                        data-aos="fade-up"
+                        data-aos-delay={i * 120}
                     >
 
                         {/* Bottom Accent */}
@@ -113,6 +114,8 @@ const WhyChoosePrestige = () => (
                     <div
                         key={i}
                         className="group relative min-w-[88%] snap-center flex flex-col overflow-hidden rounded-2xl border border-light-gold/10 bg-white/30 backdrop-blur-lg p-6 sm:p-7 lg:p-8 transition-all duration-500 hover:-translate-y-1 hover:border-light-gold/30 hover:shadow-[0_20px_45px_rgba(197,160,40,0.07)]"
+                        data-aos="fade-up"
+                        data-aos-delay={i * 100}
                     >
 
                         {/* Bottom Accent */}
@@ -151,7 +154,7 @@ const WhyChoosePrestige = () => (
             </div>
 
             {/* CTA Strip */}
-            <div className="relative mt-12 sm:mt-14 overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] border border-light-gold/20 bg-[#111] p-6 sm:p-8 lg:p-10">
+            <div className="relative mt-12 sm:mt-14 overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] border border-light-gold/20 bg-[#111] p-6 sm:p-8 lg:p-10" data-aos="fade-up" data-aos-delay="200">
 
                 {/* Pattern */}
                 <div

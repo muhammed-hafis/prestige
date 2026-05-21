@@ -22,7 +22,8 @@ const BRANDS = [
 const BrandCard = ({ brand, index }) => (
     <div
         className="group relative flex flex-col items-center text-center overflow-hidden rounded-2xl border border-[#B8902A]/10 bg-white p-6 sm:p-7 lg:p-8 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-[#B8902A]/40 hover:shadow-[0_20px_40px_rgba(184,144,42,0.08)]"
-        style={{ transitionDelay: `${index * 0.12}s` }}
+        data-aos="fade-up"
+        data-aos-delay={index * 120}
     >
         {/* Top Accent Line */}
         <div className="absolute left-0 right-0 top-0 h-[3px] origin-center scale-x-0 bg-[#B8902A] transition-transform duration-500 group-hover:scale-x-100" />
@@ -62,7 +63,7 @@ const BrandPartners = () => (
         <div className="main-container relative z-10 px-5 sm:px-8 lg:px-10">
 
             {/* Heading */}
-            <div className="mx-auto mb-12 sm:mb-14 lg:mb-16 max-w-3xl text-center">
+            <div className="mx-auto mb-12 sm:mb-14 lg:mb-16 max-w-3xl text-center" data-aos="fade-up">
 
                 <span className="mb-4 sm:mb-5 inline-block rounded-full bg-black/20 px-4 py-1.5 section-label text-white">
                     Global Alliances

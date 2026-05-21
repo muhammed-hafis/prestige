@@ -35,13 +35,10 @@ const Footer = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
 
                     {/* Column 1: Brand */}
-                    <div className="flex flex-col gap-5 sm:col-span-2 lg:col-span-1">
-                        <div>
-                            <span className="text-2xl uppercase tracking-[0.15em] flex items-center gap-2">
-                                PRESTIGE
-                                <span className="w-1.5 h-1.5 bg-light-gold rounded-full" />
-                            </span>
-                            <p className="text-[0.65rem] text-light-gold mt-1.5 uppercase tracking-[0.3em]">
+                    <div className="flex flex-col gap-5 sm:col-span-2 lg:col-span-1" data-aos="fade-up" data-aos-delay="100">
+                        <div className="flex flex-col gap-2">
+                            <img src="/logo.avif" alt="Prestige Logo" className="h-16 sm:h-20 md:h-24 w-auto object-contain self-start" />
+                            <p className="text-[0.65rem] text-light-gold mt-1 uppercase tracking-[0.3em]">
                                 Architectural Excellence
                             </p>
                         </div>
@@ -72,7 +69,7 @@ const Footer = () => {
                     </div>
 
                     {/* Column 2: Navigation */}
-                    <div className="flex flex-col gap-4">
+                    <div className="flex flex-col gap-4" data-aos="fade-up" data-aos-delay="200">
                         <h4 className="text-xs uppercase tracking-[0.3em] text-white/50">
                             Navigation
                         </h4>
@@ -91,7 +88,7 @@ const Footer = () => {
                     </div>
 
                     {/* Column 3: Solutions */}
-                    <div className="flex flex-col gap-4">
+                    <div className="flex flex-col gap-4" data-aos="fade-up" data-aos-delay="300">
                         <h4 className="text-xs uppercase tracking-[0.3em] text-white/50">
                             Solutions
                         </h4>
@@ -110,7 +107,7 @@ const Footer = () => {
                     </div>
 
                     {/* Column 4: Contact */}
-                    <div className="flex flex-col gap-4">
+                    <div className="flex flex-col gap-4" data-aos="fade-up" data-aos-delay="400">
                         <h4 className="text-xs uppercase tracking-[0.3em] text-white/50">
                             Connect
                         </h4>
@@ -132,7 +129,7 @@ const Footer = () => {
                 </div>
 
                 {/* Bottom bar */}
-                <div className="pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-3 text-center">
+                <div className="pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-3 text-center" data-aos="fade-up" data-aos-delay="500">
                     <p className="text-xs text-gray-500 uppercase tracking-wide">
                         © {currentYear} Prestige Systems. All rights reserved.
                     </p>

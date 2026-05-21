@@ -71,6 +71,7 @@ const Hero = () => {
 
     Promise.all(initialIndices.map(loadFrame)).then(() => {
       setLoadedInitial(true);
+      window.dispatchEvent(new Event('prestige:loaded'));
       const firstImg = getClosestLoadedFrame(1);
       if (firstImg) drawFrame(ctx, canvas, firstImg);
 
@@ -219,17 +220,7 @@ const Hero = () => {
           }}
         />
 
-        {/* Loading overlay */}
-        {!loadedInitial && (
-          <div className="absolute inset-0 bg-[#09090a] z-10 flex items-center justify-center">
-            <div className="flex flex-col items-center gap-4">
-              <div className="w-12 h-12 border-2 border-light-gold/20 border-t-light-gold rounded-full animate-spin" />
-              <span className="font-sans text-light-gold text-xs font-bold uppercase tracking-[0.3em]">
-                Preloading Experience
-              </span>
-            </div>
-          </div>
-        )}
+        {/* Canvas becomes visible once frames are loaded */}
 
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-black/20 pointer-events-none z-[1]" />

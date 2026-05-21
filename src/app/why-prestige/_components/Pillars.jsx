@@ -78,11 +78,11 @@ const Pillars = () => {
 
             <div className="main-container relative z-10 px-4 sm:px-8">
                 {/* Header */}
-                <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20 reveal">
+                <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20" data-aos="fade-up">
                     <span className="font-sans text-[0.72rem] uppercase tracking-[0.4em] text-light-gold font-black mb-4 md:mb-5 block">
                         Our Competitive Edge
                     </span>
-                    <h2 className="font-serif font-semibold text-[clamp(1.8rem,3vw,3.4rem)] text-[#111] mb-6 leading-[1.2]">
+                    <h2 className="section-heading text-[#111] mb-6 leading-[1.2]">
                         What Makes Us <br />
                         <span className="text-[#111]/40 font-normal">A Reliable Choice</span>
                     </h2>
@@ -93,7 +93,7 @@ const Pillars = () => {
                 </div>
 
                 {/* --- MOBILE STACK DECK / DESKTOP GRID --- */}
-                <div className="relative h-[420px] sm:h-[380px] md:h-auto w-full max-w-md mx-auto md:max-w-none md:grid md:grid-cols-3 md:gap-8">
+                <div className="relative h-[420px] sm:h-[380px] md:h-auto w-full max-w-md mx-auto md:max-w-none md:grid md:grid-cols-3 md:gap-8" data-aos="fade-up">
                     {PILLARS.map((pillar, idx) => {
                         // Calculate stack positions for the mobile viewports
                         let stackOrder = idx - currentIndex;
@@ -125,8 +125,9 @@ const Pillars = () => {
                                 `}
                                 style={{
                                     // Stacking styles active up to 767px wide screens, grid transition rules for desktop
-                                    ...(isMounted && isMobile ? mobileStyle : {}),
-                                    transitionDelay: `${idx * 0.15}s`,
+                                    ...(isMounted && isMobile
+                                        ? mobileStyle
+                                        : { transitionDelay: `${idx * 0.15}s` }),
                                 }}
                             >
                                 <div>

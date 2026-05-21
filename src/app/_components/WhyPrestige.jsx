@@ -21,7 +21,7 @@ const WhyPrestige = () => {
       <div className="main-container px-8">
         <div className="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
           <p className="font-sans font-bold text-[0.7rem] tracking-[.4em] uppercase text-light-gold mb-4">Value Proposition</p>
-          <h2 className="font-serif font-semibold text-[clamp(1.6rem,3vw,3.2rem)] text-[#111] mb-6">Why Prestige</h2>
+          <h2 className="section-heading text-[#111] mb-6">Why Prestige</h2>
           <p className="font-sans text-[#666] font-light leading-relaxed">
             Delivering specialized architectural solutions across Saudi Arabia with a focus on quality, compliance, and excellence.
           </p>

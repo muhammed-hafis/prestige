@@ -15,10 +15,6 @@ const Keyframes = () => (
     }
     .hero-img  { animation:heroZoom 9s cubic-bezier(.16,1,.3,1) forwards; filter:brightness(.95); }
     .scroll-ln { animation:scrollLine 2.2s ease-in-out infinite; }
-    .reveal { opacity:0; transform:translateY(22px); transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1); }
-    .reveal.in { opacity:1; transform:none; }
-    .reveal-d1 { transition-delay:.15s; }
-    .reveal-d2 { transition-delay:.28s; }
     .nav-scrolled { background:rgba(240,244,248,.95); backdrop-filter:blur(16px); border-bottom:1px solid rgba(184,144,42,.15); }
     .nav-top .logo-lnk  { color:#fff; }
     .nav-scrolled .logo-lnk { color:#111; }
@@ -44,34 +40,6 @@ function useScrolled(px = 60) {
   return s;
 }
 
-function useReveal() {
-  useEffect(() => {
-    const els = document.querySelectorAll(".reveal");
-    const obs = new IntersectionObserver(
-      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("in"); }),
-      { threshold: 0.1 }
-    );
-    els.forEach((el) => obs.observe(el));
-    return () => obs.disconnect();
-  }, []);
-}
-
-/* ── Nav ───────────────────────────────────────────────────── */
-const Nav = () => {
-  const scrolled = useScrolled();
-  return (
-    <nav className={`fixed top-0 left-0 right-0 z-[100] flex items-center justify-between h-14 sm:h-16 px-5 sm:px-8 lg:px-16 transition-all duration-300 ${scrolled ? "nav-scrolled" : "nav-top"}`}>
-      <Link href="/" className="logo-lnk text-[1.1rem] sm:text-[1.2rem] font-serif tracking-widest uppercase no-underline transition-colors duration-300">
-        Prestige
-      </Link>
-      <div className="flex items-center gap-4 sm:gap-8">
-        <Link href="/#products" className="nav-lnk hidden md:block text-xs font-bold uppercase tracking-widest no-underline">Products</Link>
-        <Link href="/#about"    className="nav-lnk hidden md:block text-xs font-bold uppercase tracking-widest no-underline">About</Link>
-        <Link href="/contact"  className="nav-cta-lnk text-[0.6rem] sm:text-xs font-bold uppercase tracking-widest no-underline px-4 sm:px-6 py-2 sm:py-2.5 rounded-full">Enquire</Link>
-      </div>
-    </nav>
-  );
-};
 
 /* ── Hero ──────────────────────────────────────────────────── */
 const Hero = ({ category }) => {
@@ -89,7 +57,7 @@ const Hero = ({ category }) => {
       <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.75))" }} />
 
       {/* Breadcrumb */}
-      <nav className="absolute top-16 sm:top-20 lg:top-24 left-5 sm:left-8 lg:left-16 flex flex-wrap items-center gap-1.5 sm:gap-2">
+      <nav className="absolute top-28 sm:top-32 lg:top-36 left-5 sm:left-8 lg:left-16 flex flex-wrap items-center gap-1.5 sm:gap-2">
         <Link href="/" className="font-sans text-[0.6rem] sm:text-[.72rem] uppercase tracking-widest no-underline hover:text-[#B8902A] transition-colors" style={{ color: "rgba(255,255,255,.5)" }}>Home</Link>
         <span className="text-[0.6rem] sm:text-[.72rem]" style={{ color: "rgba(255,255,255,.2)" }}>/</span>
         <span className="font-sans text-[0.6rem] sm:text-[.72rem] uppercase tracking-widest" style={{ color: "rgba(255,255,255,.5)" }}>Products</span>
@@ -98,13 +66,12 @@ const Hero = ({ category }) => {
       </nav>
 
       {/* Hero Header */}
-      <div className="absolute inset-0 flex flex-col items-start justify-end px-5 sm:px-8 lg:px-16 pb-8 sm:pb-12 lg:pb-16">
+      <div className="absolute inset-0 flex flex-col items-start justify-end px-5 sm:px-8 lg:px-16 pb-8 sm:pb-12 lg:pb-16" data-aos="fade-up">
         <p className="font-sans flex items-center gap-2 sm:gap-3 text-[0.6rem] sm:text-xs font-black uppercase tracking-[0.25em] text-[#B8902A] mb-2 sm:mb-4">
           <span className="block w-5 sm:w-8 h-px bg-[#B8902A]" />
           Premium Architectural Series
         </p>
-        <h1 className="font-serif font-semibold text-white mb-3 sm:mb-6 leading-tight tracking-tight"
-          style={{ fontSize: "clamp(1.8rem,5vw,4.5rem)" }}>
+        <h1 className="page-heading text-white mb-3 sm:mb-6">
           {head} <span className="font-serif font-normal" style={{ color: "#B8902A" }}>{tail}</span>
         </h1>
         {category.description && (
@@ -128,12 +95,12 @@ const CTASection = ({ label }) => (
   <section className="relative overflow-hidden py-12 sm:py-20 lg:py-28 px-5 sm:px-8 lg:px-16 bg-[#111]">
     <div className="absolute inset-0 pointer-events-none opacity-5"
       style={{ backgroundImage: "radial-gradient(#B8902A 0.5px,transparent 0.5px)", backgroundSize: "28px 28px" }} />
-    <div className="relative z-10 max-w-4xl mx-auto text-center">
+    <div className="relative z-10 max-w-4xl mx-auto text-center" data-aos="fade-up">
       <p className="font-sans text-[#B8902A] text-[0.6rem] sm:text-xs font-black uppercase tracking-[0.3em] mb-3 sm:mb-4">CONSULTATION</p>
-      <h2 className="font-serif text-white text-[clamp(1.4rem,3vw,3.2rem)] font-semibold mb-4 sm:mb-6 tracking-tight leading-tight">
+      <h2 className="section-heading text-white mb-4 sm:mb-6">
         Interested in our premium {label}?
       </h2>
-      <p className="font-sans text-white/60 text-[0.88rem] sm:text-[1rem] leading-relaxed max-w-xl mx-auto mb-8 sm:mb-10 font-light">
+      <p className="section-desc text-white/60 max-w-xl mx-auto mb-8 sm:mb-10">
         Speak with our specialists to review technical parameters, configurations, and pricing options tailored precisely to your vision.
       </p>
       <div className="flex items-center justify-center gap-4 sm:gap-6 flex-wrap">
@@ -148,10 +115,9 @@ const CTASection = ({ label }) => (
   </section>
 );
 
-export default function ProductCategoriesPage() {
-  const { id } = useParams();
+export default function ProductCategoriesPage({ params }) {
+  const { id } = React.use(params);
   const category = productCategories.find((c) => c.id === id);
-  useReveal();
 
   if (!category) {
     return (
@@ -164,7 +130,6 @@ export default function ProductCategoriesPage() {
   return (
     <div className="min-h-screen bg-[#f0f4f8] text-[#1a1a1a] overflow-x-hidden">
       <Keyframes />
-      <Nav />
       <Hero category={category} />
 
       {/* Series Grid Section */}
@@ -172,13 +137,13 @@ export default function ProductCategoriesPage() {
         <div className="main-container px-4 sm:px-8">
           
           {/* Header */}
-          <div className="text-center mb-10 sm:mb-16 lg:mb-20 max-w-2xl mx-auto reveal">
+          <div className="text-center mb-10 sm:mb-16 lg:mb-20 max-w-2xl mx-auto" data-aos="fade-up">
             <span className="font-sans inline-flex items-center gap-2 sm:gap-3 text-[#B8902A] uppercase text-[0.6rem] sm:text-[0.65rem] tracking-[4px] sm:tracking-[6px] font-black mb-3 sm:mb-4">
               <span className="w-6 sm:w-8 h-px bg-[#B8902A]"></span>
               SYSTEM SERIES
               <span className="w-6 sm:w-8 h-px bg-[#B8902A]"></span>
             </span>
-            <h2 className="font-serif font-semibold text-[clamp(1.4rem,3vw,3.2rem)] text-[#111] leading-tight tracking-tight mt-2">
+            <h2 className="section-heading text-[#111] tracking-tight mt-2">
               Select a Collection
             </h2>
             <div className="w-10 sm:w-12 h-[2px] bg-[#B8902A] mx-auto mt-4 sm:mt-6"></div>
@@ -195,7 +160,7 @@ export default function ProductCategoriesPage() {
                 <div key={rowIdx} className="flex flex-col gap-6 sm:gap-8">
                   {/* Subtle Category Title and Divider Line */}
                   {pair[0] && (
-                    <div className="flex items-center gap-4 sm:gap-6 pl-1 reveal">
+                    <div className="flex items-center gap-4 sm:gap-6 pl-1" data-aos="fade-up">
                       <span className="font-sans text-[0.62rem] sm:text-[0.72rem] font-black uppercase tracking-[0.3em] text-[#B8902A]">
                         {pair[0].name.split(" ")[0]} Collection
                       </span>
@@ -212,8 +177,9 @@ export default function ProductCategoriesPage() {
                       return (
                         <div
                           key={overallIdx}
-                          className="flex flex-col reveal"
-                          style={{ transitionDelay: `${idx * 0.1}s` }}
+                          className="flex flex-col"
+                          data-aos="fade-up"
+                          data-aos-delay={idx * 150}
                         >
                           {/* Image Container - Borderless, elegant zoom effect */}
                           <div className="relative aspect-[16/10] overflow-hidden bg-black/5 rounded-[3px] group">
@@ -257,7 +223,6 @@ export default function ProductCategoriesPage() {
               ));
             })()}
           </div>
-
         </div>
       </section>
 

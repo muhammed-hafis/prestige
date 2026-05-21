@@ -3,7 +3,7 @@ const Location = () => (
 
         <div className="main-container px-5 sm:px-8 lg:px-10">
 
-            <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
+            <div className="mx-auto flex max-w-5xl flex-col items-center text-center" data-aos="fade-up">
 
                 {/* Label */}
                 <p className="mb-4 sm:mb-5 section-label text-light-gold">
@@ -26,7 +26,7 @@ const Location = () => (
                 </p>
 
                 {/* Image Card */}
-                <div className="group relative mt-2 sm:mt-4 w-full px-1 sm:px-0">
+                <div className="group relative mt-2 sm:mt-4 w-full px-1 sm:px-0" data-aos="fade-up" data-aos-delay="200">
 
                     {/* Main Image */}
                     <div className="relative z-10 overflow-hidden rounded-[1.2rem] sm:rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.12)] aspect-[16/11] sm:aspect-[21/9] lg:aspect-[21/8]">

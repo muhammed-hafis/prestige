@@ -17,7 +17,7 @@ export default function NewsBlogsPage() {
                     [background-image:radial-gradient(var(--light-gold)_0.8px,transparent_0.8px)]
                     [background-size:24px_24px]" />
 
-        <div className="main-container text-center relative z-10 px-4 sm:px-8">
+        <div className="main-container text-center relative z-10 px-4 sm:px-8" data-aos="fade-up">
           <p className="mb-4 sm:mb-5 section-label text-light-gold">
             PRESTIGE
           </p>
@@ -37,12 +37,14 @@ export default function NewsBlogsPage() {
           {/* Blogs Grid — 2 cols on mobile, 3 on large */}
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-4 sm:gap-x-6 lg:gap-x-8 gap-y-10 sm:gap-y-12 lg:gap-y-16">
             {blogsData.map((post, idx) => (
-              <BlogCard key={idx} post={post} />
+              <div key={idx} data-aos="fade-up" data-aos-delay={idx * 100}>
+                <BlogCard post={post} />
+              </div>
             ))}
           </div>
 
           {/* Pagination */}
-          <div className="mt-16 sm:mt-20 lg:mt-24 flex justify-center items-center gap-2">
+          <div className="mt-16 sm:mt-20 lg:mt-24 flex justify-center items-center gap-2" data-aos="fade-up" data-aos-delay="100">
             <button className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center text-sm text-[#666] hover:text-[#111] transition-colors">
               &lt;
             </button>

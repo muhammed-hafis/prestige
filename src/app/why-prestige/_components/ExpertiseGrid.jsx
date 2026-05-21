@@ -37,12 +37,12 @@ const ExpertiseGrid = () => (
                 <div className="flex flex-col">
 
                     {/* Heading */}
-                    <div className="mb-8 sm:mb-10">
+                    <div className="mb-8 sm:mb-10" data-aos="fade-right">
                         <p className="font-sans text-[0.68rem] uppercase tracking-[0.42em] text-[var(--light-gold,#C8A94A)] font-black mb-3 sm:mb-4">
                             Our Expertise
                         </p>
 
-                        <h2 className="font-serif font-semibold text-[clamp(1.75rem,3.5vw,3rem)] text-[#111] leading-[1.15] tracking-tight">
+                        <h2 className="section-heading text-[#111] tracking-tight">
                             What We Do
                         </h2>
                     </div>
@@ -52,83 +52,36 @@ const ExpertiseGrid = () => (
                         {EXPERTISE_ITEMS.map((item, i) => (
                             <div
                                 key={i}
-                                className="
-                                    group relative flex flex-col
-                                    p-5 sm:p-6 lg:p-7
-                                    rounded-2xl
-                                    bg-white
-                                    border border-[var(--light-gold,#C8A94A)]/10
-                                    hover:border-[var(--light-gold,#C8A94A)]/35
-                                    shadow-[0_2px_16px_rgba(0,0,0,0.04)]
-                                    hover:shadow-[0_12px_40px_rgba(200,169,74,0.1)]
-                                    transition-all duration-500 ease-out
-                                    overflow-hidden
-                                "
-                                style={{ transitionDelay: `${i * 80}ms` }}
+                                className="group relative flex flex-col p-5 sm:p-6 lg:p-7 rounded-2xl bg-white border border-[var(--light-gold,#C8A94A)]/10 hover:border-[var(--light-gold,#C8A94A)]/35 shadow-[0_2px_16px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(200,169,74,0.1)] transition-all duration-500 ease-out overflow-hidden"
+                                data-aos="fade-right"
+                                data-aos-delay={i * 100}
                             >
 
                                 {/* Bottom Accent */}
                                 <div
-                                    className="
-                                        absolute bottom-0 left-0 right-0 h-[2px]
-                                        bg-gradient-to-r from-[var(--light-gold,#C8A94A)] to-[#ECC970]
-                                        scale-x-0 group-hover:scale-x-100
-                                        transition-transform duration-500 origin-left
-                                        rounded-b-2xl
-                                    "
+                                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[var(--light-gold,#C8A94A)] to-[#ECC970] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-b-2xl"
                                 />
 
                                 {/* Corner Glow */}
                                 <div
-                                    className="
-                                        absolute top-0 right-0
-                                        w-16 h-16
-                                        bg-[var(--light-gold,#C8A94A)]/[0.035]
-                                        rounded-bl-3xl
-                                        transition-all duration-500
-                                        group-hover:w-20 group-hover:h-20
-                                        group-hover:bg-[var(--light-gold,#C8A94A)]/[0.07]
-                                    "
+                                    className="absolute top-0 right-0 w-16 h-16 bg-[var(--light-gold,#C8A94A)]/[0.035] rounded-bl-3xl transition-all duration-500 group-hover:w-20 group-hover:h-20 group-hover:bg-[var(--light-gold,#C8A94A)]/[0.07]"
                                 />
 
                                 {/* Icon */}
                                 <div
-                                    className="
-                                        w-11 h-11 sm:w-12 sm:h-12
-                                        rounded-xl
-                                        bg-[var(--light-gold,#C8A94A)]/10
-                                        text-[var(--light-gold,#C8A94A)]
-                                        flex items-center justify-center
-                                        mb-4 sm:mb-5
-                                        transition-all duration-500
-                                        group-hover:bg-[var(--light-gold,#C8A94A)]
-                                        group-hover:text-white
-                                        group-hover:scale-110
-                                        group-hover:shadow-[0_6px_20px_rgba(200,169,74,0.35)]
-                                        relative z-10
-                                    "
+                                    className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[var(--light-gold,#C8A94A)]/10 text-[var(--light-gold,#C8A94A)] flex items-center justify-center mb-4 sm:mb-5 transition-all duration-500 group-hover:bg-[var(--light-gold,#C8A94A)] group-hover:text-white group-hover:scale-110 group-hover:shadow-[0_6px_20px_rgba(200,169,74,0.35)] relative z-10"
                                 >
                                     {item.icon}
                                 </div>
 
                                 <h4
-                                    className="
-                                        font-serif text-[0.95rem] sm:text-base
-                                        text-[#111] font-bold mb-2
-                                        group-hover:text-[var(--light-gold,#C8A94A)]
-                                        transition-colors duration-300
-                                        relative z-10
-                                    "
+                                    className="font-serif text-[0.95rem] sm:text-base text-[#111] font-bold mb-2 group-hover:text-[var(--light-gold,#C8A94A)] transition-colors duration-300 relative z-10"
                                 >
                                     {item.title}
                                 </h4>
 
                                 <p
-                                    className="
-                                        font-sans text-[0.78rem] sm:text-sm
-                                        text-[#666] leading-[1.8] font-light
-                                        relative z-10
-                                    "
+                                    className="font-sans text-[0.78rem] sm:text-sm text-[#666] leading-[1.8] font-light relative z-10"
                                 >
                                     {item.desc}
                                 </p>
@@ -138,19 +91,9 @@ const ExpertiseGrid = () => (
                 </div>
 
                 {/* Right Panel */}
-                <div className="mt-2 lg:mt-0 lg:pt-[4.5rem] flex flex-col">
+                <div className="mt-2 lg:mt-0 lg:pt-[4.5rem] flex flex-col" data-aos="fade-left" data-aos-delay="200">
                     <div
-                        className="
-                            relative flex flex-col justify-between
-                            flex-1
-                            p-7 sm:p-10 lg:p-11
-                            bg-[#111]
-                            border border-[var(--light-gold,#C8A94A)]/20
-                            rounded-[1.5rem] sm:rounded-[2rem]
-                            overflow-hidden
-                            shadow-[0_30px_70px_rgba(0,0,0,0.22)]
-                            min-h-[320px] sm:min-h-[380px]
-                        "
+                        className="relative flex flex-col justify-between flex-1 p-7 sm:p-10 lg:p-11 bg-[#111] border border-[var(--light-gold,#C8A94A)]/20 rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden shadow-[0_30px_70px_rgba(0,0,0,0.22)] min-h-[320px] sm:min-h-[380px]"
                     >
 
                         {/* Grid */}
@@ -170,12 +113,7 @@ const ExpertiseGrid = () => (
 
                         <div className="relative z-10">
                             <span
-                                className="
-                                    font-sans text-[0.62rem] uppercase
-                                    tracking-[0.38em]
-                                    text-[var(--light-gold,#C8A94A)]
-                                    font-bold block mb-3 sm:mb-4
-                                "
+                                className="font-sans text-[0.62rem] uppercase tracking-[0.38em] text-[var(--light-gold,#C8A94A)] font-bold block mb-3 sm:mb-4"
                             >
                                 Our Principle
                             </span>
@@ -201,13 +139,7 @@ const ExpertiseGrid = () => (
                                 {["Quality Supply", "On-Time Delivery", "Gulf Climate Rated"].map((tag) => (
                                     <span
                                         key={tag}
-                                        className="
-                                            font-sans text-[0.62rem] uppercase tracking-[0.18em]
-                                            text-[var(--light-gold,#C8A94A)]/80
-                                            border border-[var(--light-gold,#C8A94A)]/20
-                                            bg-[var(--light-gold,#C8A94A)]/[0.07]
-                                            px-3 py-1.5 rounded-full
-                                        "
+                                        className="font-sans text-[0.62rem] uppercase tracking-[0.18em] text-[var(--light-gold,#C8A94A)]/80 border border-[var(--light-gold,#C8A94A)]/20 bg-[var(--light-gold,#C8A94A)]/[0.07] px-3 py-1.5 rounded-full"
                                     >
                                         {tag}
                                     </span>
@@ -217,16 +149,7 @@ const ExpertiseGrid = () => (
 
                         {/* Footer */}
                         <div
-                            className="
-                                relative z-10
-                                pt-6 mt-6 sm:mt-8
-                                border-t border-white/[0.08]
-                                flex items-center justify-between
-                                text-[0.6rem]
-                                font-sans text-white/30
-                                tracking-[0.22em]
-                                uppercase
-                            "
+                            className="relative z-10 pt-6 mt-6 sm:mt-8 border-t border-white/[0.08] flex items-center justify-between text-[0.6rem] font-sans text-white/30 tracking-[0.22em] uppercase"
                         >
                             <span>Prestige Creations</span>
                             <span>Saudi Arabia</span>

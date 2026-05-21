@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 
 const PARTNERSHIPS = [
     {
@@ -24,39 +24,80 @@ const PARTNERSHIPS = [
     },
 ];
 
+const SLIDE_DURATION = 5000; // ms per slide
+
 const Partnerships = () => {
+    const [isMobile, setIsMobile] = useState(false);
     const [activeIndex, setActiveIndex] = useState(0);
     const [swipeOffset, setSwipeOffset] = useState(0);
     const [isSwiping, setIsSwiping] = useState(false);
-    const [isPaused, setIsPaused] = useState(false); // Controls auto-scroll pausing
+    const [isPaused, setIsPaused] = useState(false);
+    const [progress, setProgress] = useState(0); // 0–1, drives dot fill & smooth advance
 
     const touchStartRef = useRef(0);
     const totalItems = PARTNERSHIPS.length;
 
-    // --- AUTO SCROLL LOGIC ---
-    useEffect(() => {
-        // Don't auto-scroll if the user is currently interacting/swiping
-        if (isSwiping || isPaused) return;
+    // rAF-based smooth progress ticker
+    const rafRef = useRef(null);
+    const startTimeRef = useRef(null);
+    const pausedAtRef = useRef(null); // tracks elapsed when paused
 
-        const interval = setInterval(() => {
+    const tick = useCallback((timestamp) => {
+        if (!startTimeRef.current) startTimeRef.current = timestamp;
+        const elapsed = timestamp - startTimeRef.current;
+        const p = Math.min(elapsed / SLIDE_DURATION, 1);
+        setProgress(p);
+
+        if (p < 1) {
+            rafRef.current = requestAnimationFrame(tick);
+        } else {
+            // Advance slide
             setActiveIndex((prev) => (prev === totalItems - 1 ? 0 : prev + 1));
-        }, 5000);
+            setProgress(0);
+            startTimeRef.current = null;
+            rafRef.current = requestAnimationFrame(tick);
+        }
+    }, [totalItems]);
 
-        // Clean up the interval on unmount or state shift to prevent memory leaks
-        return () => clearInterval(interval);
-    }, [isSwiping, isPaused, totalItems]);
+    const startTimer = useCallback(() => {
+        if (rafRef.current) cancelAnimationFrame(rafRef.current);
+        startTimeRef.current = null;
+        rafRef.current = requestAnimationFrame(tick);
+    }, [tick]);
+
+    const stopTimer = useCallback(() => {
+        if (rafRef.current) cancelAnimationFrame(rafRef.current);
+        rafRef.current = null;
+    }, []);
+
+    // Kick off / pause based on state
+    useEffect(() => {
+        if (isSwiping || isPaused) {
+            stopTimer();
+        } else {
+            startTimer();
+        }
+        return () => stopTimer();
+    }, [isSwiping, isPaused, activeIndex, startTimer, stopTimer]);
+
+    useEffect(() => {
+        setIsMobile(window.innerWidth < 768);
+        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        window.addEventListener("resize", handleResize, { passive: true });
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     // Touch Mechanics
     const handleTouchStart = (e) => {
-        setIsPaused(true); // Pause auto-scroll immediately on touch
+        setIsPaused(true);
+        stopTimer();
         touchStartRef.current = e.touches[0].clientX;
         setIsSwiping(true);
     };
 
     const handleTouchMove = (e) => {
         if (!isSwiping) return;
-        const currentX = e.touches[0].clientX;
-        const diff = currentX - touchStartRef.current;
+        const diff = e.touches[0].clientX - touchStartRef.current;
         setSwipeOffset(diff);
     };
 
@@ -65,18 +106,22 @@ const Partnerships = () => {
         const swipeThreshold = 60;
 
         if (swipeOffset > swipeThreshold) {
-            // Swipe Right
             setActiveIndex((prev) => (prev === 0 ? totalItems - 1 : prev - 1));
         } else if (swipeOffset < -swipeThreshold) {
-            // Swipe Left
             setActiveIndex((prev) => (prev === totalItems - 1 ? 0 : prev + 1));
         }
         setSwipeOffset(0);
+        setProgress(0);
 
-        // Safely resume auto-scroll after a short delay following user interaction
-        setTimeout(() => {
-            setIsPaused(false);
-        }, 1000);
+        setTimeout(() => setIsPaused(false), 800);
+    };
+
+    const goToSlide = (idx) => {
+        setActiveIndex(idx);
+        setProgress(0);
+        setIsPaused(true);
+        stopTimer();
+        setTimeout(() => setIsPaused(false), 2000);
     };
 
     return (
@@ -95,11 +140,11 @@ const Partnerships = () => {
 
             <div className="main-container relative z-10 px-4 sm:px-8">
                 {/* Centered Header Content */}
-                <div className="max-w-3xl mb-16 md:mb-20 mx-auto text-center reveal">
+                <div className="max-w-3xl mb-16 md:mb-20 mx-auto text-center" data-aos="fade-up">
                     <span className="font-sans text-[0.72rem] uppercase tracking-[0.4em] text-light-gold font-black mb-4 block">
                         Certified & Authorized
                     </span>
-                    <h2 className="font-serif font-bold text-[clamp(2.2rem,4vw,3.6rem)] text-[#111] mb-6 leading-tight">
+                    <h2 className="section-heading text-[#111] mb-6">
                         Our Brand Partners
                     </h2>
                     <p className="font-sans text-sm sm:text-base text-[#555] leading-relaxed font-light max-w-2xl mx-auto">
@@ -107,27 +152,25 @@ const Partnerships = () => {
                     </p>
                 </div>
 
-                {/* Cylinder Showcase Workspace on Mobile / Static Grid on Desktop */}
+                {/* Cylinder Showcase on Mobile / Static Grid on Desktop */}
                 <div
                     onTouchStart={handleTouchStart}
                     onTouchMove={handleTouchMove}
                     onTouchEnd={handleTouchEnd}
-                    onMouseEnter={() => setIsPaused(true)} // Optional: pause on desktop hover
+                    onMouseEnter={() => setIsPaused(true)}
                     onMouseLeave={() => setIsPaused(false)}
-                    className="
-                        relative h-[480px] w-full max-w-[320px] sm:max-w-[360px] mx-auto touch-none
-                        md:max-w-none md:h-auto md:grid md:grid-cols-3 md:gap-10 lg:gap-12 md:mt-12
-                        [perspective:1000px] md:[perspective:none]
-                    "
+                    className="relative h-[480px] w-full max-w-[320px] sm:max-w-[360px] mx-auto touch-none md:max-w-none md:h-auto md:grid md:grid-cols-3 md:gap-10 lg:gap-12 md:mt-12 [perspective:1000px] md:[perspective:none]"
+                    data-aos="fade-up"
                 >
                     {PARTNERSHIPS.map((p, idx) => {
                         let offset = idx - activeIndex;
-
                         if (offset < -totalItems / 2) offset += totalItems;
                         if (offset > totalItems / 2) offset -= totalItems;
 
                         const baseAngle = offset * (360 / totalItems);
-                        const dynamicDragAngle = isSwiping && typeof window !== "undefined" ? (swipeOffset / window.innerWidth) * 120 : 0;
+                        const dynamicDragAngle = isSwiping && typeof window !== "undefined"
+                            ? (swipeOffset / window.innerWidth) * 120
+                            : 0;
                         const finalAngle = baseAngle + dynamicDragAngle;
 
                         const radiusDistance = 110;
@@ -143,23 +186,22 @@ const Partnerships = () => {
                             transform: `rotateY(${finalAngle}deg) translateZ(${radiusDistance}px) scale(${isFocusedCard ? 1 : 0.88})`,
                             opacity: Math.abs(offset) > 1 ? 0 : (isFocusedCard ? 1 : 0.45),
                             pointerEvents: isFocusedCard ? "auto" : "none",
-                            transition: isSwiping ? "none" : "all 600ms cubic-bezier(0.2, 0.8, 0.2, 1)",
+                            // Smooth on auto-advance (600ms ease), snappy on drag release (300ms)
+                            transition: isSwiping
+                                ? "none"
+                                : "transform 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+                            willChange: "transform, opacity",
                         };
 
                         return (
                             <div
                                 key={p.brand}
-                                className="
-                                    group rounded-3xl bg-gradient-to-br from-[#E6BE5A] via-[#ECC970] to-[#D9B048] text-[#111] 
-                                    border border-black/5 hover:border-black/20 transition-all duration-500 
-                                    shadow-[0_15px_40px_rgba(184,144,42,0.15)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.15)] 
-                                    md:hover:-translate-y-2 flex flex-col justify-between h-full text-center p-8
-                                    [backface-visibility:hidden] md:[backface-visibility:visible]
-                                "
-                                style={{
-                                    ...(typeof window !== "undefined" && window.innerWidth < 768 ? mobileCylinderStyle : {}),
-                                    transitionDelay: typeof window !== "undefined" && window.innerWidth >= 768 ? `${idx * 0.15}s` : undefined
-                                }}
+                                className="group rounded-3xl bg-gradient-to-br from-[#E6BE5A] via-[#ECC970] to-[#D9B048] text-[#111] border border-black/5 hover:border-black/20 transition-all duration-500 shadow-[0_15px_40px_rgba(184,144,42,0.15)] hover:shadow-[0_30px_60px_rgba(0,0,0,0.15)] md:hover:-translate-y-2 flex flex-col justify-between h-full text-center p-8 [backface-visibility:hidden] md:[backface-visibility:visible]"
+                                style={
+                                    isMobile
+                                        ? mobileCylinderStyle
+                                        : { transitionDelay: `${idx * 0.15}s` }
+                                }
                             >
                                 {/* Floating background number */}
                                 <div className="absolute right-6 top-6 text-7xl font-serif font-black text-black/[0.03] group-hover:text-black/10 group-hover:scale-110 transition-all duration-700 pointer-events-none select-none">
@@ -202,20 +244,29 @@ const Partnerships = () => {
                     })}
                 </div>
 
-                {/* Cylinder Dots */}
-                <div className="flex md:hidden justify-center gap-2 mt-8">
+                {/* Progress Dots — active dot fills like a timer */}
+                <div className="flex md:hidden justify-center gap-3 mt-8 items-center">
                     {PARTNERSHIPS.map((_, idx) => (
                         <button
                             key={idx}
-                            onClick={() => {
-                                setActiveIndex(idx);
-                                setIsPaused(true);
-                                setTimeout(() => setIsPaused(false), 2000);
-                            }}
-                            className={`h-1.5 rounded-full transition-all duration-300 ${activeIndex === idx ? "w-6 bg-light-gold" : "w-1.5 bg-light-gold/30"
-                                }`}
+                            onClick={() => goToSlide(idx)}
                             aria-label={`Go to slide ${idx + 1}`}
-                        />
+                            className="relative h-1.5 rounded-full overflow-hidden transition-all duration-300"
+                            style={{ width: activeIndex === idx ? "2rem" : "0.375rem" }}
+                        >
+                            {/* Track */}
+                            <span className="absolute inset-0 rounded-full bg-light-gold/30" />
+                            {/* Fill — animates with progress for the active dot */}
+                            {activeIndex === idx && (
+                                <span
+                                    className="absolute inset-y-0 left-0 rounded-full bg-light-gold"
+                                    style={{
+                                        width: `${progress * 100}%`,
+                                        // No CSS transition here — rAF drives this directly for smoothness
+                                    }}
+                                />
+                            )}
+                        </button>
                     ))}
                 </div>
             </div>

@@ -1,8 +1,14 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect, useRef } from "react";
 import TestimonialCard from "./TestimonialCard";
 
 // Testimonials.jsx
 const Testimonials = () => {
+  const [isPaused, setIsPaused] = useState(false);
+  const scrollContainerRef = useRef(null);
+  const animationFrameId = useRef(null);
+  const lastTime = useRef(0);
+
   const testimonials = [
 
     {
@@ -49,12 +55,47 @@ const Testimonials = () => {
     },
   ];
 
+  const doubleTestimonials = [...testimonials, ...testimonials];
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const speed = 0.035; // Pixels per millisecond
+
+    const animate = (time) => {
+      if (lastTime.current !== 0) {
+        const delta = time - lastTime.current;
+        if (!isPaused) {
+          container.scrollLeft += speed * delta;
+
+          const maxScroll = container.scrollWidth / 2;
+          if (container.scrollLeft >= maxScroll) {
+            container.scrollLeft -= maxScroll;
+          } else if (container.scrollLeft <= 0) {
+            container.scrollLeft += maxScroll;
+          }
+        }
+      }
+      lastTime.current = time;
+      animationFrameId.current = requestAnimationFrame(animate);
+    };
+
+    animationFrameId.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current);
+      }
+    };
+  }, [isPaused]);
+
   return (
     <section
       className="relative w-full flex justify-center items-center overflow-hidden py-10 sm:py-14 lg:py-12 px-0"
       id="testimonials"
     >
-      <div className="max-w-7xl mx-auto relative z-10 w-full">
+      <div className="relative z-10 w-full">
 
         {/* Header */}
         <div
@@ -67,7 +108,7 @@ const Testimonials = () => {
             <span className="w-5 sm:w-8 h-px bg-light-gold" />
           </span>
 
-          <h2 className="font-serif font-semibold text-[clamp(1.4rem,4vw,3.2rem)] text-[#111] leading-tight tracking-tight mt-1 sm:mt-2">
+          <h2 className="section-heading text-[#111] leading-tight tracking-tight mt-1 sm:mt-2">
             Hear from our clients
           </h2>
 
@@ -76,36 +117,24 @@ const Testimonials = () => {
 
         {/* Scroll track — edge-to-edge on mobile */}
         <div
-          className="flex gap-3 sm:gap-6 md:gap-8 overflow-x-auto pb-6 sm:pb-10 snap-x snap-mandatory scroll-smooth no-scrollbar px-4 sm:px-6 lg:px-10"
+          ref={scrollContainerRef}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          className="flex gap-3 sm:gap-6 md:gap-8 overflow-x-auto pb-6 sm:pb-10 no-scrollbar px-4 sm:px-6 lg:px-10 cursor-grab active:cursor-grabbing"
           style={{ WebkitOverflowScrolling: 'touch' }}
         >
-          {testimonials.map((item, idx) => (
+          {doubleTestimonials.map((item, idx) => (
             <div
               key={idx}
-              data-aos="fade-left"
-              data-aos-delay={idx * 80}
-              data-aos-duration="700"
-              className="snap-center"
+              className="flex-shrink-0"
             >
               <TestimonialCard item={item} />
             </div>
           ))}
-        </div>
-
-        {/* Progress dots — mobile only */}
-        <div className="flex justify-center gap-1.5 mt-1 sm:hidden">
-          {testimonials.map((_, i) => (
-            <span key={i}
-              className={`w-1.5 h-1.5 rounded-full transition-colors duration-300
-                ${i === 0 ? 'bg-light-gold' : 'bg-light-gold/20'}`}
-            />
-          ))}
-        </div>
-
-        {/* Scroll hint */}
-        <div className="flex justify-center items-center gap-2 mt-4 text-[0.62rem] sm:text-[0.75rem] text-[#999] uppercase tracking-widest pointer-events-none select-none font-sans font-medium">
-          <span>Scroll to explore</span>
-          <span className="animate-pulse">→</span>
         </div>
 
       </div>

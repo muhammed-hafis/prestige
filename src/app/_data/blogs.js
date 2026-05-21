@@ -143,7 +143,7 @@ export const blogsData = [
     category: 'BLOG',
     title: 'Types of Aluminium Windows & It\'s Brilliance',
     excerpt: 'From sliding and casement to tilt-and-turn and fixed picture windows — aluminum\'s versatility means there is a perfect window style for every space and architectural vision.',
-    image: '/images/blog-window-types.png',
+    image: '/images/blog-1.png',
     date: 'MAY 18, 2026',
     author: 'Prestige Systems',
     content: [

@@ -36,17 +36,17 @@ const CONTACT_DETAILS = [
 
 const ContactInfo = () => {
   return (
-    <div className="space-y-6 reveal reveal-d1 lg:pr-8">
+    <div className="space-y-6 lg:pr-8" data-aos="fade-right">
       <div>
         <span className="text-[#4b5563] uppercase text-[0.65rem] tracking-[0.3em] font-bold mb-2 flex items-center gap-3">
           PRESTIGE SYSTEM
           <span className="block w-[30px] h-[0.5px] bg-[#4b5563]"></span>
         </span>
-        <h2 className="font-serif text-[clamp(1.6rem,3vw,3.2rem)] font-semibold text-[#111] mb-3 tracking-tight uppercase leading-none">
+        <h2 className="section-heading text-[#111] mb-3 tracking-tight uppercase">
           Let&apos;s Build <br />
           <span className="text-[#374151]">Something Grand</span>
         </h2>
-        <p className="text-[0.9rem] text-[#2d3748] leading-relaxed max-w-md font-medium">
+        <p className="section-desc text-[#2d3748] font-medium max-w-md">
           Connect with our specialized architectural consultant team in Jeddah. We translate design drafts into precision pre-fabricated aluminium systems.
         </p>
       </div>

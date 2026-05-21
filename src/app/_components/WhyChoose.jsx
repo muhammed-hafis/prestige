@@ -19,10 +19,10 @@ const WhyChoose = () => {
 
         {/* ── Left Column: Text — appears below image on mobile, left on desktop ── */}
         <div
-          className="flex flex-col justify-center reveal order-1 px-6 sm:px-10 md:px-14 lg:pl-24 lg:pr-20 py-10 sm:py-14 lg:py-0"
+          className="flex flex-col justify-center order-1 px-6 sm:px-10 md:px-14 lg:pl-24 lg:pr-20 py-10 sm:py-14 lg:py-0"
         >
           <span
-            className="font-sans text-light-gold uppercase text-[0.7rem] mb-3 flex items-center gap-3 tracking-[0.4em] font-black"
+            className="section-label text-light-gold mb-3 flex items-center gap-3"
             data-aos="fade-right"
             data-aos-delay="100"
           >
@@ -31,8 +31,7 @@ const WhyChoose = () => {
           </span>
 
           <h2
-            className="font-serif font-semibold text-[#111] leading-[1.1] mb-6"
-            style={{ fontSize: 'clamp(1.5rem, 3vw, 3.2rem)' }}
+            className="section-heading text-[#111] mb-6"
             data-aos="fade-right"
             data-aos-delay="200"
           >
@@ -50,7 +49,7 @@ const WhyChoose = () => {
                 data-aos-delay={300 + i * 100}
               >
                 <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-light-gold/20 flex items-center justify-center shrink-0 group-hover:bg-light-gold group-hover:text-white transition-all duration-500 mt-1">
-                  <span className="text-light-gold group-hover:text-white text-[0.65rem] sm:text-[0.7rem] font-bold">
+                  <span className="text-light-gold group-hover:text-white text-[0.65rem] sm:text-[0.7] font-bold">
                     0{i + 1}
                   </span>
                 </div>
@@ -58,10 +57,7 @@ const WhyChoose = () => {
                   <h3 className="font-sans text-sm sm:text-base text-[#111] mb-1 uppercase tracking-[0.2em] font-bold">
                     {item.title}
                   </h3>
-                  <p
-                    className="font-sans text-[#333] leading-[1.7] font-light max-w-sm"
-                    style={{ fontSize: 'clamp(0.875rem, 1.2vw, 1.02rem)' }}
-                  >
+                  <p className="section-desc text-[#333] max-w-sm">
                     {item.desc}
                   </p>
                 </div>
@@ -71,11 +67,12 @@ const WhyChoose = () => {
 
           <Link
             href="/why-prestige"
-            className="px-10 py-4 bg-[#111] text-white uppercase transition-all duration-400 hover:bg-light-gold w-fit text-[0.7rem] tracking-[0.25em] font-bold no-underline shadow-lg hover:shadow-xl hover:translate-y-[-2px] active:translate-y-0"
+            className="link-architectural"
             data-aos="fade-up"
             data-aos-delay="500"
           >
-            Read More
+            <span>Read More</span>
+            <span className="arrow text-[0.95rem] font-light">→</span>
           </Link>
         </div>
 
@@ -85,7 +82,7 @@ const WhyChoose = () => {
           data-aos="fade-left"
           data-aos-duration="900"
         >
-          <div className="relative reveal group w-full h-full overflow-hidden transition-all duration-700 ease-out">
+          <div className="relative group w-full h-full overflow-hidden transition-all duration-700 ease-out">
             <img
               src="/images/interior_hero_main_1778838710819.png"
               alt="Precision Engineering"

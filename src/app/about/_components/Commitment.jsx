@@ -93,7 +93,7 @@ const Commitment = () => (
             <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
 
                 {/* Left Content */}
-                <div className="w-full lg:w-[40%]">
+                <div className="w-full lg:w-[40%]" data-aos="fade-right">
 
                     <span className="mb-4 sm:mb-5 inline-block rounded-full bg-black/25 px-4 py-1.5 section-label text-white">
                         Our Commitment
@@ -116,8 +116,8 @@ const Commitment = () => (
                 {/* Right Cards */}
                 <div className="flex w-full lg:w-[60%] flex-col sm:flex-row gap-5 sm:gap-6 lg:gap-8">
 
-                    {COMMITMENTS.map((item) => (
-                        <div key={item.title} className="flex-1">
+                    {COMMITMENTS.map((item, idx) => (
+                        <div key={item.title} className="flex-1" data-aos="fade-left" data-aos-delay={idx * 150}>
                             <CommitmentCard item={item} />
                         </div>
                     ))}

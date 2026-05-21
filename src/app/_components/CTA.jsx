@@ -28,7 +28,7 @@ const CTA = () => {
           </div>
 
           {/* Heading */}
-          <h2 className="font-serif font-semibold text-[clamp(1.6rem,3vw,3.2rem)] text-white mb-6 leading-tight" data-aos="fade-up" data-aos-delay="200">
+          <h2 className="section-heading text-white mb-6" data-aos="fade-up" data-aos-delay="200">
             Enhance your living.
           </h2>
 

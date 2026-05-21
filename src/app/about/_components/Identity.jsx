@@ -3,7 +3,7 @@ const Identity = () => (
         <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-0">
 
             {/* Left Content */}
-            <div className="w-full lg:w-1/2 px-5 sm:px-8 md:px-12 lg:pl-[7vw] xl:pl-[10vw] lg:pr-10 order-2 lg:order-1">
+            <div className="w-full lg:w-1/2 px-5 sm:px-8 md:px-12 lg:pl-[7vw] xl:pl-[10vw] lg:pr-10 order-2 lg:order-1" data-aos="fade-right">
 
                 <p className="mb-4 sm:mb-5 section-label text-light-gold">
                     Who We Are
@@ -43,7 +43,7 @@ const Identity = () => (
             </div>
 
             {/* Right Image */}
-            <div className="w-full lg:w-1/2 order-1 lg:order-2">
+            <div className="w-full lg:w-1/2 order-1 lg:order-2" data-aos="fade-left">
                 <div className="relative group overflow-hidden h-[280px] sm:h-[420px] md:h-[520px] lg:h-[650px]">
 
                     <img

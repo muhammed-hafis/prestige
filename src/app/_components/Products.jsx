@@ -18,21 +18,18 @@ const Products = () => {
             data-aos="fade-up"
           >
             <div className="max-w-2xl">
-              <p className="font-sans text-[0.62rem] sm:text-[0.7rem] uppercase text-light-gold mb-2 sm:mb-3 flex items-center gap-3 font-black tracking-[0.35em]">
+              <p className="section-label text-light-gold mb-2 sm:mb-3 flex items-center gap-3">
                 <span className="w-5 sm:w-8 h-px bg-light-gold" />
                 Our Selection
               </p>
-              <h2
-                className="font-serif font-semibold text-[#111] leading-[1.1]"
-                style={{ fontSize: 'clamp(1.5rem, 3vw, 3.2rem)' }}
-              >
+              <h2 className="section-heading text-[#111]">
                 Explore our{' '}
                 <span className="font-serif text-light-gold">Pillars</span>
               </h2>
             </div>
 
             <div className="hidden lg:block text-right pb-2 max-w-xs">
-              <p className="font-sans text-[1rem] text-[#666] font-light leading-relaxed">
+              <p className="section-desc text-[#666]">
                 Meticulously engineered systems designed to harmonize with
                 contemporary architectural visions.
               </p>
@@ -41,15 +38,16 @@ const Products = () => {
         </div>
 
         {/* ── Mobile: 2-column card grid ── */}
-        <div className="lg:hidden main-container px-4 sm:px-8">
+        <div className="lg:hidden w-full">
           <div className="grid grid-cols-2 gap-3 sm:gap-4">
             {productCategories.map((product, idx) => (
               <Link
                 key={product.id}
                 href={`/products/${product.id}`}
                 className="relative aspect-[3/4] overflow-hidden group rounded-sm"
-                data-aos="fade-up"
-                data-aos-delay={idx * 80}
+                data-aos={idx % 2 === 0 ? 'fade-right' : 'fade-left'}
+                data-aos-delay={idx * 120}
+                data-aos-duration="700"
               >
                 <img
                   src={product.img}
@@ -66,10 +64,7 @@ const Products = () => {
 
                 {/* Title */}
                 <div className="absolute bottom-3 left-3 right-3">
-                  <h3
-                    className="font-serif font-semibold text-white leading-tight mb-1"
-                    style={{ fontSize: 'clamp(0.78rem, 3.5vw, 1rem)' }}
-                  >
+                  <h3 className="section-subheading text-white mb-1">
                     {product.title}
                   </h3>
                   <span className="font-sans text-[0.48rem] sm:text-[0.56rem] text-white/50 uppercase tracking-widest font-bold">
@@ -112,15 +107,12 @@ const Products = () => {
 
               {/* Content block */}
               <div className="absolute bottom-8 left-8 right-8">
-                <h3
-                  className="font-serif font-semibold text-white leading-tight mb-4"
-                  style={{ fontSize: 'clamp(1rem, 2vw, 2.8rem)' }}
-                >
+                <h3 className="section-subheading text-white mb-4">
                   {product.title}
                 </h3>
 
                 <div className="max-h-0 overflow-hidden group-hover:max-h-40 transition-all duration-700 delay-100">
-                  <p className="font-sans text-[1rem] text-white/70 mb-5 max-w-sm font-light leading-relaxed">
+                  <p className="section-desc text-white/70 mb-5 max-w-sm">
                     {product.description}
                   </p>
                   <div className="flex items-center gap-3">

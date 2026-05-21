@@ -53,16 +53,13 @@ const Navbar = () => {
         {/* Logo */}
         <Link
           href="/"
-          className="text-lg sm:text-xl tracking-[0.3em] text-[#111] font-serif relative flex-shrink-0"
+          className="relative flex-shrink-0 flex items-center"
           data-aos="fade-down"
           data-aos-duration="600"
           data-aos-delay="350"
           onClick={closeMenu}
         >
-          <span className="relative">
-            PRESTIGE
-            <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-light-gold to-transparent opacity-50" />
-          </span>
+          <img src="/logo.avif" alt="Prestige" className="h-14 sm:h-16 md:h-18 w-auto object-contain" />
         </Link>
 
         {/* Desktop nav links */}
@@ -130,12 +127,16 @@ const Navbar = () => {
               <Link
                 href={item.href}
                 onClick={closeMenu}
-                className="flex items-center gap-3 text-[0.75rem] uppercase tracking-[0.25em] font-sans text-[#4b5563] hover:text-[#111] py-4 border-b border-light-gold/10 transition-colors duration-200 group"
+                className="flex items-center gap-3 text-[0.75rem] uppercase tracking-[0.25em] font-sans text-[#4b5563] hover:text-[#111] py-4 border-b border-light-gold/10 group"
                 style={{
-                  transitionDelay: menuOpen ? `${80 + idx * 40}ms` : "0ms",
                   opacity: menuOpen ? 1 : 0,
                   transform: menuOpen ? "translateX(0)" : "translateX(12px)",
-                  transition: `opacity 0.35s ease ${80 + idx * 40}ms, transform 0.35s ease ${80 + idx * 40}ms, color 0.2s`,
+                  transitionProperty: "opacity, transform, color",
+                  transitionDuration: "0.35s, 0.35s, 0.2s",
+                  transitionTimingFunction: "ease, ease, ease",
+                  transitionDelay: menuOpen
+                    ? `${80 + idx * 40}ms, ${80 + idx * 40}ms, 0ms`
+                    : "0ms, 0ms, 0ms",
                 }}
               >
                 <span className="w-0 group-hover:w-3 h-[1.5px] bg-light-gold transition-all duration-300 flex-shrink-0" />
@@ -146,10 +147,8 @@ const Navbar = () => {
         </ul>
 
         {/* Bottom logo watermark */}
-        <div className="mt-auto text-center">
-          <span className="text-[0.65rem] tracking-[0.4em] text-[#4b5563]/40 font-serif uppercase">
-            PRESTIGE
-          </span>
+        <div className="mt-auto flex justify-center">
+          <img src="/logo.avif" alt="Prestige Logo" className="h-8 sm:h-9 w-auto object-contain opacity-40 grayscale" />
         </div>
       </div>
     </>

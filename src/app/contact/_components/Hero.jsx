@@ -12,13 +12,13 @@ const Hero = () => {
         <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
       </div>
       
-      <div className="main-container relative z-10 text-center px-4 sm:px-8 reveal">
-        <span className="text-light-gold uppercase text-[0.7rem] mb-4 flex items-center justify-center gap-3 tracking-[0.4em]">
+      <div className="main-container relative z-10 text-center px-4 sm:px-8" data-aos="fade-up">
+        <span className="section-label text-light-gold mb-4 flex items-center justify-center gap-3">
           <span className="block w-[30px] h-[0.5px] bg-light-gold"></span>
           Get In Touch
           <span className="block w-[30px] h-[0.5px] bg-light-gold"></span>
         </span>
-        <h1 className="text-[clamp(2.5rem,6vw,4.5rem)] font-semibold text-white tracking-tight uppercase">
+        <h1 className="page-heading text-white uppercase">
           Contact <span className="text-light-gold">Us</span>
         </h1>
       </div>

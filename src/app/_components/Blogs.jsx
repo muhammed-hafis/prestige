@@ -29,11 +29,11 @@ const Blogs = () => {
               </span>
             </div>
 
-            <h2 className="font-serif font-semibold text-[#111] leading-tight text-[clamp(1.4rem,5vw,3.5rem)] mb-2 sm:mb-4">
+            <h2 className="section-heading text-[#111] mb-2 sm:mb-4">
               News &amp; Blogs
             </h2>
 
-            <p className="text-[0.78rem] sm:text-base lg:text-[1.05rem] text-[#666] leading-relaxed max-w-xl">
+            <p className="section-desc text-[#666] max-w-xl">
               Stay informed and inspired with Prestige&apos;s latest
               architectural insights and luxury industry trends.
             </p>

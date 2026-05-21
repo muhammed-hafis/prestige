@@ -14,7 +14,7 @@ const About = () => {
           data-aos="fade-right"
           data-aos-duration="900"
         >
-          <div className="relative reveal group w-full h-full overflow-hidden transition-all duration-700 ease-out">
+          <div className="relative group w-full h-full overflow-hidden transition-all duration-700 ease-out">
             <img
               src="/images/about-wide.png"
               alt="Modern Interior"
@@ -47,7 +47,7 @@ const About = () => {
         </div>
 
         {/* ── Right Column: Text ───────────────────────────────────────────── */}
-        <div className="flex flex-col justify-center reveal px-6 sm:px-10 md:px-14 lg:pl-20 lg:pr-24 py-10 sm:py-14 lg:py-0 order-1 lg:order-2">
+        <div className="flex flex-col justify-center px-6 sm:px-10 md:px-14 lg:pl-20 lg:pr-24 py-10 sm:py-14 lg:py-0 order-1 lg:order-2">
 
           <span
             className="font-sans text-light-gold uppercase text-[0.7rem] mb-3 flex items-center gap-3 tracking-[0.4em] font-black"
@@ -59,8 +59,7 @@ const About = () => {
           </span>
 
           <h2
-            className="font-serif font-semibold text-[#111] leading-[1.1] mb-6"
-            style={{ fontSize: 'clamp(1.5rem, 3vw, 3.2rem)' }}
+            className="section-heading text-[#111] mb-6"
             data-aos="fade-left"
             data-aos-delay="200"
           >
@@ -70,8 +69,7 @@ const About = () => {
           </h2>
 
           <p
-            className="font-sans text-[#333] leading-[1.8] font-light mb-8 max-w-lg"
-            style={{ fontSize: 'clamp(0.95rem, 1.4vw, 1.2rem)' }}
+            className="section-desc text-[#333] mb-8 max-w-lg"
             data-aos="fade-left"
             data-aos-delay="300"
           >
@@ -83,11 +81,12 @@ const About = () => {
 
           <Link
             href="/about"
-            className="px-10 py-4 bg-[#111] text-white uppercase transition-all duration-400 hover:bg-light-gold w-fit text-[0.7rem] tracking-[0.25em] font-bold no-underline shadow-lg hover:shadow-xl hover:translate-y-[-2px] active:translate-y-0"
+            className="link-architectural"
             data-aos="fade-up"
             data-aos-delay="400"
           >
-            Discover More
+            <span>Discover More</span>
+            <span className="arrow text-[0.95rem] font-light">→</span>
           </Link>
         </div>
 

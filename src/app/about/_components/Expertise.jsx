@@ -47,9 +47,13 @@ const TimelineItem = ({ item, index }) => {
     const isEven = index % 2 === 0;
 
     return (
-        <div className={`relative flex flex-col md:flex-row items-center w-full my-4 reveal ${
-            isEven ? "md:justify-start" : "md:justify-end"
-        }`}>
+        <div 
+            className={`relative flex flex-col md:flex-row items-center w-full my-4 ${
+                isEven ? "md:justify-start" : "md:justify-end"
+            }`}
+            data-aos={isEven ? "fade-right" : "fade-left"}
+            data-aos-delay={index * 100}
+        >
             {/* Timeline node connection dot on the axis line */}
             <div className="absolute left-6 md:left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-white border-2 border-[#B8902A] flex items-center justify-center z-20 shadow-sm transition-all duration-500 group-hover:scale-110">
                 <div className="w-2.5 h-2.5 rounded-full bg-[#B8902A] animate-pulse" />
@@ -93,7 +97,7 @@ const Expertise = () => (
 
         <div className="main-container px-4 sm:px-8 relative z-10">
             {/* Heading */}
-            <div className="text-center max-w-2xl mx-auto mb-12 reveal">
+            <div className="text-center max-w-2xl mx-auto mb-12" data-aos="fade-up">
                 <p className="mb-4 sm:mb-5 section-label text-[#B8902A]">
                     Execution Timeline
                 </p>
