@@ -1,27 +1,30 @@
-const BRANDS = [
+import React from 'react';
+
+const ALLIANCES = [
     {
-        name: "TOSTEM",
-        label: "Japanese Engineering",
-        desc: "Precision pre-fabricated aluminium systems recognized for factory-controlled quality and consistent performance in windows and doors.",
+        name: "TOSTEM (Japan)",
+        label: "Exterior Systems",
+        desc: "Factory-prefabricated aluminium window and sliding door systems recognized globally for extreme dimensional accuracy and maximum wind-load resistance. Perfect for contemporary architecture.",
         logo: "/partners/tostem.avif",
     },
     {
-        name: "OZONE",
-        label: "International Leader",
-        desc: "A pioneer in architectural hardware and interior solutions, offering functional and design-driven products for modern spaces.",
-        logo: "/partners/ozone.avif",
+        name: "ALAMIN (Regional)",
+        label: "Thermal Optimization",
+        desc: "Advanced, insulated thermal break aluminium profiles engineered specifically to block intense desert heat, minimize solar heat gain, and drastically lower HVAC energy costs.",
+        logo: "/partners/al-amin.avif",
     },
     {
-        name: "AL AMIN",
-        label: "Regional Expert",
-        desc: "Trusted thermal aluminium systems engineered to meet the specific climatic and energy-efficiency requirements of Saudi Arabia.",
-        logo: "/partners/al-amin.avif",
+        name: "OZONE (International)",
+        label: "Interior Luxury",
+        desc: "Premium structural glass hardware, minimalist interior partitions, and high-performance glass fittings designed to create expansive, seamless, and modern interior spaces.",
+        logo: "/partners/ozone.avif",
     },
 ];
 
-const BrandCard = ({ brand, index }) => (
+const AllianceCard = ({ alliance, index }) => (
     <div
         className="group relative flex flex-col items-center text-center overflow-hidden rounded-2xl border border-[#B8902A]/10 bg-white p-6 sm:p-7 lg:p-8 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-[#B8902A]/40 hover:shadow-[0_20px_40px_rgba(184,144,42,0.08)]"
+        data-transform="translateY(0)"
         data-aos="fade-up"
         data-aos-delay={index * 120}
     >
@@ -31,26 +34,26 @@ const BrandCard = ({ brand, index }) => (
         {/* Logo */}
         <div className="mb-5 flex h-16 sm:h-20 w-full items-center justify-center">
             <img
-                src={brand.logo}
-                alt={brand.name}
+                src={alliance.logo}
+                alt={alliance.name}
                 className="max-h-full max-w-[140px] sm:max-w-[170px] object-contain grayscale brightness-90 transition-all duration-500 group-hover:grayscale-0 group-hover:brightness-100"
             />
         </div>
 
         {/* Label */}
         <p className="mb-3 font-sans text-[0.62rem] sm:text-[0.7rem] font-black uppercase tracking-[0.22em] sm:tracking-[0.28em] text-[#B8902A]">
-            {brand.label}
+            {alliance.label}
         </p>
 
         {/* Description */}
         <p className="max-w-sm font-sans text-sm sm:text-[15px] lg:text-base leading-relaxed sm:leading-[1.9] text-[#555] font-light">
-            {brand.desc}
+            {alliance.desc}
         </p>
     </div>
 );
 
-const BrandPartners = () => (
-    <section className="relative overflow-hidden bg-[#E6BE5A] py-14 sm:py-16 lg:py-24 xl:py-28">
+const GlobalAlliances = () => (
+    <section className="relative overflow-hidden bg-[#E6BE5A] py-10 lg:py-14">
 
         {/* Background Texture */}
         <div className="pointer-events-none absolute inset-0 opacity-[0.06] [background-image:radial-gradient(#111_0.5px,transparent_0.5px)] [background-size:26px_26px]" />
@@ -65,14 +68,14 @@ const BrandPartners = () => (
             {/* Heading */}
             <div className="mx-auto mb-12 sm:mb-14 lg:mb-16 max-w-3xl text-center" data-aos="fade-up">
 
-                <span className="mb-4 sm:mb-5 inline-block rounded-full bg-black/20 px-4 py-1.5 section-label text-white">
-                    Global Alliances
+                <span className="mb-4 sm:mb-5 inline-block rounded-full bg-black/20 px-4 py-1.5 section-label text-white uppercase tracking-[0.25em] font-bold">
+                    GLOBAL ALLIANCES
                 </span>
 
-                <h2 className="mb-5 sm:mb-6 section-heading text-[#111]">
-                    Certified & Authorized <br className="hidden sm:block" />
-                    <span className="font-normal text-[#111]/70">
-                        Brand Partnerships
+                <h2 className="section-heading text-[#111] mb-4 sm:mb-6">
+                    Certified World-Class Technology. <br className="hidden sm:block" />
+                    <span className="text-white font-bold">
+                        Regionally Engineered.
                     </span>
                 </h2>
 
@@ -85,12 +88,12 @@ const BrandPartners = () => (
 
             {/* Cards Grid */}
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-8">
-                {BRANDS.map((brand, idx) => (
-                    <BrandCard key={brand.name} brand={brand} index={idx} />
+                {ALLIANCES.map((alliance, idx) => (
+                    <AllianceCard key={alliance.name} alliance={alliance} index={idx} />
                 ))}
             </div>
         </div>
     </section>
 );
 
-export default BrandPartners;
+export default GlobalAlliances;

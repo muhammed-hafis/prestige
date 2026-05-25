@@ -5,12 +5,12 @@ const SERVICES = [
   "Technical Consultant",
   "Showroom Visit",
   "Request Quotation",
-  "After-Sales Service",
+  "After -Sales Service",
   "Others"
 ];
 
 const ContactForm = () => {
-  const [selectedServices, setSelectedServices] = useState([]);
+  const [selectedService, setSelectedService] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     country: '',
@@ -19,14 +19,6 @@ const ContactForm = () => {
     message: ''
   });
 
-  const toggleService = (service) => {
-    if (selectedServices.includes(service)) {
-      setSelectedServices(selectedServices.filter(s => s !== service));
-    } else {
-      setSelectedServices([...selectedServices, service]);
-    }
-  };
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -34,18 +26,17 @@ const ContactForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Contact Enquiry Submitted:", { ...formData, services: selectedServices });
+    console.log("Contact Message Submitted:", { ...formData, service: selectedService });
     
     // Construct WhatsApp message
-    const servicesList = selectedServices.length > 0 ? selectedServices.join(', ') : 'None';
-    const messageText = `*New Enquiry from Prestige Website*
+    const messageText = `*New Contact Page Message*
 ---------------------------------------
 *Name:* ${formData.name}
 *Country:* ${formData.country}
 *Phone:* ${formData.phone}
 *Email:* ${formData.email || 'N/A'}
-*Services:* ${servicesList}
-*Project Details:* ${formData.message || 'N/A'}`;
+*Service Required:* ${selectedService || 'None'}
+*Project Scope:* ${formData.message || 'N/A'}`;
 
     const encodedText = encodeURIComponent(messageText);
     const whatsappUrl = `https://wa.me/966573828134?text=${encodedText}`;
@@ -61,15 +52,15 @@ const ContactForm = () => {
       email: '',
       message: ''
     });
-    setSelectedServices([]);
+    setSelectedService('');
   };
 
   return (
-    <div className="bg-white/95 backdrop-blur-md p-6 sm:p-10 relative overflow-hidden h-full flex flex-col justify-center">
+    <div className="w-full relative overflow-hidden h-full flex flex-col justify-center bg-transparent">
 
       <div className="mb-6 sm:mb-8">
         <span className="text-light-gold uppercase text-[0.62rem] tracking-[0.25em] font-bold mb-2 block">
-          SECURE CHANNEL
+          CONTACT US
         </span>
         <h2 className="font-serif text-2xl sm:text-3xl text-[#111] tracking-wider uppercase leading-none m-0">
           Send a <span className="font-sans font-normal text-light-gold">Message</span>
@@ -77,121 +68,118 @@ const ContactForm = () => {
         <div className="w-10 h-[1.5px] bg-light-gold/30 mt-3 sm:mt-4"></div>
       </div>
 
-      <form className="space-y-5" onSubmit={handleSubmit}>
+      <form className="space-y-4" onSubmit={handleSubmit}>
         {/* Name and Country fields */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          <div className="space-y-1.5">
-            <label className="text-[0.6rem] uppercase tracking-[0.2em] font-bold text-black/55 ml-1">
-              Your Name *
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="space-y-1">
+            <label className="text-[0.78rem] font-bold text-[#333] ml-1 block mb-1">
+              Name
             </label>
             <input 
               type="text" 
               name="name"
-              placeholder="e.g. Alexander Wright"
+              placeholder="Name"
               value={formData.name}
               onChange={handleInputChange}
-              className="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-xl py-3.5 px-4 focus:border-light-gold focus:bg-white focus:ring-1 focus:ring-light-gold/20 outline-none transition-all duration-300 placeholder:text-black/25 text-[#111] text-[0.78rem] shadow-[inset_0_1px_2px_rgba(0,0,0,0.01)] font-semibold"
+              className="w-full bg-white border border-[#e2e8f0] rounded-xl py-3 px-4 focus:border-light-gold focus:bg-white focus:ring-1 focus:ring-light-gold/20 outline-none transition-all duration-300 placeholder:text-[#a0aec0] text-[#111] text-xs font-semibold"
               required
             />
           </div>
           
-          <div className="space-y-1.5">
-            <label className="text-[0.6rem] uppercase tracking-[0.2em] font-bold text-black/55 ml-1">
-              Country *
+          <div className="space-y-1">
+            <label className="text-[0.78rem] font-bold text-[#333] ml-1 block mb-1">
+              Country
             </label>
             <input 
               type="text" 
               name="country"
-              placeholder="e.g. Saudi Arabia"
+              placeholder="Country"
               value={formData.country}
               onChange={handleInputChange}
-              className="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-xl py-3.5 px-4 focus:border-light-gold focus:bg-white focus:ring-1 focus:ring-light-gold/20 outline-none transition-all duration-300 placeholder:text-black/25 text-[#111] text-[0.78rem] shadow-[inset_0_1px_2px_rgba(0,0,0,0.01)] font-semibold"
+              className="w-full bg-white border border-[#e2e8f0] rounded-xl py-3 px-4 focus:border-light-gold focus:bg-white focus:ring-1 focus:ring-light-gold/20 outline-none transition-all duration-300 placeholder:text-[#a0aec0] text-[#111] text-xs font-semibold"
               required
             />
           </div>
         </div>
 
         {/* Phone and Email fields */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          <div className="space-y-1.5">
-            <label className="text-[0.6rem] uppercase tracking-[0.2em] font-bold text-black/55 ml-1">
-              Phone Number *
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="space-y-1">
+            <label className="text-[0.78rem] font-bold text-[#333] ml-1 block mb-1">
+              Phone *
             </label>
             <input 
               type="tel" 
               name="phone"
-              placeholder="e.g. +966 50 000 0000"
+              placeholder="000-000-0000"
               value={formData.phone}
               onChange={handleInputChange}
-              className="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-xl py-3.5 px-4 focus:border-light-gold focus:bg-white focus:ring-1 focus:ring-light-gold/20 outline-none transition-all duration-300 placeholder:text-black/25 text-[#111] text-[0.78rem] shadow-[inset_0_1px_2px_rgba(0,0,0,0.01)] font-semibold"
+              className="w-full bg-white border border-[#e2e8f0] rounded-xl py-3 px-4 focus:border-light-gold focus:bg-white focus:ring-1 focus:ring-light-gold/20 outline-none transition-all duration-300 placeholder:text-[#a0aec0] text-[#111] text-xs font-semibold"
               required
             />
           </div>
           
-          <div className="space-y-1.5">
-            <label className="text-[0.6rem] uppercase tracking-[0.2em] font-bold text-black/55 ml-1">
-              E-mail Address *
+          <div className="space-y-1">
+            <label className="text-[0.78rem] font-bold text-[#333] ml-1 block mb-1">
+              E-mail Address
             </label>
             <input 
               type="email" 
               name="email"
-              placeholder="e.g. alex@corporate.com"
+              placeholder="Enter Email"
               value={formData.email}
               onChange={handleInputChange}
-              className="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-xl py-3.5 px-4 focus:border-light-gold focus:bg-white focus:ring-1 focus:ring-light-gold/20 outline-none transition-all duration-300 placeholder:text-black/25 text-[#111] text-[0.78rem] shadow-[inset_0_1px_2px_rgba(0,0,0,0.01)] font-semibold"
+              className="w-full bg-white border border-[#e2e8f0] rounded-xl py-3 px-4 focus:border-light-gold focus:bg-white focus:ring-1 focus:ring-light-gold/20 outline-none transition-all duration-300 placeholder:text-[#a0aec0] text-[#111] text-xs font-semibold"
               required
             />
           </div>
         </div>
 
-        {/* Required Services interactive Tag Grid */}
-        <div className="space-y-2">
-          <label className="text-[0.6rem] uppercase tracking-[0.2em] font-bold text-black/55 ml-1">
-            Required services * (Select all that apply)
-          </label>
-          <div className="flex flex-wrap gap-2.5">
-            {SERVICES.map((service) => {
-              const isSelected = selectedServices.includes(service);
-              return (
-                <button
-                  key={service}
-                  type="button"
-                  onClick={() => toggleService(service)}
-                  className={`py-2 px-3.5 border text-[0.68rem] font-bold uppercase tracking-wider transition-all duration-300 rounded-xl cursor-pointer select-none text-center ${
-                    isSelected 
-                      ? 'bg-light-gold border-light-gold text-white shadow-[0_5px_15px_rgba(197,160,40,0.2)]' 
-                      : 'bg-[#f8f9fa] border-[#e2e8f0] text-[#111]/85 hover:border-light-gold/45 hover:text-black'
-                  }`}
-                >
-                  {service}
-                </button>
-              );
-            })}
-          </div>
+        {/* Services Dropdown */}
+        <div className="space-y-1 pt-1">
+          <select
+            name="service"
+            value={selectedService}
+            onChange={(e) => setSelectedService(e.target.value)}
+            className="w-full bg-white border border-[#e2e8f0] rounded-xl py-3 px-4 focus:border-[#3b82f6] focus:bg-white focus:ring-1 focus:ring-[#3b82f6]/20 outline-none transition-all duration-300 text-[#718096] text-xs font-semibold cursor-pointer"
+            required
+          >
+            <option value="">Choose Services</option>
+            {SERVICES.map((service) => (
+              <option key={service} value={service}>
+                {service}
+              </option>
+            ))}
+          </select>
         </div>
 
-        {/* Message field */}
-        <div className="space-y-1.5">
-          <label className="text-[0.6rem] uppercase tracking-[0.2em] font-bold text-black/55 ml-1">
-            Describe your Architectural Project
+        {/* Project Scope Description */}
+        <div className="space-y-1">
+          <label className="text-[0.78rem] font-bold text-[#333] ml-1 block mb-1">
+            Project Scope & Description
           </label>
           <textarea 
             name="message"
-            placeholder="Type your specifications, configurations, series requests or blueprints description here..."
-            rows={4}
+            placeholder="Describe your architectural needs, dimensions, series requests or specific system needs..."
+            rows={3}
             value={formData.message}
             onChange={handleInputChange}
-            className="w-full bg-[#f8f9fa] border border-[#e2e8f0] rounded-xl py-3.5 px-4 focus:border-light-gold focus:bg-white focus:ring-1 focus:ring-light-gold/20 outline-none transition-all duration-300 placeholder:text-black/25 text-[#111] text-[0.78rem] shadow-[inset_0_1px_2px_rgba(0,0,0,0.01)] resize-none font-semibold"
+            className="w-full bg-white border border-[#e2e8f0] rounded-xl py-3 px-4 focus:border-light-gold focus:bg-white focus:ring-1 focus:ring-light-gold/20 outline-none transition-all duration-300 placeholder:text-[#a0aec0] text-[#111] text-xs resize-none font-semibold"
           />
         </div>
 
-        {/* Submit button with sweep animation */}
+        {/* Submit button */}
         <button 
           type="submit"
-          className="w-full bg-[#111] text-white py-3.5 sm:py-4.5 rounded-xl font-bold uppercase tracking-[0.25em] text-[0.68rem] hover:bg-light-gold transition-all duration-500 shadow-xl active:scale-[0.98] group relative overflow-hidden mt-4 cursor-pointer border border-[#111] hover:border-light-gold"
+          className="w-full bg-[#111] text-white py-3.5 rounded-xl font-bold uppercase tracking-[0.25em] text-[0.65rem] hover:bg-light-gold transition-all duration-500 shadow-md active:scale-[0.98] group relative overflow-hidden mt-2 cursor-pointer border border-[#111] hover:border-light-gold"
         >
-          <span className="relative z-10">Submit Inquiry</span>
-          <div className="absolute inset-0 bg-light-gold -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+          <span className="relative z-10 flex items-center justify-center gap-2">
+            Submit Message
+            <svg className="w-3.5 h-3.5 transition-transform duration-500 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </span>
+          <div className="absolute inset-0 bg-light-gold -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out"></div>
         </button>
       </form>
     </div>

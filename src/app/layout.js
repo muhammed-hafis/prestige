@@ -4,6 +4,7 @@ import Footer from "@/components/layout/Footer";
 import EnquirySticky from "@/components/layout/EnquirySticky";
 import AOSInit from "@/components/layout/AOSInit";
 import PageLoader from "@/components/layout/PageLoader";
+import SmoothScroll from "@/components/layout/SmoothScroll";
 
 export const metadata = {
   title: "Prestige | Premium Aluminium Doors & Windows",
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
       <body className="min-h-screen flex flex-col">
         <EnquiryProvider>
           <PageLoader />
+          <SmoothScroll />
           <AOSInit />
           <Navbar/>
           <main className="flex-1">

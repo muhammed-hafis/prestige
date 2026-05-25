@@ -2,12 +2,14 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { productCategories } from "../../app/_data/products";
 
 const Navbar = () => {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
 
   const navItems = [
     { name: "Home",          href: "/" },
@@ -36,7 +38,10 @@ const Navbar = () => {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
-  const closeMenu = () => setMenuOpen(false);
+  const closeMenu = () => {
+    setMenuOpen(false);
+    setMobileProductsOpen(false);
+  };
 
   // Navbar is visible immediately on other pages, or after scroll threshold on home
   const isVisible = !isHome || scrolled;
@@ -45,18 +50,11 @@ const Navbar = () => {
     <>
       <nav
         className={`fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 w-[92%] sm:w-[95%] max-w-[1440px] z-[1000] flex justify-between items-center rounded-full py-3 px-5 sm:px-8 lg:px-10 bg-[var(--background)]/80 backdrop-blur-xl border border-light-gold/20 transition-all duration-500 ${scrolled ? "shadow-xl" : "shadow-lg"} ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-24 pointer-events-none"}`}
-        data-aos={isHome ? undefined : "fade-down"}
-        data-aos-duration="700"
-        data-aos-delay="200"
-        data-aos-easing="ease-out-quart"
       >
         {/* Logo */}
         <Link
           href="/"
           className="relative flex-shrink-0 flex items-center"
-          data-aos="fade-down"
-          data-aos-duration="600"
-          data-aos-delay="350"
           onClick={closeMenu}
         >
           <img src="/logo.avif" alt="Prestige" className="h-14 sm:h-16 md:h-18 w-auto object-contain" />
@@ -67,17 +65,79 @@ const Navbar = () => {
           {navItems.map((item, idx) => (
             <li
               key={item.name}
-              data-aos="fade-down"
-              data-aos-duration="500"
-              data-aos-delay={400 + idx * 60}
+              className="relative group py-2"
             >
-              <Link
-                href={item.href}
-                className="text-[0.75rem] xl:text-[0.8rem] uppercase relative group text-[#4b5563] hover:text-[#111] tracking-widest font-sans transition-colors duration-200"
-              >
-                {item.name}
-                <span className="absolute bottom-[-8px] left-0 w-0 h-[2px] bg-light-gold transition-all duration-300 group-hover:w-full" />
-              </Link>
+              {item.name === "Products" ? (
+                <>
+                  <Link
+                    href={item.href}
+                    className="text-[0.75rem] xl:text-[0.8rem] uppercase relative text-[#4b5563] hover:text-[#111] tracking-widest font-sans transition-colors duration-200 flex items-center gap-1"
+                  >
+                    {item.name}
+                    <svg
+                      className="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-180 text-current"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                    <span className="absolute bottom-[-8px] left-0 w-0 h-[2px] bg-light-gold transition-all duration-300 group-hover:w-full" />
+                  </Link>
+
+                  {/* Desktop Cascade Dropdown Menu */}
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 translate-y-2 scale-[0.98] pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 group-hover:pointer-events-auto transition-all duration-300 ease-out z-50">
+                    <div className="bg-[#FAF6EC]/95 backdrop-blur-xl border border-light-gold/20 rounded-2xl p-2.5 shadow-[0_20px_50px_rgba(0,0,0,0.12)] w-[240px]">
+                      <ul className="flex flex-col gap-1 list-none p-0 m-0">
+                        {productCategories.map((cat) => (
+                          <li key={cat.id} className="relative group/cat">
+                            <div className="flex items-center justify-between gap-2 px-3.5 py-2.5 rounded-xl hover:bg-light-gold/15 transition-all duration-200 cursor-pointer">
+                              <Link
+                                href={`/products/${cat.id}`}
+                                className="font-sans text-[0.72rem] font-bold uppercase tracking-[0.15em] text-[#4b5563] group-hover/cat:text-[#111] transition-colors block flex-1"
+                              >
+                                {cat.title}
+                              </Link>
+                              <svg
+                                className="w-3.5 h-3.5 text-[#4b5563] group-hover/cat:text-[#B8902A] transition-transform duration-200 group-hover/cat:translate-x-0.5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </div>
+
+                            {/* Second Level: Series List Flyout */}
+                            <div className="absolute top-0 left-full pl-3 opacity-0 translate-x-2 pointer-events-none group-hover/cat:opacity-100 group-hover/cat:translate-x-0 group-hover/cat:pointer-events-auto transition-all duration-300 ease-out z-50">
+                              <div className="bg-[#FAF6EC]/95 backdrop-blur-xl border border-light-gold/20 rounded-2xl p-4 shadow-[0_20px_50px_rgba(0,0,0,0.12)] w-[250px] flex flex-col gap-2.5">
+                                {cat.series.map((ser) => (
+                                  <Link
+                                    key={ser.id}
+                                    href={`/products/${cat.id}/${ser.id}`}
+                                    className="font-sans text-[0.75rem] text-[#555] hover:text-[#111] transition-all duration-200 flex items-center gap-2 group/item py-0.5"
+                                  >
+                                    <span className="w-1.5 h-1.5 rounded-full bg-light-gold scale-0 group-hover/item:scale-100 transition-transform duration-200 flex-shrink-0" />
+                                    <span>{ser.name} {ser.seriesLabel || "Series"}</span>
+                                  </Link>
+                                ))}
+                              </div>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <Link
+                  href={item.href}
+                  className="text-[0.75rem] xl:text-[0.8rem] uppercase relative text-[#4b5563] hover:text-[#111] tracking-widest font-sans transition-colors duration-200"
+                >
+                  {item.name}
+                  <span className="absolute bottom-[-8px] left-0 w-0 h-[2px] bg-light-gold transition-all duration-300 group-hover:w-full" />
+                </Link>
+              )}
             </li>
           ))}
         </ul>
@@ -124,32 +184,94 @@ const Navbar = () => {
         <ul className="flex flex-col gap-1 list-none m-0 p-0">
           {navItems.map((item, idx) => (
             <li key={item.name}>
-              <Link
-                href={item.href}
-                onClick={closeMenu}
-                className="flex items-center gap-3 text-[0.75rem] uppercase tracking-[0.25em] font-sans text-[#4b5563] hover:text-[#111] py-4 border-b border-light-gold/10 group"
-                style={{
-                  opacity: menuOpen ? 1 : 0,
-                  transform: menuOpen ? "translateX(0)" : "translateX(12px)",
-                  transitionProperty: "opacity, transform, color",
-                  transitionDuration: "0.35s, 0.35s, 0.2s",
-                  transitionTimingFunction: "ease, ease, ease",
-                  transitionDelay: menuOpen
-                    ? `${80 + idx * 40}ms, ${80 + idx * 40}ms, 0ms`
-                    : "0ms, 0ms, 0ms",
-                }}
-              >
-                <span className="w-0 group-hover:w-3 h-[1.5px] bg-light-gold transition-all duration-300 flex-shrink-0" />
-                {item.name}
-              </Link>
+              {item.name === "Products" ? (
+                <div className="border-b border-light-gold/10">
+                  <button
+                    onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
+                    className="w-full flex items-center justify-between gap-3 text-[0.75rem] uppercase tracking-[0.25em] font-sans text-[#4b5563] hover:text-[#111] py-4 group focus:outline-none"
+                    style={{
+                      opacity: menuOpen ? 1 : 0,
+                      transform: menuOpen ? "translateX(0)" : "translateX(12px)",
+                      transitionProperty: "opacity, transform, color",
+                      transitionDuration: "0.35s, 0.35s, 0.2s",
+                      transitionTimingFunction: "ease, ease, ease",
+                      transitionDelay: menuOpen
+                        ? `${80 + idx * 40}ms, ${80 + idx * 40}ms, 0ms`
+                        : "0ms, 0ms, 0ms",
+                    }}
+                  >
+                    <span className="flex items-center gap-3">
+                      <span className={`w-0 group-hover:w-3 h-[1.5px] bg-light-gold transition-all duration-300 flex-shrink-0 ${mobileProductsOpen ? "w-3" : ""}`} />
+                      {item.name}
+                    </span>
+                    <svg
+                      className={`w-3.5 h-3.5 text-[#4b5563] transition-transform duration-300 ${mobileProductsOpen ? "rotate-180" : ""}`}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+
+                  {/* Mobile Collapsible Sub-menu */}
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                      mobileProductsOpen ? "max-h-[500px] opacity-100 mb-4" : "max-h-0 opacity-0"
+                    }`}
+                  >
+                    <div className="flex flex-col gap-4 pl-4 pt-2 pb-2">
+                      {productCategories.map((cat) => (
+                        <div key={cat.id} className="flex flex-col gap-2">
+                          <Link
+                            href={`/products/${cat.id}`}
+                            onClick={closeMenu}
+                            className="font-sans text-[0.7rem] font-bold uppercase tracking-[0.15em] text-[#B8902A] hover:text-[#111] transition-colors"
+                          >
+                            {cat.title}
+                          </Link>
+                          <ul className="flex flex-col gap-1.5 list-none p-0 m-0 pl-3 border-l border-light-gold/20">
+                            {cat.series.map((ser) => (
+                              <li key={ser.id}>
+                                <Link
+                                  href={`/products/${cat.id}/${ser.id}`}
+                                  onClick={closeMenu}
+                                  className="font-sans text-[0.72rem] text-[#6b7280] hover:text-[#111] transition-colors block py-0.5"
+                                >
+                                  {ser.name} {ser.seriesLabel || "Series"}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  href={item.href}
+                  onClick={closeMenu}
+                  className="flex items-center gap-3 text-[0.75rem] uppercase tracking-[0.25em] font-sans text-[#4b5563] hover:text-[#111] py-4 border-b border-light-gold/10 group"
+                  style={{
+                    opacity: menuOpen ? 1 : 0,
+                    transform: menuOpen ? "translateX(0)" : "translateX(12px)",
+                    transitionProperty: "opacity, transform, color",
+                    transitionDuration: "0.35s, 0.35s, 0.2s",
+                    transitionTimingFunction: "ease, ease, ease",
+                    transitionDelay: menuOpen
+                      ? `${80 + idx * 40}ms, ${80 + idx * 40}ms, 0ms`
+                      : "0ms, 0ms, 0ms",
+                  }}
+                >
+                  <span className="w-0 group-hover:w-3 h-[1.5px] bg-light-gold transition-all duration-300 flex-shrink-0" />
+                  {item.name}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
 
-        {/* Bottom logo watermark */}
-        <div className="mt-auto flex justify-center">
-          <img src="/logo.avif" alt="Prestige Logo" className="h-8 sm:h-9 w-auto object-contain opacity-40 grayscale" />
-        </div>
       </div>
     </>
   );

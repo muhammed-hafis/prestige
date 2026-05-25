@@ -1,45 +1,30 @@
 import React from 'react';
+import { FiSettings, FiMonitor, FiLayers, FiTool } from 'react-icons/fi';
 
-const EXPERTISE_ITEMS = [
+const FRAMEWORK_ITEMS = [
     {
         step: "01",
-        title: "Architectural Aluminium",
-        desc: "Specialized thermal and non-thermal systems designed for high-performance developments.",
-        icon: (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-                <path d="M3 3h18v18H3zM9 3v18M15 3v18M3 9h18M3 15h18" />
-            </svg>
-        ),
+        title: "Structural Engineering",
+        desc: "Advanced calculations for wind deflection, acoustic insulation, and thermal dynamics to transform complex architectural concepts into approved, buildable shop drawings.",
+        icon: <FiSettings className="w-6 h-6" />,
     },
     {
         step: "02",
-        title: "Interior Solutions",
-        desc: "Strategic integration of high-end architectural hardware and interior glass solutions.",
-        icon: (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-                <path d="M12 21a9 9 0 100-18 9 9 0 000 18zM12 8v4M12 16h.01" />
-            </svg>
-        ),
+        title: "Showroom-First Experience",
+        desc: "A premium flagship viewing space where clients interact directly with full-scale, tactile architectural systems and profiles before final specification.",
+        icon: <FiMonitor className="w-6 h-6" />,
     },
     {
         step: "03",
-        title: "Custom Fabrication",
-        desc: "Bespoke system integration and precision fabrication to meet unique requirements.",
-        icon: (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-                <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.77 3.77z" />
-            </svg>
-        ),
+        title: "Just-in-Time Assembly",
+        desc: "Operating from strategic industrial zones. Custom fabrication occurs exactly to order specifications, ensuring flawless quality control and just-in-time site delivery to minimize overhead.",
+        icon: <FiLayers className="w-6 h-6" />,
     },
     {
         step: "04",
-        title: "Project Management",
-        desc: "Professional coordination and installation services ensuring dependable timelines.",
-        icon: (
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-6 h-6">
-                <path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2M9 2h6M12 11l2 2 4-4M8 11h.01M8 16h.01" />
-            </svg>
-        ),
+        title: "Elite Workforce Installation",
+        desc: "Deployment of a highly disciplined, expert technician and installation force trained to execute complex fabrications on-site to strict safety and international tolerance standards.",
+        icon: <FiTool className="w-6 h-6" />,
     },
 ];
 
@@ -89,24 +74,22 @@ const TimelineItem = ({ item, index }) => {
     );
 };
 
-const Expertise = () => (
-    <section className="py-16 lg:py-24 relative overflow-hidden bg-[var(--background)]">
+const ExecutionFramework = () => (
+    <section className="py-10 lg:py-14 relative overflow-hidden bg-[var(--background)]">
         {/* Decorative Grid texture */}
         <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
              style={{ backgroundImage: "radial-gradient(#B8902A 0.5px,transparent 0.5px)", backgroundSize: "32px 32px" }} />
 
         <div className="main-container px-4 sm:px-8 relative z-10">
             {/* Heading */}
-            <div className="text-center max-w-2xl mx-auto mb-12" data-aos="fade-up">
-                <p className="mb-4 sm:mb-5 section-label text-[#B8902A]">
-                    Execution Timeline
+            <div className="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up">
+                <p className="mb-4 sm:mb-5 section-label text-[#B8902A] uppercase tracking-[0.25em] font-bold">
+                    THE EXECUTION FRAMEWORK
                 </p>
-                <h2 className="mb-5 sm:mb-6 section-heading text-[#111]">
-                    Comprehensive Capabilities
+                <h2 className="section-heading text-[#111] mb-4 sm:mb-6">
+                    Integrated Capabilities from <br className="hidden sm:block" />
+                    <span className="text-light-gold font-bold">Concept to Handover.</span>
                 </h2>
-                <p className="section-desc text-[#555]">
-                    Our capabilities run as an integrated progressive system chart, delivering unified performance from engineering drafts to final build completion.
-                </p>
             </div>
 
             {/* Alternating Vertical Timeline Flow Chart */}
@@ -117,7 +100,7 @@ const Expertise = () => (
                 
                 {/* Timeline Items */}
                 <div className="flex flex-col">
-                    {EXPERTISE_ITEMS.map((item, idx) => (
+                    {FRAMEWORK_ITEMS.map((item, idx) => (
                         <TimelineItem key={item.title} item={item} index={idx} />
                     ))}
                 </div>
@@ -126,4 +109,4 @@ const Expertise = () => (
     </section>
 );
 
-export default Expertise;
+export default ExecutionFramework;

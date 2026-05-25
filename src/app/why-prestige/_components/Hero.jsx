@@ -1,5 +1,5 @@
 const Hero = () => (
-    <section className="relative overflow-hidden bg-[var(--background)] px-5 sm:px-8 pt-28 pb-16 lg:pt-32 lg:pb-20">
+    <section className="relative overflow-hidden bg-[var(--background)] px-5 sm:px-8 pt-28 md:pt-44 lg:pt-36 pb-16 lg:pb-20">
 
         {/* Subtle radial dots backdrop */}
         <div

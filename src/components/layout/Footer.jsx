@@ -1,23 +1,51 @@
 import Link from 'next/link';
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube, FaTiktok, FaSnapchat } from 'react-icons/fa6';
+import { RiMapPinLine, RiPhoneLine, RiMailLine } from 'react-icons/ri';
 
-const NAV_LINKS = [
-    { label: 'The Brand', href: '/about' },
+const CORPORATE_LINKS = [
+    { label: 'About Our Brand', href: '/about' },
     { label: 'Why Prestige', href: '/why-prestige' },
-    { label: 'Collection', href: '/#products' },
-    { label: 'Testimonials', href: '/#testimonials' },
+    { label: 'The Journal & Insights', href: '/#discover' },
+    { label: 'Partner Consultations', href: '/contact' },
 ];
 
-const SOLUTIONS = [
-    { label: 'Windows', href: '/#products' },
-    { label: 'Sliding Systems', href: '/#products' },
-    { label: 'Bi-folds', href: '/#products' },
-    { label: 'Modular Units', href: '/#products' },
+const PORTFOLIO_LINKS = [
+    { label: 'TOSTEM – Framing the Beauty of Living', href: '/products/windows-and-doors' },
+    { label: 'AL AMEEN – Architectural Engineering Excellence', href: '/contact' },
+    { label: 'OZONE – Designed for Every Space. Styled for Every Vision', href: '/products/interior' },
 ];
 
 const SOCIALS = [
-    { id: 'FB', href: '#' },
-    { id: 'IG', href: '#' },
-    { id: 'LI', href: '#' },
+    {
+        id: 'YT',
+        href: 'https://www.youtube.com/@PrestigeCreationsCompany',
+        icon: <FaYoutube className="w-4 h-4" />
+    },
+    {
+        id: 'IG',
+        href: 'https://www.instagram.com/prestigecreationscompany/',
+        icon: <FaInstagram className="w-4 h-4" />
+    },
+    {
+        id: 'TK',
+        href: 'https://www.tiktok.com/@prestigealusys',
+        icon: <FaTiktok className="w-4 h-4" />
+    },
+    {
+        id: 'FB',
+        href: 'https://www.facebook.com/profile.php?id=61581053138122',
+        icon: <FaFacebookF className="w-4 h-4" />
+    },
+    {
+        id: 'LI',
+        href: 'https://www.linkedin.com/company/111066977/admin/dashboard/',
+        icon: <FaLinkedinIn className="w-4 h-4" />
+    },
+    {
+        id: 'SC',
+        href: 'https://www.snapchat.com/add/riyazprestige?share_id=TSeJIU0TBH8&locale=en-US',
+        icon: <FaSnapchat className="w-4 h-4" />
+    },
 ];
 
 const Footer = () => {
@@ -25,60 +53,52 @@ const Footer = () => {
 
     return (
         <footer className="bg-[#0a0a0a] text-white pt-14 pb-6 overflow-hidden relative">
-            {/* Decorative Watermark */}
-            <div className="absolute top-0 right-0 translate-x-1/4 -translate-y-1/4 text-[18vw] text-white/[0.02] pointer-events-none select-none leading-none">
-                PRESTIGE
-            </div>
-
             <div className="main-container relative z-10 px-4 sm:px-8">
                 {/* Main grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
 
                     {/* Column 1: Brand */}
-                    <div className="flex flex-col gap-5 sm:col-span-2 lg:col-span-1" data-aos="fade-up" data-aos-delay="100">
+                    <div className="flex flex-col gap-5 md:col-span-3" data-aos="fade-up" data-aos-delay="100">
                         <div className="flex flex-col gap-2">
-                            <img src="/logo.avif" alt="Prestige Logo" className="h-16 sm:h-20 md:h-24 w-auto object-contain self-start" />
-                            <p className="text-[0.65rem] text-light-gold mt-1 uppercase tracking-[0.3em]">
-                                Architectural Excellence
+                            <img src="/logo.avif" alt="Prestige Logo" className="h-16 sm:h-20 w-auto object-contain self-start" />
+                            <p className="text-[0.65rem] text-light-gold mt-1 uppercase tracking-[0.25em] font-semibold leading-relaxed">
+                                Building Prestige with Every Creation
                             </p>
                         </div>
-                        <p className="text-sm text-gray-400 leading-relaxed max-w-xs">
-                            Leading the way in premium aluminium doors, windows, and modular architectural
-                            solutions. Engineering precision meets luxury design.
-                        </p>
-                        <div className="flex gap-4">
-                            <a href="#" className="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center text-white hover:bg-light-gold hover:border-light-gold transition-all duration-300 group">
-                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1V12h3l-.5 3h-2.5v6.8c4.56-.93 8-4.96 8-9.8z"/>
-                                </svg>
-                            </a>
-                            <a href="#" className="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center text-white hover:bg-light-gold hover:border-light-gold transition-all duration-300 group">
-                                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                                </svg>
-                            </a>
-                            <a href="#" className="w-10 h-10 border border-white/10 rounded-full flex items-center justify-center text-white hover:bg-light-gold hover:border-light-gold transition-all duration-300 group">
-                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                                </svg>
-                            </a>
-                        </div>
 
+                        {/* Social Row */}
+                        <div className="flex flex-col gap-2 mt-2">
+                            <span className="text-[0.65rem] uppercase tracking-[0.2em] text-white/50 font-bold">
+                                Connect with us
+                            </span>
+                            <div className="flex flex-wrap gap-2.5">
+                                {SOCIALS.map(({ id, href, icon }) => (
+                                    <a
+                                        key={id}
+                                        href={href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label={`Follow us on ${id}`}
+                                        className="w-8 h-8 border border-white/10 rounded-full flex items-center justify-center text-white hover:bg-light-gold hover:border-light-gold transition-all duration-300"
+                                    >
+                                        {icon}
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
                     </div>
 
-                    {/* Column 2: Navigation */}
-                    <div className="flex flex-col gap-4" data-aos="fade-up" data-aos-delay="200">
-                        <h4 className="text-xs uppercase tracking-[0.3em] text-white/50">
-                            Navigation
+                    {/* Column 2: Corporate Profile */}
+                    <div className="flex flex-col gap-4 md:col-span-2" data-aos="fade-up" data-aos-delay="200">
+                        <h4 className="text-xs uppercase tracking-[0.3em] text-[#BA7517] font-semibold">
+                            Corporate Profile
                         </h4>
                         <ul className="flex flex-col gap-3 list-none p-0 m-0">
-                            {NAV_LINKS.map(({ label, href }) => (
+                            {CORPORATE_LINKS.map(({ label, href }) => (
                                 <li key={label}>
                                     <Link
                                         href={href}
-                                        className="text-sm text-gray-400 hover:text-light-gold transition-colors no-underline"
+                                        className="text-sm text-gray-400 hover:text-light-gold transition-colors no-underline font-light leading-relaxed block"
                                     >
                                         {label}
                                     </Link>
@@ -87,17 +107,17 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    {/* Column 3: Solutions */}
-                    <div className="flex flex-col gap-4" data-aos="fade-up" data-aos-delay="300">
-                        <h4 className="text-xs uppercase tracking-[0.3em] text-white/50">
-                            Solutions
+                    {/* Column 3: System Portfolio */}
+                    <div className="flex flex-col gap-4 md:col-span-4" data-aos="fade-up" data-aos-delay="300">
+                        <h4 className="text-xs uppercase tracking-[0.3em] text-[#BA7517] font-semibold">
+                            System Portfolio
                         </h4>
                         <ul className="flex flex-col gap-3 list-none p-0 m-0">
-                            {SOLUTIONS.map(({ label, href }) => (
+                            {PORTFOLIO_LINKS.map(({ label, href }) => (
                                 <li key={label}>
                                     <Link
                                         href={href}
-                                        className="text-sm text-gray-400 hover:text-light-gold transition-colors no-underline"
+                                        className="text-sm text-gray-400 hover:text-light-gold transition-colors no-underline font-light leading-relaxed block"
                                     >
                                         {label}
                                     </Link>
@@ -106,36 +126,60 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    {/* Column 4: Contact */}
-                    <div className="flex flex-col gap-4" data-aos="fade-up" data-aos-delay="400">
-                        <h4 className="text-xs uppercase tracking-[0.3em] text-white/50">
-                            Connect
+                    {/* Column 4: Regional Hub */}
+                    <div className="flex flex-col gap-4 md:col-span-3" data-aos="fade-up" data-aos-delay="400">
+                        <h4 className="text-xs uppercase tracking-[0.3em] text-[#BA7517] font-semibold">
+                            Regional Hub
                         </h4>
-                        <div className="flex flex-col gap-3 text-sm text-gray-400">
-                            <p className="flex items-start gap-2.5">
-                                <span className="text-light-gold text-[0.6rem] uppercase tracking-wide mt-0.5 shrink-0">Addr:</span>
-                                <span>Office 304, E8, Emmar Square,<br />King Abdullah Rd, Jeddah 22241, SA</span>
-                            </p>
-                            <p className="flex items-center gap-2.5">
-                                <span className="text-light-gold text-[0.6rem] uppercase tracking-wide shrink-0">Call:</span>
-                                0573828134
-                            </p>
-                            <p className="flex items-center gap-2.5">
-                                <span className="text-light-gold text-[0.6rem] uppercase tracking-wide shrink-0">Mail:</span>
-                                info@prestigecreations.sa
-                            </p>
+                        <div className="flex flex-col gap-4 text-sm text-gray-400">
+                            <div className="flex items-start gap-3">
+                                <RiMapPinLine className="text-light-gold text-lg mt-0.5 shrink-0" />
+                                <div>
+                                    <span className="block font-semibold text-white text-[0.7rem] uppercase tracking-wider mb-0.5">Headquarters</span>
+                                    <span className="text-xs leading-relaxed text-gray-400">Unit 325, Office 304, Building E8, Emaar Square, King Abdullah Rd, Jeddah 22241, Kingdom of Saudi Arabia</span>
+                                </div>
+                            </div>
+
+                            <div className="flex items-start gap-3">
+                                <RiMapPinLine className="text-light-gold text-lg mt-0.5 shrink-0" />
+                                <div>
+                                    <span className="block font-semibold text-white text-[0.7rem] uppercase tracking-wider mb-0.5">Flagship Premium Showroom</span>
+                                    <span className="text-xs text-gray-500 italic">Coming Soon</span>
+                                </div>
+                            </div>
+
+                            <div className="flex items-start gap-3">
+                                <RiMailLine className="text-light-gold text-lg mt-0.5 shrink-0" />
+                                <div>
+                                    <span className="block font-semibold text-white text-[0.7rem] uppercase tracking-wider mb-0.5">Inquiries</span>
+                                    <a href="mailto:project@prestigecreationscompany.com" className="text-xs text-gray-400 hover:text-light-gold transition-colors">
+                                        project@prestigecreationscompany.com
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div className="flex items-start gap-3">
+                                <RiPhoneLine className="text-light-gold text-lg mt-0.5 shrink-0" />
+                                <div>
+                                    <span className="block font-semibold text-white text-[0.7rem] uppercase tracking-wider mb-0.5">Project Line</span>
+                                    <a href="https://wa.me/966573828134" target="_blank" rel="noopener noreferrer" className="text-xs text-gray-400 hover:text-light-gold transition-colors">
+                                        +966 57 382 8134 (Call & WhatsApp)
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                 </div>
 
                 {/* Bottom bar */}
                 <div className="pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-3 text-center" data-aos="fade-up" data-aos-delay="500">
                     <p className="text-xs text-gray-500 uppercase tracking-wide">
-                        © {currentYear} Prestige Systems. All rights reserved.
+                        © {currentYear} Prestige Creations. All rights reserved.
                     </p>
                     <div className="flex gap-6 text-xs text-gray-500 uppercase tracking-wide">
-                        <a href="#" className="hover:text-white transition-colors no-underline">Privacy</a>
-                        <a href="#" className="hover:text-white transition-colors no-underline">Terms</a>
+                        <Link href="/privacy" className="hover:text-white transition-colors no-underline">Privacy</Link>
+                        <Link href="/terms" className="hover:text-white transition-colors no-underline">Terms</Link>
                     </div>
                 </div>
             </div>

@@ -3,7 +3,7 @@ import Hero from "./_components/Hero";
 import About from "./_components/About";
 import WhyChoose from "./_components/WhyChoose";
 import Products from "./_components/Products";
-import Testimonials from "./_components/Testimonials";
+import Discover from "./_components/Discover";
 import Blogs from "./_components/Blogs";
 import CTA from "./_components/CTA";
 
@@ -16,7 +16,7 @@ const Page = () => {
                 <WhyChoose />
                 <Products />
                 <Blogs />
-                <Testimonials />
+                <Discover />
                 <CTA />
             </div>
         </main>

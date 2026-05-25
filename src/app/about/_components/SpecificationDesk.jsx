@@ -1,7 +1,8 @@
-import Link from "next/link";
+import React from 'react';
+import Link from 'next/link';
 
-const CTA = () => (
-    <section className="relative overflow-hidden bg-light-gold py-16 sm:py-20 lg:py-28 px-5 sm:px-8 text-center text-white">
+const SpecificationDesk = () => (
+    <section className="relative overflow-hidden bg-light-gold py-10 lg:py-14 px-5 sm:px-8 text-center text-white">
 
         {/* Background Glow */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -16,17 +17,20 @@ const CTA = () => (
         <div className="main-container relative z-10 mx-auto max-w-4xl">
 
             {/* Label */}
-            <p className="mb-4 sm:mb-5 section-label text-white/70" data-aos="fade-down">
-                Start Your Project
+            <p className="mb-4 sm:mb-5 section-label text-white/70 uppercase tracking-[0.25em]" data-aos="fade-down">
+                Project Specification Desk
             </p>
 
             {/* Heading */}
-            <h2 className="mb-8 sm:mb-10 section-heading text-white" data-aos="fade-up" data-aos-delay="100">
-                Build with{" "}
-                <span className="font-normal text-white/80">
-                    Excellence
-                </span>
+            <h2 className="section-heading text-white mb-4 sm:mb-6" data-aos="fade-up" data-aos-delay="100">
+                Initiate Technical <br className="hidden sm:block" />
+                <span className="text-white/85 font-bold">Consultation Desk</span>
             </h2>
+
+            {/* Description */}
+            <p className="mb-8 sm:mb-10 max-w-2xl mx-auto font-sans text-sm sm:text-base leading-relaxed text-white/80 font-light" data-aos="fade-up" data-aos-delay="150">
+                Submit your architectural blueprints, request certified material submittals, or schedule a technical structural consultation with our engineering team.
+            </p>
 
             {/* Button */}
             <Link
@@ -35,10 +39,10 @@ const CTA = () => (
                 data-aos="fade-up"
                 data-aos-delay="200"
             >
-                Get in Touch
+                Initiate Technical Consultation Desk
             </Link>
         </div>
     </section>
 );
 
-export default CTA;
+export default SpecificationDesk;

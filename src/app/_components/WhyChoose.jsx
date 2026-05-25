@@ -1,37 +1,25 @@
 import React from 'react';
 import Link from 'next/link';
 
-const WHY_CHOOSE_ITEMS = [
-  {
-    title: "Japanese Tech",
-    desc: "World-class pre-fabricated aluminium systems with Japanese precision."
-  },
-  {
-    title: "Local Mastery",
-    desc: "Engineered for Saudi Arabia's unique architectural and climatic conditions."
-  }
-];
-
 const WhyChoose = () => {
   return (
     <section className="relative w-full overflow-hidden bg-[#FAF6EC]" id="why-choose">
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] items-stretch lg:min-h-screen flex flex-col lg:flex-none">
+      <div className="flex flex-col md:grid md:grid-cols-[1fr_1.2fr] md:min-h-screen">
 
-        {/* ── Left Column: Text — appears below image on mobile, left on desktop ── */}
-        <div
-          className="flex flex-col justify-center order-1 px-6 sm:px-10 md:px-14 lg:pl-24 lg:pr-20 py-10 sm:py-14 lg:py-0"
-        >
+        {/* ── Left Column: Text ────────────────────────────────────────────── */}
+        <div className="flex flex-col justify-center order-1 px-5 sm:px-8 md:pl-10 md:pr-12 lg:pl-24 lg:pr-20 py-10 sm:py-12 md:py-0">
+
           <span
-            className="section-label text-light-gold mb-3 flex items-center gap-3"
+            className="section-label text-light-gold mb-3 flex items-center gap-2 sm:gap-3"
             data-aos="fade-right"
             data-aos-delay="100"
           >
             OUR VALUE
-            <span className="block w-[30px] h-[0.5px] bg-light-gold" />
+            <span className="block w-[24px] sm:w-[30px] h-[0.5px] bg-light-gold shrink-0" />
           </span>
 
           <h2
-            className="section-heading text-[#111] mb-6"
+            className="section-heading text-[#111] mb-4 sm:mb-6"
             data-aos="fade-right"
             data-aos-delay="200"
           >
@@ -40,34 +28,26 @@ const WhyChoose = () => {
             <span className="text-light-gold font-bold">Prestige Creations</span>
           </h2>
 
-          <div className="space-y-5 sm:space-y-6 mb-8">
-            {WHY_CHOOSE_ITEMS.map((item, i) => (
-              <div
-                key={i}
-                className="flex gap-4 group"
-                data-aos="fade-right"
-                data-aos-delay={300 + i * 100}
-              >
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-light-gold/20 flex items-center justify-center shrink-0 group-hover:bg-light-gold group-hover:text-white transition-all duration-500 mt-1">
-                  <span className="text-light-gold group-hover:text-white text-[0.65rem] sm:text-[0.7] font-bold">
-                    0{i + 1}
-                  </span>
-                </div>
-                <div>
-                  <h3 className="font-sans text-sm sm:text-base text-[#111] mb-1 uppercase tracking-[0.2em] font-bold">
-                    {item.title}
-                  </h3>
-                  <p className="section-desc text-[#333] max-w-sm">
-                    {item.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <p
+            className="section-desc text-[#333] mb-6 sm:mb-8 max-w-lg leading-relaxed text-sm sm:text-base"
+            data-aos="fade-right"
+            data-aos-delay="300"
+          >
+            We don't just sell aluminium and glass; we eliminate the{' '}
+            <strong className="font-semibold text-black">structural, thermal, and compliance risks</strong>{' '}
+            that compromise luxury developments. From{' '}
+            <strong className="font-semibold text-black">architectural preservation</strong> and{' '}
+            <strong className="font-semibold text-black">certified climate engineering</strong> to our strict{' '}
+            <strong className="font-semibold text-black">SBC compliance</strong> and{' '}
+            <strong className="font-semibold text-black">"Showroom-First" certainty</strong>, discover why
+            the Kingdom's elite projects choose an{' '}
+            <strong className="font-black text-light-gold">engineered solution</strong> over a standard
+            product.
+          </p>
 
           <Link
             href="/why-prestige"
-            className="link-architectural"
+            className="link-architectural self-start"
             data-aos="fade-up"
             data-aos-delay="500"
           >
@@ -76,13 +56,13 @@ const WhyChoose = () => {
           </Link>
         </div>
 
-        {/* ── Right Column: Image — appears first on mobile, right on desktop ── */}
+        {/* ── Right Column: Image ──────────────────────────────────────────── */}
         <div
-          className="w-full h-[56vw] min-h-[260px] max-h-[480px] lg:h-screen lg:max-h-none lg:min-h-0 py-4 sm:py-5 lg:py-12 order-2 lg:order-2"
+          className="w-full order-2 md:h-screen py-4 sm:py-6 md:py-12"
           data-aos="fade-left"
           data-aos-duration="900"
         >
-          <div className="relative group w-full h-full overflow-hidden transition-all duration-700 ease-out">
+          <div className="relative group w-full h-[75vw] sm:h-[60vw] md:h-full overflow-hidden transition-all duration-700 ease-out">
             <img
               src="/images/interior_hero_main_1778838710819.png"
               alt="Precision Engineering"
@@ -92,22 +72,22 @@ const WhyChoose = () => {
 
             {/* Technical Watermark — hidden on small screens */}
             <div
-              className="absolute top-8 right-8 hidden sm:block text-[0.5rem] uppercase tracking-[0.3em] text-white/40"
+              className="absolute top-6 right-6 hidden md:block text-[0.5rem] uppercase tracking-[0.3em] text-white/40"
               style={{ writingMode: 'vertical-rl' }}
             >
               Prestige Engineering — 2026
             </div>
 
             {/* Offset gold border */}
-            <div className="absolute top-3 left-3 right-3 bottom-3 sm:top-4 sm:left-4 sm:right-4 sm:bottom-4 border border-light-gold/20 pointer-events-none z-20 transition-all duration-700 ease-out group-hover:border-light-gold/50 group-hover:scale-[0.97]" />
+            <div className="absolute top-2 left-2 right-2 bottom-2 sm:top-4 sm:left-4 sm:right-4 sm:bottom-4 border border-light-gold/20 pointer-events-none z-20 transition-all duration-700 ease-out group-hover:border-light-gold/50 group-hover:scale-[0.97]" />
 
             {/* L-shaped corners */}
-            <div className="absolute top-5 left-5 sm:top-6 sm:left-6 w-8 h-8 sm:w-12 sm:h-12 border-t border-l border-light-gold/40 z-20 transition-all duration-700 ease-out group-hover:border-light-gold group-hover:-translate-x-1 group-hover:-translate-y-1" />
-            <div className="absolute bottom-5 right-5 sm:bottom-6 sm:right-6 w-8 h-8 sm:w-12 sm:h-12 border-b border-r border-light-gold/40 z-20 transition-all duration-700 ease-out group-hover:border-light-gold group-hover:translate-x-1 group-hover:translate-y-1" />
+            <div className="absolute top-4 left-4 sm:top-6 sm:left-6 w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 border-t border-l border-light-gold/40 z-20 transition-all duration-700 ease-out group-hover:border-light-gold group-hover:-translate-x-1 group-hover:-translate-y-1" />
+            <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 w-7 h-7 sm:w-10 sm:h-10 md:w-12 md:h-12 border-b border-r border-light-gold/40 z-20 transition-all duration-700 ease-out group-hover:border-light-gold group-hover:translate-x-1 group-hover:translate-y-1" />
 
             {/* Badge */}
-            <div className="absolute bottom-5 left-5 sm:bottom-8 sm:left-8 bg-light-gold text-white py-2 px-4 sm:py-3 sm:px-6 shadow-xl z-20 transition-all duration-700 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_10px_20px_rgba(197,160,40,0.3)]">
-              <p className="font-sans text-[0.55rem] sm:text-[0.6rem] uppercase tracking-[0.2em] font-bold">
+            <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 md:bottom-8 md:left-8 bg-light-gold text-white py-1.5 px-3 sm:py-2 sm:px-4 md:py-3 md:px-6 shadow-xl z-20 transition-all duration-700 ease-out group-hover:-translate-y-1 group-hover:shadow-[0_10px_20px_rgba(197,160,40,0.3)]">
+              <p className="font-sans text-[0.5rem] sm:text-[0.55rem] md:text-[0.6rem] uppercase tracking-[0.15em] sm:tracking-[0.2em] font-bold whitespace-nowrap">
                 Certified Quality
               </p>
             </div>

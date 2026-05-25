@@ -63,6 +63,9 @@ export const productCategories = [
             { name: 'SLIDING (3P3T) DOOR', desc: 'Expansive 3 panels sliding door with independent tracks.', icon: 'door-sliding', image: '/images/grants/door/sliding3p3t.avif' },
             { name: 'SLIDING (6P3T) DOOR', desc: 'Panoramic 6 panels storm-proof sliding door on 3 tracks.', icon: 'door-sliding', image: '/images/grants/door/sliding6p3t.avif' },
             { name: 'FLAT RAIL SLIDING (2P2T) DOOR', desc: 'Flat-sill premium barrier-free 2 panels sliding door.', icon: 'door-sliding', image: '/images/grants/door/flat rail sliding2p2t.avif' },
+            { name: 'FLAT RAIL SLIDING (4P2T) DOOR', desc: 'Flat-sill premium barrier-free 4 panels sliding door.', icon: 'door-sliding', image: '/images/grants/door/flat rail sliding4p2t.avif' },
+            { name: 'FLAT RAIL SLIDING (3P3T) DOOR', desc: 'Flat-sill premium barrier-free 3 panels sliding door on 3 tracks.', icon: 'door-sliding', image: '/images/grants/door/flat rail sliding (3p3t).avif' },
+            { name: 'FLAT RAIL SLIDING (6P3T) DOOR', desc: 'Flat-sill premium barrier-free 6 panels sliding door on 3 tracks.', icon: 'door-sliding', image: '/images/grants/door/flat rail sliding (6p3t).avif' },
             { name: 'FLAT RAIL CORNER SLIDING (2P2T + 2P2T) DOOR', desc: 'Symmetrical 4 panels barrier-free corner sliding patio door.', icon: 'door-sliding', image: '/images/grants/door/flat rail corner sliding(2p2t + 2p2t).webp' },
             { name: 'FLAT RAIL CORNER SLIDING (3P3T + 3P3T) DOOR', desc: 'Massive 6 panels barrier-free corner sliding architectural door.', icon: 'door-sliding', image: '/images/grants/door/flat rail corner sliding (3p3t + 3p3t).webp' },
             { name: 'OUT SWING DOOR (SINGLE LEAF)', desc: 'Skyscraper-certified water-tight outswing single entrance door.', icon: 'door-swing', image: '/images/grants/door/out-swing-door(single leaf).avif' },
@@ -164,14 +167,20 @@ export const productCategories = [
             { name: 'CASEMENT (OPERATOR)', desc: 'Casement window with built-in folding operator hand crank.', icon: 'casement', image: '/images/atis/window/casement with operator handle.avif' },
             { name: 'CASEMENT (SINGLE LOCK)', desc: 'Casement window with sleek single lock handle design.', icon: 'casement', image: '/images/atis/window/casement with single lock.avif' },
             { name: 'DOUBLE CASEMENT', desc: 'Symmetrical double sash casement window design.', icon: 'casement', image: '/images/atis/window/double casement.avif' },
-            { name: 'AWNING (OPERATOR)', desc: 'Awning window with built-in folding operator hand crank.', icon: 'awning', image: '/images/atis/window/casement with operator handle.avif' },
+            { name: 'AWNING (OPERATOR)', desc: 'Awning window with built-in folding operator hand crank.', icon: 'awning', image: '/images/atis/window/awning with operator handle.avif' },
+            { name: 'AWNING (SINGLE LOCK)', desc: 'Awning window with sleek single lock handle design.', icon: 'awning', image: '/images/atis/window/awning with single lock.avif' },
             { name: 'AWNING SLIT WINDOW', desc: 'Narrow awning slit window for targeted ventilation.', icon: 'awning', image: '/images/atis/window/awning slit window.avif' },
-            { name: 'TILT & SLIDE', desc: 'Inward tilting and sliding mechanism for space-saving ventilation.', icon: 'tilt-turn', image: '/images/atis/window/tilt and slide window.avif' }
+            { name: 'TILT & SLIDE', desc: 'Inward tilting and sliding mechanism for space-saving ventilation.', icon: 'tilt-turn', image: '/images/atis/window/tilt and slide window.avif' },
+            { name: 'CORNER FIXED WINDOW', desc: 'Minimal corner fixed glass window for uninterrupted views.', icon: 'fixed', image: '/images/atis/window/corner fix window.avif' },
+            { name: 'FIXED WINDOW', desc: 'Minimal stationary fixed glass pane for clean profiles.', icon: 'fixed', image: '/images/atis/window/fixed window.avif' }
           ],
           DOOR: [
             { name: 'SLIDING (2P2T) DOOR', desc: 'Minimal-profile 2 panels sliding door.', icon: 'door-sliding', image: '/images/atis/door/sliding2p2t.avif' },
             { name: 'SLIDING (4P2T) DOOR', desc: 'Minimal-profile 4 panels sliding patio door.', icon: 'door-sliding', image: '/images/atis/door/sliding4p2t.avif' },
+            { name: 'SLIDING (3P3T) DOOR', desc: 'Minimal-profile 3 panels sliding door on independent tracks.', icon: 'door-sliding', image: '/images/atis/door/sliding (3p3t).avif' },
+            { name: 'SLIDING (6P3T) DOOR', desc: 'Minimal-profile 6 panels sliding door on 3 tracks.', icon: 'door-sliding', image: '/images/atis/door/sliding (6p3t).avif' },
             { name: 'ENTRANCE SLIDING (2P2T)', desc: 'Premium minimal sliding entrance door system.', icon: 'door-sliding', image: '/images/atis/door/entrance sliding 2p2t.avif' },
+            { name: 'ENTRANCE SLIDING (4P2T) DOOR', desc: 'Premium minimal 4 panels sliding entrance door system.', icon: 'door-sliding', image: '/images/atis/door/entrance sliding door 4p2t.avif' },
             { name: 'OUT SWING DOOR (SINGLE LEAF)', desc: 'Sleek premium outswing single leaf door with hidden hinge elements.', icon: 'door-swing', image: '/images/atis/door/out-sing door (single leaf).avif' },
             { name: 'OUT SWING DOOR (DOUBLE LEAF)', desc: 'Sleek premium outswing double leaf door with hidden hinge elements.', icon: 'door-swing', image: '/images/atis/door/out swing door (double leaf).avif' }
           ]
@@ -210,6 +219,9 @@ export const productCategories = [
         colors: ['Natural White', 'Natural Silver', 'Shine Gray', 'Autumn Brown', 'Dusk Gray', 'Natural Black'],
         configurations: {
           WINDOW: [
+            { name: 'SLIDING (2P2T)', desc: 'Concealed-profile sound barrier 2 panels sliding window.', icon: 'sliding', image: '/images/atis-plus/window/sliding (2p2t).avif' },
+            { name: 'SLIDING (4P2T)', desc: 'Concealed-profile sound barrier 4 panels sliding window.', icon: 'sliding', image: '/images/atis-plus/window/sliding (4p2t).avif' },
+            { name: 'SLIDING (3P3T)', desc: 'Concealed-profile sound barrier 3 panels sliding window.', icon: 'sliding', image: '/images/atis-plus/window/sliding (3p3t).avif' },
             { name: 'CASEMENT WINDOW', desc: 'Heavy double-glazed soundproof casement window.', icon: 'casement', image: '/images/atis-plus/window/casement window.avif' },
             { name: 'AWNING WINDOW', desc: 'Heavy double-glazed soundproof awning window.', icon: 'awning', image: '/images/atis-plus/window/awning window.avif' },
             { name: 'FIXED WINDOW', desc: 'Double-glazed sound insulating fixed picture window.', icon: 'fixed', image: '/images/atis-plus/window/fixed window.avif' },
@@ -258,13 +270,31 @@ export const productCategories = [
           WINDOW: [
             { name: 'SLIDING (2P2T)', desc: 'Standard everyday sliding window configuration.', icon: 'sliding', image: '/images/we 70/window/sliding (2p2t).avif' },
             { name: 'SLIDING (4P2T)', desc: 'Standard everyday 4 panels sliding window.', icon: 'sliding', image: '/images/we 70/window/sliding (4p2t).avif' },
+            { name: 'SLIDING (3P2T) - SFS WINDOW', desc: '3 panels sliding window with SFS track system.', icon: 'sliding', image: '/images/we 70/window/sliding (3p2t)-sfs.avif' },
+            { name: 'CASEMENT WINDOW (SINGLE LEAF)', desc: 'Standard everyday outswing single casement window.', icon: 'casement', image: '/images/we 70/window/casement window (single).avif' },
+            { name: 'CASEMENT WINDOW (DOUBLE LEAF)', desc: 'Standard everyday outswing double casement window.', icon: 'casement', image: '/images/we 70/window/casement window (double).avif' },
             { name: 'AWNING WINDOW', desc: 'Traditional outswing awning window.', icon: 'awning', image: '/images/we 70/window/awning window.avif' },
-            { name: 'ALUMINIUM LOUVER', desc: 'Everyday ventilation aluminium louver panels.', icon: 'fixed', image: '/images/we 70/window/aluminium louver.webp' }
+            { name: 'ALUMINIUM LOUVER', desc: 'Everyday ventilation aluminium louver panels.', icon: 'fixed', image: '/images/we 70/window/aluminium louver.webp' },
+            { name: 'CORNER FIXED WINDOW (W1 & W2)', desc: 'Everyday corner fixed window system for structural views.', icon: 'fixed', image: '/images/we 70/window/corner fix window (window w1&w2).avif' },
+            { name: 'FIXED WINDOW', desc: 'Standard everyday stationary fixed window.', icon: 'fixed', image: '/images/we 70/window/fix window.avif' }
           ],
           DOOR: [
+            { name: 'SLIDING (2P2T) DOOR', desc: 'Standard everyday 2 panels sliding patio door.', icon: 'door-sliding', image: '/images/we 70/door/sliding (2p2t).avif' },
+            { name: 'SLIDING (4P2T) DOOR', desc: 'Standard everyday 4 panels sliding patio door.', icon: 'door-sliding', image: '/images/we 70/door/sliding (4p2t).webp' },
+            { name: 'SLIDING (3P2T) - SFS DOOR', desc: '3 panels sliding door with SFS track system.', icon: 'door-sliding', image: '/images/we 70/door/sliding (3p2t)-sfs.avif' },
+            { name: 'SLIDING (3P3T) DOOR', desc: 'Standard everyday 3 panels sliding door on independent tracks.', icon: 'door-sliding', image: '/images/we 70/door/sliding (3p3t).avif' },
+            { name: 'SLIDING (6P3T) DOOR', desc: 'Standard everyday 6 panels sliding patio door.', icon: 'door-sliding', image: '/images/we 70/door/sliding (6p3t).avif' },
+            { name: 'ENTRANCE SLIDING (2P2T) DOOR', desc: 'Everyday entrance sliding door system.', icon: 'door-sliding', image: '/images/we 70/door/entrance sliding (2p2t).webp' },
+            { name: 'ENTRANCE SLIDING (4P2T) DOOR', desc: 'Everyday 4 panels entrance sliding door system.', icon: 'door-sliding', image: '/images/we 70/door/entrance sliding (4p2t).avif' },
             { name: 'AIRFLOW VENTILATION DOOR', desc: 'Unique airflow/ventilation door for fresh kitchen breeze.', icon: 'door-swing', image: '/images/we 70/door/airflow door (single leaf).webp' },
             { name: 'IN SWING DOOR (SINGLE LEAF)', desc: 'Traditional secure inswing single leaf entrance door.', icon: 'door-swing', image: '/images/we 70/door/in swing door (single leaf).webp' },
-            { name: 'IN SWING DOOR (DOUBLE LEAF)', desc: 'Traditional secure inswing double leaf entrance door.', icon: 'door-swing', image: '/images/we 70/door/in swing door (double leaf).webp' }
+            { name: 'IN SWING DOOR (DOUBLE LEAF)', desc: 'Traditional secure inswing double leaf entrance door.', icon: 'door-swing', image: '/images/we 70/door/in swing door (double leaf).webp' },
+            { name: 'OUT SWING DOOR (SINGLE LEAF)', desc: 'Standard everyday outswing entrance door.', icon: 'door-swing', image: '/images/we 70/door/out swing door(single leaf).webp' },
+            { name: 'OUT SWING DOOR (DOUBLE LEAF)', desc: 'Standard everyday outswing double entrance door.', icon: 'door-swing', image: '/images/we 70/door/out swing door (double leaf).webp' },
+            { name: 'PARTITION SLIDING (2P2T) DOOR', desc: 'Sliding partition door system with 2 panels.', icon: 'door-sliding', image: '/images/we 70/door/partition door sliding (2p2t).avif' },
+            { name: 'PARTITION SLIDING (3P3T) DOOR', desc: 'Sliding partition door system with 3 panels.', icon: 'door-sliding', image: '/images/we 70/door/partition door sliding (3p3t).avif' },
+            { name: 'PARTITION SLIDING (4P2T) DOOR', desc: 'Sliding partition door system with 4 panels.', icon: 'door-sliding', image: '/images/we 70/door/partition door sliding (4p2t).avif' },
+            { name: 'PARTITION SLIDING (6P6T) DOOR', desc: 'Sliding partition door system with 6 panels.', icon: 'door-sliding', image: '/images/we 70/door/partition door sliding (6p6t).avif' }
           ]
         }
       },
@@ -302,10 +332,21 @@ export const productCategories = [
         configurations: {
           WINDOW: [
             { name: 'SLIDING (2P2T)', desc: 'Reinforced 2 panels sliding window configuration.', icon: 'sliding', image: '/images/we-plus/window/sliding(2p2t).avif' },
+            { name: 'SLIDING (4P2T) WINDOW', desc: 'Reinforced 4 panels sliding window configuration.', icon: 'sliding', image: '/images/we-plus/window/sliding (4p2t).avif' },
+            { name: 'SLIDING (3P3T) WINDOW', desc: 'Reinforced 3 panels sliding window configuration on independent tracks.', icon: 'sliding', image: '/images/we-plus/window/sliding(3p3t).avif' },
             { name: 'CASEMENT WINDOW (SINGLE LOCK)', desc: 'Reinforced outswing single lock casement window.', icon: 'casement', image: '/images/we-plus/window/casement window (sinle lock).avif' },
-            { name: 'AWNING WINDOW (SINGLE LOCK)', desc: 'Reinforced outswing single lock awning window.', icon: 'awning', image: '/images/we-plus/window/awning window (single lock).avif' }
+            { name: 'CASEMENT WINDOW (MULTI LOCK)', desc: 'Reinforced outswing multi-lock casement window.', icon: 'casement', image: '/images/we-plus/window/casement window (multi lock).avif' },
+            { name: 'AWNING WINDOW (SINGLE LOCK)', desc: 'Reinforced outswing single lock awning window.', icon: 'awning', image: '/images/we-plus/window/awning window (single lock).avif' },
+            { name: 'AWNING WINDOW (MULTI LOCK)', desc: 'Reinforced outswing multi-lock awning window.', icon: 'awning', image: '/images/we-plus/window/awning window (multi lock).avif' },
+            { name: 'CORNER FIXED WINDOW (W1 & W2)', desc: 'Reinforced corner fixed window for expansive views.', icon: 'fixed', image: '/images/we-plus/window/corner fix window (window w1&w2).avif' },
+            { name: 'FIXED WINDOW', desc: 'Reinforced stationary fixed glass window.', icon: 'fixed', image: '/images/we-plus/window/fix window.avif' }
           ],
           DOOR: [
+            { name: 'SLIDING (2P2T) DOOR', desc: 'Heavy-duty reinforced 2 panels sliding patio door.', icon: 'door-sliding', image: '/images/we-plus/door/sliding (2p2t).avif' },
+            { name: 'SLIDING (4P2T) DOOR', desc: 'Heavy-duty reinforced 4 panels sliding patio door.', icon: 'door-sliding', image: '/images/we-plus/door/sliding (4p2t).avif' },
+            { name: 'SLIDING (3P3T) DOOR', desc: 'Heavy-duty reinforced 3 panels sliding door on independent tracks.', icon: 'door-sliding', image: '/images/we-plus/door/sliding (3p3t).avif' },
+            { name: 'SLIDING (6P3T) DOOR', desc: 'Heavy-duty reinforced 6 panels sliding patio door on 3 tracks.', icon: 'door-sliding', image: '/images/we-plus/door/sliding (6p3t).avif' },
+            { name: 'IN SWING DOOR (SINGLE LEAF)', desc: 'Heavy-duty reinforced inswing single entrance door.', icon: 'door-swing', image: '/images/we-plus/door/in swing door (single leaf).avif' },
             { name: 'IN SWING DOOR (DOUBLE LEAF)', desc: 'Heavy-duty reinforced inswing double entrance door.', icon: 'door-swing', image: '/images/we-plus/door/in swing door (double leaf).avif' },
             { name: 'OUT SWING DOOR (SINGLE LEAF)', desc: 'Heavy-duty reinforced entrance outswing single door.', icon: 'door-swing', image: '/images/we-plus/door/out swing door (single leaf).avif' },
             { name: 'OUT SWING DOOR (DOUBLE LEAF)', desc: 'Heavy-duty reinforced entrance outswing double door.', icon: 'door-swing', image: '/images/we-plus/door/out swing door (double leaf).avif' }
@@ -366,7 +407,10 @@ export const productCategories = [
             { name: 'SWING DOOR', desc: 'Minimal acoustic swing door for internal partition.', icon: 'door-swing', image: '/images/in16/swing door.avif' },
             { name: 'HANGING DOOR (1P1T)', desc: '1 panel single track space-saving hanging sliding door.', icon: 'door-sliding', image: '/images/in16/hanging door (1p1t).avif' },
             { name: 'HANGING DOOR (2P1T)', desc: '2 panels single track space-saving hanging sliding door.', icon: 'door-sliding', image: '/images/in16/hanging door (2p1t).avif' },
-            { name: 'HANGING DOOR (2P2T)', desc: '2 panels double track space-saving hanging sliding door.', icon: 'door-sliding', image: '/images/in16/hanging door (2p2t).avif' }
+            { name: 'HANGING DOOR (2P2T)', desc: '2 panels double track space-saving hanging sliding door.', icon: 'door-sliding', image: '/images/in16/hanging door (2p2t).avif' },
+            { name: 'HANGING DOOR (3P3T)', desc: '3 panels triple track space-saving hanging sliding door.', icon: 'door-sliding', image: '/images/in16/hanging door (3p3t).avif' },
+            { name: 'HANGING DOOR (4P4T)', desc: '4 panels quadruple track space-saving hanging sliding door.', icon: 'door-sliding', image: '/images/in16/hanging door (4p4t).avif' },
+            { name: 'HANGING DOOR (6P3T)', desc: '6 panels triple track space-saving hanging sliding door.', icon: 'door-sliding', image: '/images/in16/hanging door (6p3t).avif' }
           ]
         }
       },
