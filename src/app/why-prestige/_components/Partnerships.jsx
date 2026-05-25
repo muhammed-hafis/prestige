@@ -16,7 +16,7 @@ const PARTNERSHIPS = [
         logo: "/partners/ozone.avif",
     },
     {
-        brand: "Al Amin",
+        brand: "AL AMEEN",
         origin: "Regional",
         desc: "A regional brand for thermal aluminium systems suited to the Gulf climate. Designed to meet local energy and building code requirements.",
         image: "/images/atis-detail.png",

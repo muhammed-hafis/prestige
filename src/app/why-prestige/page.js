@@ -2,20 +2,20 @@
 import React from 'react';
 import Hero from "./_components/Hero";
 import Introduction from "./_components/Introduction";
-import Pillars from "./_components/Pillars";
-import Partnerships from "./_components/Partnerships";
+import DistinctAdvantages from "./_components/DistinctAdvantages";
 import ExpertiseGrid from "./_components/ExpertiseGrid";
-import AluminiumFeatures from "./_components/AluminiumFeatures";
+import OperationalBenchmark from "./_components/OperationalBenchmark";
+import Commitment from "./_components/Commitment";
 
 const WhyPrestigePage = () => {
   return (
     <div className="min-h-screen selection:bg-light-gold selection:text-white">
       <Hero />
       <Introduction />
-      <AluminiumFeatures />
-      <Pillars />
-      <Partnerships />
+      <DistinctAdvantages />
       <ExpertiseGrid />
+      <OperationalBenchmark />
+      <Commitment />
     </div>
   );
 };

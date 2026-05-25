@@ -18,24 +18,25 @@ const Hero = () => (
 
             {/* Label */}
             <p className="section-label text-light-gold mb-4 sm:mb-5" data-aos="fade-down">
-                Why Choose Us
+                Why Prestige
             </p>
 
             {/* Heading */}
-            <h1 className="section-heading text-[#111] mb-5 sm:mb-6 tracking-tight" data-aos="fade-up" data-aos-delay="100">
-                Why{" "}
-                <span className="text-light-gold font-medium">
-                    Prestige
-                </span>
+            <h1 className="section-heading text-[#111] mb-3 sm:mb-4 tracking-tight" data-aos="fade-up" data-aos-delay="100">
+                WHY PRESTIGE
             </h1>
+
+            {/* Subheading */}
+            <p className="font-serif text-lg sm:text-xl lg:text-2xl text-light-gold font-medium mb-6" data-aos="fade-up" data-aos-delay="150">
+                The Choice Between a Product and an Engineered Solution
+            </p>
 
             {/* Divider */}
             <div className="mx-auto mb-6 sm:mb-7 h-[2px] w-8 sm:w-10 bg-light-gold" data-aos="zoom-in" data-aos-delay="200" />
 
             {/* Description */}
-            <p className="section-desc max-w-2xl mx-auto text-[#555] px-1" data-aos="fade-up" data-aos-delay="300">
-                We supply quality aluminium systems with honest advice,
-                reliable service, and full support across Saudi Arabia.
+            <p className="section-desc text-[#4a4a4a] px-1 text-base sm:text-lg leading-relaxed" data-aos="fade-up" data-aos-delay="300">
+                We don’t just sell aluminium and glass. We eliminate the structural, thermal, and compliance risks that compromise luxury developments.
             </p>
         </div>
 

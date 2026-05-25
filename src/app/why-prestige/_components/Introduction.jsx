@@ -1,40 +1,90 @@
+import { FiAlertTriangle, FiCheckCircle } from "react-icons/fi";
+
 const Introduction = () => (
-    <section className="bg-[var(--background)] px-5 sm:px-8 py-16 lg:py-24 overflow-hidden">
+    <section className="bg-[var(--background)] py-10 lg:py-14 overflow-hidden relative">
+        
+        {/* Subtle decorative grid lines */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.015]"
+            style={{
+                backgroundImage: "linear-gradient(#111 1px, transparent 1px), linear-gradient(90deg, #111 1px, transparent 1px)",
+                backgroundSize: "40px 40px"
+            }}
+        />
 
-        {/* Main Card */}
-        <div className="relative mx-auto max-w-5xl overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] border border-[#B8902A]/10 bg-white px-5 sm:px-10 lg:px-16 py-10 sm:py-14 shadow-[0_20px_50px_rgba(0,0,0,0.03)]" data-aos="fade-up">
+        <div className="main-container relative z-10">
+            {/* Header */}
+            <div className="mx-auto mb-12 sm:mb-16 text-center" data-aos="fade-up">
+                <span className="section-label text-light-gold mb-4 sm:mb-5 block">
+                    THE ARCHITECTURAL PROBLEM VS. THE PRESTIGE SOLUTION
+                </span>
+                <h2 className="section-heading text-[#111] mb-5">
+                    Why Premium Projects Cannot Rely on <br className="hidden md:inline" />
+                    <span className="text-light-gold font-normal">Standard Fabricators?</span>
+                </h2>
+                <div className="mx-auto h-[2px] w-12 bg-light-gold mb-6" />
+            </div>
 
-            {/* Corner Accents */}
-            <div className="absolute left-0 top-0 h-6 w-6 sm:h-8 sm:w-8 rounded-tl-[1.5rem] sm:rounded-tl-[2rem] border-l border-t border-[#B8902A]/30" />
+            {/* Split Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                
+                {/* The Problem Card */}
+                <div 
+                    className="relative overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] border border-red-500/10 bg-white p-8 sm:p-10 lg:p-12 shadow-[0_15px_40px_rgba(0,0,0,0.015)] transition-all duration-300 hover:border-red-500/20 group"
+                    data-aos="fade-right"
+                    data-aos-delay="100"
+                >
+                    {/* Background Soft Glow */}
+                    <div className="pointer-events-none absolute -right-16 -top-16 h-36 w-36 rounded-full bg-red-500/[0.02] blur-xl" />
+                    
+                    {/* Header with Icon */}
+                    <div className="flex items-center gap-4 mb-6">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-red-500/5 text-red-500">
+                            <FiAlertTriangle className="w-6 h-6" />
+                        </div>
+                        <div>
+                            <span className="font-sans text-[0.62rem] uppercase tracking-wider text-red-500 font-bold block">
+                                The Commodity Approach
+                            </span>
+                            <h3 className="font-serif text-lg sm:text-xl font-bold text-[#111]">
+                                The Architectural Problem
+                            </h3>
+                        </div>
+                    </div>
 
-            <div className="absolute bottom-0 right-0 h-6 w-6 sm:h-8 sm:w-8 rounded-br-[1.5rem] sm:rounded-br-[2rem] border-b border-r border-[#B8902A]/30" />
+                    <p className="font-sans text-sm sm:text-base text-[#555] leading-relaxed font-light">
+                        Most fabricators treat aluminium and doors as a simple commodity. For elite luxury villas and high-rise developments in Saudi Arabia, that approach leads to structural deflection, visible gaps, whistling wind noises, and massive HVAC energy bills.
+                    </p>
+                </div>
 
-            {/* Soft Glow */}
-            <div className="pointer-events-none absolute inset-0 bg-[#FAF5E8]/20" />
+                {/* The Solution Card */}
+                <div 
+                    className="relative overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] border border-light-gold/20 bg-white p-8 sm:p-10 lg:p-12 shadow-[0_20px_50px_rgba(197,160,40,0.04)] transition-all duration-500 hover:border-light-gold/40 hover:shadow-[0_25px_60px_rgba(197,160,40,0.08)] group"
+                    data-aos="fade-left"
+                    data-aos-delay="200"
+                >
+                    {/* Background Gold Glow */}
+                    <div className="pointer-events-none absolute -right-16 -top-16 h-36 w-36 rounded-full bg-light-gold/[0.04] blur-xl group-hover:bg-light-gold/[0.08] transition-colors duration-500" />
+                    
+                    {/* Header with Icon */}
+                    <div className="flex items-center gap-4 mb-6">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-light-gold/10 text-light-gold group-hover:bg-light-gold group-hover:text-white transition-all duration-500">
+                            <FiCheckCircle className="w-6 h-6" />
+                        </div>
+                        <div>
+                            <span className="font-sans text-[0.62rem] uppercase tracking-wider text-light-gold font-bold block">
+                                Specialized Engineering Authority
+                            </span>
+                            <h3 className="font-serif text-lg sm:text-xl font-bold text-[#111]">
+                                The Prestige Solution
+                            </h3>
+                        </div>
+                    </div>
 
-            {/* Heading */}
-            <h2 className="section-heading relative z-10 mx-auto mb-8 sm:mb-10 lg:mb-12 max-w-4xl text-center text-[#111]" data-aos="fade-up" data-aos-delay="100">
-                A trusted supplier of{" "}
-                <span className="font-normal text-light-gold">
-                    aluminium doors and windows
-                </span>{" "}
-                in Saudi Arabia.
-            </h2>
+                    <p className="font-sans text-sm sm:text-base text-[#333] leading-relaxed font-light">
+                        Prestige Creations operates as a specialized engineering authority. We bridge the gap between complex architectural concepts and real-world structural durability.
+                    </p>
+                </div>
 
-            {/* Content */}
-            <div className="relative z-10 flex flex-col md:flex-row gap-6 sm:gap-8 lg:gap-12 text-left" data-aos="fade-up" data-aos-delay="200">
-
-                <p className="section-desc flex-1 text-[#4a4a4a]">
-                    Prestige Creations supplies certified aluminium systems from trusted
-                    global brands. We focus on delivering the right product for each
-                    project, with clear advice and dependable service.
-                </p>
-
-                <p className="section-desc flex-1 text-[#4a4a4a]">
-                    We serve developers, contractors, and consultants across Saudi Arabia,
-                    helping them get quality systems on time and within the requirements
-                    of local building standards.
-                </p>
             </div>
         </div>
     </section>
