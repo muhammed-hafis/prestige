@@ -9,7 +9,6 @@ const Hero = () => {
   const canvasRef = useRef(null);
   const imagesRef = useRef([]);
   const [loadedInitial, setLoadedInitial] = useState(false);
-  const [animationFinished, setAnimationFinished] = useState(false);
 
   const targetProgressRef = useRef(0);
   const currentProgressRef = useRef(0);
@@ -155,7 +154,6 @@ const Hero = () => {
       const finished = frameIndex === TOTAL_FRAMES;
       if (finished !== animationFinishedRef.current) {
         animationFinishedRef.current = finished;
-        setAnimationFinished(finished);
       }
     };
 

@@ -10,9 +10,9 @@ const CORPORATE_LINKS = [
 ];
 
 const PORTFOLIO_LINKS = [
-    { label: 'TOSTEM – Framing the Beauty of Living', href: '/products/windows-and-doors' },
+    { label: 'TOSTEM – Framing the Beauty of Living', href: '/products/tostem' },
     { label: 'AL AMEEN – Architectural Engineering Excellence', href: '/contact' },
-    { label: 'OZONE – Designed for Every Space. Styled for Every Vision', href: '/products/interior' },
+    { label: 'OZONE – Designed for Every Space. Styled for Every Vision', href: '/products/ozone' },
 ];
 
 const SOCIALS = [

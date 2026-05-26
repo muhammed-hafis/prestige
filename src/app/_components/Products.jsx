@@ -8,7 +8,7 @@ const HOME_PRODUCTS = [
     description: 'Premium TOSTEM exterior windows and slim sliding doors engineered for structural strength.',
     img: '/images/home/tostem.jpg',
     linkText: 'View Tostem Collection',
-    href: '/products/windows-and-doors'
+    href: '/products/tostem'
   },
   {
     id: 'alamin',
@@ -24,7 +24,7 @@ const HOME_PRODUCTS = [
     description: 'Minimalist OZONE interior partitions and luxury hardware for seamless modern spaces.',
     img: '/images/home/ozone.webp',
     linkText: 'View Ozone Collection',
-    href: '/products/interior'
+    href: '/products/ozone'
   }
 ];
 

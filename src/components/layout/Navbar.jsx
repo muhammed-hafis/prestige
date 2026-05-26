@@ -4,6 +4,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { productCategories } from "../../app/_data/products";
 
+const getCategoryPath = (catId) => {
+  return catId === "windows-and-doors" ? "tostem" : catId;
+};
+
+const getCategoryTitle = (catId) => {
+  return catId === "windows-and-doors" ? "TOSTEM Collection" : "OZONE Collection";
+};
+
 const Navbar = () => {
   const pathname = usePathname();
   const isHome = pathname === "/";
@@ -15,7 +23,7 @@ const Navbar = () => {
     { name: "Home",          href: "/" },
     { name: "About",         href: "/#about" },       // scrolls to #about section on homepage
     { name: "Why Prestige",  href: "/why-prestige" }, // dedicated page
-    { name: "Products",      href: "/#products" },    // scrolls to products section on homepage
+    { name: "Products",      href: "/products" },     // dedicated page
     { name: "News & Blogs",  href: "/news-blogs" },   // dedicated page
     { name: "Contact",       href: "/contact" },      // dedicated page
   ];
@@ -25,7 +33,8 @@ const Navbar = () => {
       const isMobile = window.innerWidth < 768;
       // On home page, wait until they scroll past the Hero animation (approx 1.4x height on mobile, 2.2x on desktop)
       const threshold = isHome ? window.innerHeight * (isMobile ? 1.4 : 2.2) : 20;
-      setScrolled(window.scrollY > threshold);
+      const shouldScroll = window.scrollY > threshold;
+      setScrolled((prev) => (prev !== shouldScroll ? shouldScroll : prev));
     };
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -90,14 +99,12 @@ const Navbar = () => {
                     <div className="bg-[#FAF6EC]/95 backdrop-blur-xl border border-light-gold/20 rounded-2xl p-2.5 shadow-[0_20px_50px_rgba(0,0,0,0.12)] w-[240px]">
                       <ul className="flex flex-col gap-1 list-none p-0 m-0">
                         {productCategories.map((cat) => (
-                          <li key={cat.id} className="relative group/cat">
-                            <div className="flex items-center justify-between gap-2 px-3.5 py-2.5 rounded-xl hover:bg-light-gold/15 transition-all duration-200 cursor-pointer">
-                              <Link
-                                href={`/products/${cat.id}`}
-                                className="font-sans text-[0.72rem] font-bold uppercase tracking-[0.15em] text-[#4b5563] group-hover/cat:text-[#111] transition-colors block flex-1"
-                              >
-                                {cat.title}
-                              </Link>
+                           <li key={cat.id} className="relative group/cat">
+                            <Link
+                              href={`/products/${getCategoryPath(cat.id)}`}
+                              className="flex items-center justify-between gap-2 px-3.5 py-2.5 rounded-xl hover:bg-light-gold/15 transition-all duration-200 cursor-pointer font-sans text-[0.72rem] font-bold uppercase tracking-[0.15em] text-[#4b5563] hover:text-[#111] w-full"
+                            >
+                              <span>{getCategoryTitle(cat.id)}</span>
                               <svg
                                 className="w-3.5 h-3.5 text-[#4b5563] group-hover/cat:text-[#B8902A] transition-transform duration-200 group-hover/cat:translate-x-0.5"
                                 fill="none"
@@ -106,7 +113,7 @@ const Navbar = () => {
                               >
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                               </svg>
-                            </div>
+                            </Link>
 
                             {/* Second Level: Series List Flyout */}
                             <div className="absolute top-0 left-full pl-3 opacity-0 translate-x-2 pointer-events-none group-hover/cat:opacity-100 group-hover/cat:translate-x-0 group-hover/cat:pointer-events-auto transition-all duration-300 ease-out z-50">
@@ -114,7 +121,7 @@ const Navbar = () => {
                                 {cat.series.map((ser) => (
                                   <Link
                                     key={ser.id}
-                                    href={`/products/${cat.id}/${ser.id}`}
+                                    href={`/products/${getCategoryPath(cat.id)}/${ser.id}`}
                                     className="font-sans text-[0.75rem] text-[#555] hover:text-[#111] transition-all duration-200 flex items-center gap-2 group/item py-0.5"
                                   >
                                     <span className="w-1.5 h-1.5 rounded-full bg-light-gold scale-0 group-hover/item:scale-100 transition-transform duration-200 flex-shrink-0" />
@@ -224,17 +231,17 @@ const Navbar = () => {
                       {productCategories.map((cat) => (
                         <div key={cat.id} className="flex flex-col gap-2">
                           <Link
-                            href={`/products/${cat.id}`}
+                            href={`/products/${getCategoryPath(cat.id)}`}
                             onClick={closeMenu}
                             className="font-sans text-[0.7rem] font-bold uppercase tracking-[0.15em] text-[#B8902A] hover:text-[#111] transition-colors"
                           >
-                            {cat.title}
+                            {getCategoryTitle(cat.id)}
                           </Link>
                           <ul className="flex flex-col gap-1.5 list-none p-0 m-0 pl-3 border-l border-light-gold/20">
                             {cat.series.map((ser) => (
                               <li key={ser.id}>
                                 <Link
-                                  href={`/products/${cat.id}/${ser.id}`}
+                                  href={`/products/${getCategoryPath(cat.id)}/${ser.id}`}
                                   onClick={closeMenu}
                                   className="font-sans text-[0.72rem] text-[#6b7280] hover:text-[#111] transition-colors block py-0.5"
                                 >

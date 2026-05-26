@@ -48,41 +48,33 @@ const Hero = ({ category }) => {
   const tail  = words.slice(-1)[0];
   
   return (
-    <div className="relative w-full overflow-hidden" style={{ height: "clamp(320px, 60vh, 600px)" }}>
+    <div className="relative w-full h-[80vh] min-h-[520px] flex items-center justify-center overflow-hidden">
       <img
         src={category.heroImg || category.img}
         alt={category.title}
         className="hero-img absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.75))" }} />
+      <div className="absolute inset-0 bg-black/40 z-10" />
 
-      {/* Breadcrumb */}
-      <nav className="absolute top-28 sm:top-32 lg:top-36 left-5 sm:left-8 lg:left-16 flex flex-wrap items-center gap-1.5 sm:gap-2">
-        <Link href="/" className="font-sans text-[0.6rem] sm:text-[.72rem] uppercase tracking-widest no-underline hover:text-[#B8902A] transition-colors" style={{ color: "rgba(255,255,255,.5)" }}>Home</Link>
-        <span className="text-[0.6rem] sm:text-[.72rem]" style={{ color: "rgba(255,255,255,.2)" }}>/</span>
-        <span className="font-sans text-[0.6rem] sm:text-[.72rem] uppercase tracking-widest" style={{ color: "rgba(255,255,255,.5)" }}>Products</span>
-        <span className="text-[0.6rem] sm:text-[.72rem]" style={{ color: "rgba(255,255,255,.2)" }}>/</span>
-        <span className="font-sans text-[0.6rem] sm:text-[.72rem] uppercase tracking-widest" style={{ color: "#B8902A" }}>{category.title}</span>
-      </nav>
 
       {/* Hero Header */}
-      <div className="absolute inset-0 flex flex-col items-start justify-end px-5 sm:px-8 lg:px-16 pb-8 sm:pb-12 lg:pb-16" data-aos="fade-up">
-        <p className="font-sans flex items-center gap-2 sm:gap-3 text-[0.6rem] sm:text-xs font-black uppercase tracking-[0.25em] text-[#B8902A] mb-2 sm:mb-4">
-          <span className="block w-5 sm:w-8 h-px bg-[#B8902A]" />
+      <div className="relative z-20 main-container text-center px-4 pt-20 sm:pt-28 md:pt-32 h-full flex flex-col justify-center items-center" data-aos="fade-up">
+        <span className="font-sans text-[0.68rem] sm:text-[0.75rem] font-bold text-[#B8902A] tracking-[0.3em] uppercase block mb-4">
           Premium Architectural Series
-        </p>
-        <h1 className="page-heading text-white mb-3 sm:mb-6">
-          {head} <span className="font-serif font-normal" style={{ color: "#B8902A" }}>{tail}</span>
+        </span>
+        <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight max-w-4xl mx-auto">
+          {head} <span className="font-serif font-normal text-light-gold block sm:inline">{tail}</span>
         </h1>
         {category.description && (
-          <p className="font-sans text-[0.85rem] sm:text-[1rem] max-w-2xl leading-relaxed text-white/70 font-light">
+          <p className="font-sans text-xs sm:text-base text-white/80 max-w-2xl mx-auto leading-relaxed font-light mb-8">
             {category.description}
           </p>
         )}
+        <div className="w-12 h-[2px] bg-light-gold mx-auto" />
       </div>
 
       {/* Scroll indicator — desktop only */}
-      <div className="hidden sm:flex absolute bottom-9 right-8 lg:right-16 flex-col items-center gap-2">
+      <div className="hidden sm:flex absolute bottom-9 right-8 lg:right-16 flex-col items-center gap-2 z-20">
         <div className="scroll-ln w-px h-14" style={{ background: "linear-gradient(to bottom,rgba(255,255,255,.3),transparent)" }} />
         <span className="font-sans vert-text text-[.62rem] uppercase tracking-widest font-black" style={{ color: "rgba(255,255,255,.4)" }}>Scroll</span>
       </div>
@@ -117,7 +109,8 @@ const CTASection = ({ label }) => (
 
 export default function ProductCategoriesPage({ params }) {
   const { id } = React.use(params);
-  const category = productCategories.find((c) => c.id === id);
+  const categoryId = id === "tostem" ? "windows-and-doors" : id;
+  const category = productCategories.find((c) => c.id === categoryId);
 
   if (!category) {
     return (

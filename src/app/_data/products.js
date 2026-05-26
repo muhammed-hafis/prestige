@@ -353,67 +353,411 @@ export const productCategories = [
           ]
         }
       },
-    ],
-  },
-  {
-    id: 'interior',
-    title: 'Interior Solutions',
-    description: 'TOSTEM’s interior series, created to transform your home with seamless connections between indoor comfort and outdoor spaces.',
-    img: '/images/interior_hero_main_1778838710819.png',
-    heroImg: '/images/interior_hero_main_1778838710819.png',
-    series: [
       {
-        id: 'in16',
-        name: 'IN16',
-        seriesLabel: '',
-        tagline: 'AUTHENTIC JAPANESE CRAFTSMANSHIP',
-        description: 'Intelligent design and elegant simplicity that harmonizes with Tostem’s exterior systems for a unified architectural look.',
+        id: 'giesta',
+        name: 'GIESTA',
+        seriesLabel: 'Doors',
+        tagline: 'HIGH-SECURITY PREMIUM ENTRANCE DOORS',
+        description: 'GIESTA combines sophisticated wooden aesthetics with a robust steel core and multi-point security locks, creating the ultimate grand entryway for modern Saudi estates.',
         uniqueFeature: {
-          title: 'Designed to Match',
-          detail: 'Colors, finishes, and forms are specifically engineered to synchronize with Tostem windows and doors.',
+          title: 'Insulated Steel Core & Multi-Point Locking',
+          detail: 'A reinforced internal steel frame covered by wood-grain laminate, ensuring absolute safety and premium thermal weatherproofing.',
         },
-        img: '/images/interior_hero_main_1778838710819.png',
+        img: '/images/giesta/giesta.png',
         specs: {
-          'FRAME DEPTH': [
-            'Hanging Door: 1 Track (52 mm), 2 Tracks (98 mm), 3 Tracks (144 mm), 4 Tracks (190 mm)',
-            'Swing Door: 50 mm',
-            'Fixed Divider: 50 mm'
+          'FRAME DEPTH': ['101.6 mm'],
+          'HEIGHT OF SILL': ['Out-swing 50 mm', 'In-swing outside 30 / inside 14 mm'],
+          'DOOR FRAME': [
+            'Top and side frame:',
+            '- Wood pattern type: wood pattern resin sheet, wrapping on aluminum profile with synthetic rubber',
+            '- Painted type: anodized aluminum profile',
+            'Sill: Anodized aluminum profile'
           ],
-          'GLASS THICKNESS': [
-            'Single glass (5, 6, 8, 10 mm)',
-            'Laminated glass (3+3, 4+4 mm)'
+          'DOOR PANEL': [
+            'External sheet:',
+            '- Wood pattern type: (External) resin laminated sheet / (Internal) anti-rust epoxy coating',
+            '- Polystyrene (EPS foam)',
+            'Insulating glass thickness 23 mm (cleared 3 + air gap 16 + patterned glass 4)'
           ]
         },
         performanceDetails: {
           'WIND PRESSURE': [
-            { label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }
+            { label: 'GENERAL PRODUCT', value: 'S-2 (1200PA)', sub: '(JIS A 1515)' }
           ],
           'WATER TIGHTNESS': [
-            { label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }
+            { label: 'GENERAL PRODUCT', value: 'W-2 (150PA)', sub: '(JIS A 1517)' }
           ],
           'AIR TIGHTNESS': [
-            { label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }
+            { label: 'GENERAL PRODUCT', value: 'A-4 (2)', sub: '(JIS A 1516)' }
           ],
           'NOISE INSULATION': [
-            { label: 'DURABILITY', value: '100,000 Cycles', sub: 'Certified' }
+            { label: 'GENERAL PRODUCT', value: 'N/A', sub: '(JIS A 1416)' }
           ]
         },
-        colors: ['Natural White', 'Shine Gray', 'Autumn Brown', 'Dusk Gray', 'Natural Black'],
+        colors: [
+          'Turin Pine',
+          'Crea Mocha',
+          'Crea Rusk',
+          'Teak',
+          'Polish Silver',
+          'Silky White',
+          'Autumn Brown'
+        ],
         configurations: {
-          WINDOW: [
-            { name: 'FIXED DIVIDER', desc: 'Sleek glass divider partition for modern layouts.', icon: 'fixed', image: '/images/in16/fixed devider.avif' }
-          ],
           DOOR: [
-            { name: 'SWING DOOR', desc: 'Minimal acoustic swing door for internal partition.', icon: 'door-swing', image: '/images/in16/swing door.avif' },
-            { name: 'HANGING DOOR (1P1T)', desc: '1 panel single track space-saving hanging sliding door.', icon: 'door-sliding', image: '/images/in16/hanging door (1p1t).avif' },
-            { name: 'HANGING DOOR (2P1T)', desc: '2 panels single track space-saving hanging sliding door.', icon: 'door-sliding', image: '/images/in16/hanging door (2p1t).avif' },
-            { name: 'HANGING DOOR (2P2T)', desc: '2 panels double track space-saving hanging sliding door.', icon: 'door-sliding', image: '/images/in16/hanging door (2p2t).avif' },
-            { name: 'HANGING DOOR (3P3T)', desc: '3 panels triple track space-saving hanging sliding door.', icon: 'door-sliding', image: '/images/in16/hanging door (3p3t).avif' },
-            { name: 'HANGING DOOR (4P4T)', desc: '4 panels quadruple track space-saving hanging sliding door.', icon: 'door-sliding', image: '/images/in16/hanging door (4p4t).avif' },
-            { name: 'HANGING DOOR (6P3T)', desc: '6 panels triple track space-saving hanging sliding door.', icon: 'door-sliding', image: '/images/in16/hanging door (6p3t).avif' }
+            { name: 'GIESTA D01 ENTRANCE DOOR', desc: 'Premium high-security door with vertical panelling.', icon: 'door-swing', image: '/images/giesta/door/entrance door d01.avif' },
+            { name: 'GIESTA D02 ENTRANCE DOOR', desc: 'Classic double-inset panel design with premium hardware.', icon: 'door-swing', image: '/images/giesta/door/entrance door d02.avif' },
+            { name: 'GIESTA D03 ENTRANCE DOOR', desc: 'Modern horizontal-stripe panel design.', icon: 'door-swing', image: '/images/giesta/door/entrance door d03.avif' },
+            { name: 'GIESTA G01 GLASS DOOR', desc: 'Elegant entrance door featuring vertical glass lights.', icon: 'door-swing', image: '/images/giesta/door/entrance door g01.avif' },
+            { name: 'GIESTA G02 GLASS DOOR', desc: 'Premium entrance door with dual vertical glass panels.', icon: 'door-swing', image: '/images/giesta/door/entrance door g02.avif' },
+            { name: 'GIESTA G03 GLASS DOOR', desc: 'Modern entrance door with frosted geometric glass.', icon: 'door-swing', image: '/images/giesta/door/entrance door g03.avif' },
+            { name: 'GIESTA G04 GLASS DOOR', desc: 'High-security door with asymmetrical glass slit.', icon: 'door-swing', image: '/images/giesta/door/entrance door g04.avif' },
+            { name: 'GIESTA P01 PATTERNED DOOR', desc: 'Premium wood-patterned entrance door.', icon: 'door-swing', image: '/images/giesta/door/entrance door p01.avif' },
+            { name: 'GIESTA P02 PATTERNED DOOR', desc: 'Sophisticated wood-texture horizontal panel door.', icon: 'door-swing', image: '/images/giesta/door/entrance door p02.avif' },
+            { name: 'GIESTA P03 PATTERNED DOOR', desc: 'Clean metallic finish wood-grain door.', icon: 'door-swing', image: '/images/giesta/door/entrance door p03.avif' },
+            { name: 'GIESTA 302 ENTRANCE DOOR', desc: 'Structural high-security insulated door.', icon: 'door-swing', image: '/images/giesta/door/entrance door 302.avif' }
+          ]
+        }
+      },
+      {
+        id: 'giesta-airflow',
+        name: 'GIESTA Airflow',
+        seriesLabel: 'Doors',
+        tagline: 'INTEGRATED NATURAL VENTILATION ENTRANCE DOORS',
+        description: 'GIESTA Airflow combines the high-security structural steel core and wood-pattern styling of the Giesta series with an integrated vertical sliding glass ventilation panel.',
+        uniqueFeature: {
+          title: 'Integrated Secure Airflow Slot',
+          detail: 'Allows constant fresh air circulation while the door is locked and secured, blocking desert heat and sand.',
+        },
+        img: '/images/giesta-airflow/giesta-airflow.png',
+        specs: {
+          'FRAME DEPTH': ['101.6 mm'],
+          'HEIGHT OF SILL': ['Out-swing 50 mm', 'In-swing outside 30 / inside 14 mm'],
+          'DOOR FRAME': [
+            'Top and side frame:',
+            '- Wood pattern type: wood pattern resin sheet, wrapping on aluminum profile with synthetic rubber',
+            '- Painted type: anodized aluminum profile',
+            'Sill: Anodized aluminum profile'
+          ],
+          'DOOR PANEL': [
+            'External sheet:',
+            '- Wood pattern type: (External) resin laminated sheet / (Internal) anti-rust epoxy coating',
+            '- Polystyrene (EPS foam)',
+            'Insulating glass thickness 23 mm (cleared 3 + air gap 16 + patterned glass 4)'
+          ]
+        },
+        performanceDetails: {
+          'WIND PRESSURE': [
+            { label: 'GENERAL PRODUCT', value: 'S-2 (1200PA)', sub: '(JIS A 1515)' }
+          ],
+          'WATER TIGHTNESS': [
+            { label: 'GENERAL PRODUCT', value: 'W-2 (150PA)', sub: '(JIS A 1517)' }
+          ],
+          'AIR TIGHTNESS': [
+            { label: 'GENERAL PRODUCT', value: 'A-4 (2)', sub: '(JIS A 1516)' }
+          ],
+          'NOISE INSULATION': [
+            { label: 'GENERAL PRODUCT', value: 'N/A', sub: '(JIS A 1416)' }
+          ]
+        },
+        colors: [
+          'Turin Pine',
+          'Crea Mocha',
+          'Crea Rusk',
+          'Teak'
+        ],
+        configurations: {
+          DOOR: [
+            { name: 'GIESTA AIRFLOW SYSTEM', desc: 'Premium secure vertical-ventilation entrance door system.', icon: 'door-swing', image: '/images/giesta-airflow/door/giest-airflow.avif' }
           ]
         }
       },
     ],
   },
+  {
+    id: 'ozone',
+    title: 'OZONE Stealth Series',
+    description: 'Minimalist Framed Glass Partition Systems.',
+    img: '/images/home/ozone.webp',
+    heroImg: '/images/home/ozone.webp',
+    series: [
+      {
+        id: 'single-double',
+        name: 'Single Sliding (1+1) & Double Sliding (2+2)',
+        seriesLabel: 'Minimalist Sliders',
+        tagline: 'THE QUINTESSENTIAL SLIDING SYSTEM',
+        description: 'The quintessential minimalist door system for premium office enclosures and private residential lounges.',
+        uniqueFeature: {
+          title: 'Concealed Rail Suspension',
+          detail: 'Compact tracks hidden in the drop ceiling for architectural clean lines.',
+        },
+        img: '/images/ozone/single&double(1+1 & 2+2)/Axis Slim Frame (4507) Single Sliding System (1+1).webp',
+        specs: {
+          'FRAME DEPTH': ['Ultra-slim profiles custom-engineered'],
+          'HEIGHT OF SILL': ['Zero bottom track (top-hung tracking)'],
+          'DOOR PANEL': [
+            'Glass Thickness: up to 12 mm safety tempered or laminated glass',
+            'Soft-Open & Soft-Close mechanism'
+          ]
+        },
+        performanceDetails: {
+          'WIND PRESSURE': [{ label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }],
+          'WATER TIGHTNESS': [{ label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }],
+          'AIR TIGHTNESS': [{ label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }],
+          'NOISE INSULATION': [{ label: 'ACOUSTIC ISOLATION', value: 'Up to 35 dB', sub: 'Acoustic PVB/EPDM gaskets' }]
+        },
+        colors: ['BL-LX-G', 'BM', 'Phantom Grey', 'Tan Brass', 'VBL-B', 'Vintage Brass Brush', 'Rose Gold Luxe Brush'],
+        configurations: {
+          DOOR: [
+            { name: 'Axis Slim Frame (4507) — 1+1', desc: 'Single sliding panel system built on Axis 4507 profile.', icon: 'door-sliding', image: '/images/ozone/single&double(1+1 & 2+2)/Axis Slim Frame (4507) Single Sliding System (1+1).webp' },
+            { name: 'Axis Slim Frame (4507) — 2+2', desc: 'Double sliding panel system built on Axis 4507 profile.', icon: 'door-sliding', image: '/images/ozone/single&double(1+1 & 2+2)/Axis Slim Frame (4507) Single Sliding System (2+2).webp' },
+            { name: 'Linea Slim Frame (4507) — 1+1', desc: 'Single sliding panel system built on Linea 4507 profile.', icon: 'door-sliding', image: '/images/ozone/single&double(1+1 & 2+2)/Linea Slim Frame (4507) Single Sliding System(1+1).webp' },
+            { name: 'Linea Slim Frame (4507) — 2+2', desc: 'Double sliding panel system built on Linea 4507 profile.', icon: 'door-sliding', image: '/images/ozone/single&double(1+1 & 2+2)/Linea Slim Frame (4507) Single Sliding System(2+2).webp' },
+            { name: 'Slim Frame (4516) — 1+1', desc: 'Single sliding panel system built on Slim 4516 profile.', icon: 'door-sliding', image: '/images/ozone/single&double(1+1 & 2+2)/Slim Frame (4516) Single Sliding System (1+1).webp' },
+            { name: 'Slim Frame (4516) — 2+2', desc: 'Double sliding panel system built on Slim 4516 profile.', icon: 'door-sliding', image: '/images/ozone/single&double(1+1 & 2+2)/Slim Frame (4516) Single Sliding System (2+2).webp' }
+          ]
+        }
+      },
+      {
+        id: 'synchronised',
+        name: 'Synchronized Sliding (2+2)',
+        seriesLabel: 'Symmetric Sliders',
+        tagline: 'SMART ARCHITECTURAL SYMMETRY',
+        description: 'A smart architectural system where moving one sliding panel smoothly glides the opposing panel open or shut in perfect, effortless symmetry.',
+        uniqueFeature: {
+          title: 'Symmetrical Cable Drive',
+          detail: 'Moving one panel automatically drives the other panel in perfect sync.',
+        },
+        img: '/images/ozone/sysnchronised Sliding (2+2)/Axis Slim Frame (4507) Synchronised Sliding System (2+2).webp',
+        specs: {
+          'FRAME DEPTH': ['Ultra-slim profiles custom-engineered'],
+          'HEIGHT OF SILL': ['Zero bottom track (top-hung tracking)'],
+          'DOOR PANEL': [
+            'Glass Thickness: up to 12 mm safety tempered or laminated glass',
+            'Synchronized mechanical transmission'
+          ]
+        },
+        performanceDetails: {
+          'WIND PRESSURE': [{ label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }],
+          'WATER TIGHTNESS': [{ label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }],
+          'AIR TIGHTNESS': [{ label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }],
+          'NOISE INSULATION': [{ label: 'ACOUSTIC ISOLATION', value: 'Up to 35 dB', sub: 'Acoustic PVB/EPDM gaskets' }]
+        },
+        colors: ['Natural Silver', 'Matte Black', 'Anodized Bronze'],
+        configurations: {
+          DOOR: [
+            { name: 'Axis Slim Frame (4507) Sync', desc: 'Synchronized double sliding on Axis 4507 profile.', icon: 'door-sliding', image: '/images/ozone/sysnchronised Sliding (2+2)/Axis Slim Frame (4507) Synchronised Sliding System (2+2).webp' },
+            { name: 'Linea Slim Frame (4507) Sync', desc: 'Synchronized double sliding on Linea 4507 profile.', icon: 'door-sliding', image: '/images/ozone/sysnchronised Sliding (2+2)/Linea Slim Frame (4507) Synchronised Sliding System (2+2).webp' },
+            { name: 'Slim Frame (4516) Sync', desc: 'Synchronized double sliding on Slim 4516 profile.', icon: 'door-sliding', image: '/images/ozone/sysnchronised Sliding (2+2)/Slim Frame (4516) Synchronised Sliding System (2+2).webp' }
+          ]
+        }
+      },
+      {
+        id: 'telescopic',
+        name: 'Telescopic Sliding Series (1+2 / 1+3 / 1+4)',
+        seriesLabel: 'Space-Saving Sliders',
+        tagline: 'MAXIMIZED RETRACTABLE WALKWAYS',
+        description: 'The ultimate space-saving solution for wide structural openings. Multiple glass sheets glide stacked behind a single fixed panel, allowing you to maximize the walkthrough clearance when fully retracted.',
+        uniqueFeature: {
+          title: 'Multi-Slider Overlap',
+          detail: 'Glides and stacks multiple sheets on parallel tracks simultaneously.',
+        },
+        img: '/images/ozone/Telescopic Sliding Series (1+2  1+3  1+4)/Axis Slim Frame (4507) Telescopic Sliding System (1+2).webp',
+        specs: {
+          'FRAME DEPTH': ['Ultra-slim profiles custom-engineered'],
+          'HEIGHT OF SILL': ['Zero bottom track (top-hung tracking)'],
+          'DOOR PANEL': [
+            'Glass Thickness: up to 12 mm safety tempered or laminated glass',
+            'Telescopic interlocking guides'
+          ]
+        },
+        performanceDetails: {
+          'WIND PRESSURE': [{ label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }],
+          'WATER TIGHTNESS': [{ label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }],
+          'AIR TIGHTNESS': [{ label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }],
+          'NOISE INSULATION': [{ label: 'ACOUSTIC ISOLATION', value: 'Up to 35 dB', sub: 'Acoustic PVB/EPDM gaskets' }]
+        },
+        colors: ['Natural Silver', 'Matte Black', 'Anodized Bronze'],
+        configurations: {
+          DOOR: [
+            { name: 'Axis (4507) — 1+2', desc: 'Telescopic sliding system built on Axis 4507 (1 fixed + 2 sliding panels).', icon: 'door-sliding', image: '/images/ozone/Telescopic Sliding Series (1+2  1+3  1+4)/Axis Slim Frame (4507) Telescopic Sliding System (1+2).webp' },
+            { name: 'Axis (4507) — 1+3', desc: 'Telescopic sliding system built on Axis 4507 (1 fixed + 3 sliding panels).', icon: 'door-sliding', image: '/images/ozone/Telescopic Sliding Series (1+2  1+3  1+4)/Axis Slim Frame (4507) Telescopic Sliding System (1+3).webp' },
+            { name: 'Axis (4507) — 1+4', desc: 'Telescopic sliding system built on Axis 4507 (1 fixed + 4 sliding panels).', icon: 'door-sliding', image: '/images/ozone/Telescopic Sliding Series (1+2  1+3  1+4)/Axis Slim Frame (4507) Telescopic Sliding System (1+4).webp' },
+            { name: 'Linea (4507) — 1+2', desc: 'Telescopic sliding system built on Linea 4507 (1 fixed + 2 sliding panels).', icon: 'door-sliding', image: '/images/ozone/Telescopic Sliding Series (1+2  1+3  1+4)/Linea Slim Frame (4507) Telescopic Sliding System (1+2).webp' },
+            { name: 'Linea (4507) — 1+3', desc: 'Telescopic sliding system built on Linea 4507 (1 fixed + 3 sliding panels).', icon: 'door-sliding', image: '/images/ozone/Telescopic Sliding Series (1+2  1+3  1+4)/Linea Slim Frame (4507) Telescopic Sliding System (1+3).webp' },
+            { name: 'Linea (4507) — 1+4', desc: 'Telescopic sliding system built on Linea 4507 (1 fixed + 4 sliding panels).', icon: 'door-sliding', image: '/images/ozone/Telescopic Sliding Series (1+2  1+3  1+4)/Linea Slim Frame (4507) Telescopic Sliding System (1+4).webp' },
+            { name: 'Slim (4516) — 1+2', desc: 'Telescopic sliding system built on Slim 4516 (1 fixed + 2 sliding panels).', icon: 'door-sliding', image: '/images/ozone/Telescopic Sliding Series (1+2  1+3  1+4)/Slim Frame (4516) Telescopic Sliding System (1+2).webp' },
+            { name: 'Slim (4516) — 1+3', desc: 'Telescopic sliding system built on Slim 4516 (1 fixed + 3 sliding panels).', icon: 'door-sliding', image: '/images/ozone/Telescopic Sliding Series (1+2  1+3  1+4)/Slim Frame (4516) Telescopic Sliding System (1+3).webp' },
+            { name: 'Slim (4516) — 1+4', desc: 'Telescopic sliding system built on Slim 4516 (1 fixed + 4 sliding panels).', icon: 'door-sliding', image: '/images/ozone/Telescopic Sliding Series (1+2  1+3  1+4)/Slim Frame (4516) Telescopic Sliding System (1+4).webp' }
+          ]
+        }
+      },
+      {
+        id: 'pocket',
+        name: 'Pocket Sliding Systems',
+        seriesLabel: 'Concealed Sliders',
+        tagline: 'CONCEALED WALL RECOVERY',
+        description: 'A brilliant concealed design where the slim-framed glass doors slide completely inside hollow wall pockets, vanishing from sight entirely when opened.',
+        uniqueFeature: {
+          title: 'Zero Profile Footprint',
+          detail: 'Doors retract completely into wall pockets to maximize room openings.',
+        },
+        img: '/images/ozone/Pocket Sliding Systems/Axis Slim Frame (4507) Pocket Sliding System.webp',
+        specs: {
+          'FRAME DEPTH': ['Ultra-slim profiles custom-engineered'],
+          'HEIGHT OF SILL': ['Zero bottom track (top-hung tracking)'],
+          'DOOR PANEL': [
+            'Glass Thickness: up to 12 mm safety tempered or laminated glass',
+            'Pocket guide tracks with soft-return buffer'
+          ]
+        },
+        performanceDetails: {
+          'WIND PRESSURE': [{ label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }],
+          'WATER TIGHTNESS': [{ label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }],
+          'AIR TIGHTNESS': [{ label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }],
+          'NOISE INSULATION': [{ label: 'ACOUSTIC ISOLATION', value: 'Up to 35 dB', sub: 'Acoustic PVB/EPDM gaskets' }]
+        },
+        colors: ['Natural Silver', 'Matte Black', 'Anodized Bronze'],
+        configurations: {
+          DOOR: [
+            { name: 'Axis Slim Frame (4507) Pocket', desc: 'Pocket sliding on Axis 4507 profile.', icon: 'door-sliding', image: '/images/ozone/Pocket Sliding Systems/Axis Slim Frame (4507) Pocket Sliding System.webp' },
+            { name: 'Linea Slim Frame (4507) Pocket', desc: 'Pocket sliding on Linea 4507 profile.', icon: 'door-sliding', image: '/images/ozone/Pocket Sliding Systems/Linea Slim Frame (4507) Pocket Sliding System.webp' },
+            { name: 'Slim Frame (4516) Pocket', desc: 'Pocket sliding on Slim 4516 profile.', icon: 'door-sliding', image: '/images/ozone/Pocket Sliding Systems/Slim Frame (4516) Pocket Sliding System.webp' }
+          ]
+        }
+      },
+      {
+        id: 'sliding-folding',
+        name: 'Sliding & Folding Systems (Offset Sliding / Centre Sliding)',
+        seriesLabel: 'Movable Partition Walls',
+        tagline: 'FLEXIBLE MULTI-ZONE CONFIGURATION',
+        description: 'High-end movable glass walls that slide and fold neatly to the edge, utilizing specific offset or centred axis physics to partition large multi-functional corporate zones or conference spaces instantly.',
+        uniqueFeature: {
+          title: 'Offset & Centre Folding Physics',
+          detail: 'Engineered pivots to stack multiple folding panels without structural deflection.',
+        },
+        img: '/images/ozone/Sliding & Folding Systems (Offset Sliding  Centre Sliding)/Sliding & Folding System - Center Sliding.webp',
+        specs: {
+          'FRAME DEPTH': ['Ultra-slim profiles custom-engineered'],
+          'HEIGHT OF SILL': ['Zero bottom track (top-hung tracking)'],
+          'DOOR PANEL': [
+            'Glass Thickness: up to 12 mm safety tempered or laminated glass',
+            'Offset or centre hinge fold tracking'
+          ]
+        },
+        performanceDetails: {
+          'WIND PRESSURE': [{ label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }],
+          'WATER TIGHTNESS': [{ label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }],
+          'AIR TIGHTNESS': [{ label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }],
+          'NOISE INSULATION': [{ label: 'ACOUSTIC ISOLATION', value: 'Up to 35 dB', sub: 'Acoustic PVB/EPDM gaskets' }]
+        },
+        colors: ['Natural Silver', 'Matte Black', 'Anodized Bronze'],
+        configurations: {
+          DOOR: [
+            { name: 'Centre Sliding Folding', desc: 'Centre sliding and folding layout for symmetrical stacking.', icon: 'door-sliding', image: '/images/ozone/Sliding & Folding Systems (Offset Sliding  Centre Sliding)/Sliding & Folding System - Center Sliding.webp' },
+            { name: 'Offset Sliding Folding', desc: 'Offset sliding and folding layout for edge-aligned stacking.', icon: 'door-sliding', image: '/images/ozone/Sliding & Folding Systems (Offset Sliding  Centre Sliding)/Sliding & Folding System - Offset Sliding.webp' },
+            { name: 'Soft-Open & Close Folding (Offset)', desc: 'Soft damping folding layout on offset axis.', icon: 'door-sliding', image: '/images/ozone/Sliding & Folding Systems (Offset Sliding  Centre Sliding)/Soft-Open & Close Sliding Folding System (Offset).webp' }
+          ]
+        }
+      },
+      {
+        id: 'floor-spring',
+        name: 'Frame Door System with Integrated Floor Spring',
+        seriesLabel: 'Pivot Entrances',
+        tagline: 'IMPOSING HEAVY-DUTY PIVOT STATEMENTS',
+        description: 'Imposing, full-height glass doors equipped with heavy-duty hidden hydraulic floor springs. Engineered with a built-in double-action mechanism to open smoothly both ways and return softly to center.',
+        uniqueFeature: {
+          title: 'Concealed Hydraulic Springs',
+          detail: 'Heavy-duty springs pocketed inside floor cavities for a completely hidden frame visual.',
+        },
+        img: '/images/ozone/Frame Door System with Integrated Floor Spring/Axis Frame (4507) Door System with Floor Spring.webp',
+        specs: {
+          'FRAME DEPTH': ['Ultra-slim profiles matching Stealth Slide and Swing'],
+          'HEIGHT OF SILL': ['Flush floor spring (concealed floor pocket)'],
+          'DOOR PANEL': [
+            'Glass Thickness: up to 12 mm safety tempered or laminated glass',
+            'Integrated double-action pivot with hydraulic self-closing spring'
+          ]
+        },
+        performanceDetails: {
+          'WIND PRESSURE': [{ label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }],
+          'WATER TIGHTNESS': [{ label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }],
+          'AIR TIGHTNESS': [{ label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }],
+          'NOISE INSULATION': [{ label: 'DURABILITY', value: '500,000 Cycles', sub: 'Certified' }]
+        },
+        colors: ['Natural Silver', 'Matte Black', 'Anodized Bronze'],
+        configurations: {
+          DOOR: [
+            { name: 'Axis Frame (4507) Floor Spring', desc: 'Frame door with integrated floor spring on Axis 4507 profile.', icon: 'door-swing', image: '/images/ozone/Frame Door System with Integrated Floor Spring/Axis Frame (4507) Door System with Floor Spring.webp' },
+            { name: 'Standard Frame Floor Spring', desc: 'Standard frame door with integrated floor spring.', icon: 'door-swing', image: '/images/ozone/Frame Door System with Integrated Floor Spring/Frame Door System with Floor Spring.webp' },
+            { name: 'Linea Frame (4507) Floor Spring', desc: 'Frame door with integrated floor spring on Linea 4507 profile.', icon: 'door-swing', image: '/images/ozone/Frame Door System with Integrated Floor Spring/Linea Frame (4507) Door System with Floor Spring.webp' }
+          ]
+        }
+      },
+      {
+        id: 'swing-closer',
+        name: 'Swing Door Solution with Overhead Door Closer',
+        seriesLabel: 'Casement Entrances',
+        tagline: 'CONTROLLED SILENT CASEMENT ENTRY',
+        description: 'A highly secure, streamlined casement configuration utilizing sleek, surface-mounted or concealed overhead closers to ensure controlled, silent closing operations.',
+        uniqueFeature: {
+          title: 'Controlled Overhead Closer',
+          detail: 'Adjustable damping overhead arm ensures soft-closing without impact.',
+        },
+        img: '/images/home/ozone-glass.webp',
+        specs: {
+          'FRAME DEPTH': ['Ultra-slim profiles matching Stealth Slide and Swing'],
+          'HEIGHT OF SILL': ['Concealed or surface overhead closer'],
+          'DOOR PANEL': [
+            'Glass Thickness: up to 12 mm safety tempered or laminated glass',
+            'Overhead hydraulic door closer with adjustable speed parameters'
+          ]
+        },
+        performanceDetails: {
+          'WIND PRESSURE': [{ label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }],
+          'WATER TIGHTNESS': [{ label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }],
+          'AIR TIGHTNESS': [{ label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }],
+          'NOISE INSULATION': [{ label: 'DURABILITY', value: '500,000 Cycles', sub: 'Certified' }]
+        },
+        colors: ['Natural Silver', 'Matte Black', 'Anodized Bronze'],
+        configurations: {
+          DOOR: [
+            // No variants, page displays fallback placeholder text
+          ]
+        }
+      },
+      {
+        id: 'revolving',
+        name: 'Framed 360° Revolving Door Systems',
+        seriesLabel: 'Dramatic Entry Statement',
+        tagline: 'THE ART OF DRAMATIC ENTRY STATEMENT',
+        description: 'A breath-taking masterclass in interior engineering. Designed as a full-height, centre-pivot grand glass panel that rotates a complete 360 degrees on a heavy-duty concealed axis, creating a dramatic, premium entryway statement for executive offices and luxury villa showrooms.',
+        uniqueFeature: {
+          title: '360° Continuous Pivot Axis',
+          detail: 'Grand full-height glass panel rotating freely 360 degrees on dynamic pivots.',
+        },
+        img: '/images/ozone/Framed 360° Revolving Door Systems/Framed 360° Revolving Door.webp',
+        specs: {
+          'FRAME DEPTH': ['Ultra-slim profiles matching Stealth Slide and Swing'],
+          'HEIGHT OF SILL': ['Concealed floor/ceiling pivot points'],
+          'DOOR PANEL': [
+            'Glass Thickness: up to 12 mm safety tempered or laminated glass',
+            'Grand pivot mechanism with 360-degree axis rotation'
+          ]
+        },
+        performanceDetails: {
+          'WIND PRESSURE': [{ label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }],
+          'WATER TIGHTNESS': [{ label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }],
+          'AIR TIGHTNESS': [{ label: 'INTERNAL USE', value: 'N/A', sub: 'Internal Partition' }],
+          'NOISE INSULATION': [{ label: 'DURABILITY', value: '100,000 Cycles', sub: 'Certified' }]
+        },
+        colors: ['Natural Silver', 'Matte Black', 'Anodized Bronze'],
+        configurations: {
+          DOOR: [
+            { name: '360° Revolving Door', desc: 'Grand framed 360° revolving single leaf door.', icon: 'door-swing', image: '/images/ozone/Framed 360° Revolving Door Systems/Framed 360° Revolving Door.webp' }
+          ]
+        }
+      }
+    ]
+  }
 ];

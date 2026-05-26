@@ -39,14 +39,6 @@ const BlogPostPage = async ({ params }) => {
       <section className="pt-28 pb-8 sm:pt-36 sm:pb-12 lg:pt-40 lg:pb-16 border-b border-black/5">
         <div className="main-container px-4 sm:px-8 text-left flex flex-col items-start" data-aos="fade-up">
 
-          {/* Breadcrumb */}
-          <nav className="font-sans flex flex-wrap items-center gap-2 text-[10px] sm:text-xs text-[#999] uppercase tracking-[0.22em] mb-5 sm:mb-8 font-bold">
-            <Link href="/" className="hover:text-light-gold transition-colors">Home</Link>
-            <span>/</span>
-            <Link href="/news-blogs" className="hover:text-light-gold transition-colors">News &amp; Blogs</Link>
-            <span>/</span>
-            <span className="text-[#111] font-semibold">{post.title}</span>
-          </nav>
 
           {/* Category Badge */}
           <span className="font-sans bg-[#111] text-white text-[0.58rem] sm:text-[0.65rem] uppercase tracking-[0.25em] font-black px-3.5 py-1 sm:px-4 sm:py-1.5 rounded-full mb-5 sm:mb-8">
