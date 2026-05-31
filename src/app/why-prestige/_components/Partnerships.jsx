@@ -16,7 +16,7 @@ const PARTNERSHIPS = [
         logo: "/partners/ozone.avif",
     },
     {
-        brand: "AL AMEEN",
+        brand: "AL AMIN",
         origin: "Regional",
         desc: "A regional brand for thermal aluminium systems suited to the Gulf climate. Designed to meet local energy and building code requirements.",
         image: "/images/atis-detail.png",
@@ -41,6 +41,7 @@ const Partnerships = () => {
     const rafRef = useRef(null);
     const startTimeRef = useRef(null);
     const pausedAtRef = useRef(null); // tracks elapsed when paused
+    const tickRef = useRef();
 
     const tick = useCallback((timestamp) => {
         if (!startTimeRef.current) startTimeRef.current = timestamp;
@@ -49,21 +50,32 @@ const Partnerships = () => {
         setProgress(p);
 
         if (p < 1) {
-            rafRef.current = requestAnimationFrame(tick);
+            if (tickRef.current) {
+                rafRef.current = requestAnimationFrame(tickRef.current);
+            }
         } else {
             // Advance slide
             setActiveIndex((prev) => (prev === totalItems - 1 ? 0 : prev + 1));
             setProgress(0);
             startTimeRef.current = null;
-            rafRef.current = requestAnimationFrame(tick);
+            if (tickRef.current) {
+                rafRef.current = requestAnimationFrame(tickRef.current);
+            }
         }
     }, [totalItems]);
+
+    // Keep tickRef updated
+    useEffect(() => {
+        tickRef.current = tick;
+    }, [tick]);
 
     const startTimer = useCallback(() => {
         if (rafRef.current) cancelAnimationFrame(rafRef.current);
         startTimeRef.current = null;
-        rafRef.current = requestAnimationFrame(tick);
-    }, [tick]);
+        if (tickRef.current) {
+            rafRef.current = requestAnimationFrame(tickRef.current);
+        }
+    }, []);
 
     const stopTimer = useCallback(() => {
         if (rafRef.current) cancelAnimationFrame(rafRef.current);
@@ -81,10 +93,15 @@ const Partnerships = () => {
     }, [isSwiping, isPaused, activeIndex, startTimer, stopTimer]);
 
     useEffect(() => {
-        setIsMobile(window.innerWidth < 768);
+        const timer = setTimeout(() => {
+            setIsMobile(window.innerWidth < 768);
+        }, 0);
         const handleResize = () => setIsMobile(window.innerWidth < 768);
         window.addEventListener("resize", handleResize, { passive: true });
-        return () => window.removeEventListener("resize", handleResize);
+        return () => {
+            clearTimeout(timer);
+            window.removeEventListener("resize", handleResize);
+        };
     }, []);
 
     // Touch Mechanics

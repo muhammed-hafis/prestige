@@ -1,5 +1,4 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import {
   FiArrowRight,
@@ -17,7 +16,8 @@ import {
   FiPackage,
   FiChevronRight,
 } from "react-icons/fi";
-import { useEnquiry } from "@/context/EnquiryContext";
+import EnquiryButton from "@/components/common/EnquiryButton";
+import DownloadButton from "@/components/common/DownloadButton";
 import { productCategories } from "../../_data/products";
 
 /* ── Local animation styles ─────────────────────────────────── */
@@ -130,7 +130,7 @@ function SystemCatalogue() {
         return (
           <div
             key={series.id}
-            className="product-portfolio-card grid grid-cols-1 md:grid-cols-12 md:gap-14 bg-white border border-light-gold/10 rounded-3xl shadow-sm items-stretch overflow-hidden"
+            className="product-portfolio-card grid grid-cols-1 md:grid-cols-12 md:gap-14 bg-white border border-light-gold/10 shadow-lg items-stretch overflow-hidden"
             data-aos={isEven ? "fade-right" : "fade-left"}
           >
             {/* Image Block */}
@@ -182,11 +182,6 @@ function SystemCatalogue() {
 
 /* ── Main Page Component ─────────────────────────────────────── */
 export default function OzonePage() {
-  const { openModal } = useEnquiry();
-
-  const handleDownload = (docName) => {
-    alert(`Starting download for: ${docName}`);
-  };
 
   return (
     <div className="min-h-screen bg-[#FAF6EC] text-[#111] overflow-x-hidden">
@@ -220,30 +215,42 @@ export default function OzonePage() {
       {/* ── THE ART OF INVISIBLE ARCHITECTURE ── */}
       <section className="py-16 sm:py-24 border-b border-light-gold/10 bg-white/20">
         <div className="main-container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            <div className="lg:col-span-5" data-aos="fade-right">
-              <span className="section-label text-light-gold mb-3 block">The Stealth Concept</span>
-              <h2 className="font-serif text-2xl sm:text-4xl font-bold text-[#111] mb-6 leading-tight">
-                The Art of Invisible Architecture
-              </h2>
-              <div className="w-8 h-[2px] bg-light-gold mb-6" />
-              <p className="font-sans text-xs sm:text-sm font-bold uppercase tracking-widest text-neutral-500 mb-2">
-                Defining the Stealth Concept: Unseen, Unheard, Unmatched.
-              </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 overflow-hidden rounded-2xl shadow-lg border border-light-gold/10">
+
+            {/* Left Col: Image */}
+            <div className="relative min-h-[280px] sm:min-h-[420px] lg:min-h-0 overflow-hidden" data-aos="fade-right">
+              <img
+                src="/images/ozone-stealth.jpeg"
+                alt="OZONE Stealth Concept"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
             </div>
-            <div className="lg:col-span-7" data-aos="fade-left">
-              <blockquote className="border-l-2 border-light-gold/50 pl-5 py-1 mb-7">
-                <p className="font-sans text-xs sm:text-sm text-neutral-600 leading-relaxed">
-                  "Stealth" refers to the quality of not being easily visible or detectable. Inspired by the unseen and unheard, the Ozone Stealth Series utilizes ultra-slim aluminium framing and minimalist hardware to replace bulky traditional partitions, maximizing glass surfaces to fill high-end corporate and luxury residential spaces with natural light and unobstructed views.
+
+            {/* Right Col: Content */}
+            <div className="flex flex-col justify-center p-8 sm:p-12 lg:p-14 bg-white" data-aos="fade-left">
+              <span className="section-label text-light-gold mb-3 block">
+                The Stealth Concept
+              </span>
+              <h2 className="section-heading text-[#111] mb-6">
+                The Art of Invisible Architecture.
+              </h2>
+              <div className="p-5 bg-light-gold/5 border-l-2 border-light-gold rounded-r-xl mb-6">
+                <p className="font-serif text-sm text-neutral-800 leading-relaxed">
+                  &quot;Defining the Stealth Concept: Unseen, Unheard, Unmatched.&quot;
                 </p>
-              </blockquote>
-              <p className="font-sans text-xs sm:text-sm text-neutral-500 leading-relaxed font-light mb-6">
+              </div>
+              <p className="font-sans text-sm sm:text-base text-neutral-600 leading-relaxed font-light mb-5">
+                &quot;Stealth&quot; refers to the quality of not being easily visible or detectable. Inspired by the unseen and unheard, the Ozone Stealth Series utilizes ultra-slim aluminium framing and minimalist hardware to replace bulky traditional partitions, maximizing glass surfaces to fill high-end corporate and luxury residential spaces with natural light and unobstructed views.
+              </p>
+              <p className="font-sans text-sm sm:text-base text-neutral-600 leading-relaxed font-light mb-5">
                 Engineered for a flawless physical experience, the systems feature advanced Soft-Open and Soft-Close mechanisms that cushion panel movement perfectly for a smooth, fluid, and noiseless operation.
               </p>
-              <p className="font-sans text-xs sm:text-sm text-neutral-500 leading-relaxed font-light">
+              <p className="font-sans text-sm sm:text-base text-neutral-600 leading-relaxed font-light">
                 This performance is delivered through two core configurations: <strong className="font-semibold text-neutral-800">Stealth Slide</strong>, featuring ultra-low-profile, top-hung tracking networks that require zero bottom tracks to keep luxury marble, stone, or hardwood flooring completely flush and unbroken; and <strong className="font-semibold text-neutral-800">Stealth Swing</strong>, offering bespoke hinge and pivot door systems optimized for high-frequency daily operation while maintaining the exact same slim frame lines to ensure absolute aesthetic continuity across the interior layout.
               </p>
             </div>
+
           </div>
         </div>
       </section>
@@ -274,9 +281,8 @@ export default function OzonePage() {
             {OPERATIONS.map((op, idx) => {
               const Icon = op.icon;
               return (
-                <div
+                <EnquiryButton
                   key={op.num}
-                  onClick={openModal}
                   className="group relative flex flex-col p-8 sm:p-10 bg-white border border-light-gold/15 rounded-2xl shadow-sm hover:shadow-md hover:border-light-gold/30 transition-all duration-300 items-center text-center cursor-pointer"
                 >
                   {/* Icon at top center */}
@@ -293,7 +299,7 @@ export default function OzonePage() {
                   <p className="font-sans text-xs text-neutral-500 leading-relaxed font-light flex-1">
                     {op.desc}
                   </p>
-                </div>
+                </EnquiryButton>
               );
             })}
           </div>
@@ -348,9 +354,9 @@ export default function OzonePage() {
                   { name: "Ozone Stealth Technical Specifications & Sections (PDF)", size: "8.2 MB" },
                   { name: "Ozone Stealth Mechanical Testing Certificates (PDF)", size: "4.5 MB" },
                 ].map((doc, idx) => (
-                  <button
+                  <DownloadButton
                     key={idx}
-                    onClick={() => handleDownload(doc.name)}
+                    docName={doc.name}
                     className="flex items-center justify-between p-5 bg-white border border-light-gold/15 rounded-xl hover:border-light-gold transition-colors text-left group w-full cursor-pointer focus:outline-none"
                   >
                     <div className="flex items-center gap-4">
@@ -363,7 +369,7 @@ export default function OzonePage() {
                       </div>
                     </div>
                     <FiArrowRight className="w-4 h-4 text-neutral-400 group-hover:translate-x-1 transition-transform shrink-0" />
-                  </button>
+                  </DownloadButton>
                 ))}
               </div>
             </div>
@@ -392,9 +398,9 @@ export default function OzonePage() {
                   </p>
                 </div>
                 <div className="relative z-10">
-                  <button onClick={openModal} className="btn-prestige-enquire w-full sm:w-auto">
+                  <EnquiryButton className="btn-prestige-enquire w-full sm:w-auto">
                     Initiate Ozone Stealth Partition Technical Review →
-                  </button>
+                  </EnquiryButton>
                 </div>
               </div>
             </div>

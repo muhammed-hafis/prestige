@@ -7,7 +7,7 @@ import PageLoader from "@/components/layout/PageLoader";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 
 export const metadata = {
-  title: "Prestige | Premium Aluminium Doors & Windows",
+  title: "Tostem Aluminium Doors and Windows Certified Dealer - Prestige",
   description: "Experience excellence in architectural innovation with Prestige aluminium systems.",
   icons: {
     icon: [

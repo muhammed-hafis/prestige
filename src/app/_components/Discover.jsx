@@ -7,18 +7,18 @@ const DISCOVER_ITEMS = [
     label: 'SYSTEM REFERENCE GALLERY',
     title: 'System Reference Gallery',
     description: 'A visual showcase of authorized global systems in finished projects, serving as a design and aesthetic reference for your architectural planning.',
-    img: '/images/about-wide.png',
+    img: '/images/home/project-reference.avif',
     linkText: 'View Gallery',
-    href: '/why-prestige'
+    href: '/gallery'
   },
   {
     id: 'lectures',
     label: 'TECHNICAL LECTURES & JOURNAL',
     title: 'Technical Lectures & Journal',
     description: 'Deep dives into the science of thermal break systems, climate engineering, and modern structural design.',
-    img: '/images/blog_premium_energy.png',
+    img: '/images/home/lecture.avif',
     linkText: 'Read Lectures',
-    href: '/news-blogs'
+    href: '/lectures'
   }
 ];
 
@@ -33,7 +33,7 @@ const Discover = () => {
           data-aos="fade-up"
         >
           <p className="font-sans text-light-gold uppercase text-[0.62rem] sm:text-[0.7rem] mb-3 flex items-center gap-3 tracking-[0.4em] font-black">
-            GLOBAL PORTFOLIO & INSIGHTS
+            DISCOVER
             <span className="block w-[24px] sm:w-[30px] h-[0.5px] bg-light-gold shrink-0" />
           </p>
           <h2 className="section-heading text-[#111]">
@@ -52,14 +52,17 @@ const Discover = () => {
               data-aos-delay={idx * 150}
             >
               {/* Image Container with zoom effect */}
-              <div className="relative aspect-[16/10] overflow-hidden bg-black/5 rounded-[3px]">
+              <Link
+                href={item.href}
+                className="relative block aspect-[16/10] overflow-hidden bg-black/5 rounded-[3px]"
+              >
                 <img
                   src={item.img}
                   alt={item.title}
                   className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
-              </div>
+              </Link>
 
               {/* Tag / Category Label */}
               <span className="font-sans text-[0.58rem] sm:text-[0.62rem] tracking-[0.25em] text-light-gold font-black uppercase mt-6 mb-2">

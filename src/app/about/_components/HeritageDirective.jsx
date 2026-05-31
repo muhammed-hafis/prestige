@@ -44,7 +44,7 @@ const HeritageDirective = () => (
                 <div className="w-full lg:w-1/2 order-1 lg:order-2" data-aos="fade-left">
                     <div className="relative group overflow-hidden h-[280px] sm:h-[420px] md:h-[520px] lg:h-[650px]">
                         <img
-                            src="/images/interior_hero_main_1778838710819.png"
+                            src="/images/about-us.avif"
                             alt="Architecture"
                             className="w-full h-full object-cover transition-transform duration-[3s] group-hover:scale-105"
                         />
@@ -195,7 +195,7 @@ const HeritageDirective = () => (
                                     Architectural Synergy
                                 </h3>
                                 <p className="font-sans text-xs sm:text-sm text-[#666] leading-[1.7] font-light">
-                                    Acting as a technical extension of the architect's office to protect design intent.
+                                    Acting as a technical extension of the architect&apos;s office to protect design intent.
                                 </p>
                             </div>
                         </div>

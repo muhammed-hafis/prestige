@@ -5,11 +5,22 @@ import { usePathname } from "next/navigation";
 import { productCategories } from "../../app/_data/products";
 
 const getCategoryPath = (catId) => {
-  return catId === "windows-and-doors" ? "tostem" : catId;
+  return catId;
 };
 
 const getCategoryTitle = (catId) => {
-  return catId === "windows-and-doors" ? "TOSTEM Collection" : "OZONE Collection";
+  if (catId === "tostem") return "TOSTEM Collection";
+  if (catId === "ozone") return "OZONE Collection";
+  if (catId === "alamin") return "ALAMIN Systems";
+  return catId;
+};
+
+const getSeriesHref = (catId, serId) => {
+  const path = getCategoryPath(catId);
+  if (catId === "alamin") {
+    return `/products/alamin#${serId}`;
+  }
+  return `/products/${path}/${serId}`;
 };
 
 const Navbar = () => {
@@ -20,26 +31,22 @@ const Navbar = () => {
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
 
   const navItems = [
-    { name: "Home",          href: "/" },
-    { name: "About",         href: "/#about" },       // scrolls to #about section on homepage
-    { name: "Why Prestige",  href: "/why-prestige" }, // dedicated page
-    { name: "Products",      href: "/products" },     // dedicated page
-    { name: "News & Blogs",  href: "/news-blogs" },   // dedicated page
-    { name: "Contact",       href: "/contact" },      // dedicated page
+    { name: "Home",              href: "/" },
+    { name: "About",             href: "/about" },       // scrolls to #about section on homepage
+    { name: "Why Prestige",      href: "/why-prestige" }, // dedicated page
+    { name: "Products",          href: "/products" },     // dedicated page
+    { name: "Discover", href: "/global-portfolio-insights" }, // new page
+    // { name: "News & Blogs",      href: "/news-blogs" },   // dedicated page
+    { name: "Contact",           href: "/contact" },      // dedicated page
   ];
 
+  // Scroll shadow effect
   useEffect(() => {
-    const handleScroll = () => {
-      const isMobile = window.innerWidth < 768;
-      // On home page, wait until they scroll past the Hero animation (approx 1.4x height on mobile, 2.2x on desktop)
-      const threshold = isHome ? window.innerHeight * (isMobile ? 1.4 : 2.2) : 20;
-      const shouldScroll = window.scrollY > threshold;
-      setScrolled((prev) => (prev !== shouldScroll ? shouldScroll : prev));
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 40);
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isHome]);
+  }, []);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -52,13 +59,11 @@ const Navbar = () => {
     setMobileProductsOpen(false);
   };
 
-  // Navbar is visible immediately on other pages, or after scroll threshold on home
-  const isVisible = !isHome || scrolled;
 
   return (
     <>
       <nav
-        className={`fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 w-[92%] sm:w-[95%] max-w-[1440px] z-[1000] flex justify-between items-center rounded-full py-3 px-5 sm:px-8 lg:px-10 bg-[var(--background)]/80 backdrop-blur-xl border border-light-gold/20 transition-all duration-500 ${scrolled ? "shadow-xl" : "shadow-lg"} ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-24 pointer-events-none"}`}
+        className={`fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 w-[92%] sm:w-[95%] max-w-[1440px] z-[1000] flex justify-between items-center rounded-full py-3 px-5 sm:px-8 lg:px-10 bg-[var(--background)]/80 backdrop-blur-xl border border-light-gold/20 transition-all duration-500 ${scrolled ? "shadow-xl" : "shadow-lg"}`}
       >
         {/* Logo */}
         <Link
@@ -70,7 +75,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop nav links */}
-        <ul className="hidden lg:flex items-center gap-8 xl:gap-12 list-none m-0 p-0">
+        <ul className="hidden lg:flex items-center gap-4 xl:gap-8 lg:gap-5 list-none m-0 p-0">
           {navItems.map((item, idx) => (
             <li
               key={item.name}
@@ -121,7 +126,7 @@ const Navbar = () => {
                                 {cat.series.map((ser) => (
                                   <Link
                                     key={ser.id}
-                                    href={`/products/${getCategoryPath(cat.id)}/${ser.id}`}
+                                    href={getSeriesHref(cat.id, ser.id)}
                                     className="font-sans text-[0.75rem] text-[#555] hover:text-[#111] transition-all duration-200 flex items-center gap-2 group/item py-0.5"
                                   >
                                     <span className="w-1.5 h-1.5 rounded-full bg-light-gold scale-0 group-hover/item:scale-100 transition-transform duration-200 flex-shrink-0" />
@@ -180,7 +185,7 @@ const Navbar = () => {
 
       {/* Mobile drawer panel */}
       <div
-        className={`lg:hidden fixed top-0 right-0 z-[1000] h-full w-[75vw] max-w-[320px] bg-[var(--background)]/95 backdrop-blur-2xl border-l border-light-gold/20 shadow-2xl flex flex-col pt-24 pb-10 px-8 transition-transform duration-400 ease-[cubic-bezier(0.76,0,0.24,1)] ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
+        className={`lg:hidden fixed top-0 right-0 z-[1000] h-full w-[75vw] max-w-[320px] bg-[var(--background)]/95 backdrop-blur-2xl border-l border-light-gold/20 shadow-2xl flex flex-col pt-24 pb-10 px-8 overflow-y-auto transition-transform duration-400 ease-[cubic-bezier(0.76,0,0.24,1)] ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
         role="dialog"
         aria-modal="true"
         aria-label="Mobile navigation"
@@ -241,7 +246,7 @@ const Navbar = () => {
                             {cat.series.map((ser) => (
                               <li key={ser.id}>
                                 <Link
-                                  href={`/products/${getCategoryPath(cat.id)}/${ser.id}`}
+                                  href={getSeriesHref(cat.id, ser.id)}
                                   onClick={closeMenu}
                                   className="font-sans text-[0.72rem] text-[#6b7280] hover:text-[#111] transition-colors block py-0.5"
                                 >

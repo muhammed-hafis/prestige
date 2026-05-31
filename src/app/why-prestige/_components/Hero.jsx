@@ -16,14 +16,11 @@ const Hero = () => (
 
         <div className="main-container relative z-10 text-center">
 
-            {/* Label */}
-            <p className="section-label text-light-gold mb-4 sm:mb-5" data-aos="fade-down">
-                Why Prestige
-            </p>
+            
 
             {/* Heading */}
             <h1 className="section-heading text-[#111] mb-3 sm:mb-4 tracking-tight" data-aos="fade-up" data-aos-delay="100">
-                WHY PRESTIGE
+                Why Prestige
             </h1>
 
             {/* Subheading */}

@@ -1,7 +1,11 @@
+"use client";
 import React from "react";
 import { FiArrowRight, FiShield } from "react-icons/fi";
+import { useEnquiry } from "@/context/EnquiryContext";
 
 const Commitment = () => {
+    const { openModal } = useEnquiry();
+
     return (
         <section className="relative overflow-hidden bg-[var(--background)] py-10 lg:py-14">
             
@@ -32,10 +36,10 @@ const Commitment = () => {
                                 OUR UNCOMPROMISING COMMITMENT
                             </span>
                             <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#111] mb-5 tracking-tight">
-                                We Hold the Risk, So You Don't Have To.
+                                We Hold the Risk, So You Don&apos;t Have To.
                             </h2>
                             <p className="font-sans text-sm sm:text-base text-[#4a4a4a] leading-[1.85] font-light">
-                                When you choose Prestige Creations, you are buying peace of mind. Backed by over a decade of regional engineering heritage from our parent group, we take total accountability for your building's envelope. We deliver on-time, on-budget, and to a flawless finish that enhances the luxury profile of your real estate asset.
+                                When you choose Prestige Creations, you are buying peace of mind. Backed by over a decade of regional engineering heritage from our parent group, we take total accountability for your building&apos;s envelope. We deliver on-time, on-budget, and to a flawless finish that enhances the luxury profile of your real estate asset.
                             </p>
                         </div>
                     </div>
@@ -71,16 +75,16 @@ const Commitment = () => {
                         </h2>
 
                         <p className="font-sans text-sm sm:text-base text-white/70 leading-relaxed font-light mb-8 max-w-2xl">
-                            Don't let poor fabrication compromise your design. Bring your architectural drawings to our technical desk for a complete structural and thermal feasibility review.
+                            Don&apos;t let poor fabrication compromise your design. Bring your architectural drawings to our technical desk for a complete structural and thermal feasibility review.
                         </p>
 
-                        <a
-                            href="/contact"
-                            className="btn-prestige-enquire"
+                        <button
+                            onClick={openModal}
+                            className="btn-prestige-enquire cursor-pointer"
                         >
                             <span>Schedule a Technical System Review</span>
                             <FiArrowRight className="w-4 h-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
-                        </a>
+                        </button>
                     </div>
                 </div>
 

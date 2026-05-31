@@ -30,7 +30,7 @@ export default function SmoothScroll() {
       requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    const rafId = requestAnimationFrame(raf);
 
     // Intercept click on hash anchors for smooth scrolling
     const handleAnchorClick = (e) => {
@@ -57,6 +57,26 @@ export default function SmoothScroll() {
 
     document.addEventListener("click", handleAnchorClick);
 
+    // Resize handler
+    const handleResize = () => {
+      lenis.resize();
+    };
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("load", handleResize);
+    window.addEventListener("prestige:ready", handleResize);
+
+    // Setup ResizeObserver to observe body height changes and resize Lenis
+    let resizeObserver;
+    if (typeof window !== "undefined" && "ResizeObserver" in window) {
+      resizeObserver = new ResizeObserver(() => {
+        lenis.resize();
+      });
+      if (document.body) {
+        resizeObserver.observe(document.body);
+      }
+    }
+
     // Scroll to hash on initial load if present
     if (window.location.hash) {
       const element = document.querySelector(window.location.hash);
@@ -69,6 +89,13 @@ export default function SmoothScroll() {
 
     return () => {
       document.removeEventListener("click", handleAnchorClick);
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("load", handleResize);
+      window.removeEventListener("prestige:ready", handleResize);
+      if (resizeObserver) {
+        resizeObserver.disconnect();
+      }
+      cancelAnimationFrame(rafId);
       lenis.destroy();
       window.__lenisInstance = null;
     };
@@ -83,11 +110,16 @@ export default function SmoothScroll() {
         if (element) {
           setTimeout(() => {
             window.__lenisInstance.scrollTo(element, { offset: 0, duration: 1.2, immediate: false });
+            window.__lenisInstance.resize();
           }, 100);
           return;
         }
       }
       window.__lenisInstance.scrollTo(0, { immediate: true });
+      // Request resize on path changes to handle layout shifts
+      setTimeout(() => {
+        window.__lenisInstance?.resize();
+      }, 50);
     }
   }, [pathname]);
 

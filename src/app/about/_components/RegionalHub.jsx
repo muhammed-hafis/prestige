@@ -81,7 +81,7 @@ const RegionalHub = () => (
                 <div className="relative z-10 overflow-hidden rounded-[1.2rem] sm:rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.12)] aspect-[16/11] sm:aspect-[21/9] lg:aspect-[21/8]">
 
                     <img
-                        src="/images/about-wide.png"
+                        src="/images/emaar-square.jpg"
                         alt="Saudi Arabia Reach"
                         className="h-full w-full object-cover sm:grayscale transition-all duration-[1200ms] group-hover:scale-[1.03] sm:group-hover:scale-105 group-hover:grayscale-0"
                     />

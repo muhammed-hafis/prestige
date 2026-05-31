@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import Link from "next/link";
 import {
@@ -19,7 +18,8 @@ import {
   FiTool,
   FiMapPin
 } from "react-icons/fi";
-import { useEnquiry } from "@/context/EnquiryContext";
+import EnquiryButton from "@/components/common/EnquiryButton";
+import DownloadButton from "@/components/common/DownloadButton";
 
 // Custom styles for scroll indicator and custom styling hooks
 const LocalStyles = () => (
@@ -54,14 +54,14 @@ const LocalStyles = () => (
   `}</style>
 );
 
-const PORTFOLIO_SERIES = [
+const ALL_SYSTEMS = [
   {
     id: "grants",
     name: "GRANTS Collection",
     badge: "Flagship Ultra-Luxury Tier",
     type: "Top-of-the-Line",
-    desc: "TOSTEM’s absolute topmost profile series, engineered for architectural masterpieces and high-end luxury villas. It redefines the boundaries of living spaces with an innovative hidden-sash design and ultra-slim meeting stiles. This tier maximizes glass surface areas to deliver sweeping, unobstructed panoramic views while maintaining the highest structural and wind-load stability available.",
-    img: "/images/grants/grants.png",
+    desc: "TOSTEM's absolute topmost profile series, engineered for architectural masterpieces and high-end luxury villas. It redefines the boundaries of living spaces with an innovative hidden-sash design and ultra-slim meeting stiles. This tier maximizes glass surface areas to deliver sweeping, unobstructed panoramic views while maintaining the highest structural and wind-load stability available.",
+    img: "/images/grants/grants.avif",
     links: [
       { label: "Explore GRANTS Specs", href: "/products/tostem/grants" },
       { label: "Explore GRANTS Plus Specs", href: "/products/tostem/grants-plus" }
@@ -72,8 +72,8 @@ const PORTFOLIO_SERIES = [
     name: "ATIS SERIES",
     badge: "Mid-Range Architectural Tier",
     type: "Design & Innovation",
-    desc: "The perfect sweet spot between high-end aesthetics and everyday practicality. Awarded prestigious global accolades (including the Red Dot and iF Design Awards), ATIS is built around a minimalist design where all functional components, hinges, and hardware are fully concealed within smooth, slim frames. It features TOSTEM’s proprietary Invisible Insect Screen for 20% better ventilation.",
-    img: "/images/atis/atis.png",
+    desc: "The perfect sweet spot between high-end aesthetics and everyday practicality. Awarded prestigious global accolades (including the Red Dot and iF Design Awards), ATIS is built around a minimalist design where all functional components, hinges, and hardware are fully concealed within smooth, slim frames. It features TOSTEM's proprietary Invisible Insect Screen for 20% better ventilation.",
+    img: "/images/atis/atis.avif",
     links: [
       { label: "Explore ATIS Specs", href: "/products/tostem/atis" },
       { label: "Explore ATIS Plus Specs", href: "/products/tostem/atis-plus" }
@@ -85,31 +85,30 @@ const PORTFOLIO_SERIES = [
     badge: "The Foundation Tier",
     type: "Everyday Quality & Scale",
     desc: "TOSTEM's highly accessible entry tier, designed to bring legendary Japanese factory precision to mass-market residential compounds, commercial mid-rises, and budget-conscious developments. Despite its competitive pricing, the WE series never compromises on core performance, offering robust functionality, smooth rolling operations, and tested weather protection.",
-    img: "/images/we 70/we.png",
+    img: "/images/we 70/we.avif",
     links: [
       { label: "Explore WE 70 Specs", href: "/products/tostem/we-70" },
       { label: "Explore WE Plus Specs", href: "/products/tostem/we-plus" }
     ]
-  }
-];
-
-const SPECIALTY_SYSTEMS = [
+  },
   {
-    title: "AIRFLOW SYSTEMS",
-    subtitle: "Integrated Natural Ventilation",
+    id: "airflow",
+    name: "AIRFLOW SYSTEMS",
+    badge: "Integrated Natural Ventilation",
+    type: "Specialty System",
     desc: "A specialized boutique ventilation system designed to introduce constant, fresh air circulation throughout a luxury home without compromising security. It utilizes unique vertical sliding glass panels built seamlessly inside the main doors that operate while the frame remains securely locked.",
-    icon: <FiWind className="w-6 h-6 text-light-gold" />,
-    img: "/images/giesta-airflow/giesta-airflow.png",
+    img: "/images/giesta-airflow/giesta-airflow.avif",
     links: [
       { label: "Explore Airflow Specs", href: "/products/tostem/giesta-airflow" }
     ]
   },
   {
-    title: "GIESTA",
-    subtitle: "High-Security Premium Entrance Doors",
-    desc: "High-end structural main entrance doors that perfectly wrap an insulated structural steel core in sophisticated wood-pattern or sleek metallic finishes. Equipped with user-friendly heavy-duty handles, multi-point locking systems, and advanced thermal seals to block exterior desert heat at the property’s main entry point.",
-    icon: <FiShield className="w-6 h-6 text-light-gold" />,
-    img: "/images/giesta/giesta.png",
+    id: "giesta",
+    name: "GIESTA",
+    badge: "High-Security Premium Entrance Doors",
+    type: "Specialty System",
+    desc: "High-end structural main entrance doors that perfectly wrap an insulated structural steel core in sophisticated wood-pattern or sleek metallic finishes. Equipped with user-friendly heavy-duty handles, multi-point locking systems, and advanced thermal seals to block exterior desert heat at the property's main entry point.",
+    img: "/images/giesta/giesta.avif",
     links: [
       { label: "Explore GIESTA Specs", href: "/products/tostem/giesta" }
     ]
@@ -133,14 +132,14 @@ const TESTING_PILLARS = [
   },
   {
     title: "Air Tightness",
-    subtitle: "ASTM E283",
+    subtitle: "ASTM E283 / JIS",
     metric: "8 - 10.7 m³/h",
     desc: "Minimizes uncontrolled air infiltration down to a tight envelope. Blocks hot desert dust, fine sand particles, and moisture to drastically lower HVAC energy loads.",
     icon: <FiWind className="w-6 h-6 text-light-gold" />
   },
   {
     title: "Acoustic Insulation",
-    subtitle: "Noise Reduction",
+    subtitle: "ASTM E90 / JIS T-1",
     metric: "-25 Decibels",
     desc: "Reduces external ambient noise by up to 25 Decibels using standard single glass, creating a serene environment. Scales even higher with double-glazed or laminated glass.",
     icon: <FiVolume2 className="w-6 h-6 text-light-gold" />
@@ -163,12 +162,6 @@ const ADVANTAGES = [
 ];
 
 export default function TostemPage() {
-  const { openModal } = useEnquiry();
-
-  const handleDownload = (docName) => {
-    // Simple user notification for demo/brochure downloads
-    alert(`Starting download for: ${docName}`);
-  };
 
   return (
     <div className="min-h-screen bg-[#FAF6EC] text-[#111] overflow-x-hidden">
@@ -177,7 +170,7 @@ export default function TostemPage() {
       {/* ── HERO SECTION ── */}
       <section className="relative h-[80vh] min-h-[500px] flex items-center justify-center overflow-hidden">
         <img
-          src="/images/home/tostem.jpg"
+          src="/images/home/tostem.avif"
           alt="TOSTEM Pre-Engineered Systems"
           className="tostem-hero-img absolute inset-0 w-full h-full object-cover"
         />
@@ -200,36 +193,43 @@ export default function TostemPage() {
       {/* ── HERITAGE SECTION ── */}
       <section className="py-16 sm:py-24 border-b border-light-gold/10 bg-white/20">
         <div className="main-container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            
-            {/* Left Col: Headings & Callout */}
-            <div className="lg:col-span-5" data-aos="fade-right">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 overflow-hidden rounded-2xl shadow-lg border border-light-gold/10">
+
+            {/* Left Col: Image */}
+            <div className="relative min-h-[280px] sm:min-h-[420px] lg:min-h-0 overflow-hidden" data-aos="fade-right">
+              <img
+                src="/images/tostem-benchmark.avif"
+                alt="Raising the Global Benchmark — TOSTEM"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
+            </div>
+
+            {/* Right Col: Content */}
+            <div className="flex flex-col justify-center p-8 sm:p-12 lg:p-14 bg-white" data-aos="fade-left">
               <span className="section-label text-light-gold mb-3 block">
                 Raising the Global Benchmark
               </span>
               <h2 className="section-heading text-[#111] mb-6">
                 A Century of Architectural Brilliance.
               </h2>
-              <div className="p-6 bg-light-gold/5 border-l-2 border-light-gold rounded-r-xl">
+              <div className="p-5 bg-light-gold/5 border-l-2 border-light-gold rounded-r-xl mb-6">
                 <p className="font-serif text-sm text-neutral-800 leading-relaxed">
-                  "Over 100 years of LIXIL global innovation, bringing millimetric accuracy directly from automated factory beds to Saudi Arabia's finest estates."
+                  &quot;Over 100 years of LIXIL global innovation, bringing millimetric accuracy directly from automated factory beds to Saudi Arabia&apos;s finest estates.&quot;
                 </p>
               </div>
-            </div>
-
-            {/* Right Col: Body Text */}
-            <div className="lg:col-span-7" data-aos="fade-left">
-              <p className="font-sans text-sm sm:text-base text-neutral-600 leading-relaxed font-light mb-6">
+              <p className="font-sans text-sm sm:text-base text-neutral-600 leading-relaxed font-light mb-5">
                 Sourced through the global network of LIXIL Japan, TOSTEM stands at the pinnacle of architectural innovation with a legacy spanning over a century. For more than 100 years, TOSTEM has continually redefined how the world interacts with aluminium opening systems, earning the absolute trust of leading international architects, master developers, and luxury estate owners.
               </p>
               <p className="font-sans text-sm sm:text-base text-neutral-600 leading-relaxed font-light">
-                Unlike standard systems that are cut, modified, and manually pieced together by local workshops, TOSTEM profiles are <strong className="font-semibold text-neutral-800">100% Pre-Engineered</strong>. Every window and door is designed, extruded, machined, and quality-tested in an automated factory environment to exact millimetric dimensions before arriving at your site. This eliminates human assembly error, guarantees structural uniformity, and ensures the systems perform precisely as engineered for decades.
+                Unlike standard systems that are cut, modified, and manually pieced together by local workshops, TOSTEM profiles are <strong className="font-semibold text-neutral-800">100% Pre-Engineered</strong>. Every window and door is designed, extruded, machined, and quality-tested in an automated factory environment to exact millimetric dimensions before arriving at your site.
               </p>
             </div>
 
           </div>
         </div>
       </section>
+
 
       {/* ── SAUDI OPERATIONS SECTION ── */}
       <section className="py-16 sm:py-24 bg-[#FAF6EC] border-b border-light-gold/10">
@@ -256,8 +256,7 @@ export default function TostemPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8" data-aos="fade-up">
             
             {/* Sourcing */}
-            <div
-              onClick={openModal}
+            <EnquiryButton
               className="group relative flex flex-col p-8 sm:p-10 bg-white border border-light-gold/15 rounded-2xl shadow-sm hover:shadow-md hover:border-light-gold/30 transition-all duration-300 items-center text-center cursor-pointer"
             >
               <div className="w-16 h-16 rounded-full bg-light-gold/10 border border-light-gold/20 flex items-center justify-center text-light-gold mb-6 group-hover:scale-105 transition-transform duration-300">
@@ -269,11 +268,10 @@ export default function TostemPage() {
               <p className="font-sans text-xs text-neutral-500 leading-relaxed font-light flex-1">
                 Every TOSTEM window, door, and profile we supply is sourced 100% genuine and direct from official manufacturing plants, complete with traceable factory origins and warranties.
               </p>
-            </div>
+            </EnquiryButton>
 
             {/* Installation */}
-            <div
-              onClick={openModal}
+            <EnquiryButton
               className="group relative flex flex-col p-8 sm:p-10 bg-white border border-light-gold/15 rounded-2xl shadow-sm hover:shadow-md hover:border-light-gold/30 transition-all duration-300 items-center text-center cursor-pointer"
             >
               <div className="w-16 h-16 rounded-full bg-light-gold/10 border border-light-gold/20 flex items-center justify-center text-light-gold mb-6 group-hover:scale-105 transition-transform duration-300">
@@ -285,11 +283,10 @@ export default function TostemPage() {
               <p className="font-sans text-xs text-neutral-500 leading-relaxed font-light flex-1">
                 We do not rely on third-party sub-contractors. Your systems are deployed and installed exclusively by our highly trained force of technicians.
               </p>
-            </div>
+            </EnquiryButton>
 
             {/* Mobility */}
-            <div
-              onClick={openModal}
+            <EnquiryButton
               className="group relative flex flex-col p-8 sm:p-10 bg-white border border-light-gold/15 rounded-2xl shadow-sm hover:shadow-md hover:border-light-gold/30 transition-all duration-300 items-center text-center cursor-pointer"
             >
               <div className="w-16 h-16 rounded-full bg-light-gold/10 border border-light-gold/20 flex items-center justify-center text-light-gold mb-6 group-hover:scale-105 transition-transform duration-300">
@@ -301,7 +298,7 @@ export default function TostemPage() {
               <p className="font-sans text-xs text-neutral-500 leading-relaxed font-light flex-1">
                 Backed by our technical hubs and operational frameworks, we execute supply and installation for luxury villas and major commercial projects across KSA.
               </p>
-            </div>
+            </EnquiryButton>
 
           </div>
         </div>
@@ -325,14 +322,14 @@ export default function TostemPage() {
             <div className="w-12 h-[2px] bg-light-gold mx-auto mt-6" />
           </div>
 
-          {/* Core Collection Cards */}
-          <div className="flex flex-col gap-12 sm:gap-16 mb-20">
-            {PORTFOLIO_SERIES.map((series, idx) => {
+          {/* All Systems Cards */}
+          <div className="flex flex-col gap-12 sm:gap-16">
+            {ALL_SYSTEMS.map((series, idx) => {
               const isEven = idx % 2 === 0;
               return (
                 <div
                   key={series.id}
-                  className="product-portfolio-card grid grid-cols-1 lg:grid-cols-12 lg:gap-14 bg-white border border-light-gold/10 rounded-3xl shadow-sm items-stretch overflow-hidden"
+                  className="product-portfolio-card grid grid-cols-1 lg:grid-cols-12 lg:gap-14 bg-white border border-light-gold/10 shadow-lg items-stretch overflow-hidden"
                   data-aos={isEven ? "fade-right" : "fade-left"}
                 >
                   
@@ -379,82 +376,6 @@ export default function TostemPage() {
             })}
           </div>
 
-          {/* Specialty Sub-systems */}
-          <div className="flex flex-col gap-12 sm:gap-16">
-            {SPECIALTY_SYSTEMS.map((sys, idx) => {
-              const isEven = idx % 2 === 0;
-              return (
-                <div
-                  key={idx}
-                  className="product-portfolio-card grid grid-cols-1 lg:grid-cols-12 lg:gap-14 bg-white border border-light-gold/10 rounded-3xl shadow-sm items-stretch overflow-hidden"
-                  data-aos={isEven ? "fade-right" : "fade-left"}
-                >
-                  
-                  {/* Image Block */}
-                  <div className={`col-span-1 lg:col-span-6 relative aspect-[16/10] lg:aspect-auto lg:h-full overflow-hidden bg-neutral-100 ${isEven ? "lg:order-2" : ""}`}>
-                    {sys.img ? (
-                      <img
-                        src={sys.img}
-                        alt={sys.title}
-                        className="w-full h-full object-cover transition-transform duration-[1.5s] hover:scale-105"
-                      />
-                    ) : (
-                      // Stylized Decorative Panel for systems without an image (Airflow)
-                      <div className="w-full h-full bg-gradient-to-br from-[#111] to-[#222] flex flex-col items-center justify-center p-8 relative overflow-hidden group">
-                        <div
-                          className="pointer-events-none absolute inset-0 opacity-[0.03]"
-                          style={{
-                            backgroundImage:
-                              "linear-gradient(to right, var(--light-gold) 1.5px, transparent 1.5px), linear-gradient(to bottom, var(--light-gold) 1.5px, transparent 1.5px)",
-                            backgroundSize: "20px 20px",
-                          }}
-                        />
-                        <div className="w-20 h-20 rounded-full bg-light-gold/10 flex items-center justify-center mb-4 border border-light-gold/25 group-hover:scale-110 transition-transform duration-500">
-                          {sys.icon}
-                        </div>
-                        <span className="font-sans text-[0.62rem] uppercase tracking-[0.25em] text-light-gold font-bold">
-                          {sys.subtitle}
-                        </span>
-                      </div>
-                    )}
-                    <div className="absolute top-4 left-4 bg-[#111]/80 backdrop-blur-md border border-light-gold/30 text-white text-[0.6rem] font-bold tracking-widest uppercase px-3 py-1.5 rounded-lg shadow-sm">
-                      Specialty System
-                    </div>
-                  </div>
-
-                  {/* Content Block */}
-                  <div className={`col-span-1 lg:col-span-6 flex flex-col justify-center p-6 sm:p-8 lg:p-10 ${isEven ? "lg:pr-0" : "lg:pl-0"}`}>
-                    <span className="font-sans text-[0.62rem] sm:text-[0.68rem] uppercase tracking-[0.2em] text-[#B8902A] font-black mb-2 block">
-                      {sys.subtitle}
-                    </span>
-                    <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#111] mb-4">
-                      {sys.title}
-                    </h3>
-                    <p className="font-sans text-xs sm:text-sm text-neutral-500 leading-relaxed font-light mb-6">
-                      {sys.desc}
-                    </p>
-
-                    {sys.links && (
-                      <div className="flex flex-wrap gap-4">
-                        {sys.links.map((link, lIdx) => (
-                          <Link
-                            key={lIdx}
-                            href={link.href}
-                            className="group inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#111] hover:text-[#B8902A] pb-1 border-b border-[#111]/10 hover:border-light-gold transition-all duration-300 w-fit"
-                          >
-                            {link.label}
-                            <FiArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-
-                </div>
-              );
-            })}
-          </div>
-
         </div>
       </section>
 
@@ -471,7 +392,7 @@ export default function TostemPage() {
               The Four Pillars of Testing
             </h2>
             <p className="section-desc text-neutral-500 max-w-2xl mx-auto">
-              TOSTEM systems undergo rigorous physical laboratory testing inside state-of-the-art testing centres in Japan and Thailand to pass the highest global parameters:
+              TOSTEM systems undergo rigorous physical laboratory testing inside state-of-the-art testing centres in Japan and Thailand to exceed the highest global certification benchmarks, including <strong className="font-semibold text-neutral-800">ASTM E330 / JIS</strong> and <strong className="font-semibold text-neutral-800">ASTM E300 / JIS</strong>:
             </p>
             <div className="w-12 h-[2px] bg-light-gold mx-auto mt-6" />
           </div>
@@ -486,12 +407,15 @@ export default function TostemPage() {
                 <div className="w-12 h-12 rounded-full bg-light-gold/10 flex items-center justify-center mb-6">
                   {pillar.icon}
                 </div>
-                <h3 className="font-serif text-base sm:text-lg font-bold text-[#111] mb-1">
+                <h3 className="font-serif text-base sm:text-lg font-bold text-[#111] mb-2">
                   {pillar.title}
                 </h3>
-                <span className="font-sans text-[0.62rem] text-neutral-400 font-semibold tracking-wider block mb-3 uppercase">
-                  {pillar.subtitle}
-                </span>
+                <div className="mb-4">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[0.68rem] font-bold uppercase tracking-wider bg-light-gold/10 text-[#B8902A] border border-light-gold/20 shadow-[0_2px_10px_rgba(184,144,42,0.05)]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-light-gold animate-pulse" />
+                    {pillar.subtitle}
+                  </span>
+                </div>
                 
                 <div className="my-4 py-2 border-y border-neutral-100 flex items-center justify-between">
                   <span className="font-sans text-[0.62rem] uppercase tracking-wider text-neutral-400">Tested Load</span>
@@ -552,6 +476,19 @@ export default function TostemPage() {
         </div>
       </section>
 
+      {/* ── VIDEO SHOWCASE ── */}
+      <section className="relative w-full h-[60vh] sm:h-[80vh] lg:h-screen bg-black overflow-hidden border-b border-light-gold/10" data-aos="fade-in">
+        <video
+          src="/tostem.mp4"
+          autoPlay
+          loop
+          muted
+          preload="auto"
+          className="w-full h-full object-cover"
+          playsInline
+        />
+      </section>
+
       {/* ── ARCHITECTURAL DOWNLOAD DESK & SUBMITTAL ── */}
       <section className="py-16 sm:py-24 bg-[#FAF6EC]">
         <div className="main-container">
@@ -574,8 +511,8 @@ export default function TostemPage() {
               {/* Downloads list */}
               <div className="flex flex-col gap-4">
                 
-                <button
-                  onClick={() => handleDownload("TOSTEM Architectural Systems Brochure")}
+                <DownloadButton
+                  docName="TOSTEM Architectural Systems Brochure"
                   className="flex items-center justify-between p-5 bg-white border border-light-gold/15 rounded-xl hover:border-light-gold transition-colors text-left group w-full cursor-pointer focus:outline-none"
                 >
                   <div className="flex items-center gap-4">
@@ -590,10 +527,10 @@ export default function TostemPage() {
                     </div>
                   </div>
                   <FiArrowRight className="w-4 h-4 text-neutral-400 group-hover:translate-x-1 transition-transform" />
-                </button>
+                </DownloadButton>
 
-                <button
-                  onClick={() => handleDownload("TOSTEM Technical Catalogues")}
+                <DownloadButton
+                  docName="TOSTEM Technical Catalogues"
                   className="flex items-center justify-between p-5 bg-white border border-light-gold/15 rounded-xl hover:border-light-gold transition-colors text-left group w-full cursor-pointer focus:outline-none"
                 >
                   <div className="flex items-center gap-4">
@@ -608,10 +545,10 @@ export default function TostemPage() {
                     </div>
                   </div>
                   <FiArrowRight className="w-4 h-4 text-neutral-400 group-hover:translate-x-1 transition-transform" />
-                </button>
+                </DownloadButton>
 
-                <button
-                  onClick={() => handleDownload("TOSTEM Materials & Performance Certificates")}
+                <DownloadButton
+                  docName="TOSTEM Materials & Performance Certificates"
                   className="flex items-center justify-between p-5 bg-white border border-light-gold/15 rounded-xl hover:border-light-gold transition-colors text-left group w-full cursor-pointer focus:outline-none"
                 >
                   <div className="flex items-center gap-4">
@@ -626,7 +563,7 @@ export default function TostemPage() {
                     </div>
                   </div>
                   <FiArrowRight className="w-4 h-4 text-neutral-400 group-hover:translate-x-1 transition-transform" />
-                </button>
+                </DownloadButton>
 
               </div>
             </div>
@@ -658,12 +595,11 @@ export default function TostemPage() {
                 </div>
 
                 <div className="relative z-10">
-                  <button
-                    onClick={openModal}
+                  <EnquiryButton
                     className="btn-prestige-enquire w-full sm:w-auto"
                   >
                     Initiate TOSTEM Technical Submittal →
-                  </button>
+                  </EnquiryButton>
                 </div>
 
               </div>

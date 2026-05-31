@@ -12,7 +12,7 @@ const SERVICES = [
 
 const EnquiryModal = () => {
     const { isModalOpen, closeModal } = useEnquiry();
-    const [isRendered, setIsRendered] = useState(false);
+    const [isRendered, setIsRendered] = useState(isModalOpen);
     const [selectedServices, setSelectedServices] = useState([]);
     const [file, setFile] = useState(null);
     const [dragActive, setDragActive] = useState(false);
@@ -24,18 +24,23 @@ const EnquiryModal = () => {
         message: ''
     });
 
+    if (isModalOpen && !isRendered) {
+        setIsRendered(true);
+    }
+
     useEffect(() => {
         if (isModalOpen) {
-            setIsRendered(true);
             document.body.style.overflow = 'hidden';
         } else {
-            const timer = setTimeout(() => {
-                setIsRendered(false);
-                document.body.style.overflow = 'unset';
-            }, 300);
-            return () => clearTimeout(timer);
+            document.body.style.overflow = 'unset';
+            if (isRendered) {
+                const timer = setTimeout(() => {
+                    setIsRendered(false);
+                }, 300);
+                return () => clearTimeout(timer);
+            }
         }
-    }, [isModalOpen]);
+    }, [isModalOpen, isRendered]);
 
     if (!isRendered && !isModalOpen) return null;
 
@@ -96,7 +101,7 @@ const EnquiryModal = () => {
 
     return (
         <div 
-            className={`fixed inset-0 z-[1000] flex items-center justify-center p-4 sm:p-6 md:p-10 transition-all duration-300 ${
+            className={`fixed inset-0 z-[1000] flex items-center justify-center p-3 sm:p-4 md:p-6 transition-all duration-300 ${
                 isModalOpen ? 'opacity-100' : 'opacity-0'
             }`}
         >
@@ -108,108 +113,108 @@ const EnquiryModal = () => {
 
             {/* Modal Content Wrapper */}
             <div 
-                className={`relative w-full max-w-4xl transition-all duration-500 transform ${
+                className={`relative w-full max-w-3xl transition-all duration-500 transform ${
                     isModalOpen ? 'scale-100 translate-y-0 opacity-100' : 'scale-95 translate-y-10 opacity-0'
                 }`}
             >
                 {/* Decorative Premium Frame Details */}
-                <div className="absolute -top-4 -right-4 -bottom-4 -left-4 border border-light-gold/15 pointer-events-none rounded-3xl hidden md:block"></div>
-                <div className="absolute -top-6 -left-6 w-16 h-16 border-t border-l border-light-gold/30 rounded-tl-3xl pointer-events-none hidden md:block"></div>
-                <div className="absolute -bottom-6 -right-6 w-16 h-16 border-b border-r border-light-gold/30 rounded-br-3xl pointer-events-none hidden md:block"></div>
+                <div className="absolute -top-3 -right-3 -bottom-3 -left-3 border border-light-gold/15 pointer-events-none rounded-2xl hidden md:block"></div>
+                <div className="absolute -top-5 -left-5 w-12 h-12 border-t border-l border-light-gold/30 rounded-tl-2xl pointer-events-none hidden md:block"></div>
+                <div className="absolute -bottom-5 -right-5 w-12 h-12 border-b border-r border-light-gold/30 rounded-br-2xl pointer-events-none hidden md:block"></div>
 
                 {/* Main Modal Box: Split Layout */}
-                <div className="relative bg-[var(--background)] rounded-2xl md:rounded-3xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] overflow-y-auto max-h-[90vh] md:max-h-[85vh] lg:max-h-none border border-light-gold/10 grid grid-cols-1 lg:grid-cols-[1fr_1.35fr] w-full no-scrollbar">
+                <div className="relative bg-[var(--background)] rounded-xl md:rounded-2xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] overflow-y-auto max-h-[88vh] md:max-h-[80vh] lg:max-h-none border border-light-gold/10 grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] w-full no-scrollbar">
                     
                     {/* LEFT COLUMN: Luxury Brand Concierge Panel */}
-                    <div className="hidden lg:flex relative bg-[#0c0d0e] p-8 sm:p-10 flex-col justify-between overflow-hidden border-b lg:border-b-0 lg:border-r border-white/5">
+                    <div className="hidden lg:flex relative bg-[#0c0d0e] p-6 sm:p-7 flex-col justify-between overflow-hidden border-b lg:border-b-0 lg:border-r border-white/5">
                         {/* Background subtle design details */}
-                        <div className="absolute -top-20 -left-20 w-60 h-60 bg-light-gold/5 rounded-full blur-[80px] pointer-events-none"></div>
-                        <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-light-gold/5 rounded-full blur-[80px] pointer-events-none"></div>
+                        <div className="absolute -top-16 -left-16 w-48 h-48 bg-light-gold/5 rounded-full blur-[60px] pointer-events-none"></div>
+                        <div className="absolute -bottom-16 -right-16 w-48 h-48 bg-light-gold/5 rounded-full blur-[60px] pointer-events-none"></div>
 
                         {/* Top Section */}
                         <div className="relative z-10">
                             {/* Prestige Premium Logo Symbol Horizontal Alignment */}
-                            <div className="flex items-center gap-3.5 mb-6">
-                                <div className="w-10 h-10 rounded-xl border border-light-gold/25 flex items-center justify-center bg-white/[0.02] shrink-0">
-                                    <svg className="w-5 h-5 text-light-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <div className="flex items-center gap-2.5 mb-4">
+                                <div className="w-8 h-8 rounded-lg border border-light-gold/25 flex items-center justify-center bg-white/[0.02] shrink-0">
+                                    <svg className="w-4 h-4 text-light-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
                                     </svg>
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="text-white font-serif font-semibold text-sm tracking-wide leading-none">Prestige</span>
-                                    <span className="text-light-gold text-[0.55rem] uppercase tracking-[0.25em] font-black mt-1 leading-none">Creations</span>
+                                    <span className="text-white font-serif font-semibold text-xs tracking-wide leading-none">Prestige</span>
+                                    <span className="text-light-gold text-[0.5rem] uppercase tracking-[0.25em] font-black mt-1 leading-none">Creations</span>
                                 </div>
                             </div>
                             
-                            <h3 className="font-serif text-3xl text-white font-light tracking-tight leading-tight mb-4">
+                            <h3 className="font-serif text-2xl text-white font-light tracking-tight leading-tight mb-3">
                                 Luxury <span className="font-medium text-light-gold">Reimagined</span>
                             </h3>
-                            <p className="text-xs text-white/60 leading-relaxed font-light mb-8 max-w-sm">
+                            <p className="text-[0.7rem] text-white/60 leading-relaxed font-light mb-5 max-w-sm">
                                 Let us shape your architectural vision. Submit your drawings and specifications directly to our engineering desk in Jeddah.
                             </p>
                         </div>
 
                         {/* Middle/Bottom Contact Badge Cards */}
-                        <div className="relative z-10 space-y-3 mt-auto">
-                            <div className="flex items-center gap-4 p-3.5 rounded-xl bg-white/[0.02] border border-white/5 backdrop-blur-sm">
-                                <div className="w-8 h-8 rounded-lg bg-light-gold/10 border border-light-gold/20 flex items-center justify-center text-light-gold shrink-0">
-                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div className="relative z-10 space-y-2 mt-auto">
+                            <div className="flex items-center gap-3 p-2.5 rounded-lg bg-white/[0.02] border border-white/5 backdrop-blur-sm">
+                                <div className="w-7 h-7 rounded-md bg-light-gold/10 border border-light-gold/20 flex items-center justify-center text-light-gold shrink-0">
+                                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25s-7.5-4.108-7.5-11.25 C4.5 6.358 7.858 3 12 3c4.142 0 7.5 3.358 7.5 7.5z" />
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 13.5a3 3 0 100-6 3 3 0 000 6z" />
                                     </svg>
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="text-[0.55rem] uppercase tracking-wider text-light-gold font-bold leading-none">Headquarters</span>
-                                    <span className="text-xs text-white/80 font-medium mt-1.5 leading-none">Emaar Square, Jeddah, KSA</span>
+                                    <span className="text-[0.5rem] uppercase tracking-wider text-light-gold font-bold leading-none">Headquarters</span>
+                                    <span className="text-[0.7rem] text-white/80 font-medium mt-1 leading-none">Emaar Square, Jeddah, KSA</span>
                                 </div>
                             </div>
 
-                            <div className="flex items-center gap-4 p-3.5 rounded-xl bg-white/[0.02] border border-white/5 backdrop-blur-sm">
-                                <div className="w-8 h-8 rounded-lg bg-light-gold/10 border border-light-gold/20 flex items-center justify-center text-light-gold shrink-0">
-                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <div className="flex items-center gap-3 p-2.5 rounded-lg bg-white/[0.02] border border-white/5 backdrop-blur-sm">
+                                <div className="w-7 h-7 rounded-md bg-light-gold/10 border border-light-gold/20 flex items-center justify-center text-light-gold shrink-0">
+                                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.14-4.118-6.942-6.942l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
                                     </svg>
                                 </div>
                                 <div className="flex flex-col">
-                                    <span className="text-[0.55rem] uppercase tracking-wider text-light-gold font-bold leading-none">Phone Support</span>
-                                    <span className="text-xs text-white/80 font-medium mt-1.5 leading-none">+966 57 382 8134</span>
+                                    <span className="text-[0.5rem] uppercase tracking-wider text-light-gold font-bold leading-none">Phone Support</span>
+                                    <span className="text-[0.7rem] text-white/80 font-medium mt-1 leading-none">+966 57 382 8134</span>
                                 </div>
                             </div>
                         </div>
 
                         {/* Saudi Vision 2030 Badge */}
-                        <div className="relative z-10 mt-6 pt-5 border-t border-white/5 flex justify-between items-center text-[0.6rem] text-white/40 uppercase tracking-widest">
+                        <div className="relative z-10 mt-4 pt-3 border-t border-white/5 flex justify-between items-center text-[0.5rem] text-white/40 uppercase tracking-widest">
                             <span>Jeddah Office</span>
                             <span className="text-light-gold/50">Precision Systems</span>
                         </div>
                     </div>
 
                     {/* RIGHT COLUMN: Elegant Cream-Gold Input Form */}
-                    <div className="p-6 sm:p-10 flex flex-col justify-between relative">
+                    <div className="p-5 sm:p-7 flex flex-col justify-between relative">
                         {/* Close Button */}
                         <button 
                             onClick={closeModal}
-                            className="absolute top-6 right-6 w-8 h-8 rounded-full border border-black/5 hover:border-light-gold/30 flex items-center justify-center text-[#111]/40 hover:text-light-gold transition-all duration-300 z-20 hover:rotate-90 bg-white/20 backdrop-blur-sm"
+                            className="absolute top-4 right-4 w-7 h-7 rounded-full border border-black/5 hover:border-light-gold/30 flex items-center justify-center text-[#111]/40 hover:text-light-gold transition-all duration-300 z-20 hover:rotate-90 bg-white/20 backdrop-blur-sm"
                         >
-                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
 
                         <div className="w-full">
                             {/* Header */}
-                            <div className="mb-6 sm:mb-8 pr-10 sm:pr-0">
-                                <span className="text-light-gold uppercase text-[0.6rem] font-bold tracking-[0.25em] block mb-1">Digital Project Intake</span>
-                                <h2 className="text-xl sm:text-2xl font-semibold text-[#111] tracking-tight uppercase leading-none">
+                            <div className="mb-4 sm:mb-5 pr-8 sm:pr-0">
+                                <span className="text-light-gold uppercase text-[0.55rem] font-bold tracking-[0.25em] block mb-1">Digital Project Intake</span>
+                                <h2 className="text-lg sm:text-xl font-semibold text-[#111] tracking-tight uppercase leading-none">
                                     Send <span className="text-light-gold">Enquiry</span>
                                 </h2>
-                                <div className="w-10 h-0.5 bg-light-gold mt-3"></div>
+                                <div className="w-8 h-0.5 bg-light-gold mt-2"></div>
                             </div>
 
                             {/* Form */}
-                            <form className="space-y-4" onSubmit={handleSubmit}>
+                            <form className="space-y-3" onSubmit={handleSubmit}>
                                 {/* Grid for Name and Country */}
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                     <div className="space-y-1">
                                         <label className="text-[0.6rem] font-bold text-[#111] tracking-wide uppercase ml-1 block">
                                             Name
@@ -220,7 +225,7 @@ const EnquiryModal = () => {
                                             value={formData.name}
                                             onChange={handleInputChange}
                                             placeholder="Your Name"
-                                            className="w-full bg-white border border-[#111]/10 rounded-xl py-2.5 px-4 focus:border-light-gold focus:ring-1 focus:ring-light-gold outline-none transition-all placeholder:text-[#111]/20 text-xs shadow-sm text-[#111] font-medium"
+                                            className="w-full bg-white border border-[#111]/10 rounded-lg py-2 px-3 focus:border-light-gold focus:ring-1 focus:ring-light-gold outline-none transition-all placeholder:text-[#111]/20 text-[0.7rem] shadow-sm text-[#111] font-medium"
                                             required
                                         />
                                     </div>
@@ -234,13 +239,13 @@ const EnquiryModal = () => {
                                             value={formData.country}
                                             onChange={handleInputChange}
                                             placeholder="Your Country"
-                                            className="w-full bg-white border border-[#111]/10 rounded-xl py-2.5 px-4 focus:border-light-gold focus:ring-1 focus:ring-light-gold outline-none transition-all placeholder:text-[#111]/20 text-xs shadow-sm text-[#111] font-medium"
+                                            className="w-full bg-white border border-[#111]/10 rounded-lg py-2 px-3 focus:border-light-gold focus:ring-1 focus:ring-light-gold outline-none transition-all placeholder:text-[#111]/20 text-[0.7rem] shadow-sm text-[#111] font-medium"
                                         />
                                     </div>
                                 </div>
 
                                 {/* Grid for Phone and Email */}
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                     <div className="space-y-1">
                                         <label className="text-[0.6rem] font-bold text-[#111] tracking-wide uppercase ml-1 block">
                                             Phone *
@@ -251,7 +256,7 @@ const EnquiryModal = () => {
                                             value={formData.phone}
                                             onChange={handleInputChange}
                                             placeholder="000-000-0000"
-                                            className="w-full bg-white border border-[#111]/10 rounded-xl py-2.5 px-4 focus:border-light-gold focus:ring-1 focus:ring-light-gold outline-none transition-all placeholder:text-[#111]/20 text-xs shadow-sm text-[#111] font-medium"
+                                            className="w-full bg-white border border-[#111]/10 rounded-lg py-2 px-3 focus:border-light-gold focus:ring-1 focus:ring-light-gold outline-none transition-all placeholder:text-[#111]/20 text-[0.7rem] shadow-sm text-[#111] font-medium"
                                             required
                                         />
                                     </div>
@@ -265,7 +270,7 @@ const EnquiryModal = () => {
                                             value={formData.email}
                                             onChange={handleInputChange}
                                             placeholder="you@example.com"
-                                            className="w-full bg-white border border-[#111]/10 rounded-xl py-2.5 px-4 focus:border-light-gold focus:ring-1 focus:ring-light-gold outline-none transition-all placeholder:text-[#111]/20 text-xs shadow-sm text-[#111] font-medium"
+                                            className="w-full bg-white border border-[#111]/10 rounded-lg py-2 px-3 focus:border-light-gold focus:ring-1 focus:ring-light-gold outline-none transition-all placeholder:text-[#111]/20 text-[0.7rem] shadow-sm text-[#111] font-medium"
                                         />
                                     </div>
                                 </div>
@@ -281,7 +286,7 @@ const EnquiryModal = () => {
                                         onChange={handleInputChange}
                                         placeholder="Describe your architectural needs, size, or specific configuration needs..."
                                         rows={2}
-                                        className="w-full bg-white border border-[#111]/10 rounded-xl py-2.5 px-4 focus:border-light-gold focus:ring-1 focus:ring-light-gold outline-none transition-all placeholder:text-[#111]/20 text-xs shadow-sm text-[#111] font-medium resize-none"
+                                        className="w-full bg-white border border-[#111]/10 rounded-lg py-2 px-3 focus:border-light-gold focus:ring-1 focus:ring-light-gold outline-none transition-all placeholder:text-[#111]/20 text-[0.7rem] shadow-sm text-[#111] font-medium resize-none"
                                     />
                                 </div>
 
@@ -291,7 +296,7 @@ const EnquiryModal = () => {
                                         Upload Architectural Drawings
                                     </label>
                                     <div 
-                                        className={`relative border border-dashed rounded-xl p-3 text-center transition-all duration-300 ${
+                                        className={`relative border border-dashed rounded-lg p-2.5 text-center transition-all duration-300 ${
                                             dragActive 
                                                 ? 'border-light-gold bg-light-gold/5' 
                                                 : file 
@@ -312,7 +317,7 @@ const EnquiryModal = () => {
                                         <div className="flex flex-col items-center justify-center gap-1 pointer-events-none">
                                             {file ? (
                                                 <>
-                                                    <svg className="w-5 h-5 text-light-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <svg className="w-4 h-4 text-light-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                     </svg>
                                                     <p className="text-[0.7rem] font-semibold text-[#111]">{file.name}</p>
@@ -320,7 +325,7 @@ const EnquiryModal = () => {
                                                 </>
                                             ) : (
                                                 <>
-                                                    <svg className="w-5 h-5 text-[#111]/30 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <svg className="w-4 h-4 text-[#111]/30 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                                                     </svg>
                                                     <p className="text-[0.65rem] font-medium text-[#111]/60">Drag drawings here or click to upload</p>
@@ -332,7 +337,7 @@ const EnquiryModal = () => {
                                 </div>
 
                                 {/* Required Services Selectors */}
-                                <div className="space-y-1.5">
+                                <div className="space-y-1">
                                     <label className="text-[0.6rem] font-bold text-[#111] tracking-wide uppercase ml-1 block">
                                         Required Services
                                     </label>
@@ -344,7 +349,7 @@ const EnquiryModal = () => {
                                                     key={service}
                                                     type="button"
                                                     onClick={() => toggleService(service)}
-                                                    className={`py-1 px-2.5 rounded-lg text-[0.6rem] uppercase tracking-wider font-bold transition-all duration-300 border ${
+                                                    className={`py-0.5 px-2 rounded-md text-[0.55rem] uppercase tracking-wider font-bold transition-all duration-300 border ${
                                                         isSelected 
                                                             ? 'bg-light-gold text-white border-light-gold shadow-sm' 
                                                             : 'bg-white text-[#111]/60 border-[#111]/10 hover:border-light-gold/50 hover:text-light-gold'
@@ -358,10 +363,10 @@ const EnquiryModal = () => {
                                 </div>
 
                                 {/* Submit Button */}
-                                <div className="pt-2">
+                                <div className="pt-1">
                                     <button 
                                         type="submit"
-                                        className="w-full bg-[#111] text-white py-3 rounded-xl font-bold uppercase tracking-[0.25em] text-[0.65rem] hover:bg-light-gold hover:text-white transition-all duration-500 shadow-md active:scale-[0.98] relative overflow-hidden group border border-[#111]"
+                                        className="w-full bg-[#111] text-white py-2.5 rounded-lg font-bold uppercase tracking-[0.25em] text-[0.6rem] hover:bg-light-gold hover:text-white transition-all duration-500 shadow-md active:scale-[0.98] relative overflow-hidden group border border-[#111]"
                                     >
                                         <span className="relative z-10 flex items-center justify-center gap-2">
                                             Send Enquiry
@@ -371,7 +376,7 @@ const EnquiryModal = () => {
                                         </span>
                                         <div className="absolute inset-0 bg-light-gold -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out"></div>
                                     </button>
-                                    <p className="text-center text-[0.5rem] text-[#111]/40 mt-2 uppercase tracking-widest">
+                                    <p className="text-center text-[0.45rem] text-[#111]/40 mt-1.5 uppercase tracking-widest">
                                         Our engineering team will respond within 24 hours
                                     </p>
                                 </div>

@@ -63,11 +63,16 @@ const Pillars = () => {
     const [isMounted, setIsMounted] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
     useEffect(() => {
-        setIsMounted(true);
+        const timer = setTimeout(() => {
+            setIsMounted(true);
+            setIsMobile(window.innerWidth < 768);
+        }, 0);
         const checkMobile = () => setIsMobile(window.innerWidth < 768);
-        checkMobile();
         window.addEventListener('resize', checkMobile);
-        return () => window.removeEventListener('resize', checkMobile);
+        return () => {
+            clearTimeout(timer);
+            window.removeEventListener('resize', checkMobile);
+        };
     }, []);
 
     return (

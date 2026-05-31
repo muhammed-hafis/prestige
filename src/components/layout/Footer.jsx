@@ -5,13 +5,14 @@ import { RiMapPinLine, RiPhoneLine, RiMailLine } from 'react-icons/ri';
 const CORPORATE_LINKS = [
     { label: 'About Our Brand', href: '/about' },
     { label: 'Why Prestige', href: '/why-prestige' },
-    { label: 'The Journal & Insights', href: '/#discover' },
+    { label: 'Project Gallery', href: '/gallery' },
+    { label: 'The Journal & Insights', href: '/lectures' },
     { label: 'Partner Consultations', href: '/contact' },
 ];
 
 const PORTFOLIO_LINKS = [
     { label: 'TOSTEM – Framing the Beauty of Living', href: '/products/tostem' },
-    { label: 'AL AMEEN – Architectural Engineering Excellence', href: '/contact' },
+    { label: 'AL AMIN – Architectural Engineering Excellence', href: '/products/alamin' },
     { label: 'OZONE – Designed for Every Space. Styled for Every Vision', href: '/products/ozone' },
 ];
 

@@ -5,7 +5,7 @@ const ALLIANCES = [
         name: "TOSTEM (Japan)",
         label: "Exterior Systems",
         desc: "Factory-prefabricated aluminium window and sliding door systems recognized globally for extreme dimensional accuracy and maximum wind-load resistance. Perfect for contemporary architecture.",
-        logo: "/partners/tostem.avif",
+        logo: "/partners/tostem-logo.avif",
     },
     {
         name: "ALAMIN (Regional)",
@@ -17,7 +17,7 @@ const ALLIANCES = [
         name: "OZONE (International)",
         label: "Interior Luxury",
         desc: "Premium structural glass hardware, minimalist interior partitions, and high-performance glass fittings designed to create expansive, seamless, and modern interior spaces.",
-        logo: "/partners/ozone.avif",
+        logo: "/partners/ozone-logo.avif",
     },
 ];
 
@@ -36,7 +36,7 @@ const AllianceCard = ({ alliance, index }) => (
             <img
                 src={alliance.logo}
                 alt={alliance.name}
-                className="max-h-full max-w-[140px] sm:max-w-[170px] object-contain grayscale brightness-90 transition-all duration-500 group-hover:grayscale-0 group-hover:brightness-100"
+                className="max-h-full max-w-[140px] sm:max-w-[170px] object-contain brightness-90 transition-all duration-500 "
             />
         </div>
 

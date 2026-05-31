@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import AboutHero from "./_components/AboutHero";
 import HeritageDirective from "./_components/HeritageDirective";

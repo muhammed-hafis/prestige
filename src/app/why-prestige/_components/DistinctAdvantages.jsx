@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { FiCompass, FiThermometer, FiEye, FiMessageSquare, FiAward } from "react-icons/fi";
 
 const ADVANTAGES = [
@@ -40,8 +40,6 @@ const ADVANTAGES = [
 ];
 
 const DistinctAdvantages = () => {
-    const scrollRef = useRef(null);
-
     return (
         <section className="relative overflow-hidden bg-[var(--background)] py-10 lg:py-14">
 
@@ -80,7 +78,6 @@ const DistinctAdvantages = () => {
             {/* MOBILE: Horizontal Scroll Slider */}
             <div className="md:hidden">
                 <div
-                    ref={scrollRef}
                     className="adv-scroll flex gap-4 overflow-x-auto px-5 pb-4 snap-x snap-mandatory"
                 >
                     {ADVANTAGES.map((adv, i) => {

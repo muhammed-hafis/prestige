@@ -14,19 +14,30 @@ const PageLoader = () => {
     // Lock scroll while loading
     document.documentElement.style.overflow = "hidden";
 
-    const handleLoaded = () => {
+    let dismissed = false;
+
+    const dismiss = () => {
+      if (dismissed) return;
+      dismissed = true;
       // Start fade-out
       setFading(true);
       setTimeout(() => {
         setVisible(false);
         document.documentElement.style.overflow = "";
+        // Signal to the rest of the app that the loading screen is gone
+        window.dispatchEvent(new Event("prestige:ready"));
       }, 700); // matches transition duration below
     };
 
-    window.addEventListener("prestige:loaded", handleLoaded);
+    // Dismiss when the page signals it is ready
+    window.addEventListener("prestige:loaded", dismiss);
+
+    // Hard 2-second maximum — always dismiss even if the event never fires
+    const maxTimer = setTimeout(dismiss, 2000);
 
     return () => {
-      window.removeEventListener("prestige:loaded", handleLoaded);
+      window.removeEventListener("prestige:loaded", dismiss);
+      clearTimeout(maxTimer);
       document.documentElement.style.overflow = "";
     };
   }, [isRoot]);
@@ -65,7 +76,7 @@ const PageLoader = () => {
           className="h-full bg-light-gold"
           style={{
             width: "100%",
-            animation: "loader-bar 3s ease-out forwards",
+            animation: "loader-bar 2s ease-out forwards",
           }}
         />
       </div>
@@ -75,6 +86,9 @@ const PageLoader = () => {
           from { width: 0%; opacity: 1; }
           to   { width: 100%; opacity: 0.6; }
         }
+      `}</style>
+      <style>{`
+        @keyframes spin { to { transform: rotate(360deg); } }
       `}</style>
     </div>
   );

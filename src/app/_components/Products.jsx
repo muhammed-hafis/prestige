@@ -6,7 +6,7 @@ const HOME_PRODUCTS = [
     id: 'tostem',
     title: 'High-Performance Facades',
     description: 'Premium TOSTEM exterior windows and slim sliding doors engineered for structural strength.',
-    img: '/images/home/tostem.jpg',
+    img: '/images/home/tostem.avif',
     linkText: 'View Tostem Collection',
     href: '/products/tostem'
   },
@@ -16,7 +16,7 @@ const HOME_PRODUCTS = [
     description: 'Insulated ALAMIN window and door profiles designed to block heat and optimize energy efficiency.',
     img: '/images/home/al-amin.webp',
     linkText: 'View Alamin Collection',
-    href: '/contact'
+    href: '/products/alamin'
   },
   {
     id: 'ozone',
@@ -82,6 +82,8 @@ const Products = () => {
                 <div className="absolute inset-0 bg-black/20 transition-colors duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-transparent" />
 
+               
+
                 {/* Index */}
                 <span className="absolute top-3 left-3 font-sans text-[0.55rem] sm:text-[0.58rem] font-black uppercase tracking-[0.2em] text-light-gold">
                   0{idx + 1}
@@ -125,6 +127,8 @@ const Products = () => {
               />
               <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-700" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+
+            
 
               {/* Index marker */}
               <div className="absolute top-8 left-8 overflow-hidden">

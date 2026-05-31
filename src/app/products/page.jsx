@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import Link from "next/link";
 import {
@@ -11,6 +10,7 @@ import {
   FiThermometer,
   FiLayers
 } from "react-icons/fi";
+import EnquiryButton from "@/components/common/EnquiryButton";
 
 const BRANDS = [
   {
@@ -18,8 +18,8 @@ const BRANDS = [
     name: "TOSTEM (Japan)",
     tagline: "Automated Japanese Factory Precision & Ultra-Slim Design.",
     desc: "TOSTEM is a premier global aluminium brand celebrated for its uncompromising Japanese engineering, exceptional structural performance, and minimalist aesthetics. Sourced as factory-prefabricated components, these systems guarantee absolute dimensional accuracy and zero on-site fabrication errors.",
-    img: "/images/home/tostem.jpg",
-    logo: "/partners/tostem.avif",
+    img: "/images/home/tostem.avif",
+    logo: "/partners/tostem-logo.avif",
     linkText: "Explore the TOSTEM Portfolio & Systems",
     href: "/products/tostem",
     icon: <FiCpu className="w-8 h-8 text-light-gold" />,
@@ -37,7 +37,7 @@ const BRANDS = [
     img: "/images/home/al-amin.webp",
     logo: "/partners/al-amin.avif",
     linkText: "Explore the ALAMIN Portfolio & Systems",
-    href: "/contact",
+    href: "/products/alamin",
     icon: <FiThermometer className="w-8 h-8 text-light-gold" />,
     specs: [
       { label: "Primary Application", val: "Energy-efficient residential properties, large-scale commercial developments, and strict code-compliant infrastructure." },
@@ -51,7 +51,7 @@ const BRANDS = [
     tagline: "Premium Structural Glass Hardware & Minimalist Interior Luxury.",
     desc: "OZONE is a premier international brand specializing in architectural structural glass fittings and minimalist interior partitions. It is designed for modern spaces that demand expansive, light-filled spatial flows without visible, heavy vertical framing.",
     img: "/images/home/ozone.webp",
-    logo: "/partners/ozone.avif",
+    logo: "/partners/ozone-logo.avif",
     linkText: "Explore the OZONE Portfolio & Systems",
     href: "/products/ozone",
     icon: <FiLayers className="w-8 h-8 text-light-gold" />,
@@ -82,6 +82,7 @@ const STANDARDS = [
 ];
 
 export default function ProductsLandingPage() {
+
   return (
     <div className="min-h-screen bg-[#FAF6EC] text-[#111] overflow-x-hidden pt-28 md:pt-40 lg:pt-36">
 
@@ -113,7 +114,10 @@ export default function ProductsLandingPage() {
                 data-aos={isEven ? "fade-right" : "fade-left"}
               >
                 {/* Image Block */}
-                <div className={`col-span-1 lg:col-span-6 relative rounded-2xl overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.04)] group ${!isEven ? "lg:order-2" : ""}`}>
+                <Link
+                  href={brand.href}
+                  className={`col-span-1 lg:col-span-6 relative rounded-2xl overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.04)] group ${!isEven ? "lg:order-2" : ""}`}
+                >
                   <div className="aspect-[4/3] w-full overflow-hidden bg-neutral-200">
                     <img
                       src={brand.img}
@@ -121,22 +125,21 @@ export default function ProductsLandingPage() {
                       className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                     />
                   </div>
-                  {/* Subtle top brand logo badge style overlay */}
-                  <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md border border-light-gold/20 text-[#111] text-[0.62rem] font-bold tracking-widest uppercase px-3 py-1.5 rounded-lg shadow-sm">
-                    {brand.id}
+                  {/* Brand logo overlay inside image */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 z-10">
+                    <img
+                      src={brand.logo}
+                      alt={`${brand.name} logo`}
+                      className="h-full w-auto object-contain brightness-0 invert opacity-30 group-hover:opacity-40 transition-opacity duration-500"
+                    />
                   </div>
-                </div>
+                </Link>
 
-                {/* Content Block */}
                 <div className="col-span-1 lg:col-span-6 flex flex-col justify-center">
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-5">
-                    <div className="h-12 w-auto bg-light-gold border border-light-gold/25 rounded-xl px-4 py-2 flex items-center justify-center shadow-sm max-w-[160px] self-start sm:self-auto">
-                      <img src={brand.logo} alt={`${brand.name} Logo`} className="h-full w-auto object-contain" />
-                    </div>
-                    <span className="font-serif text-lg sm:text-xl font-bold text-[#111] uppercase tracking-wide">
-                      {brand.name}
-                    </span>
-                  </div>
+                  <span className="font-serif text-lg sm:text-xl font-bold text-[#111] uppercase tracking-wide mb-5">
+                    {brand.name}
+                  </span>
 
                   <h3 className="font-sans text-base sm:text-lg font-bold text-neutral-800 mb-4 leading-snug">
                     {brand.tagline}
@@ -217,15 +220,15 @@ export default function ProductsLandingPage() {
       </section>
 
       {/* ── CALL TO ACTION SECTION ── */}
-      <section className="py-10 lg:py-14">
+      <section className="py-16 lg:py-20">
         <div className="main-container">
           <div
-            className="relative overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] border border-light-gold/20 bg-[#111] p-8 sm:p-12 lg:p-16 text-center"
+            className="relative overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] border border-light-gold/25 bg-gradient-to-br from-[#0c0d0f] to-[#16181c] p-8 sm:p-12 lg:p-16"
             data-aos="fade-up"
           >
             {/* Grid background */}
             <div
-              className="pointer-events-none absolute inset-0 opacity-[0.03]"
+              className="pointer-events-none absolute inset-0 opacity-[0.035]"
               style={{
                 backgroundImage:
                   "linear-gradient(to right, var(--light-gold) 1.5px, transparent 1.5px), linear-gradient(to bottom, var(--light-gold) 1.5px, transparent 1.5px)",
@@ -234,25 +237,51 @@ export default function ProductsLandingPage() {
             />
 
             {/* Ambient Glow */}
-            <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-light-gold/10 blur-[80px]" />
+            <div className="pointer-events-none absolute -right-24 -top-24 w-80 h-80 rounded-full bg-light-gold/15 blur-[100px]" />
+            <div className="pointer-events-none absolute -left-24 -bottom-24 w-80 h-80 rounded-full bg-light-gold/5 blur-[100px]" />
 
-            <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              
+              {/* Left side text info */}
+              <div className="lg:col-span-7 text-left">
+                <span className="font-sans text-[0.62rem] sm:text-[0.68rem] text-light-gold font-bold uppercase tracking-[0.3em] block mb-4">
+                  BLUEPRINTS & DRAWINGS
+                </span>
+                <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-6 leading-tight">
+                  Request System Blueprints <br className="hidden sm:block" />
+                  &amp; Shop Drawings
+                </h2>
+                <p className="font-sans text-xs sm:text-sm text-white/70 leading-relaxed font-light">
+                  Need immediate assistance deciding which system fits your architectural drawings? Consult with our engineering desks in Jeddah to schedule a technical comparison review.
+                </p>
+              </div>
 
-              <span className="section-label text-light-gold mb-3 block">
-                BLUEPRINTS & DRAWINGS
-              </span>
+              {/* Right side interactive trigger */}
+              <div className="lg:col-span-5 flex flex-col items-center lg:items-end justify-center w-full">
+                <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6 w-full max-w-sm flex flex-col items-stretch text-center backdrop-blur-sm">
+                  {/* Subtle checklist */}
+                  <div className="text-left space-y-3 mb-6">
+                    <div className="flex items-center gap-2 text-white/80">
+                      <FiCheck className="w-4 h-4 text-light-gold shrink-0" />
+                      <span className="font-sans text-[0.72rem] uppercase tracking-wider font-semibold">CAD &amp; PDF Specifications</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-white/80">
+                      <FiCheck className="w-4 h-4 text-light-gold shrink-0" />
+                      <span className="font-sans text-[0.72rem] uppercase tracking-wider font-semibold">SBC Thermal Compliance</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-white/80">
+                      <FiCheck className="w-4 h-4 text-light-gold shrink-0" />
+                      <span className="font-sans text-[0.72rem] uppercase tracking-wider font-semibold">Structural Calculations</span>
+                    </div>
+                  </div>
 
-              <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-5 tracking-tight">
-                Request System Blueprints & Shop Drawings
-              </h2>
-
-              <p className="font-sans text-sm sm:text-base text-white/60 leading-[1.85] font-light mb-8">
-                Need immediate assistance deciding which system fits your architectural drawings? Contact our engineering desks in Jeddah to schedule a technical comparison review.
-              </p>
-
-              <Link href="/contact" className="btn-prestige-gold">
-                Consult with Our Engineering Desk →
-              </Link>
+                  <EnquiryButton
+                    className="w-full bg-light-gold text-white hover:bg-white hover:text-black py-4 rounded-xl font-bold uppercase tracking-[0.2em] text-[0.65rem] sm:text-xs shadow-md transition-all duration-500 hover:scale-[1.02] cursor-pointer"
+                  >
+                    Consult with Engineering Desk →
+                  </EnquiryButton>
+                </div>
+              </div>
 
             </div>
           </div>

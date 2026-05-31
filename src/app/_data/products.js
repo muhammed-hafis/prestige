@@ -1,6 +1,6 @@
 export const productCategories = [
   {
-    id: 'windows-and-doors',
+    id: 'tostem',
     title: 'Window & Door',
     description: 'World-class aluminium window and door systems by Tostem, featuring Japanese innovation and timeless design.',
     img: '/images/product-windows.png',
@@ -9,6 +9,7 @@ export const productCategories = [
     series: [
       {
         id: 'grants',
+        heroImg: '/images/grants/grants.avif',
         name: 'GRANTS',
         seriesLabel: 'Series',
         tagline: 'MASTERING THE ART OF LIVING SPACE',
@@ -17,7 +18,6 @@ export const productCategories = [
           title: "A Perfect Balance Of Life's Perspective",
           detail: 'Symmetrical frame design for perfect balance of artistic perspective.',
         },
-        img: '/images/grants-showcase.png',
         specs: {
           'FRAME DEPTH': ['101.6 mm', '120 mm (2 tracks sliding)', '178 mm (3 tracks sliding)'],
           'HEIGHT OF SILL': ['50 mm'],
@@ -75,6 +75,7 @@ export const productCategories = [
       },
       {
         id: 'grants-plus',
+        heroImg: '/images/grants/grants.avif',
         name: 'GRANTS Plus',
         seriesLabel: 'Series',
         tagline: 'SUPERIOR RESISTANCE AND ARCHITECTURAL STRENGTH',
@@ -83,7 +84,6 @@ export const productCategories = [
           title: 'ASTM Certified High-Rise Strength',
           detail: 'Engineered for high-altitude wind resistance and water tight-locking mechanism.',
         },
-        img: '/images/grants-plus-showcase.png',
         specs: {
           'FRAME DEPTH': ['101.6 mm', '120 mm (2 tracks sliding)', '178 mm (3 tracks sliding)'],
           'HEIGHT OF SILL': ['50 mm'],
@@ -130,6 +130,7 @@ export const productCategories = [
       },
       {
         id: 'atis',
+        heroImg: '/images/atis/atis.avif',
         name: 'ATIS',
         seriesLabel: 'Series',
         tagline: 'STREAMLINED DESIGN FOR MODERN LIVING',
@@ -138,7 +139,6 @@ export const productCategories = [
           title: 'Streamlined Design',
           detail: 'Seamless design with beautiful functionality, offering smooth lines, surfaces, and operation.',
         },
-        img: '/images/atis-showcase.png',
         specs: {
           'FRAME DEPTH': ['88 mm', '131.5 mm (3 tracks sliding)'],
           'HEIGHT OF SILL': ['55 mm'],
@@ -188,6 +188,7 @@ export const productCategories = [
       },
       {
         id: 'atis-plus',
+        heroImg: '/images/atis/atis.avif',
         name: 'ATIS Plus',
         seriesLabel: 'Series',
         tagline: 'SUPERIOR NOISE SHIELD AND EXTRA INSULATION',
@@ -196,7 +197,6 @@ export const productCategories = [
           title: 'Acoustic PVB Noise Shield',
           detail: 'Heavy sound-insulating glass integration with multi-chamber profiles.',
         },
-        img: '/images/atis-plus-showcase.png',
         specs: {
           'FRAME DEPTH': ['88 mm', '131.5 mm (3 tracks sliding)'],
           'HEIGHT OF SILL': ['55 mm'],
@@ -237,6 +237,7 @@ export const productCategories = [
       },
       {
         id: 'we-70',
+        heroImg: '/images/we 70/we.avif',
         name: 'WE 70',
         seriesLabel: 'Series',
         tagline: 'JAPANESE CRAFTSMANSHIP FOR EVERYDAY',
@@ -245,7 +246,6 @@ export const productCategories = [
           title: 'Airflow Slot / Ventilation Door',
           detail: 'Airflow Slot / Ventilation Door lets fresh air in while the door stays closed, reducing odors, moisture, and heat, with secure 35 mm locked ventilation when away.',
         },
-        img: '/images/we-showcase.png',
         specs: {
           'FRAME DEPTH': ['72 mm', '104 mm (3 tracks sliding)'],
           'HEIGHT OF SILL': ['35 mm'],
@@ -300,6 +300,7 @@ export const productCategories = [
       },
       {
         id: 'we-plus',
+        heroImg: '/images/we 70/we.avif',
         name: 'WE Plus',
         seriesLabel: 'Series',
         tagline: 'REINFORCED STRENGTH AND HEAVY-DUTY HARDWARE',
@@ -308,7 +309,6 @@ export const productCategories = [
           title: 'Weatherproof Gasket System',
           detail: 'Premium weatherproofing seals engineered to block heavy monsoon rainfall and wind pressure.',
         },
-        img: '/images/we-plus-showcase.png',
         specs: {
           'FRAME DEPTH': ['88 mm', '120 mm (3 tracks sliding)'],
           'HEIGHT OF SILL': ['35 mm'],
@@ -355,6 +355,7 @@ export const productCategories = [
       },
       {
         id: 'giesta',
+        heroImg: '/images/giesta/giesta.avif',
         name: 'GIESTA',
         seriesLabel: 'Doors',
         tagline: 'HIGH-SECURITY PREMIUM ENTRANCE DOORS',
@@ -363,7 +364,7 @@ export const productCategories = [
           title: 'Insulated Steel Core & Multi-Point Locking',
           detail: 'A reinforced internal steel frame covered by wood-grain laminate, ensuring absolute safety and premium thermal weatherproofing.',
         },
-        img: '/images/giesta/giesta.png',
+        img: '/images/giesta/giesta.avif',
         specs: {
           'FRAME DEPTH': ['101.6 mm'],
           'HEIGHT OF SILL': ['Out-swing 50 mm', 'In-swing outside 30 / inside 14 mm'],
@@ -421,6 +422,7 @@ export const productCategories = [
       },
       {
         id: 'giesta-airflow',
+        heroImg: '/images/giesta-airflow/giesta-airflow.avif',
         name: 'GIESTA Airflow',
         seriesLabel: 'Doors',
         tagline: 'INTEGRATED NATURAL VENTILATION ENTRANCE DOORS',
@@ -429,7 +431,7 @@ export const productCategories = [
           title: 'Integrated Secure Airflow Slot',
           detail: 'Allows constant fresh air circulation while the door is locked and secured, blocking desert heat and sand.',
         },
-        img: '/images/giesta-airflow/giesta-airflow.png',
+        img: '/images/giesta-airflow/giesta-airflow.avif',
         specs: {
           'FRAME DEPTH': ['101.6 mm'],
           'HEIGHT OF SILL': ['Out-swing 50 mm', 'In-swing outside 30 / inside 14 mm'],
@@ -758,6 +760,23 @@ export const productCategories = [
           ]
         }
       }
+    ]
+  },
+  {
+    id: 'alamin',
+    title: 'ALAMIN Thermal Break Systems',
+    description: 'High-performance, thermal-break aluminium profiles engineered specifically to block Gulf heat and fully comply with the Saudi Building Code (SBC).',
+    img: '/images/home/al-amin.webp',
+    heroImg: '/images/home/al-amin.webp',
+    series: [
+      { id: 'sl150', name: 'SL 150 Slim', seriesLabel: 'Minimalist' },
+      { id: 'sl120', name: 'SL 120', seriesLabel: 'Premium Slider' },
+      { id: 'sl120g', name: 'SL 120 Gradual', seriesLabel: 'Desert Seal' },
+      { id: 'sl120m', name: 'SL 120 Monorail', seriesLabel: 'Pressure Seal' },
+      { id: 'cc110', name: 'CC 110', seriesLabel: 'Casement Network' },
+      { id: 'bifold', name: 'Bifold Doors', seriesLabel: 'Large-Span' },
+      { id: 'liftslide', name: 'Lift & Slide + Tilt', seriesLabel: 'Dual-Function' },
+      { id: 'entrance', name: 'Premium Entrance Doors', seriesLabel: 'Grand Entry' }
     ]
   }
 ];

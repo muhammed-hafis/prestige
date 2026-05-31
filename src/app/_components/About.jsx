@@ -15,9 +15,12 @@ const About = () => {
           data-aos-duration="900"
         >
           {/* Aspect-ratio box: 4:3 on mobile, full height on md+ */}
-          <div className="relative group w-full h-[75vw] sm:h-[60vw] md:h-full overflow-hidden transition-all duration-700 ease-out">
+          <Link
+            href="/about"
+            className="relative group block w-full h-[75vw] sm:h-[60vw] md:h-full overflow-hidden transition-all duration-700 ease-out"
+          >
             <img
-              src="/images/about-wide.png"
+              src="/images/home/about-us.avif"
               alt="Modern Interior"
               className="w-full h-full object-cover transition-transform duration-[3s] ease-out group-hover:scale-110"
             />
@@ -44,7 +47,7 @@ const About = () => {
                 System Excellence
               </p>
             </div>
-          </div>
+          </Link>
         </div>
 
         {/* ── Right Column: Text ───────────────────────────────────────────── */}
