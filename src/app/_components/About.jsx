@@ -58,7 +58,7 @@ const About = () => {
             data-aos="fade-left"
             data-aos-delay="100"
           >
-            PRESTIGE CREATIONS COMPANY
+            ABOUT US
             <span className="block w-[24px] sm:w-[30px] h-[0.5px] bg-light-gold shrink-0" />
           </span>
 

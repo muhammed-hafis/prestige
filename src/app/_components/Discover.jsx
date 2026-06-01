@@ -65,26 +65,28 @@ const Discover = () => {
               </Link>
 
               {/* Tag / Category Label */}
-              <span className="font-sans text-[0.58rem] sm:text-[0.62rem] tracking-[0.25em] text-light-gold font-black uppercase mt-6 mb-2">
+              <span className="font-sans text-light-gold uppercase text-[0.6rem] sm:text-[0.65rem] md:text-[0.7rem] mt-6 mb-3 flex items-center gap-2 sm:gap-3 tracking-[0.3em] sm:tracking-[0.4em] font-black">
                 {item.label}
+                <span className="block w-[24px] sm:w-[30px] h-[0.5px] bg-light-gold shrink-0" />
               </span>
 
               {/* Title */}
-              <h3 className="font-serif font-semibold text-xl sm:text-2xl text-[#111] mb-3 group-hover:text-light-gold transition-colors duration-300">
+              <h3 className="section-subheading text-[#111] mb-3 group-hover:text-light-gold transition-colors duration-300">
                 {item.title}
               </h3>
 
               {/* Description */}
-              <p className="font-sans text-[#555] text-[0.88rem] sm:text-[0.95rem] leading-relaxed mb-6 font-light max-w-xl">
+              <p className="section-desc text-[#333] mb-6 max-w-xl">
                 {item.description}
               </p>
 
               {/* CTA Link */}
               <Link
                 href={item.href}
-                className="font-sans inline-flex items-center gap-1.5 sm:gap-2 text-[0.68rem] sm:text-[0.72rem] font-bold uppercase tracking-widest text-[#111] hover:text-light-gold pb-1.5 border-b border-black/15 hover:border-light-gold transition-all duration-300 w-fit mt-auto"
+                className="link-architectural self-start mt-auto"
               >
-                {item.linkText} <span className="text-[0.9rem] sm:text-[0.95rem] font-light">→</span>
+                <span>{item.linkText}</span>
+                <span className="arrow text-[0.95rem] font-light">→</span>
               </Link>
             </div>
           ))}

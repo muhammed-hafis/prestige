@@ -95,24 +95,25 @@ export default function GlobalPortfolioInsightsPage() {
 
                 {/* Text Content Block */}
                 <div className="col-span-1 lg:col-span-6 flex flex-col justify-center">
-                  <span className="font-sans text-[0.62rem] sm:text-[0.68rem] tracking-[0.25em] text-light-gold font-black uppercase mb-2">
+                  <span className="font-sans text-light-gold uppercase text-[0.6rem] sm:text-[0.65rem] md:text-[0.7rem] mb-3 flex items-center gap-2 sm:gap-3 tracking-[0.3em] sm:tracking-[0.4em] font-black">
                     {item.label}
+                    <span className="block w-[24px] sm:w-[30px] h-[0.5px] bg-light-gold shrink-0" />
                   </span>
-                  <h3 className="font-serif font-semibold text-xl sm:text-2xl lg:text-3xl text-[#111] mb-4">
+                  <h3 className="section-heading text-[#111] mb-4 sm:mb-6">
                     {item.title}
                   </h3>
-                  <p className="font-sans text-xs sm:text-sm text-neutral-800 leading-relaxed font-bold mb-4">
+                  <p className="section-desc text-[#333] mb-3 font-semibold">
                     {item.description}
                   </p>
-                  <p className="font-sans text-xs sm:text-sm text-neutral-500 leading-relaxed font-light mb-6">
+                  <p className="section-desc text-[#555] mb-6">
                     {item.extraText}
                   </p>
                   <Link
                     href={item.href}
-                    className="group inline-flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-widest text-[#111] hover:text-[#B8902A] pb-1 border-b border-neutral-800/10 hover:border-light-gold transition-all duration-300 w-fit"
+                    className="link-architectural self-start"
                   >
-                    {item.linkText}
-                    <FiArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    <span>{item.linkText}</span>
+                    <span className="arrow text-[0.95rem] font-light">→</span>
                   </Link>
                 </div>
               </div>

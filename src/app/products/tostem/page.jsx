@@ -340,9 +340,6 @@ export default function TostemPage() {
                       alt={series.name}
                       className="w-full h-full object-cover transition-transform duration-[1.5s] hover:scale-105"
                     />
-                    <div className="absolute top-4 left-4 bg-[#111]/80 backdrop-blur-md border border-light-gold/30 text-white text-[0.6rem] font-bold tracking-widest uppercase px-3 py-1.5 rounded-lg shadow-sm">
-                      {series.type}
-                    </div>
                   </div>
 
                   {/* Content Block */}
