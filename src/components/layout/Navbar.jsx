@@ -30,6 +30,11 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
 
+  const orderedCategories = ["tostem", "alamin", "ozone"];
+  const sortedCategories = [...productCategories].sort((a, b) => {
+    return orderedCategories.indexOf(a.id) - orderedCategories.indexOf(b.id);
+  });
+
   const navItems = [
     { name: "Home",              href: "/" },
     { name: "About",             href: "/about" },       // scrolls to #about section on homepage
@@ -103,7 +108,7 @@ const Navbar = () => {
                   <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 translate-y-2 scale-[0.98] pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 group-hover:pointer-events-auto transition-all duration-300 ease-out z-50">
                     <div className="bg-[#FAF6EC]/95 backdrop-blur-xl border border-light-gold/20 rounded-2xl p-2.5 shadow-[0_20px_50px_rgba(0,0,0,0.12)] w-[240px]">
                       <ul className="flex flex-col gap-1 list-none p-0 m-0">
-                        {productCategories.map((cat) => (
+                        {sortedCategories.map((cat) => (
                            <li key={cat.id} className="relative group/cat">
                             <Link
                               href={`/products/${getCategoryPath(cat.id)}`}
@@ -233,7 +238,7 @@ const Navbar = () => {
                     }`}
                   >
                     <div className="flex flex-col gap-4 pl-4 pt-2 pb-2">
-                      {productCategories.map((cat) => (
+                      {sortedCategories.map((cat) => (
                         <div key={cat.id} className="flex flex-col gap-2">
                           <Link
                             href={`/products/${getCategoryPath(cat.id)}`}
