@@ -51,7 +51,7 @@ const About = () => {
         </div>
 
         {/* ── Right Column: Text ───────────────────────────────────────────── */}
-        <div className="flex flex-col justify-center order-1 md:order-2 px-5 sm:px-8 md:pl-10 md:pr-12 lg:pl-16 lg:pr-20 xl:pl-20 xl:pr-24 py-10 sm:py-12 md:py-0">
+        <div className="flex flex-col justify-center order-1 md:order-2 px-3 sm:px-5 md:px-7 lg:pl-16 lg:pr-20 xl:pl-20 xl:pr-24 py-10 sm:py-12 md:py-0">
 
           <span
             className="font-sans text-light-gold uppercase text-[0.6rem] sm:text-[0.65rem] md:text-[0.7rem] mb-3 flex items-center gap-2 sm:gap-3 tracking-[0.3em] sm:tracking-[0.4em] font-black"

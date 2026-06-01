@@ -35,7 +35,7 @@ const Hero = () => {
 
 
   return (
-    <div className="relative h-[90vh] w-[96vw] mx-auto overflow-hidden bg-[#09090a] select-none">
+    <div className="relative h-[90vh] w-full overflow-hidden bg-[#09090a] select-none">
       {/* Dynamic Style block for Ken Burns Animation */}
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes kenburns {
@@ -69,7 +69,7 @@ const Hero = () => {
       })}
 
       {/* Brand content and text overlay */}
-      <div className="absolute inset-0 flex items-center justify-center text-white z-20 px-4 sm:px-6 lg:px-8 text-center pointer-events-none">
+      <div className="absolute inset-0 flex items-center justify-center text-white z-20 px-3 sm:px-5 lg:px-8 text-center pointer-events-none">
         <div
           className="w-full max-w-[95vw] sm:max-w-[90vw] lg:max-w-[85vw] xl:max-w-6xl mx-auto transition-all duration-[1200ms] cubic-bezier(0.16, 1, 0.3, 1)"
           style={{
@@ -106,7 +106,7 @@ const Hero = () => {
       </div>
 
       {/* Navigation Indicators (Bullets) */}
-      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-30 flex gap-2 sm:gap-3">
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex gap-2 sm:gap-3">
         {HERO_IMAGES.map((_, idx) => (
           <button
             key={idx}

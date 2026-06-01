@@ -38,7 +38,7 @@ const Products = () => {
       <div className="w-full relative z-10 flex flex-col flex-1 min-h-0">
 
         {/* ── Header ── */}
-        <div className="main-container px-4 sm:px-8">
+        <div className="main-container px-3 sm:px-5 md:px-7">
           <div
             className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-6 sm:mb-8 md:mb-10 gap-3 lg:gap-6 shrink-0"
             data-aos="fade-up"
@@ -63,13 +63,13 @@ const Products = () => {
         </div>
 
         {/* ── Mobile: 3-column card grid ── */}
-        <div className="lg:hidden w-full px-4 sm:px-8">
+        <div className="lg:hidden w-full ">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {HOME_PRODUCTS.map((product, idx) => (
               <Link
                 key={product.id}
                 href={product.href}
-                className="relative aspect-[4/3] sm:aspect-[3/4] overflow-hidden group rounded-sm block"
+                className="relative aspect-[4/3] sm:aspect-[3/4] overflow-hidden group  block"
                 data-aos={idx % 2 === 0 ? 'fade-right' : 'fade-left'}
                 data-aos-delay={idx * 120}
                 data-aos-duration="700"

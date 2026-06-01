@@ -7,7 +7,7 @@ const WhyPrestige = () => {
       <div className="flex flex-col md:grid md:grid-cols-[1fr_1.2fr] md:min-h-screen">
 
         {/* ── Left Column: Text ────────────────────────────────────────────── */}
-        <div className="flex flex-col justify-center order-1 px-5 sm:px-8 md:pl-10 md:pr-12 lg:pl-24 lg:pr-20 py-10 sm:py-12 md:py-0">
+        <div className="flex flex-col justify-center order-1 px-3 sm:px-5 md:px-7 lg:pl-24 lg:pr-20 py-10 sm:py-12 md:py-0">
 
           <span
             className="section-label text-light-gold mb-3 flex items-center gap-2 sm:gap-3"

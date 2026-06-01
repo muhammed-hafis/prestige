@@ -25,7 +25,7 @@ const DISCOVER_ITEMS = [
 const Discover = () => {
   return (
     <section className="relative w-full overflow-hidden py-16 sm:py-20 lg:py-24 bg-transparent" id="discover">
-      <div className="main-container px-6 sm:px-10 md:px-14 lg:pl-24 lg:pr-20 relative z-10">
+      <div className="main-container px-3 sm:px-5 md:px-7 lg:pl-24 lg:pr-20 relative z-10">
         
         {/* ── Header ── */}
         <div

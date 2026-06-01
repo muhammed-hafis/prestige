@@ -12,7 +12,7 @@ const CTA = () => {
       className="relative w-full overflow-hidden py-16 sm:py-20 lg:py-24 bg-transparent"
       id="contact-consultations"
     >
-      <div className="main-container px-6 sm:px-10 md:px-14 lg:pl-24 lg:pr-20 relative z-10">
+      <div className="main-container px-3 sm:px-5 md:px-7 lg:pl-24 lg:pr-20 relative z-10">
 
         {/* ── Header ── */}
         <div className="max-w-3xl mb-12 sm:mb-16" data-aos="fade-up">

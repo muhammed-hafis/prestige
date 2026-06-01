@@ -229,7 +229,7 @@ const Navbar = () => {
                   {/* Mobile Collapsible Sub-menu */}
                   <div
                     className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                      mobileProductsOpen ? "max-h-[500px] opacity-100 mb-4" : "max-h-0 opacity-0"
+                      mobileProductsOpen ? "max-h-[2000px] opacity-100 mb-4" : "max-h-0 opacity-0"
                     }`}
                   >
                     <div className="flex flex-col gap-4 pl-4 pt-2 pb-2">
