@@ -493,7 +493,7 @@ export const productCategories = [
           title: 'Concealed Rail Suspension',
           detail: 'Compact tracks hidden in the drop ceiling for architectural clean lines.',
         },
-        img: '/images/ozone/single&double(1+1 & 2+2)/Axis Slim Frame (4507) Single Sliding System (1+1).webp',
+        img: '/images/ozone/single-double-1-1-2-2/axis-slim-frame-4507-single-sliding-system-1-1.webp',
         specs: {
           'FRAME DEPTH': ['Ultra-slim profiles custom-engineered'],
           'HEIGHT OF SILL': ['Zero bottom track (top-hung tracking)'],
@@ -511,12 +511,12 @@ export const productCategories = [
         colors: ['BL-LX-G', 'BM', 'Phantom Grey', 'Tan Brass', 'VBL-B', 'Vintage Brass Brush', 'Rose Gold Luxe Brush'],
         configurations: {
           DOOR: [
-            { name: 'Axis Slim Frame (4507) — 1+1', desc: 'Single sliding panel system built on Axis 4507 profile.', icon: 'door-sliding', image: '/images/ozone/single&double(1+1 & 2+2)/Axis Slim Frame (4507) Single Sliding System (1+1).webp' },
-            { name: 'Axis Slim Frame (4507) — 2+2', desc: 'Double sliding panel system built on Axis 4507 profile.', icon: 'door-sliding', image: '/images/ozone/single&double(1+1 & 2+2)/Axis Slim Frame (4507) Single Sliding System (2+2).webp' },
-            { name: 'Linea Slim Frame (4507) — 1+1', desc: 'Single sliding panel system built on Linea 4507 profile.', icon: 'door-sliding', image: '/images/ozone/single&double(1+1 & 2+2)/Linea Slim Frame (4507) Single Sliding System(1+1).webp' },
-            { name: 'Linea Slim Frame (4507) — 2+2', desc: 'Double sliding panel system built on Linea 4507 profile.', icon: 'door-sliding', image: '/images/ozone/single&double(1+1 & 2+2)/Linea Slim Frame (4507) Single Sliding System(2+2).webp' },
-            { name: 'Slim Frame (4516) — 1+1', desc: 'Single sliding panel system built on Slim 4516 profile.', icon: 'door-sliding', image: '/images/ozone/single&double(1+1 & 2+2)/Slim Frame (4516) Single Sliding System (1+1).webp' },
-            { name: 'Slim Frame (4516) — 2+2', desc: 'Double sliding panel system built on Slim 4516 profile.', icon: 'door-sliding', image: '/images/ozone/single&double(1+1 & 2+2)/Slim Frame (4516) Single Sliding System (2+2).webp' }
+            { name: 'Axis Slim Frame (4507) — 1+1', desc: 'Single sliding panel system built on Axis 4507 profile.', icon: 'door-sliding', image: '/images/ozone/single-double-1-1-2-2/axis-slim-frame-4507-single-sliding-system-1-1.webp' },
+            { name: 'Axis Slim Frame (4507) — 2+2', desc: 'Double sliding panel system built on Axis 4507 profile.', icon: 'door-sliding', image: '/images/ozone/single-double-1-1-2-2/axis-slim-frame-4507-single-sliding-system-2-2.webp' },
+            { name: 'Linea Slim Frame (4507) — 1+1', desc: 'Single sliding panel system built on Linea 4507 profile.', icon: 'door-sliding', image: '/images/ozone/single-double-1-1-2-2/linea-slim-frame-4507-single-sliding-system-1-1.webp' },
+            { name: 'Linea Slim Frame (4507) — 2+2', desc: 'Double sliding panel system built on Linea 4507 profile.', icon: 'door-sliding', image: '/images/ozone/single-double-1-1-2-2/linea-slim-frame-4507-single-sliding-system-2-2.webp' },
+            { name: 'Slim Frame (4516) — 1+1', desc: 'Single sliding panel system built on Slim 4516 profile.', icon: 'door-sliding', image: '/images/ozone/single-double-1-1-2-2/slim-frame-4516-single-sliding-system-1-1.webp' },
+            { name: 'Slim Frame (4516) — 2+2', desc: 'Double sliding panel system built on Slim 4516 profile.', icon: 'door-sliding', image: '/images/ozone/single-double-1-1-2-2/slim-frame-4516-single-sliding-system-2-2.webp' }
           ]
         }
       },
@@ -530,7 +530,7 @@ export const productCategories = [
           title: 'Symmetrical Cable Drive',
           detail: 'Moving one panel automatically drives the other panel in perfect sync.',
         },
-        img: '/images/ozone/sysnchronised Sliding (2+2)/Axis Slim Frame (4507) Synchronised Sliding System (2+2).webp',
+        img: '/images/ozone/sysnchronised-sliding-2-2/axis-slim-frame-4507-synchronised-sliding-system-2-2.webp',
         specs: {
           'FRAME DEPTH': ['Ultra-slim profiles custom-engineered'],
           'HEIGHT OF SILL': ['Zero bottom track (top-hung tracking)'],
@@ -548,9 +548,9 @@ export const productCategories = [
         colors: ['Natural Silver', 'Matte Black', 'Anodized Bronze'],
         configurations: {
           DOOR: [
-            { name: 'Axis Slim Frame (4507) Sync', desc: 'Synchronized double sliding on Axis 4507 profile.', icon: 'door-sliding', image: '/images/ozone/sysnchronised Sliding (2+2)/Axis Slim Frame (4507) Synchronised Sliding System (2+2).webp' },
-            { name: 'Linea Slim Frame (4507) Sync', desc: 'Synchronized double sliding on Linea 4507 profile.', icon: 'door-sliding', image: '/images/ozone/sysnchronised Sliding (2+2)/Linea Slim Frame (4507) Synchronised Sliding System (2+2).webp' },
-            { name: 'Slim Frame (4516) Sync', desc: 'Synchronized double sliding on Slim 4516 profile.', icon: 'door-sliding', image: '/images/ozone/sysnchronised Sliding (2+2)/Slim Frame (4516) Synchronised Sliding System (2+2).webp' }
+            { name: 'Axis Slim Frame (4507) Sync', desc: 'Synchronized double sliding on Axis 4507 profile.', icon: 'door-sliding', image: '/images/ozone/sysnchronised-sliding-2-2/axis-slim-frame-4507-synchronised-sliding-system-2-2.webp' },
+            { name: 'Linea Slim Frame (4507) Sync', desc: 'Synchronized double sliding on Linea 4507 profile.', icon: 'door-sliding', image: '/images/ozone/sysnchronised-sliding-2-2/linea-slim-frame-4507-synchronised-sliding-system-2-2.webp' },
+            { name: 'Slim Frame (4516) Sync', desc: 'Synchronized double sliding on Slim 4516 profile.', icon: 'door-sliding', image: '/images/ozone/sysnchronised-sliding-2-2/slim-frame-4516-synchronised-sliding-system-2-2.webp' }
           ]
         }
       },
@@ -564,7 +564,7 @@ export const productCategories = [
           title: 'Multi-Slider Overlap',
           detail: 'Glides and stacks multiple sheets on parallel tracks simultaneously.',
         },
-        img: '/images/ozone/Telescopic Sliding Series (1+2  1+3  1+4)/Axis Slim Frame (4507) Telescopic Sliding System (1+2).webp',
+        img: '/images/ozone/telescopic-sliding-series-1-2-1-3-1-4/axis-slim-frame-4507-telescopic-sliding-system-1-2.webp',
         specs: {
           'FRAME DEPTH': ['Ultra-slim profiles custom-engineered'],
           'HEIGHT OF SILL': ['Zero bottom track (top-hung tracking)'],
@@ -582,15 +582,15 @@ export const productCategories = [
         colors: ['Natural Silver', 'Matte Black', 'Anodized Bronze'],
         configurations: {
           DOOR: [
-            { name: 'Axis (4507) — 1+2', desc: 'Telescopic sliding system built on Axis 4507 (1 fixed + 2 sliding panels).', icon: 'door-sliding', image: '/images/ozone/Telescopic Sliding Series (1+2  1+3  1+4)/Axis Slim Frame (4507) Telescopic Sliding System (1+2).webp' },
-            { name: 'Axis (4507) — 1+3', desc: 'Telescopic sliding system built on Axis 4507 (1 fixed + 3 sliding panels).', icon: 'door-sliding', image: '/images/ozone/Telescopic Sliding Series (1+2  1+3  1+4)/Axis Slim Frame (4507) Telescopic Sliding System (1+3).webp' },
-            { name: 'Axis (4507) — 1+4', desc: 'Telescopic sliding system built on Axis 4507 (1 fixed + 4 sliding panels).', icon: 'door-sliding', image: '/images/ozone/Telescopic Sliding Series (1+2  1+3  1+4)/Axis Slim Frame (4507) Telescopic Sliding System (1+4).webp' },
-            { name: 'Linea (4507) — 1+2', desc: 'Telescopic sliding system built on Linea 4507 (1 fixed + 2 sliding panels).', icon: 'door-sliding', image: '/images/ozone/Telescopic Sliding Series (1+2  1+3  1+4)/Linea Slim Frame (4507) Telescopic Sliding System (1+2).webp' },
-            { name: 'Linea (4507) — 1+3', desc: 'Telescopic sliding system built on Linea 4507 (1 fixed + 3 sliding panels).', icon: 'door-sliding', image: '/images/ozone/Telescopic Sliding Series (1+2  1+3  1+4)/Linea Slim Frame (4507) Telescopic Sliding System (1+3).webp' },
-            { name: 'Linea (4507) — 1+4', desc: 'Telescopic sliding system built on Linea 4507 (1 fixed + 4 sliding panels).', icon: 'door-sliding', image: '/images/ozone/Telescopic Sliding Series (1+2  1+3  1+4)/Linea Slim Frame (4507) Telescopic Sliding System (1+4).webp' },
-            { name: 'Slim (4516) — 1+2', desc: 'Telescopic sliding system built on Slim 4516 (1 fixed + 2 sliding panels).', icon: 'door-sliding', image: '/images/ozone/Telescopic Sliding Series (1+2  1+3  1+4)/Slim Frame (4516) Telescopic Sliding System (1+2).webp' },
-            { name: 'Slim (4516) — 1+3', desc: 'Telescopic sliding system built on Slim 4516 (1 fixed + 3 sliding panels).', icon: 'door-sliding', image: '/images/ozone/Telescopic Sliding Series (1+2  1+3  1+4)/Slim Frame (4516) Telescopic Sliding System (1+3).webp' },
-            { name: 'Slim (4516) — 1+4', desc: 'Telescopic sliding system built on Slim 4516 (1 fixed + 4 sliding panels).', icon: 'door-sliding', image: '/images/ozone/Telescopic Sliding Series (1+2  1+3  1+4)/Slim Frame (4516) Telescopic Sliding System (1+4).webp' }
+            { name: 'Axis (4507) — 1+2', desc: 'Telescopic sliding system built on Axis 4507 (1 fixed + 2 sliding panels).', icon: 'door-sliding', image: '/images/ozone/telescopic-sliding-series-1-2-1-3-1-4/axis-slim-frame-4507-telescopic-sliding-system-1-2.webp' },
+            { name: 'Axis (4507) — 1+3', desc: 'Telescopic sliding system built on Axis 4507 (1 fixed + 3 sliding panels).', icon: 'door-sliding', image: '/images/ozone/telescopic-sliding-series-1-2-1-3-1-4/axis-slim-frame-4507-telescopic-sliding-system-1-3.webp' },
+            { name: 'Axis (4507) — 1+4', desc: 'Telescopic sliding system built on Axis 4507 (1 fixed + 4 sliding panels).', icon: 'door-sliding', image: '/images/ozone/telescopic-sliding-series-1-2-1-3-1-4/axis-slim-frame-4507-telescopic-sliding-system-1-4.webp' },
+            { name: 'Linea (4507) — 1+2', desc: 'Telescopic sliding system built on Linea 4507 (1 fixed + 2 sliding panels).', icon: 'door-sliding', image: '/images/ozone/telescopic-sliding-series-1-2-1-3-1-4/linea-slim-frame-4507-telescopic-sliding-system-1-2.webp' },
+            { name: 'Linea (4507) — 1+3', desc: 'Telescopic sliding system built on Linea 4507 (1 fixed + 3 sliding panels).', icon: 'door-sliding', image: '/images/ozone/telescopic-sliding-series-1-2-1-3-1-4/linea-slim-frame-4507-telescopic-sliding-system-1-3.webp' },
+            { name: 'Linea (4507) — 1+4', desc: 'Telescopic sliding system built on Linea 4507 (1 fixed + 4 sliding panels).', icon: 'door-sliding', image: '/images/ozone/telescopic-sliding-series-1-2-1-3-1-4/linea-slim-frame-4507-telescopic-sliding-system-1-4.webp' },
+            { name: 'Slim (4516) — 1+2', desc: 'Telescopic sliding system built on Slim 4516 (1 fixed + 2 sliding panels).', icon: 'door-sliding', image: '/images/ozone/telescopic-sliding-series-1-2-1-3-1-4/slim-frame-4516-telescopic-sliding-system-1-2.webp' },
+            { name: 'Slim (4516) — 1+3', desc: 'Telescopic sliding system built on Slim 4516 (1 fixed + 3 sliding panels).', icon: 'door-sliding', image: '/images/ozone/telescopic-sliding-series-1-2-1-3-1-4/slim-frame-4516-telescopic-sliding-system-1-3.webp' },
+            { name: 'Slim (4516) — 1+4', desc: 'Telescopic sliding system built on Slim 4516 (1 fixed + 4 sliding panels).', icon: 'door-sliding', image: '/images/ozone/telescopic-sliding-series-1-2-1-3-1-4/slim-frame-4516-telescopic-sliding-system-1-4.webp' }
           ]
         }
       },
@@ -604,7 +604,7 @@ export const productCategories = [
           title: 'Zero Profile Footprint',
           detail: 'Doors retract completely into wall pockets to maximize room openings.',
         },
-        img: '/images/ozone/Pocket Sliding Systems/Axis Slim Frame (4507) Pocket Sliding System.webp',
+        img: '/images/ozone/pocket-sliding-systems/axis-slim-frame-4507-pocket-sliding-system.webp',
         specs: {
           'FRAME DEPTH': ['Ultra-slim profiles custom-engineered'],
           'HEIGHT OF SILL': ['Zero bottom track (top-hung tracking)'],
@@ -622,9 +622,9 @@ export const productCategories = [
         colors: ['Natural Silver', 'Matte Black', 'Anodized Bronze'],
         configurations: {
           DOOR: [
-            { name: 'Axis Slim Frame (4507) Pocket', desc: 'Pocket sliding on Axis 4507 profile.', icon: 'door-sliding', image: '/images/ozone/Pocket Sliding Systems/Axis Slim Frame (4507) Pocket Sliding System.webp' },
-            { name: 'Linea Slim Frame (4507) Pocket', desc: 'Pocket sliding on Linea 4507 profile.', icon: 'door-sliding', image: '/images/ozone/Pocket Sliding Systems/Linea Slim Frame (4507) Pocket Sliding System.webp' },
-            { name: 'Slim Frame (4516) Pocket', desc: 'Pocket sliding on Slim 4516 profile.', icon: 'door-sliding', image: '/images/ozone/Pocket Sliding Systems/Slim Frame (4516) Pocket Sliding System.webp' }
+            { name: 'Axis Slim Frame (4507) Pocket', desc: 'Pocket sliding on Axis 4507 profile.', icon: 'door-sliding', image: '/images/ozone/pocket-sliding-systems/axis-slim-frame-4507-pocket-sliding-system.webp' },
+            { name: 'Linea Slim Frame (4507) Pocket', desc: 'Pocket sliding on Linea 4507 profile.', icon: 'door-sliding', image: '/images/ozone/pocket-sliding-systems/linea-slim-frame-4507-pocket-sliding-system.webp' },
+            { name: 'Slim Frame (4516) Pocket', desc: 'Pocket sliding on Slim 4516 profile.', icon: 'door-sliding', image: '/images/ozone/pocket-sliding-systems/slim-frame-4516-pocket-sliding-system.webp' }
           ]
         }
       },
@@ -638,7 +638,7 @@ export const productCategories = [
           title: 'Offset & Centre Folding Physics',
           detail: 'Engineered pivots to stack multiple folding panels without structural deflection.',
         },
-        img: '/images/ozone/Sliding & Folding Systems (Offset Sliding  Centre Sliding)/Sliding & Folding System - Center Sliding.webp',
+        img: '/images/ozone/sliding-folding-systems-offset-sliding-centre-sliding/sliding-folding-system-center-sliding.webp',
         specs: {
           'FRAME DEPTH': ['Ultra-slim profiles custom-engineered'],
           'HEIGHT OF SILL': ['Zero bottom track (top-hung tracking)'],
@@ -656,9 +656,9 @@ export const productCategories = [
         colors: ['Natural Silver', 'Matte Black', 'Anodized Bronze'],
         configurations: {
           DOOR: [
-            { name: 'Centre Sliding Folding', desc: 'Centre sliding and folding layout for symmetrical stacking.', icon: 'door-sliding', image: '/images/ozone/Sliding & Folding Systems (Offset Sliding  Centre Sliding)/Sliding & Folding System - Center Sliding.webp' },
-            { name: 'Offset Sliding Folding', desc: 'Offset sliding and folding layout for edge-aligned stacking.', icon: 'door-sliding', image: '/images/ozone/Sliding & Folding Systems (Offset Sliding  Centre Sliding)/Sliding & Folding System - Offset Sliding.webp' },
-            { name: 'Soft-Open & Close Folding (Offset)', desc: 'Soft damping folding layout on offset axis.', icon: 'door-sliding', image: '/images/ozone/Sliding & Folding Systems (Offset Sliding  Centre Sliding)/Soft-Open & Close Sliding Folding System (Offset).webp' }
+            { name: 'Centre Sliding Folding', desc: 'Centre sliding and folding layout for symmetrical stacking.', icon: 'door-sliding', image: '/images/ozone/sliding-folding-systems-offset-sliding-centre-sliding/sliding-folding-system-center-sliding.webp' },
+            { name: 'Offset Sliding Folding', desc: 'Offset sliding and folding layout for edge-aligned stacking.', icon: 'door-sliding', image: '/images/ozone/sliding-folding-systems-offset-sliding-centre-sliding/sliding-folding-system-offset-sliding.webp' },
+            { name: 'Soft-Open & Close Folding (Offset)', desc: 'Soft damping folding layout on offset axis.', icon: 'door-sliding', image: '/images/ozone/sliding-folding-systems-offset-sliding-centre-sliding/soft-open-close-sliding-folding-system-offset.webp' }
           ]
         }
       },
@@ -672,7 +672,7 @@ export const productCategories = [
           title: 'Concealed Hydraulic Springs',
           detail: 'Heavy-duty springs pocketed inside floor cavities for a completely hidden frame visual.',
         },
-        img: '/images/ozone/Frame Door System with Integrated Floor Spring/Axis Frame (4507) Door System with Floor Spring.webp',
+        img: '/images/ozone/frame-door-system-with-integrated-floor-spring/axis-frame-4507-door-system-with-floor-spring.webp',
         specs: {
           'FRAME DEPTH': ['Ultra-slim profiles matching Stealth Slide and Swing'],
           'HEIGHT OF SILL': ['Flush floor spring (concealed floor pocket)'],
@@ -690,9 +690,9 @@ export const productCategories = [
         colors: ['Natural Silver', 'Matte Black', 'Anodized Bronze'],
         configurations: {
           DOOR: [
-            { name: 'Axis Frame (4507) Floor Spring', desc: 'Frame door with integrated floor spring on Axis 4507 profile.', icon: 'door-swing', image: '/images/ozone/Frame Door System with Integrated Floor Spring/Axis Frame (4507) Door System with Floor Spring.webp' },
-            { name: 'Standard Frame Floor Spring', desc: 'Standard frame door with integrated floor spring.', icon: 'door-swing', image: '/images/ozone/Frame Door System with Integrated Floor Spring/Frame Door System with Floor Spring.webp' },
-            { name: 'Linea Frame (4507) Floor Spring', desc: 'Frame door with integrated floor spring on Linea 4507 profile.', icon: 'door-swing', image: '/images/ozone/Frame Door System with Integrated Floor Spring/Linea Frame (4507) Door System with Floor Spring.webp' }
+            { name: 'Axis Frame (4507) Floor Spring', desc: 'Frame door with integrated floor spring on Axis 4507 profile.', icon: 'door-swing', image: '/images/ozone/frame-door-system-with-integrated-floor-spring/axis-frame-4507-door-system-with-floor-spring.webp' },
+            { name: 'Standard Frame Floor Spring', desc: 'Standard frame door with integrated floor spring.', icon: 'door-swing', image: '/images/ozone/frame-door-system-with-integrated-floor-spring/frame-door-system-with-floor-spring.webp' },
+            { name: 'Linea Frame (4507) Floor Spring', desc: 'Frame door with integrated floor spring on Linea 4507 profile.', icon: 'door-swing', image: '/images/ozone/frame-door-system-with-integrated-floor-spring/linea-frame-4507-door-system-with-floor-spring.webp' }
           ]
         }
       },
@@ -738,7 +738,7 @@ export const productCategories = [
           title: '360° Continuous Pivot Axis',
           detail: 'Grand full-height glass panel rotating freely 360 degrees on dynamic pivots.',
         },
-        img: '/images/ozone/Framed 360° Revolving Door Systems/Framed 360° Revolving Door.webp',
+        img: '/images/ozone/framed-360-revolving-door-systems/framed-360-revolving-door.webp',
         specs: {
           'FRAME DEPTH': ['Ultra-slim profiles matching Stealth Slide and Swing'],
           'HEIGHT OF SILL': ['Concealed floor/ceiling pivot points'],
@@ -756,7 +756,7 @@ export const productCategories = [
         colors: ['Natural Silver', 'Matte Black', 'Anodized Bronze'],
         configurations: {
           DOOR: [
-            { name: '360° Revolving Door', desc: 'Grand framed 360° revolving single leaf door.', icon: 'door-swing', image: '/images/ozone/Framed 360° Revolving Door Systems/Framed 360° Revolving Door.webp' }
+            { name: '360° Revolving Door', desc: 'Grand framed 360° revolving single leaf door.', icon: 'door-swing', image: '/images/ozone/framed-360-revolving-door-systems/framed-360-revolving-door.webp' }
           ]
         }
       }
