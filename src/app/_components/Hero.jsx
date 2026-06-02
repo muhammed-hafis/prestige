@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from 'react';
 
 const HERO_IMAGES = [
-  "/images/hero/slider1.jpeg",
-  "/images/hero/slider2.jpeg",
-  "/images/hero/slider3.jpeg",
+  "/images/hero/slider1.avif",
+  "/images/hero/slider2.avif",
+  "/images/hero/slider3.avif",
   "/images/hero/slider4.avif",
   "/images/hero/slider5.avif"
 ];
