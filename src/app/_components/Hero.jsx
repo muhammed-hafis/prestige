@@ -4,6 +4,11 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const TOTAL_FRAMES = 240;
+// Concurrent image requests — keep low on mobile to avoid saturating bandwidth
+const BATCH_SIZE = 6;
+
+const isMobileDevice = () =>
+  typeof window !== 'undefined' && window.innerWidth < 768;
 
 const pad = (num, size) => {
   let s = num + '';
@@ -65,16 +70,53 @@ const Hero = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const rect = canvas.getBoundingClientRect();
-    const dpr  = window.devicePixelRatio || 1;
+    // Cap DPR: mobile = 1.5, desktop = 2 — prevents massive canvas on hi-DPI phones
+    const maxDpr = isMobileDevice() ? 1.5 : 2;
+    const dpr    = Math.min(window.devicePixelRatio || 1, maxDpr);
     canvas.width  = rect.width  * dpr;
     canvas.height = rect.height * dpr;
+
+    // Disable smoothing on mobile for faster draws
+    const ctx = canvas.getContext('2d');
+    if (ctx && isMobileDevice()) ctx.imageSmoothingEnabled = false;
+
     if (currentFrameRef.current) drawFrame(currentFrameRef.current);
   };
 
-  // ─── Load frames ───────────────────────────────────────────────────────────
+  // ─── Load frames (batched to avoid memory/bandwidth overload on mobile) ────
   useEffect(() => {
     let isMounted  = true;
     let loadedCount = 0;
+
+    const onProgress = () => {
+      loadedCount++;
+      setLoadingProgress(Math.round((loadedCount / TOTAL_FRAMES) * 100));
+    };
+
+    const loadBatch = (startIdx, endIdx) => {
+      if (!isMounted) return;
+      const promises = [];
+      for (let i = startIdx; i <= endIdx && i <= TOTAL_FRAMES; i++) {
+        const idx = i; // capture
+        const p = new Promise((resolve) => {
+          const img = new Image();
+          img.src = `/animation/ezgif-frame-${pad(idx, 3)}.avif`;
+          img.onload = () => {
+            if (!isMounted) { resolve(); return; }
+            imagesRef.current[idx] = img;
+            onProgress();
+            if (currentFrameRef.current === idx) drawFrame(idx);
+            resolve();
+          };
+          img.onerror = () => { onProgress(); resolve(); };
+        });
+        promises.push(p);
+      }
+      return Promise.all(promises).then(() => {
+        const next = endIdx + 1;
+        if (next <= TOTAL_FRAMES && isMounted) loadBatch(next, next + BATCH_SIZE - 1);
+      });
+    };
 
     const firstImg = new Image();
     firstImg.src = '/animation/ezgif-frame-001.avif';
@@ -84,24 +126,10 @@ const Hero = () => {
       handleResize();
       loadedCount++;
       setLoadingProgress(Math.round((loadedCount / TOTAL_FRAMES) * 100));
-
-      for (let i = 2; i <= TOTAL_FRAMES; i++) {
-        const img = new Image();
-        img.src = `/animation/ezgif-frame-${pad(i, 3)}.avif`;
-        img.onload = () => {
-          if (!isMounted) return;
-          imagesRef.current[i] = img;
-          loadedCount++;
-          setLoadingProgress(Math.round((loadedCount / TOTAL_FRAMES) * 100));
-          if (currentFrameRef.current === i) drawFrame(i);
-        };
-        img.onerror = () => {
-          if (!isMounted) return;
-          loadedCount++;
-          setLoadingProgress(Math.round((loadedCount / TOTAL_FRAMES) * 100));
-        };
-      }
+      // Start batched loading from frame 2
+      loadBatch(2, 1 + BATCH_SIZE);
     };
+    firstImg.onerror = () => { onProgress(); };
 
     window.addEventListener('resize', handleResize);
     return () => {
@@ -118,6 +146,7 @@ const Hero = () => {
     const container = containerRef.current;
     if (!container) return;
 
+    const mobile = isMobileDevice();
     const frameObj = { frame: 1 };
 
     const tl = gsap.timeline({
@@ -125,7 +154,7 @@ const Hero = () => {
         trigger: container,
         start: 'top top',
         end: '+=150%',
-        scrub: 1,          // silkier lag
+        scrub: mobile ? 0.5 : 1,  // tighter scrub on mobile = less lag
         pin: true,
         anticipatePin: 1,
         onUpdate: () => {
@@ -146,18 +175,19 @@ const Hero = () => {
     tl.to(frameObj, { frame: TOTAL_FRAMES, snap: 'frame', ease: 'none', duration: 10 }, 0);
 
     // Sub-line: scale from 0 → 1 pop-up, scroll-scrubbed, starts at ~70% of scroll
+    // blur() is skipped on mobile — it's a very expensive GPU compositing op
     tl.fromTo(
       sublineRef.current,
-      { scale: 0, opacity: 0, filter: 'blur(4px)' },
-      { scale: 1, opacity: 1, filter: 'blur(0px)', ease: 'back.out(1.4)', duration: 10 },
+      { scale: 0, opacity: 0, ...(mobile ? {} : { filter: 'blur(4px)' }) },
+      { scale: 1, opacity: 1, ...(mobile ? {} : { filter: 'blur(0px)' }), ease: 'back.out(1.4)', duration: 10 },
       6
     );
 
     // Headline: scale from 0 → 1 pop-up, scroll-scrubbed, slightly after sub-line
     tl.fromTo(
       headlineRef.current,
-      { scale: 0, opacity: 0, filter: 'blur(4px)' },
-      { scale: 1, opacity: 1, filter: 'blur(0px)', ease: 'back.out(1.4)', duration: 10 },
+      { scale: 0, opacity: 0, ...(mobile ? {} : { filter: 'blur(4px)' }) },
+      { scale: 1, opacity: 1, ...(mobile ? {} : { filter: 'blur(0px)' }), ease: 'back.out(1.4)', duration: 10 },
       6
     );
 
@@ -222,11 +252,11 @@ const Hero = () => {
       className="relative h-screen w-full bg-[#09090a] select-none"
       style={{ overflow: 'clip' }}
     >
-      {/* Canvas */}
+      {/* Canvas — on its own GPU compositor layer via will-change */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full object-cover z-10"
-        style={{ display: 'block' }}
+        style={{ display: 'block', willChange: 'transform' }}
       />
 
       {/* Dark overlay */}
