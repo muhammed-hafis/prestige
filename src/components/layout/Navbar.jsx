@@ -1,7 +1,9 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { productCategories } from "../../app/_data/products";
 
 const getCategoryPath = (catId) => {
@@ -29,6 +31,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
+  const navRef = useRef(null);
 
   const orderedCategories = ["tostem", "alamin", "ozone"];
   const sortedCategories = [...productCategories].sort((a, b) => {
@@ -44,6 +47,41 @@ const Navbar = () => {
     // { name: "News & Blogs",      href: "/news-blogs" },   // dedicated page
     { name: "Contact",           href: "/contact" },      // dedicated page
   ];
+
+  // Navbar entrance: slide from top after hero animation ends (home page only)
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const nav = navRef.current;
+    if (!nav) return;
+
+    if (!isHome) {
+      // Non-home pages: always visible
+      gsap.set(nav, { y: 0, opacity: 1 });
+      return;
+    }
+
+    // Hide navbar above viewport initially
+    gsap.set(nav, { y: '-120%', opacity: 0 });
+
+    // The hero section uses end: '+=150%', pin: true → total scroll = 150vh
+    // Slide navbar in once user has scrolled past the hero pin zone
+    const st = ScrollTrigger.create({
+      trigger: document.body,
+      start: () => `${window.innerHeight * 1.5} top`,
+      once: true,
+      onEnter: () => {
+        gsap.to(nav, {
+          y: 0,
+          opacity: 1,
+          duration: 0.9,
+          ease: 'power3.out',
+        });
+      },
+    });
+
+    return () => st.kill();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isHome]);
 
   // Scroll shadow effect
   useEffect(() => {
@@ -68,7 +106,8 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 w-[92%] sm:w-[95%] max-w-[1440px] z-[1000] flex justify-between items-center rounded-full py-3 px-5 sm:px-8 lg:px-10 bg-[var(--background)]/80 backdrop-blur-xl border border-light-gold/20 transition-all duration-500 ${scrolled ? "shadow-xl" : "shadow-lg"}`}
+        ref={navRef}
+        className={`fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 w-[92%] sm:w-[95%] max-w-[1440px] z-[1000] flex justify-between items-center rounded-full py-3 px-5 sm:px-8 lg:px-10 bg-[var(--background)]/80 backdrop-blur-xl border border-light-gold/20 transition-shadow duration-500 ${scrolled ? "shadow-xl" : "shadow-lg"}`}
       >
         {/* Logo */}
         <Link
