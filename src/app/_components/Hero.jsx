@@ -220,7 +220,7 @@ const Hero = () => {
     <div
       ref={containerRef}
       className="relative h-screen w-full bg-[#09090a] select-none"
-      style={{ overflow: 'hidden', overflowX: 'hidden' }}
+      style={{ overflow: 'clip' }}
     >
       {/* Canvas */}
       <canvas
