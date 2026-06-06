@@ -177,7 +177,7 @@ const Hero = () => {
       sublineRef.current,
       { scale: 0, opacity: 0, ...(mobile ? {} : { filter: 'blur(4px)' }) },
       { scale: 1, opacity: 1, ...(mobile ? {} : { filter: 'blur(0px)' }), ease: 'back.out(1.4)', duration: 10 },
-      6
+      5
     );
 
     // Headline: scale from 0 → 1 pop-up, scroll-scrubbed, slightly after sub-line
@@ -185,7 +185,7 @@ const Hero = () => {
       headlineRef.current,
       { scale: 0, opacity: 0, ...(mobile ? {} : { filter: 'blur(4px)' }) },
       { scale: 1, opacity: 1, ...(mobile ? {} : { filter: 'blur(0px)' }), ease: 'back.out(1.4)', duration: 10 },
-      6
+      5
     );
 
     return () => {
