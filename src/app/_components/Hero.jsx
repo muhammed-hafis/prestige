@@ -29,44 +29,34 @@ const Hero = () => {
   const currentFrameRef = useRef(1);
   const [loadingProgress, setLoadingProgress] = useState(0);
 
+  // ─── Cached draw state (recomputed only on resize) ─────────────────────────
+  const ctxRef       = useRef(null);   // cached 2D context
+  const drawParamRef = useRef(null);   // cached cover-fit geometry { x, y, w, h }
+  const rafRef       = useRef(null);   // pending requestAnimationFrame id
+
   // ─── Draw a specific frame on the canvas ───────────────────────────────────
+  // Uses cached context + geometry; only paints on a real animation frame.
   const drawFrame = (index) => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const context = canvas.getContext('2d');
-    if (!context) return;
-
+    const ctx = ctxRef.current;
+    const p   = drawParamRef.current;
     const img = imagesRef.current[index];
-    if (!img) return;
+    if (!ctx || !p || !img) return;
 
-    context.clearRect(0, 0, canvas.width, canvas.height);
-
-    const canvasWidth  = canvas.width;
-    const canvasHeight = canvas.height;
-    const imgWidth     = img.naturalWidth  || img.width;
-    const imgHeight    = img.naturalHeight || img.height;
-    if (!imgWidth || !imgHeight) return;
-
-    const imgRatio    = imgWidth / imgHeight;
-    const canvasRatio = canvasWidth / canvasHeight;
-    let drawWidth, drawHeight, drawX, drawY;
-
-    if (canvasRatio > imgRatio) {
-      drawWidth  = canvasWidth;
-      drawHeight = canvasWidth / imgRatio;
-      drawX      = 0;
-      drawY      = (canvasHeight - drawHeight) / 2;
-    } else {
-      drawWidth  = canvasHeight * imgRatio;
-      drawHeight = canvasHeight;
-      drawX      = (canvasWidth - drawWidth) / 2;
-      drawY      = 0;
-    }
-
-    context.drawImage(img, drawX, drawY, drawWidth, drawHeight);
+    ctx.clearRect(0, 0, p.cw, p.ch);
+    ctx.drawImage(img, p.x, p.y, p.w, p.h);
   };
 
-  // ─── Resize canvas to pixel ratio ──────────────────────────────────────────
+  // Schedule a draw through RAF — collapses multiple onUpdate calls into one
+  // paint per display frame (prevents redundant canvas redraws mid-scroll).
+  const scheduleDrawFrame = (index) => {
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    rafRef.current = requestAnimationFrame(() => {
+      rafRef.current = null;
+      drawFrame(index);
+    });
+  };
+
+  // ─── Resize canvas + rebuild cached draw params ────────────────────────────
   const handleResize = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -74,12 +64,37 @@ const Hero = () => {
     // Cap DPR: mobile = 1.5, desktop = 2 — prevents massive canvas on hi-DPI phones
     const maxDpr = isMobileDevice() ? 1.5 : 2;
     const dpr    = Math.min(window.devicePixelRatio || 1, maxDpr);
-    canvas.width  = rect.width  * dpr;
-    canvas.height = rect.height * dpr;
+    const cw = rect.width  * dpr;
+    const ch = rect.height * dpr;
+    canvas.width  = cw;
+    canvas.height = ch;
 
-    // Disable smoothing on mobile for faster draws
+    // Cache the 2D context once (avoid repeated getContext calls)
     const ctx = canvas.getContext('2d');
-    if (ctx && isMobileDevice()) ctx.imageSmoothingEnabled = false;
+    if (!ctx) return;
+    if (isMobileDevice()) ctx.imageSmoothingEnabled = false;
+    ctxRef.current = ctx;
+
+    // Rebuild cover-fit geometry using the first available loaded image
+    const sampleImg = imagesRef.current.find(Boolean);
+    if (sampleImg) {
+      const iw = sampleImg.naturalWidth  || sampleImg.width;
+      const ih = sampleImg.naturalHeight || sampleImg.height;
+      if (iw && ih) {
+        const imgRatio    = iw / ih;
+        const canvasRatio = cw / ch;
+        let x, y, w, h;
+        if (canvasRatio > imgRatio) {
+          w = cw; h = cw / imgRatio; x = 0; y = (ch - h) / 2;
+        } else {
+          w = ch * imgRatio; h = ch; x = (cw - w) / 2; y = 0;
+        }
+        drawParamRef.current = { cw, ch, x, y, w, h };
+      }
+    } else {
+      // No image yet — store dims so params are rebuilt when first frame arrives
+      drawParamRef.current = null;
+    }
 
     if (currentFrameRef.current) drawFrame(currentFrameRef.current);
   };
@@ -91,10 +106,14 @@ const Hero = () => {
 
     const onProgress = (idx, img) => {
       if (!isMounted) return;
-      if (img) imagesRef.current[idx] = img;
+      if (img) {
+        imagesRef.current[idx] = img;
+        // Build draw params as soon as the very first image arrives
+        if (!drawParamRef.current) handleResize();
+      }
       loadedCount++;
       setLoadingProgress(Math.round((loadedCount / TOTAL_FRAMES) * 100));
-      if (img && currentFrameRef.current === idx) drawFrame(idx);
+      if (img && currentFrameRef.current === idx) scheduleDrawFrame(idx);
     };
 
     // Semaphore: allows MAX_CONCURRENT requests in-flight at once
@@ -151,19 +170,18 @@ const Hero = () => {
         trigger: container,
         start: 'top top',
         end: '+=150%',
-        scrub: mobile ? 0.5 : 1,  // tighter scrub on mobile = less lag
+        scrub: mobile ? 0.3 : 0.3,  // tight scrub = animation tracks scroll closely
         pin: true,
         anticipatePin: 1,
         onUpdate: () => {
           const f = Math.round(frameObj.frame);
           currentFrameRef.current = f;
-          if (imagesRef.current[f]) {
-            drawFrame(f);
-          } else {
-            let fallback = f;
-            while (fallback > 1 && !imagesRef.current[fallback]) fallback--;
-            if (imagesRef.current[fallback]) drawFrame(fallback);
-          }
+          // Rebuild draw params on first scroll if they weren't ready at resize
+          if (!drawParamRef.current) handleResize();
+          const target = imagesRef.current[f]
+            ? f
+            : (() => { let fb = f; while (fb > 1 && !imagesRef.current[fb]) fb--; return fb; })();
+          scheduleDrawFrame(target);
         },
       },
     });
