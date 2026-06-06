@@ -4,8 +4,9 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const TOTAL_FRAMES = 240;
-// Concurrent image requests — keep low on mobile to avoid saturating bandwidth
-const BATCH_SIZE = 6;
+// Max simultaneous requests — browser + HTTP/2 handle multiplexing, but we
+// cap here to avoid hammering slow connections (increase freely on fast links)
+const MAX_CONCURRENT = 30;
 
 const isMobileDevice = () =>
   typeof window !== 'undefined' && window.innerWidth < 768;
@@ -83,41 +84,36 @@ const Hero = () => {
     if (currentFrameRef.current) drawFrame(currentFrameRef.current);
   };
 
-  // ─── Load frames (batched to avoid memory/bandwidth overload on mobile) ────
+  // ─── Load frames (concurrent with semaphore to respect slow connections) ────
   useEffect(() => {
-    let isMounted  = true;
+    let isMounted   = true;
     let loadedCount = 0;
 
-    const onProgress = () => {
+    const onProgress = (idx, img) => {
+      if (!isMounted) return;
+      if (img) imagesRef.current[idx] = img;
       loadedCount++;
       setLoadingProgress(Math.round((loadedCount / TOTAL_FRAMES) * 100));
+      if (img && currentFrameRef.current === idx) drawFrame(idx);
     };
 
-    const loadBatch = (startIdx, endIdx) => {
-      if (!isMounted) return;
-      const promises = [];
-      for (let i = startIdx; i <= endIdx && i <= TOTAL_FRAMES; i++) {
-        const idx = i; // capture
-        const p = new Promise((resolve) => {
-          const img = new Image();
-          img.src = `/animation/ezgif-frame-${pad(idx, 3)}.avif`;
-          img.onload = () => {
-            if (!isMounted) { resolve(); return; }
-            imagesRef.current[idx] = img;
-            onProgress();
-            if (currentFrameRef.current === idx) drawFrame(idx);
-            resolve();
-          };
-          img.onerror = () => { onProgress(); resolve(); };
-        });
-        promises.push(p);
-      }
-      return Promise.all(promises).then(() => {
-        const next = endIdx + 1;
-        if (next <= TOTAL_FRAMES && isMounted) loadBatch(next, next + BATCH_SIZE - 1);
-      });
-    };
+    // Semaphore: allows MAX_CONCURRENT requests in-flight at once
+    const loadWithSemaphore = (() => {
+      let active = 0;
+      const queue = [];
+      const next = () => {
+        if (!queue.length || active >= MAX_CONCURRENT) return;
+        active++;
+        const { idx, resolve } = queue.shift();
+        const img = new Image();
+        img.src = `/animation/ezgif-frame-${pad(idx, 3)}.avif`;
+        img.onload = () => { onProgress(idx, img); active--; resolve(); next(); };
+        img.onerror = () => { onProgress(idx, null); active--; resolve(); next(); };
+      };
+      return (idx) => new Promise((resolve) => { queue.push({ idx, resolve }); next(); });
+    })();
 
+    // Frame 1 — load eagerly and immediately set up canvas
     const firstImg = new Image();
     firstImg.src = '/animation/ezgif-frame-001.avif';
     firstImg.onload = () => {
@@ -126,10 +122,11 @@ const Hero = () => {
       handleResize();
       loadedCount++;
       setLoadingProgress(Math.round((loadedCount / TOTAL_FRAMES) * 100));
-      // Start batched loading from frame 2
-      loadBatch(2, 1 + BATCH_SIZE);
     };
-    firstImg.onerror = () => { onProgress(); };
+    firstImg.onerror = () => { if (isMounted) { loadedCount++; setLoadingProgress(Math.round((loadedCount / TOTAL_FRAMES) * 100)); } };
+
+    // Frames 2–240 — fire all concurrently (semaphore caps in-flight count)
+    for (let i = 2; i <= TOTAL_FRAMES; i++) loadWithSemaphore(i);
 
     window.addEventListener('resize', handleResize);
     return () => {
