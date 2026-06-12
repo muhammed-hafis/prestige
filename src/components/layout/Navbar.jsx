@@ -205,33 +205,42 @@ const Navbar = () => {
             <li key={item.name}>
               {item.name === "Products" ? (
                 <div className="border-b border-light-gold/10">
-                  <button
-                    onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
-                    className="w-full flex items-center justify-between gap-3 text-[0.75rem] uppercase tracking-[0.25em] font-sans text-[#4b5563] hover:text-[#111] py-4 group focus:outline-none"
+                  <div
+                    className="w-full flex items-center justify-between gap-3 py-4"
                     style={{
                       opacity: menuOpen ? 1 : 0,
                       transform: menuOpen ? "translateX(0)" : "translateX(12px)",
-                      transitionProperty: "opacity, transform, color",
-                      transitionDuration: "0.35s, 0.35s, 0.2s",
-                      transitionTimingFunction: "ease, ease, ease",
+                      transitionProperty: "opacity, transform",
+                      transitionDuration: "0.35s, 0.35s",
+                      transitionTimingFunction: "ease, ease",
                       transitionDelay: menuOpen
-                        ? `${80 + idx * 40}ms, ${80 + idx * 40}ms, 0ms`
-                        : "0ms, 0ms, 0ms",
+                        ? `${80 + idx * 40}ms, ${80 + idx * 40}ms`
+                        : "0ms, 0ms",
                     }}
                   >
-                    <span className="flex items-center gap-3">
+                    <Link
+                      href={item.href}
+                      onClick={closeMenu}
+                      className="flex items-center gap-3 text-[0.75rem] uppercase tracking-[0.25em] font-sans text-[#4b5563] hover:text-[#111] group focus:outline-none"
+                    >
                       <span className={`w-0 group-hover:w-3 h-[1.5px] bg-light-gold transition-all duration-300 flex-shrink-0 ${mobileProductsOpen ? "w-3" : ""}`} />
                       {item.name}
-                    </span>
-                    <svg
-                      className={`w-3.5 h-3.5 text-[#4b5563] transition-transform duration-300 ${mobileProductsOpen ? "rotate-180" : ""}`}
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
+                    </Link>
+                    <button
+                      onClick={() => setMobileProductsOpen(!mobileProductsOpen)}
+                      className="focus:outline-none p-2 -my-2 -mr-2 border-1 rounded-sm"
+                      aria-label="Toggle products menu"
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
+                      <svg
+                        className={`w-5 h-5  text-[#4b5563] transition-transform duration-300 ${mobileProductsOpen ? "rotate-180" : ""}`}
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                  </div>
 
                   {/* Mobile Collapsible Sub-menu */}
                   <div
