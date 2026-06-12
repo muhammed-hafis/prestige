@@ -52,8 +52,8 @@ const LocalStyles = () => (
       object-fit: cover;
     }
 
-    /* ── On desktop, cap the portrait column so the card isn't enormous ── */
-    @media (min-width: 1024px) {
+    /* ── On tablet/desktop, cap the portrait column so the card isn't enormous ── */
+    @media (min-width: 768px) {
       .system-card-portrait-col {
         /* fixed pixel width keeps the 9:16 ratio manageable */
         width: 220px;
@@ -67,7 +67,7 @@ const LocalStyles = () => (
     }
 
     /* ── Mobile: portrait video fills full width (looks great as a tall card header) ── */
-    @media (max-width: 1023px) {
+    @media (max-width: 767px) {
       .system-card-portrait-col {
         width: 100%;
         max-width: 320px;
@@ -268,7 +268,7 @@ export default function AlAminPage() {
             ].map((item, i) => (
               <EnquiryButton
                 key={i}
-                className="group relative flex flex-col p-7 sm:p-10 bg-white border border-light-gold/15 rounded-2xl shadow-sm hover:shadow-md hover:border-light-gold/30 transition-all duration-300 items-center text-center cursor-pointer"
+                className={`group relative flex flex-col p-7 sm:p-10 bg-white border border-light-gold/15 rounded-2xl shadow-sm hover:shadow-md hover:border-light-gold/30 transition-all duration-300 items-center text-center cursor-pointer ${i === 2 ? "sm:col-span-2 lg:col-span-1" : ""}`}
               >
                 <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-light-gold/10 border border-light-gold/20 flex items-center justify-center text-light-gold mb-5 sm:mb-6 group-hover:scale-105 transition-transform duration-300">
                   {item.icon}
@@ -320,7 +320,7 @@ export default function AlAminPage() {
                     Desktop → side-by-side: portrait video column (fixed ~220 px) + content
                   ── */}
                   <div
-                    className={`flex flex-col lg:flex-row lg:items-stretch ${!isEven ? "lg:flex-row-reverse" : ""
+                    className={`flex flex-col md:flex-row md:items-stretch ${!isEven ? "md:flex-row-reverse" : ""
                       }`}
                   >
                     {/* ── Portrait Video Column ── */}

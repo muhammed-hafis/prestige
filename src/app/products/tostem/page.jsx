@@ -253,7 +253,7 @@ export default function TostemPage() {
           </div>
 
           {/* 3 Pillars Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8" data-aos="fade-up">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" data-aos="fade-up">
             
             {/* Sourcing */}
             <EnquiryButton
@@ -287,7 +287,7 @@ export default function TostemPage() {
 
             {/* Mobility */}
             <EnquiryButton
-              className="group relative flex flex-col p-8 sm:p-10 bg-white border border-light-gold/15 rounded-2xl shadow-sm hover:shadow-md hover:border-light-gold/30 transition-all duration-300 items-center text-center cursor-pointer"
+              className="group relative flex flex-col p-8 sm:p-10 bg-white border border-light-gold/15 rounded-2xl shadow-sm hover:shadow-md hover:border-light-gold/30 transition-all duration-300 items-center text-center cursor-pointer md:col-span-2 lg:col-span-1"
             >
               <div className="w-16 h-16 rounded-full bg-light-gold/10 border border-light-gold/20 flex items-center justify-center text-light-gold mb-6 group-hover:scale-105 transition-transform duration-300">
                 <FiMapPin className="w-6 h-6 text-light-gold" />
@@ -329,12 +329,12 @@ export default function TostemPage() {
               return (
                 <div
                   key={series.id}
-                  className="product-portfolio-card grid grid-cols-1 lg:grid-cols-12 lg:gap-14 bg-white border border-light-gold/10 shadow-lg items-stretch overflow-hidden"
+                  className="product-portfolio-card grid grid-cols-1 md:grid-cols-12 md:gap-10 lg:gap-14 bg-white border border-light-gold/10 shadow-lg items-stretch overflow-hidden"
                   data-aos={isEven ? "fade-right" : "fade-left"}
                 >
                   
                   {/* Image Block */}
-                  <div className={`col-span-1 lg:col-span-6 relative aspect-[16/10] lg:aspect-auto lg:h-full overflow-hidden bg-neutral-100 ${!isEven ? "lg:order-2" : ""}`}>
+                  <div className={`col-span-1 md:col-span-6 relative aspect-[16/10] md:aspect-auto md:h-full overflow-hidden bg-neutral-100 ${!isEven ? "md:order-2" : ""}`}>
                     <img
                       src={series.img}
                       alt={series.name}
@@ -343,7 +343,7 @@ export default function TostemPage() {
                   </div>
 
                   {/* Content Block */}
-                  <div className={`col-span-1 lg:col-span-6 flex flex-col justify-center p-6 sm:p-8 lg:p-10 ${isEven ? "lg:pl-0" : "lg:pr-0"}`}>
+                  <div className={`col-span-1 md:col-span-6 flex flex-col justify-center p-6 sm:p-8 lg:p-10 ${isEven ? "md:pl-0" : "md:pr-0"}`}>
                     <span className="font-sans text-[0.62rem] sm:text-[0.68rem] uppercase tracking-[0.2em] text-[#B8902A] font-black mb-2 block">
                       {series.badge}
                     </span>
