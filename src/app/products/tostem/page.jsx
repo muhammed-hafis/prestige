@@ -198,7 +198,7 @@ export default function TostemPage() {
             {/* Left Col: Image */}
             <div className="relative min-h-[280px] sm:min-h-[420px] lg:min-h-0 overflow-hidden" data-aos="fade-right">
               <img
-                src="/images/tostem-benchmark.avif"
+                src="/images/tostem.png"
                 alt="Raising the Global Benchmark — TOSTEM"
                 className="w-full h-full object-cover"
               />

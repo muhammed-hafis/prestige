@@ -21,9 +21,11 @@ html {
   scrollbar-gutter: stable;
   /* Smoothly ease the dark-loader bg back to page bg when prestige-ready is added */
   transition: background-color 0.7s ease;
+  background-color: var(--background);
 }
 
 :root {
+  color-scheme: light;
   --background: #FAF6EC;
   --foreground: #1a1a1a;
   --primary-gold: #B8902A;
