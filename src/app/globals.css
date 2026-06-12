@@ -1,7 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
+/* Scroll lock during loading — overrides any Lenis/Tailwind inline styles */
+html:not(.prestige-ready) {
+  overflow: hidden !important;
+  /* Match loader dark bg so the reserved gutter is invisible */
+  background-color: #09090a;
+  scrollbar-color: #09090a #09090a; /* Firefox */
+}
+
+/* Hide webkit scrollbar track during loading so white gutter doesn't show */
+html:not(.prestige-ready)::-webkit-scrollbar-track,
+html:not(.prestige-ready)::-webkit-scrollbar-thumb,
+html:not(.prestige-ready)::-webkit-scrollbar {
+  background-color: #09090a;
+}
+
+/* Always reserve scrollbar gutter space to prevent layout jump when scrollbar appears */
 html {
+  scrollbar-gutter: stable;
+  /* Smoothly ease the dark-loader bg back to page bg when prestige-ready is added */
+  transition: background-color 0.7s ease;
 }
 
 :root {

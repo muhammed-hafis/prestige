@@ -9,21 +9,27 @@ const PageLoader = () => {
   const isRoot = pathname === "/";
 
   useEffect(() => {
-    if (!isRoot) return;
+    if (!isRoot) {
+      // Non-root pages: enable scroll immediately
+      document.documentElement.classList.add("prestige-ready");
+      return;
+    }
 
-    // Lock scroll while loading
-    document.documentElement.style.overflow = "hidden";
+    // Root page: remove any stale prestige-ready class from previous navigation
+    document.documentElement.classList.remove("prestige-ready");
+    // Scroll is now locked via CSS (html:not(.prestige-ready) { overflow: hidden })
 
     let dismissed = false;
 
     const dismiss = () => {
       if (dismissed) return;
       dismissed = true;
+      // Add prestige-ready NOW so html bg starts transitioning in sync with the fade
+      document.documentElement.classList.add("prestige-ready");
       // Start fade-out
       setFading(true);
       setTimeout(() => {
         setVisible(false);
-        document.documentElement.style.overflow = "";
         // Signal to the rest of the app that the loading screen is gone
         window.dispatchEvent(new Event("prestige:ready"));
       }, 700); // matches transition duration below
@@ -32,13 +38,13 @@ const PageLoader = () => {
     // Dismiss when the page signals it is ready
     window.addEventListener("prestige:loaded", dismiss);
 
-    // Hard 2-second maximum — always dismiss even if the event never fires
-    const maxTimer = setTimeout(dismiss, 2000);
+    // Hard 3-second fallback — dismisses if video never fires canplay (e.g. slow network)
+    const maxTimer = setTimeout(dismiss, 3000);
 
     return () => {
       window.removeEventListener("prestige:loaded", dismiss);
       clearTimeout(maxTimer);
-      document.documentElement.style.overflow = "";
+      document.documentElement.classList.add("prestige-ready");
     };
   }, [isRoot]);
 

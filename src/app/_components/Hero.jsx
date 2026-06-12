@@ -5,11 +5,11 @@ const HERO_SLIDES = [
   { type: "video", src: "/vedios/ozone/ozone.mp4" },
   { type: "image", src: "/images/hero/slider1.avif" },
   { type: "image", src: "/images/hero/slider2.avif" },
-  { type: "image", src: "/images/hero/slider3.avif" },
+  { type: "image", src: "/images/hero/slider3.jpg" },
   { type: "image", src: "/images/hero/slider4.avif" },
 ];
 
-const VideoSlide = ({ src, isActive, onEnded }) => {
+const VideoSlide = ({ src, isActive, onEnded, onReady }) => {
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -32,15 +32,22 @@ const VideoSlide = ({ src, isActive, onEnded }) => {
       muted
       playsInline
       onEnded={onEnded}
+      onCanPlay={onReady}
       className="w-full h-full object-cover"
     />
   );
 };
 
+
 const Hero = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [prevActiveIndex, setPrevActiveIndex] = useState(null);
   const [showText, setShowText] = useState(false);
+
+  // Signal PageLoader to dismiss once the hero video is ready to play
+  const handleVideoReady = () => {
+    window.dispatchEvent(new Event("prestige:loaded"));
+  };
 
   // Autoplay functionality
   useEffect(() => {
@@ -75,7 +82,7 @@ const Hero = () => {
 
 
   return (
-    <div className="relative h-[100vh] w-full overflow-hidden bg-[#09090a] select-none">
+    <div className="relative md:h-[93vh] h-[100vh] w-full overflow-hidden bg-[#09090a] select-none">
       {/* Dynamic Style block for Ken Burns Animation */}
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes kenburns {
@@ -102,7 +109,9 @@ const Hero = () => {
                 src={slide.src}
                 isActive={isActive}
                 onEnded={handleVideoEnded}
+                onReady={handleVideoReady}
               />
+
             ) : (
               <img
                 src={slide.src}
