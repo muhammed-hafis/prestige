@@ -56,10 +56,10 @@ const Footer = () => {
         <footer className="bg-[#0a0a0a] text-white pt-14 pb-6 overflow-hidden relative">
             <div className="main-container relative z-10 px-4 sm:px-8">
                 {/* Main grid */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 mb-12">
 
                     {/* Column 1: Brand */}
-                    <div className="flex flex-col gap-5 md:col-span-3" data-aos="fade-up" data-aos-delay="100">
+                    <div className="flex flex-col gap-5 md:col-span-1 lg:col-span-3" data-aos="fade-up" data-aos-delay="100">
                         <div className="flex flex-col gap-2">
                             <img src="/logo.avif" alt="Prestige Logo" className="h-16 sm:h-20 w-auto object-contain self-start" />
                             <p className="text-[0.65rem] text-light-gold mt-1 uppercase tracking-[0.25em] font-semibold leading-relaxed">
@@ -90,7 +90,7 @@ const Footer = () => {
                     </div>
 
                     {/* Column 2: Corporate Profile */}
-                    <div className="flex flex-col gap-4 md:col-span-2" data-aos="fade-up" data-aos-delay="200">
+                    <div className="flex flex-col gap-4 md:col-span-1 lg:col-span-2" data-aos="fade-up" data-aos-delay="200">
                         <h4 className="text-xs uppercase tracking-[0.3em] text-[#BA7517] font-semibold">
                             Corporate Profile
                         </h4>
@@ -109,7 +109,7 @@ const Footer = () => {
                     </div>
 
                     {/* Column 3: System Portfolio */}
-                    <div className="flex flex-col gap-4 md:col-span-4" data-aos="fade-up" data-aos-delay="300">
+                    <div className="flex flex-col gap-4 md:col-span-1 lg:col-span-4" data-aos="fade-up" data-aos-delay="300">
                         <h4 className="text-xs uppercase tracking-[0.3em] text-[#BA7517] font-semibold">
                             System Portfolio
                         </h4>
@@ -128,7 +128,7 @@ const Footer = () => {
                     </div>
 
                     {/* Column 4: Regional Hub */}
-                    <div className="flex flex-col gap-4 md:col-span-3" data-aos="fade-up" data-aos-delay="400">
+                    <div className="flex flex-col gap-4 md:col-span-1 lg:col-span-3" data-aos="fade-up" data-aos-delay="400">
                         <h4 className="text-xs uppercase tracking-[0.3em] text-[#BA7517] font-semibold">
                             Regional Hub
                         </h4>
