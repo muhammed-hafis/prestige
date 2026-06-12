@@ -476,7 +476,7 @@ export default function TostemPage() {
       {/* ── VIDEO SHOWCASE ── */}
       <section className="relative w-full h-[60vh] sm:h-[80vh] lg:h-screen bg-black overflow-hidden border-b border-light-gold/10" data-aos="fade-in">
         <video
-          src="/tostem.mp4"
+          src="/videos/tostem/tostem.mp4"
           autoPlay
           loop
           muted

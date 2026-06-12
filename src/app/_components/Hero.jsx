@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 
 const HERO_SLIDES = [
-  { type: "video", src: "/vedios/ozone/ozone.mp4" },
+  { type: "video", src: "/videos/ozone/ozone.mp4" },
   { type: "image", src: "/images/hero/slider1.avif" },
   { type: "image", src: "/images/hero/slider2.avif" },
   { type: "image", src: "/images/hero/slider3.jpg" },
