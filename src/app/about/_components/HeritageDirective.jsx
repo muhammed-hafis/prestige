@@ -44,7 +44,7 @@ const HeritageDirective = () => (
                 <div className="w-full lg:w-1/2 order-1 lg:order-2" data-aos="fade-left">
                     <div className="relative group overflow-hidden h-[280px] sm:h-[420px] md:h-[520px] lg:h-[650px]">
                         <img
-                            src="/images/about-us.avif"
+                            src="/images/about-us.jpg"
                             alt="Architecture"
                             className="w-full h-full object-cover transition-transform duration-[3s] group-hover:scale-105"
                         />

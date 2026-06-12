@@ -68,15 +68,16 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed top-4 sm:top-6 left-1/2 -translate-x-1/2 w-[92%] sm:w-[95%] max-w-[1440px] z-[1000] flex justify-between items-center rounded-full py-3 px-5 sm:px-8 lg:px-10 bg-[var(--background)]/80 backdrop-blur-xl border border-light-gold/20 transition-all duration-500 ${scrolled ? "shadow-xl" : "shadow-lg"}`}
+        className={`fixed top-0 left-0 w-full z-[1000] bg-[var(--background)]/80 backdrop-blur-xl border-b border-light-gold/20 transition-all duration-500 ${scrolled ? "shadow-xl" : "shadow-lg"}`}
       >
+        <div className="w-full max-w-[1440px] mx-auto flex justify-between items-center py-1.5 sm:py-2 px-5 sm:px-8 lg:px-10">
         {/* Logo */}
         <Link
           href="/"
           className="relative flex-shrink-0 flex items-center"
           onClick={closeMenu}
         >
-          <img src="/logo.avif" alt="Prestige" className="h-14 sm:h-16 md:h-18 w-auto object-contain" />
+          <img src="/logo.avif" alt="Prestige" className="h-10 sm:h-12 md:h-14 w-auto object-contain" />
         </Link>
 
         {/* Desktop nav links */}
@@ -179,6 +180,7 @@ const Navbar = () => {
               }`}
           />
         </button>
+        </div>
       </nav>
 
       {/* Mobile drawer overlay */}

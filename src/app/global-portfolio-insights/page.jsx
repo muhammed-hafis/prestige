@@ -10,7 +10,7 @@ const PORTFOLIO_ITEMS = [
     title: 'System Reference Gallery',
     description: 'A visual showcase of authorized global systems in finished projects, serving as a design and aesthetic reference for your architectural planning.',
     extraText: 'To inspire your next development, this curated showcase highlights iconic international projects outside Saudi Arabia utilizing our authorized global partner systems. See how these advanced profiles perform in real-world premium villas, high-rise towers, and luxury resorts across the globe—offering a proven benchmark for what we assemble and install locally.',
-    img: '/images/home/project-reference.jpg',
+    img: '/images/home/project-reference.avif',
     linkText: 'View Gallery',
     href: '/gallery'
   },
@@ -20,7 +20,7 @@ const PORTFOLIO_ITEMS = [
     title: 'Technical Lectures & Journal',
     description: 'Deep dives into the science of thermal break systems, climate engineering, and modern structural design.',
     extraText: 'Our technical journal translates complex international material physics into practical engineering solutions for the Gulf environment. Explore expert lectures covering structural calculations, wind-load resistance, acoustic dampening, and the precise thermal engineering required to fully satisfy the Saudi Building Code (SBC).',
-    img: '/images/home/lecture.jpg',
+    img: '/images/home/lecture.avif',
     linkText: 'Read Lectures',
     href: '/lectures'
   },
@@ -32,7 +32,7 @@ const PORTFOLIO_ITEMS = [
     extraText: 'By referencing world-class architectural installations across Asia, Europe, and the Americas, our gallery demonstrates how clean minimalist sightlines, hidden-sash geometries, and structural glass walls behave in elite, completed structures. Read direct feedback, case studies, and engineering testimonials from international master architects and consultants who have specified these partner profiles. Learn first-hand why global design firms trust these exact systems to deliver uncompromised structural stability, effortless mechanical rolling, and superior climate control.',
     img: '/images/starecase.jpg',
     linkText: 'Read Case Studies',
-    href: '/architects-verdict'
+    href: ''
   }
 ];
 

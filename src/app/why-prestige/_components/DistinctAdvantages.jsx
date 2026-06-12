@@ -6,35 +6,35 @@ const ADVANTAGES = [
         title: "Protecting Architectural Intent (Zero Approximation)",
         desc: "When architects design massive, minimalist glass walls, standard fabricators often say, \"It cannot be done,\" or they use heavy, ugly profiles that ruin the design. We specialize in high-end structural problem-solving. We use ultra-slim, high-performance systems that preserve the luxury, light-filled aesthetic without compromising structural safety.",
         icon: FiCompass,
-        bgColor: "#D87263",
+        bgColor: "#8F7948",
         area: "area1",
     },
     {
         title: "Climate-Engineered Thermal Barriers",
         desc: "The Saudi climate demands extreme thermal insulation. Our certified thermal break systems are engineered specifically to handle intense desert heat and high wind-loads. By blocking exterior thermal transfer, we prevent your interiors from heating up, eliminate condensation issues, and drastically lower your long-term HVAC energy consumption.",
         icon: FiThermometer,
-        bgColor: "#9B6888",
+        bgColor: "#2E3133",
         area: "area2",
     },
     {
         title: "The \"Showroom-First\" Absolute Certainty",
         desc: "We eliminate guesswork. Through our Showroom-First experience, you touch, feel, and operate full-scale architectural systems to verify their flawless quality before making a financial commitment. Once confirmed, our efficient, just-in-time assembly model builds your order to exact millimetric tolerances, ensuring zero material wastage and no site delays.",
         icon: FiEye,
-        bgColor: "#654366",
+        bgColor: "#7C6E5E",
         area: "area3",
     },
     {
         title: "Transparent & Honest Communication",
         desc: "We build relationships on absolute clarity, not transaction-driven promises. We give consultants and clients straightforward, data-driven technical advice on what works for their project based on actual wind-load and energy requirements. No overselling—just genuine system recommendations you can rely on.",
         icon: FiMessageSquare,
-        bgColor: "#4F6583",
+        bgColor: "#3E4A5C",
         area: "area4",
     },
     {
         title: "Handover Integrity (No Delays, Full Compliance)",
         desc: "A beautiful system is useless if it fails municipal inspection. Every system we install is fully compliant with the Saudi Building Code (SBC) and SASO standards. Furthermore, our commercial operations are perfectly aligned with ZATCA requirements, giving master developers and main contractors a friction-free vendor experience from contract signing to final handover.",
         icon: FiAward,
-        bgColor: "#2E3A4B",
+        bgColor: "#504439",
         area: "area5",
     },
 ];
@@ -85,7 +85,7 @@ const DistinctAdvantages = () => {
                         return (
                             <div
                                 key={i}
-                                className="flex-shrink-0 snap-start flex flex-col justify-between p-7 text-white rounded-3xl overflow-hidden relative"
+                                className="flex-shrink-0 snap-start flex flex-col justify-between p-7 text-white rounded-lg overflow-hidden relative"
                                 style={{
                                     width: "78vw",
                                     minHeight: "420px",
@@ -143,7 +143,7 @@ const DistinctAdvantages = () => {
                         return (
                             <div
                                 key={i}
-                                className="flex flex-col justify-between p-8 sm:p-10 lg:p-12 text-white h-full rounded-3xl shadow-[0_15px_40px_rgba(0,0,0,0.08)] transition-all duration-500 hover:brightness-[0.96] hover:scale-[1.01] hover:z-10 group relative overflow-hidden"
+                                className="flex flex-col justify-between p-8 sm:p-10 lg:p-12 text-white h-full rounded-lg shadow-[0_15px_40px_rgba(0,0,0,0.08)] transition-all duration-500 hover:brightness-[0.96] hover:scale-[1.01] hover:z-10 group relative overflow-hidden"
                                 style={{
                                     gridArea: adv.area,
                                     minHeight: "450px",

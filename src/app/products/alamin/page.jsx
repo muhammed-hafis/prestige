@@ -20,7 +20,7 @@ const LocalStyles = () => (
       from { transform: scale(1.08) translateY(0); }
       to   { transform: scale(1)    translateY(0); }
     }
-    .alamin-hero-video {
+    .alamin-hero-img {
       animation: subtleHero 10s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       filter: brightness(0.35);
     }
@@ -146,19 +146,12 @@ export default function AlAminPage() {
 
       {/* ── HERO SECTION ── */}
       <section className="relative h-[80vh] min-h-[500px] flex items-center justify-center overflow-hidden">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="alamin-hero-video absolute inset-0 w-full h-full object-cover"
-        >
-          <source
-            src="https://res.cloudinary.com/dcqznu0ps/video/upload/v1780249486/SL_150_SLIM_-_MINIMALIST_AESTHETICS_PANORAMIC_VIEWS_yiwc4e.mp4"
-            type="video/mp4"
-          />
-        </video>
-        <div className="absolute inset-0 bg-black/45 z-10" />
+        <img
+          src="/images/home/al-amin.avif"
+          alt="ALAMIN Climate-Adaptive Engineering & High-Performance Thermal Barriers"
+          className="alamin-hero-img absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/20 z-10" />
 
         <div
           className="relative z-20 main-container text-center px-4 pt-20 sm:pt-28 md:pt-32"
@@ -182,28 +175,34 @@ export default function AlAminPage() {
       </section>
 
       {/* ── THERMAL INTELLIGENCE SECTION ── */}
-      <section className="py-12 sm:py-16 lg:py-24 border-b border-light-gold/10 bg-white/20">
-        <div className="main-container px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+      <section className="py-16 sm:py-24 border-b border-light-gold/10 bg-white/20">
+        <div className="main-container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 overflow-hidden rounded-2xl shadow-lg border border-light-gold/10">
 
-            {/* Left Col */}
-            <div className="lg:col-span-5" data-aos="fade-right">
+            {/* Left Col: Image */}
+            <div className="relative min-h-[280px] sm:min-h-[420px] lg:min-h-0 overflow-hidden" data-aos="fade-right">
+              <img
+                src="/images/home/lecture.avif"
+                alt="Thermal break testing and quality validation"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
+            </div>
+
+            {/* Right Col: Content */}
+            <div className="flex flex-col justify-center p-8 sm:p-12 lg:p-14 bg-white" data-aos="fade-left">
               <span className="section-label text-light-gold mb-3 block">
                 A New Era of Architectural Excellence
               </span>
               <h2 className="section-heading text-[#111] mb-6">
                 Thermal Intelligence: The Science of Thermal Break.
               </h2>
-              <div className="p-5 sm:p-6 bg-light-gold/5 border-l-2 border-light-gold rounded-r-xl">
+              <div className="p-5 bg-light-gold/5 border-l-2 border-light-gold rounded-r-xl mb-6">
                 <p className="font-serif text-sm text-neutral-800 leading-relaxed">
                   &quot;By integrating precision-engineered polyamide insulation strips directly into the heart
                   of the aluminium profiles, ALAMIN physically separates the exterior frame from the interior frame.&quot;
                 </p>
               </div>
-            </div>
-
-            {/* Right Col */}
-            <div className="lg:col-span-7" data-aos="fade-left">
               <p className="font-sans text-sm sm:text-base text-neutral-600 leading-relaxed font-light mb-5">
                 In the intense environmental climate of Saudi Arabia, standard aluminium profiles act as
                 direct heat conductors, transferring scorching exterior desert temperatures straight into a

@@ -187,11 +187,11 @@ export default function OzonePage() {
       {/* ── HERO ── */}
       <section className="relative h-[80vh] min-h-[520px] flex items-center justify-center overflow-hidden">
         <img
-          src="/images/home/ozone.webp"
+          src="/images/home/ozone.avif"
           alt="OZONE Stealth Series Minimalist Glass Partitions"
-          className="ozone-hero-img absolute inset-0 w-full h-full object-cover"
+          className="ozone-hero-img absolute inset-0 w-full h-full object-cover object-[center_75%]"
         />
-        <div className="absolute inset-0 bg-black/40 z-10" />
+        <div className="absolute inset-0 bg-black/20 z-10" />
         <div className="relative z-20 main-container text-center px-4 pt-20 sm:pt-28 md:pt-32" data-aos="fade-up">
           <span className="font-sans text-[0.68rem] sm:text-[0.75rem] font-bold text-[#B8902A] tracking-[0.3em] uppercase block mb-4">
             Exclusive Brand Partner
@@ -217,7 +217,7 @@ export default function OzonePage() {
             {/* Left Col: Image */}
             <div className="relative min-h-[280px] sm:min-h-[420px] lg:min-h-0 overflow-hidden" data-aos="fade-right">
               <img
-                src="/images/ozone-stealth.jpeg"
+                src="/images/ozone-stealth.webp"
                 alt="OZONE Stealth Concept"
                 className="w-full h-full object-cover"
               />

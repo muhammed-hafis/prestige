@@ -2,20 +2,9 @@ import React from 'react';
 import Link from 'next/link';
 import { FiArrowLeft } from 'react-icons/fi';
 
-
-const INSTAGRAM_IDS = [
-  'DYbb3iSsmuU',
-  'DXXKML7Eh8-',
-  'DW6gHGLjAsa',
-  'DVycxhejJW-',
-  'DVsgxhhDB6A',
-  'DXObAFOgWQR',
-  'DU5xdKfjBlW'
-];
-
 export default function ArchitectsVerdictPage() {
   return (
-    <div className="min-h-screen bg-[#FAF6EC] text-[#111] overflow-x-hidden selection:bg-light-gold selection:text-white pt-28 pb-16 sm:pt-36 sm:pb-24 relative">
+    <div className="min-h-screen bg-[#FAF6EC] text-[#111] overflow-x-hidden selection:bg-light-gold selection:text-white pt-28 pb-16 sm:pt-36 sm:pb-24 relative flex flex-col justify-center items-center">
       {/* Decorative technical grid background */}
       <div 
         className="absolute inset-0 pointer-events-none opacity-[0.02]"
@@ -25,14 +14,9 @@ export default function ArchitectsVerdictPage() {
         }}
       />
       
-      {/* Decorative ambient glows */}
-      <div className="absolute top-1/4 left-1/10 w-[450px] h-[450px] bg-light-gold/5 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-1/3 right-1/10 w-[450px] h-[450px] bg-light-gold/5 rounded-full blur-[120px] pointer-events-none"></div>
-
-      <div className="main-container relative z-10 px-6 sm:px-10 lg:px-16">
-        
+      <div className="main-container relative z-10 px-6 sm:px-10 lg:px-16 w-full max-w-xl text-center flex flex-col items-center">
         {/* Back Link */}
-        <div className="mb-8" data-aos="fade-up">
+        <div className="mb-12" data-aos="fade-up">
           <Link
             href="/global-portfolio-insights"
             className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[#111] hover:text-[#B8902A] transition-colors duration-300"
@@ -42,37 +26,18 @@ export default function ArchitectsVerdictPage() {
           </Link>
         </div>
 
-        {/* Header Section */}
-        <div className="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
-          <p className="mb-4 sm:mb-5 section-label text-light-gold">
-            TECHNICAL TESTIMONIALS
-          </p>
-          <h1 className="mb-5 sm:mb-6 section-heading text-[#111]">
+        <div data-aos="fade-up" className="flex flex-col items-center">
+          <span className="font-sans text-[0.62rem] sm:text-[0.7rem] font-bold uppercase tracking-[0.3em] text-[#B8902A] mb-4">
             The Architect&apos;s Verdict
+          </span>
+          <h1 className="font-serif text-3xl sm:text-4xl font-light text-[#111] mb-6 tracking-wide">
+            Coming Soon
           </h1>
-          <div className="w-8 sm:w-10 h-0.5 bg-light-gold mx-auto" />
+          <div className="w-8 h-[1px] bg-light-gold/60 mb-6" />
+          <p className="font-sans text-xs sm:text-sm text-neutral-400 font-light tracking-wide max-w-sm">
+            Technical testimonials and verdicts from regional architects are currently being compiled.
+          </p>
         </div>
-
-
-        {/* Instagram Reels Section */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {INSTAGRAM_IDS.map((id, idx) => (
-            <div 
-              key={id}
-              className="relative w-full h-[580px] rounded-md overflow-hidden bg-white shadow-lg border border-light-gold/15 p-1"
-              data-aos="fade-up"
-              data-aos-delay={idx * 50}
-            >
-              <iframe
-                src={`https://www.instagram.com/reel/${id}/embed`}
-                title={`Instagram Reel ${idx + 1}`}
-                className="w-full h-full border-0 rounded-xl"
-                scrolling="no"
-              />
-            </div>
-          ))}
-        </div>
-
       </div>
     </div>
   );

@@ -174,7 +174,7 @@ export default function TostemPage() {
           alt="TOSTEM Pre-Engineered Systems"
           className="tostem-hero-img absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/45 z-10" />
+        <div className="absolute inset-0 bg-black/20 z-10" />
 
         <div className="relative z-20 main-container text-center px-4 pt-20 sm:pt-28 md:pt-32" data-aos="fade-up">
           <span className="font-sans text-[0.68rem] sm:text-[0.75rem] font-bold text-[#B8902A] tracking-[0.3em] uppercase block mb-4">

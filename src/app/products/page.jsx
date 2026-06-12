@@ -34,7 +34,7 @@ const BRANDS = [
     name: "ALAMIN (Regional)",
     tagline: "Climate-Adaptive Engineering & High-Performance Thermal Barriers.",
     desc: "ALAMIN is a regional system specialized in high-performance aluminium profiles engineered specifically to combat the extreme environmental demands of the Gulf climate.",
-    img: "/images/home/al-amin.webp",
+    img: "/images/home/lecture.avif",
     logo: "/partners/al-amin.avif",
     linkText: "Explore the ALAMIN Portfolio & Systems",
     href: "/products/alamin",
@@ -50,7 +50,7 @@ const BRANDS = [
     name: "OZONE (International)",
     tagline: "Premium Structural Glass Hardware & Minimalist Interior Luxury.",
     desc: "OZONE is a premier international brand specializing in architectural structural glass fittings and minimalist interior partitions. It is designed for modern spaces that demand expansive, light-filled spatial flows without visible, heavy vertical framing.",
-    img: "/images/home/ozone.webp",
+    img: "/images/home/ozone.avif",
     logo: "/partners/ozone-logo.avif",
     linkText: "Explore the OZONE Portfolio & Systems",
     href: "/products/ozone",
@@ -126,14 +126,14 @@ export default function ProductsLandingPage() {
                     />
                   </div>
                   {/* Brand logo overlay inside image */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                  {/* <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
                   <div className="absolute bottom-0 left-0 z-10">
                     <img
                       src={brand.logo}
                       alt={`${brand.name} logo`}
                       className="h-full w-auto object-contain brightness-0 invert opacity-30 group-hover:opacity-40 transition-opacity duration-500"
                     />
-                  </div>
+                  </div> */}
                 </Link>
 
                 <div className="col-span-1 lg:col-span-6 flex flex-col justify-center">

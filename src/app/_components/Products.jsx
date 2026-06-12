@@ -14,7 +14,7 @@ const HOME_PRODUCTS = [
     id: 'alamin',
     title: 'Thermal Solutions',
     description: 'Insulated ALAMIN window and door profiles designed to block heat and optimize energy efficiency.',
-    img: '/images/home/al-amin.webp',
+    img: '/images/home/al-amin.avif',
     linkText: 'View Alamin Collection',
     href: '/products/alamin'
   },
@@ -22,7 +22,7 @@ const HOME_PRODUCTS = [
     id: 'ozone',
     title: 'Structural Glass',
     description: 'Minimalist OZONE interior partitions and luxury hardware for seamless modern spaces.',
-    img: '/images/home/ozone.webp',
+    img: '/images/home/ozone.avif',
     linkText: 'View Ozone Collection',
     href: '/products/ozone'
   }
@@ -116,14 +116,15 @@ const Products = () => {
               key={product.id}
               href={product.href}
               className="relative flex-1 overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] group group-hover/board:grayscale-[40%] hover:!grayscale-0 group-hover/board:brightness-50 hover:!brightness-110"
-              data-aos={idx % 2 === 0 ? 'fade-right' : 'fade-left'}
+              data-aos={idx === 0 ? 'fade-right' : idx === 1 ? '': 'fade-left' }
               data-aos-delay={idx * 120}
               data-aos-duration="700"
             >
               <img
                 src={product.img}
                 alt={product.title}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110"
+                className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110 ${ idx === 1 ? 'object-right' : 'object-center'
+                  }`}
               />
               <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-700" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
