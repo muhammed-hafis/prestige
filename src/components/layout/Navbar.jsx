@@ -68,7 +68,7 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-[1000] bg-[var(--background)]/80 backdrop-blur-xl border-b border-light-gold/20 transition-all duration-500 ${scrolled ? "shadow-xl" : "shadow-lg"}`}
+        className={`fixed top-0 left-0 w-full z-[1000] bg-[var(--background)] backdrop-blur-xl border-b border-light-gold/20 transition-all duration-500 ${scrolled ? "shadow-xl" : "shadow-lg"}`}
       >
         <div className="w-full max-w-[1440px] mx-auto flex justify-between items-center py-1.5 sm:py-2 px-5 sm:px-8 lg:px-10">
         {/* Logo */}

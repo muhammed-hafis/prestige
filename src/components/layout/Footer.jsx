@@ -44,7 +44,7 @@ const SOCIALS = [
     },
     {
         id: 'SC',
-        href: 'https://www.snapchat.com/add/riyazprestige?share_id=TSeJIU0TBH8&locale=en-US',
+        href: 'https://www.snapchat.com/add/prestigealusys?share_id=scD5ONapiDk&locale=en-US',
         icon: <FaSnapchat className="w-4 h-4" />
     },
 ];
