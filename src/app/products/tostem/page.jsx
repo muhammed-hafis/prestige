@@ -230,6 +230,19 @@ export default function TostemPage() {
         </div>
       </section>
 
+      {/* ── FACTORY OVERVIEW VIDEO ── */}
+      <section className="bg-black">
+        <video
+          src="https://res.cloudinary.com/dcqznu0ps/video/upload/v1781500641/tostem-overview_zupsyv.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="w-full aspect-video object-cover"
+        />
+      </section>
+
 
       {/* ── SAUDI OPERATIONS SECTION ── */}
       <section className="py-16 sm:py-24 bg-[#FAF6EC] border-b border-light-gold/10">
@@ -474,14 +487,14 @@ export default function TostemPage() {
       </section>
 
       {/* ── VIDEO SHOWCASE ── */}
-      <section className="relative w-full h-[60vh] sm:h-[80vh] lg:h-screen bg-black overflow-hidden border-b border-light-gold/10" data-aos="fade-in">
+      <section className="relative w-full bg-black overflow-hidden border-b border-light-gold/10" data-aos="fade-in">
         <video
-          src="/videos/tostem/tostem.mp4"
+          src="https://res.cloudinary.com/dcqznu0ps/video/upload/v1781500641/tostem_prj7jh.mp4"
           autoPlay
           loop
           muted
           preload="auto"
-          className="w-full h-full object-cover"
+          className="w-full aspect-video object-cover"
           playsInline
         />
       </section>
